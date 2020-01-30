@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MAXIOT</title>
+	
+	<link rel="shortcut icon" href="favicon.ico">
+	
+	 
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<link type="text/css" href="css/main.css" rel="stylesheet" /> 
+	
+	
+	
+	<!--
+
+  -->
+	
+	<script src="js/paho-mqtt-min.js"></script>
+	<script src="js/mqtt.js"></script>
+	
+<script>
+$( document ).on( "mobileinit", function() { 
+console.log("mobileinit:1");
+console.log("mobileinit:0");
+});
+var object1 = $( document ).on( "pagecreate", function() {
+/**
+	//#--------------------------------------------
+		//if (java && java.net)
+		//ip = ''+java.net.InetAddress.getLocalHost().getHostAddress();
+		//else ip = 'unknown';
+	
+	//#--------------------------------------------
+		//MyHeader_wText("MAXIOT");
+	//#--------------------------------------------
+		$("#theme_Day").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();			    
+			theme_Selector("a");
+		});	
+	//#--------------------------------------------	
+		$("#theme_Night").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			theme_Selector("b");   
+		});			
+	//#--------------------------------------------
+		$("#server_connect").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();
+			window.open ('index.php','_self',false); 
+		});	
+	//#--------------------------------------------
+		$("#server_Disconnect").click(function (e) {
+			//e.stopImmediatePropagation();
+			//e.preventDefault();
+		});	
+	//#--------------------------------------------	
+
+		
+		
+		
+	//#--------------------------------------------	
+		$("#b2").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			theme_Selector("b");   
+		});		
+
+		$("#b3").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			theme_Selector("a");   
+		});		
+		
+			
+	//#--------------------------------------------
+
+
+	**/
+});
+
+
+function SYS_INIT() {
+	$("#Password_Button").button('enable');
+	$("#Password_Input").textinput('enable');
+	$("#video_Button").button('enable');
+	$.mobile.changePage("#page_2");
+	Disconnect();
+}
+var client;
+var Connect_Status = 0;
+var SYS_STEP = 0;
+function SYS_LOOP() {
+    switch (SYS_STEP) {
+    case 0:
+		console.log("SYS_LOOP:0");
+		Connect_Status = 0;
+		
+		client = new Paho.MQTT.Client("104.168.53.100", Number("3025"), "4455@JQ_Test");
+		client.onConnectionLost = onConnectionLost;
+		client.onMessageArrived = onMessageArrived;
+
+        client.connect(
+            {
+                cleanSession : false, 
+                onSuccess : onConnectSuccess, 
+                onFailure : onFailedConnect, 
+				//keepAliveInterval: 30, 
+                //reconnect : true,         // Enable automatic reconnect
+                //reconnectInterval: 10     // Reconnect attempt interval : 10 seconds
+            }
+        );		
+		
+		
+		
+		SYS_STEP = 1; setTimeout(SYS_LOOP, 1);
+        break;
+    case 1:
+		console.log("SYS_LOOP:1");
+		SYS_STEP = 2; setTimeout(SYS_LOOP, 1);		
+        break;									
+    case 2:
+		console.log("SYS_LOOP:2");
+		if(Connect_Status === 1) SYS_STEP = 10;//onConnectSuccess
+		if(Connect_Status === 2) SYS_STEP = 20;//onFailedConnect
+		setTimeout(SYS_LOOP, 1);
+		break;		
+    case 10:
+		console.log("SYS_LOOP:10");
+		$.mobile.changePage("#page_2");	
+		break;
+    case 20:
+		console.log("SYS_LOOP:20");
+		$.mobile.changePage("#page_3");		
+		break;
+    case 99:		
+		break;
+    default:
+        break;
+    }
+}
+
+//$(document).on("pagecreate","#pagetwo",function(event){
+
+
+
+
+
+
+
+
+//#####################################################################
+// 111
+//
+//
+//#####################################################################
+//"text","password","button"
+function isGUI_Input(is_DataRole,is_ID,is_Type,is_Value) {
+	$('[data-role="'+is_DataRole+'"]').append('<input id="'+is_ID+'" type="'+is_Type+'" value="'+is_Value+'"/>'); 	
+}
+
+
+function isGUI_Input_Text(is_DataRole,is_ID,is_Value) {
+	$('[data-role="'+is_DataRole+'"]').append('<input id="'+is_ID+'" type="text" value="'+is_Value+'"/>'); 	
+}
+function isGUI_Input_Password(is_DataRole,is_ID,is_Value) {
+	$('[data-role="'+is_DataRole+'"]').append('<input id="'+is_ID+'" type="password" value="'+is_Value+'"/>'); 	
+}
+function isGUI_button(is_DataRole,is_ID,is_Value) {
+	$('[data-role="'+is_DataRole+'"]').append('<input id="'+is_ID+'" type="button" value="'+is_Value+'"/>'); 	
+}
+
+
+
+function isGUI_Input_Value(is_ID,is_Value){$('#'+is_ID).val(is_Value)}
+function isGUI_Click(is_Page,is_DataRole,is_ID,is_Value){
+	$('[data-role="'+is_DataRole+'"]').append('<script> \
+		$(document).on("pageinit","#'+is_Page+'",function(){ \
+		$("#'+is_ID+'").click(function (e){ \
+			e.stopImmediatePropagation(); \
+			e.preventDefault(); \
+			'+is_Value+'});});'
+	
+	);
+	//$('[data-role="'+is_DataRole+'"]').append('var message = new Paho.MQTT.Message("1");');
+	//$('[data-role="'+is_DataRole+'"]').append('message.destinationName = "0";');
+	//$('[data-role="'+is_DataRole+'"]').append('client.send(message);');
+}
+function isGUI_Text(is_DataRole,is_Value){
+	$('[data-role="'+is_DataRole+'"]').append('<label><br>'+is_Value+'</label>'); 
+}
+
+
+
+
+
+
+function isGUI_Slider(is_DataRole,is_ID,is_Min, is_Max,is_Value) {
+$('[data-role="'+is_DataRole+'"]').append('<input name="'+is_ID+'" id="'+is_ID+'" type="range"  min="'+is_Min+'" max="'+is_Max+'" value="'+is_Value+'" />');
+}
+
+function isGUI_Slider_Stop(is_Page,is_DataRole,is_ID,is_Value){
+	$('[data-role="'+is_DataRole+'"]').append('<script> \
+		$(document).on("pageinit","#'+is_Page+'",function(){ \
+		$("#'+is_ID+'").on( \'slidestop\', function( event ) \
+		{ var Value = $("#'+is_ID+'").val();'+is_Value+'});});'
+	);
+}
+
+function isGUI_flip(is_DataRole,is_ID,is_Val1, is_Val2){
+	$('[data-role="'+is_DataRole+'"]').append('<select name="'+is_ID+'" id="'+is_ID+'" data-role="slider"><option value="on">'+is_Val2+'</option><option value="off">'+is_Val1+'</option></select>');
+}	
+ 
+function isGUI_flip_Click(is_Page,is_DataRole,is_ID,is_Value){
+	$('[data-role="'+is_DataRole+'"]').append('<script> \
+		$(document).on("pageinit","#'+is_Page+'",function(){ \
+		$("#'+is_ID+'").click(function (e){ \
+			e.stopImmediatePropagation(); \
+			e.preventDefault(); \
+			'+is_Value+'});});'
+	
+	);
+	//$('[data-role="'+is_DataRole+'"]').append('var message = new Paho.MQTT.Message("1");');
+	//$('[data-role="'+is_DataRole+'"]').append('message.destinationName = "0";');
+	//$('[data-role="'+is_DataRole+'"]').append('client.send(message);');
+}
+
+
+
+
+
+/**
+
+$(document).on("pageinit","#page_1",function(){
+    // PLACE ALL YOU EVENTS CODE HERE e.g.
+    $( "#b47xx" ).on( 'slidestop', function( event ) { 
+        alert ('hi');  
+    });
+});
+**/
+
+
+
+$(document).on('pagebeforecreate',"#page_1", function(){    
+
+	isGUI_Text ("content_1","პაროლის ველი - >"); 
+	isGUI_Input_Text("content_1","b44","ok ok ok rrr");
+	isGUI_Input_Value("b44","bbbbbbbff");
+	
+	isGUI_Input_Password("content_1","b45","123456");
+	isGUI_Input_Value("b45","123");	
+	
+	isGUI_button("content_1","b46","button","ნათურის ჩართვა - m");
+	isGUI_Click("page_1","content_1","b46",'console.log("b46xx_click");');
+	
+	isGUI_Slider("content_1","b47xx","0","200","50");
+	isGUI_Slider_Stop("page_1","content_1","b47xx",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
+
+	isGUI_flip("content_1","b48","დიხ","არა");
+
+
+	
+		//$('[data-role="content_1"]').append('<select name="flip-1" id="flip-1" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>');
+	
+	
+//#--------------------------------------------	
+	console.log("pagebeforecreate:0:page_1");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//#####################################################################
+// 222
+//
+//
+//#####################################################################
+
+$(document).on('pagebeforecreate',"#page_2", function(){    
+	console.log("pagebeforecreate:1:page_2");
+//#--------------------------------------------	
+	$("#start_page2").click(function (e) {
+		e.stopImmediatePropagation();
+		e.preventDefault();	
+		console.log("#start_page3_click");
+		SYS_INIT(); 
+	});			
+//#--------------------------------------------	
+	
+	$('[data-role="content_2"]').append('<label><br></label>'); 
+	
+	var is_id = "b2";
+	var is_value = "ნათურის ჩართვა";
+	
+	$('[data-role="content_2"]').append('<input id="'+is_id+'" type="button" value="'+is_value+'">'); 
+	$("#"+is_id).click(function (e) {
+		e.stopImmediatePropagation();
+		e.preventDefault();	
+		console.log(is_id+"_click");  
+
+		var message = new Paho.MQTT.Message("1");
+		message.destinationName = "0";
+		client.send(message);
+	});	
+	
+	$('[data-role="content_2"]').append('<label><br></label>'); 
+	
+	var is_id = "b3";
+	var is_value = "ნათურის გამორთვა";
+	
+	$('[data-role="content_2"]').append('<input id="'+is_id+'" type="button" value="'+is_value+'">'); 
+	$("#"+is_id).click(function (e) {
+		e.stopImmediatePropagation();
+		e.preventDefault();	
+		console.log(is_id+"_click");  
+
+		var message = new Paho.MQTT.Message("0");
+		message.destinationName = "0";
+		client.send(message);
+	});		
+	
+	//$('[data-role="content_2"]').append('<input id="b4" type="button" value="Button">');  
+	//$('[data-role="content_2"]').append('<input id="s1" type="range" name="slider-2" min="0" max="100"  value="25" />');
+	//$('[data-role="content_2"]').append('<input type="text" value="Some value"/>');	
+	//$('[data-role="content_2"]').append('<select name="flip-1" id="flip-1" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>');
+	
+	console.log("pagebeforecreate:0:page_2");
+	
+});
+
+
+
+
+
+//#####################################################################
+// 333
+//
+//
+//#####################################################################
+
+$(document).on('pagebeforecreate',"#page_3", function(){    
+	console.log("pagebeforecreate:1:page_3");
+	//#--------------------------------------------
+		$("#theme_Day").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();
+			console.log("#theme_Day_click");			
+			theme_Selector("a");
+		});	
+	//#--------------------------------------------	
+		$("#theme_Night").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			console.log("#theme_Night_click");
+			theme_Selector("b");   
+		});			
+	//#--------------------------------------------
+		$("#start_page3").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			console.log("#start_page3_click");
+			SYS_INIT(); 
+		});			
+	//#--------------------------------------------	
+	console.log("pagebeforecreate:0:page_3");
+});
+
+
+//#####################################################################
+// 444
+//
+//
+//#####################################################################
+
+$(document).on('pagebeforecreate',"#page_4", function(){    
+	console.log("pagebeforecreate:1:page_4");
+	//#--------------------------------------------
+		$("#theme_Day").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();
+			console.log("#theme_Day_click");			
+			theme_Selector("a");
+		});	
+	//#--------------------------------------------	
+		$("#theme_Night").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			console.log("#theme_Night_click");
+			theme_Selector("b");   
+		});			
+	//#--------------------------------------------
+		$("#start_page4").click(function (e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();	
+			console.log("#start_page4_click");
+			SYS_INIT(); 
+		});			
+	//#--------------------------------------------	
+	console.log("pagebeforecreate:0:page_3");
+});
+
+
+//<a href="tryit.asp-filename=tryjqmob_pages.html#page_4">Go to Page 4</a>
+</script>
+
+
+	
+</head>
+<body>
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_1">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">საწყისი</span></h3>  
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" id="start_page1">.</a></li>
+				<li><a href="#" id="server_Disconnect">.</a></li>
+				<li><a href="#" id="theme_Day" >.</a></li>
+				<li><a href="#" id="theme_Night" >.</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+	
+	<div data-role="content_1" class="ui-content" role="main">		
+
+
+
+
+	<div data-role="tabs">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#fragment-1" class="ui-btn-active">One</a></li>
+          <li><a href="#fragment-2">Two</a></li>
+          <li><a href="#fragment-3">Three</a></li>
+        </ul>
+      </div>
+      <div id="fragment-1">
+        <p>This is the content of the tab 'One', with the id fragment-1.</p>
+      </div>
+      <div id="fragment-2">
+        <p>This is the content of the tab 'Two', with the id fragment-2.</p>
+      </div>
+      <div id="fragment-3">
+        <p>This is the content of the tab 'Three', with the id fragment-3.</p>
+      </div>
+    </div>
+
+
+
+
+
+<label for="select-choice-0" class="select">Shipping method:</label>
+<select name="select-choice-0" id="select-choice-0">
+  <option value="standard">Standard: 7 day</option>
+  <option value="rush">Rush: 3 days</option>
+  <option value="express">Express: next day</option>
+  <option value="overnight">Overnight</option>
+</select>
+
+
+		<div class="ui-field-contain">
+			<label for="select-choice-3" class="select">Your state:</label>
+			<select name="select-choice-3" id="select-choice-3" data-native-menu="false">
+				<option value="AL">Alabama</option>
+				<option value="AK">Alaska</option>
+				<option value="AZ">Arizona</option>
+				<option value="AR">Arkansas</option>
+				<option value="CA">California</option>
+				<option value="CO">Colorado</option>
+				<option value="CT">Connecticut</option>
+				<option value="DE">Delaware</option>
+				<option value="FL">Florida</option>
+				<option value="GA">Georgia</option>
+				<option value="HI">Hawaii</option>
+				<option value="ID">Idaho</option>
+				<option value="IL">Illinois</option>
+				<option value="IN">Indiana</option>
+				<option value="IA">Iowa</option>
+				<option value="KS">Kansas</option>
+				<option value="KY">Kentucky</option>
+				<option value="LA">Louisiana</option>
+				<option value="ME">Maine</option>
+				<option value="MD">Maryland</option>
+				<option value="MA">Massachusetts</option>
+				<option value="MI">Michigan</option>
+				<option value="MN">Minnesota</option>
+				<option value="MS">Mississippi</option>
+				<option value="MO">Missouri</option>
+				<option value="MT">Montana</option>
+				<option value="NE">Nebraska</option>
+				<option value="NV">Nevada</option>
+				<option value="NH">New Hampshire</option>
+				<option value="NJ">New Jersey</option>
+				<option value="NM">New Mexico</option>
+				<option value="NY">New York</option>
+				<option value="NC">North Carolina</option>
+				<option value="ND">North Dakota</option>
+				<option value="OH">Ohio</option>
+				<option value="OK">Oklahoma</option>
+				<option value="OR">Oregon</option>
+				<option value="PA">Pennsylvania</option>
+				<option value="RI">Rhode Island</option>
+				<option value="SC">South Carolina</option>
+				<option value="SD">South Dakota</option>
+				<option value="TN">Tennessee</option>
+				<option value="TX">Texas</option>
+				<option value="UT">Utah</option>
+				<option value="VT">Vermont</option>
+				<option value="VA">Virginia</option>
+				<option value="WA">Washington</option>
+				<option value="WV">West Virginia</option>
+				<option value="WI">Wisconsin</option>
+				<option value="WY">Wyoming</option>
+			</select>
+		</div>
+	</div>
+
+
+	
+	</div>
+
+<script>
+
+</script>
+
+
+
+</div><!-- /page -->
+
+
+
+
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_2">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">შუშაბანდის განათების მართვა</span></h3>  
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" id="start_page2">საწყისი</a></li>
+				<li><a href="#" id="server_Disconnect">.</a></li>
+				<li><a href="#" id="theme_Day" >.</a></li>
+				<li><a href="#" id="theme_Night" >.</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_2" class="ui-content" role="main"></div>
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_3">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">შეცდომა</span></h3>  
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" id="start_page3">საწყისი</a></li>
+				<li><a href="#" id="server_Disconnect">.</a></li>
+				<li><a href="#" id="theme_Day" >.</a></li>
+				<li><a href="#" id="theme_Night" >.</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_3" class="ui-content" role="main">			
+
+			<a href="tryit.asp-filename=tryjqmob_pages.html#page_1">Go to Page 1</a>
+	</div>
+</div><!-- /page -->
+
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_4">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">ვიდეო თვალი</span></h3>  
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" id="start_page4">საწყისი</a></li>
+				<li><a href="#" id="server_Disconnect">.</a></li>
+				<li><a href="#" id="theme_Day" >.</a></li>
+				<li><a href="#" id="theme_Night" >.</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_4" class="ui-content" role="main">			
+
+		<div style="position:relative; width:100%; height:480px; ">
+		<iframe style="position:absolute; left:0; top:0; width:100%; height:100%"
+		   src="http://104.168.53.100:3081/"
+		</iframe>
+		</div>
+			
+	</div>
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+</body>
+</html>
