@@ -216,23 +216,14 @@ function isGUI_Slider_Stop(is_Page,is_DataRole,is_ID,is_Value){
 function isGUI_flip(is_DataRole,is_ID,is_Val1, is_Val2){
 	$('[data-role="'+is_DataRole+'"]').append('<select name="'+is_ID+'" id="'+is_ID+'" data-role="slider"><option value="on">'+is_Val2+'</option><option value="off">'+is_Val1+'</option></select>');
 }	
- 
-function isGUI_flip_Click(is_Page,is_DataRole,is_ID,is_Value){
+function isGUI_flip_Change(is_Page,is_DataRole,is_ID,is_Value){
 	$('[data-role="'+is_DataRole+'"]').append('<script> \
 		$(document).on("pageinit","#'+is_Page+'",function(){ \
-		$("#'+is_ID+'").click(function (e){ \
-			e.stopImmediatePropagation(); \
-			e.preventDefault(); \
-			'+is_Value+'});});'
-	
+		$("#'+is_ID+'").on( \'change\', function( event ) \
+		{ var Value = $("#'+is_ID+'").val();'+is_Value+'});});'
 	);
-	//$('[data-role="'+is_DataRole+'"]').append('var message = new Paho.MQTT.Message("1");');
-	//$('[data-role="'+is_DataRole+'"]').append('message.destinationName = "0";');
-	//$('[data-role="'+is_DataRole+'"]').append('client.send(message);');
 }
-
-
-
+ 
 
 
 /**
@@ -263,7 +254,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	isGUI_Slider_Stop("page_1","content_1","b47xx",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
 
 	isGUI_flip("content_1","b48","დიხ","არა");
-
+	isGUI_flip_Change("page_1","content_1","b48",'console.log("Value = "+Value);isGUI_Input_Value("b48_flip",Value);');
 
 	
 		//$('[data-role="content_1"]').append('<select name="flip-1" id="flip-1" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>');
