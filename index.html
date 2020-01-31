@@ -12,6 +12,20 @@
 	<script src="js/GUI_ELEMENTS.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet" /> 
 	
+	
+	<script src="js/justgage/raphael-2.1.4.min.js"></script>
+    <script src="js/justgage/justgage.js"></script>
+	<style>
+      #g1 {
+        width:100px; height:80px;
+        display: inline-block;
+        margin: 1em;
+      }
+    </style>	
+	
+	
+	
+	
 	<!--
 <script src="js/dygraph-combined.js"></script>
   -->
@@ -217,6 +231,22 @@ $(document).on("pageinit","#page_1",function(){
 	});
 
 
+
+      var g1 = new JustGage({
+          id: "g1",
+          value: getRandomInt(0, 100),
+          min: 0,
+          max: 100,
+          title: "Big Fella",
+          label: "pounds"
+        });
+
+		setInterval(function() {
+          g1.refresh(getRandomInt(50, 100));
+        }, 1000);
+
+
+
 	
 	/**
     $("#is_listviewt").click(function () {
@@ -305,6 +335,11 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 	</div><!-- /header -->
 	
 	<div data-role="content_1" class="ui-content" role="main">		
+
+
+<div id="g1"></div>
+
+
 
 		<select name="is2_listview" id="is2_listview" data-native-menu="false">
 			<option id="xx1" value="AL">Alabama</option>
