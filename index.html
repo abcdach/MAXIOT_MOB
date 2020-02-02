@@ -34,12 +34,18 @@
 	
 <script>
 $( document ).on( "mobileinit", function() { 
+
 console.log("mobileinit:1");
 console.log("mobileinit:0");
 });
 
 
 var object1 = $( document ).on( "pagecreate", function() {
+
+
+
+console.log("pagecreate");
+
 /**
 	//#--------------------------------------------
 		//if (java && java.net)
@@ -171,8 +177,83 @@ function SYS_LOOP() {
 //
 //
 //#####################################################################
+var Conf = [];
+$(document).on('pagebeforecreate',"#page_1", function(){
 
-$(document).on('pagebeforecreate',"#page_1", function(){    
+
+	console.log("start");
+	Conf[0] = "text,ეს არის ტესტ ტექსტი"
+	Conf[1] = "button,OK,0,OK"
+	Conf[2] = "slider,0,150,1,5"
+
+	console.log(Conf.length);
+	
+	
+	
+	
+	
+	
+	var Conf_Len = Conf.length
+	var i;
+	var p=['','','','','','',''];
+	for (i = 0; i < Conf_Len; i++) {
+		var Conf_Spl = Conf[i].split(',');
+		var Conf_Spl_Len = Conf_Spl.length;
+	   
+		switch(Conf_Spl[0]) {
+		
+			case "text":
+				p[1]="default"
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				isGUI_Text ("content_1",p[1]);
+				break;
+			
+			case "button":
+				p[1]="default"
+				p[2]="0"	//OutPut
+				p[3]="1"	//Data
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];	
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3];
+				
+				var isID = "E"+i;
+				isGUI_Button("content_1",isID,p[1])
+				isGUI_Click("page_1","content_1",isID,p[2],p[3]);
+				break;
+			
+			case "slider":
+				p[1]="0"	//min
+				p[2]="100"	//max			
+				p[3]="1"	//step
+				p[4]="0"	//OutPut
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];	
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3];
+				
+				var isID = "E"+i;
+				isGUI_Slider("content_1",isID,p[1],p[2],p[3]);
+				isGUI_Slider_Stop("page_1","content_1",isID,p[4]);
+				break;
+			
+			default:
+				break;
+		}
+
+	}
+	
+		
+	
+
+	
+	
+	
+	
+
+		//setInterval(function() {
+          //isGUI_Text ("content_1","პაროლის ველი - >"); 
+        //}, 1000);
+
+
 
 	isGUI_Text ("content_1","პაროლის ველი - >"); 
 	isGUI_Input_Text("content_1","b44","ok ok ok rrr");
@@ -181,30 +262,17 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	isGUI_Input_Password("content_1","b45","123456");
 	isGUI_Input_Value("b45","123");	
 	
-	isGUI_button("content_1","b46","button","ნათურის ჩართვა - m");
-	isGUI_Click("page_1","content_1","b46",'console.log("b46xx_click");');
+	//isGUI_button("content_1","b46","button","ნათურის ჩართვა - m");
+	//isGUI_Click("page_1","content_1","b46",'console.log("b46xx_click");');
 	
-	isGUI_Slider("content_1","b47xx","0","200","50");
-	isGUI_Slider_Stop("page_1","content_1","b47xx",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
+	//isGUI_Slider("content_1","b47xx","0","200","50");
+	//isGUI_Slider_Stop("page_1","content_1","b47xx",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
 
 	isGUI_flip("content_1","b48","დიხ","არა");
-	isGUI_flip_Change("page_1","content_1","b48",'console.log("Value = "+Value);isGUI_Input_Value("b48_flip",Value);');
+	isGUI_flip_Change("page_1","content_1","b48",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
 
 	
 	//$('[data-role="content_1"]').append('<select name="flip-1" id="flip-1" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>');
-	
-	
-	
-	//isGUI_xClick("page_1","content_1","is_listview",'console.log("is_listview_click");');
-	//isGUI_Click("page_1","content_1","is2_listview",'console.log("Value = "+Value);');
-	
-	
-	//isGUI_xClick("page_1","content_1","is2_listview",'console.log("is222_listview_click");');
-	
-	
-
-	
-	
 	
 	
 	
@@ -231,7 +299,7 @@ $(document).on("pageinit","#page_1",function(){
 	});
 
 
-
+	/**
       var g1 = new JustGage({
           id: "g1",
           value: getRandomInt(0, 100),
@@ -243,8 +311,8 @@ $(document).on("pageinit","#page_1",function(){
 
 		setInterval(function() {
           g1.refresh(getRandomInt(50, 100));
-        }, 1000);
-
+        }, 2000);
+	**/
 
 
 	
@@ -320,8 +388,8 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 <body>
 
 <!-- ####################################################################################### -->
-
-<div data-role="page" id="page_1">
+<!--
+<div data-role="page" id="page_2">
 	<div data-role="header">
 		<h3><span id="MyHeader_Text">საწყისი</span></h3>  
 		<div data-role="navbar">
@@ -332,9 +400,9 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 				<li><a href="#" id="theme_Night" >.</a></li>
 			</ul>
 		</div>
-	</div><!-- /header -->
+	</div>
 	
-	<div data-role="content_1" class="ui-content" role="main">		
+	<div data-role="content_2" class="ui-content" role="main">		
 
 
 <div id="g1"></div>
@@ -381,15 +449,15 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 
 
 
-</div><!-- /page -->
+</div>
 
-
+-->
 
 
 
 <!-- ####################################################################################### -->
 
-<div data-role="page" id="page_2">
+<div data-role="page" id="page_1">
 	<div data-role="header">
 		<h3><span id="MyHeader_Text">შუშაბანდის განათების მართვა</span></h3>  
 		<div data-role="navbar">
@@ -401,7 +469,7 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 			</ul>
 		</div>
 	</div><!-- /header -->
-	<div data-role="content_2" class="ui-content" role="main"></div>
+	<div data-role="content_1" class="ui-content" role="main"></div>
 </div><!-- /page -->
 
 <!-- ####################################################################################### -->
@@ -424,31 +492,6 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 	</div>
 </div><!-- /page -->
 
-
-<!-- ####################################################################################### -->
-
-<div data-role="page" id="page_4">
-	<div data-role="header">
-		<h3><span id="MyHeader_Text">ვიდეო თვალი</span></h3>  
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#" id="start_page4">საწყისი</a></li>
-				<li><a href="#" id="server_Disconnect">.</a></li>
-				<li><a href="#" id="theme_Day" >.</a></li>
-				<li><a href="#" id="theme_Night" >.</a></li>
-			</ul>
-		</div>
-	</div><!-- /header -->
-	<div data-role="content_4" class="ui-content" role="main">			
-
-		<div style="position:relative; width:100%; height:480px; ">
-		<iframe style="position:absolute; left:0; top:0; width:100%; height:100%"
-		   src="http://104.168.53.100:3081/"
-		</iframe>
-		</div>
-			
-	</div>
-</div><!-- /page -->
 
 <!-- ####################################################################################### -->
 </body>
