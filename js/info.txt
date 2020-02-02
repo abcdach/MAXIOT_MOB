@@ -1,0 +1,98 @@
+######################################################################
+
+	//isGUI_Text ("content_1","პაროლის ველი - >"); 
+	///isGUI_Input_Text("content_1","b44","ok ok ok rrr");
+	//isGUI_Input_Value("b44","bbbbbbbff");
+	
+	//isGUI_Input_Password("content_1","b45","123456");
+	//isGUI_Input_Value("b45","123");	
+	
+	//isGUI_button("content_1","b46","button","ნათურის ჩართვა - m");
+	//isGUI_Click("page_1","content_1","b46",'console.log("b46xx_click");');
+	//isGUI_Slider("content_1","b47xx","0","200","50");
+	//isGUI_Slider_Stop("page_1","content_1","b47xx",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
+	//isGUI_flip("content_1","b48","დიხ","არა");
+	//isGUI_flip_Change("page_1","content_1","b48",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
+
+	
+	//$('[data-role="content_1"]').append('<select name="flip-1" id="flip-1" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>');
+	
+######################################################################
+
+	<select name="is2_listview" id="is2_listview" data-native-menu="false">
+		<option id="xx1" value="AL">Alabama</option>
+		<option id="xx2" value="AK">Alaska</option>
+		<option id="xx3" value="AZ">Arizona</option>
+		<option id="xx4" value="AR">Arkansas</option>
+		<option id="xx5" value="CA">California</option>
+		<option id="xx6" value="WA">Washington</option>
+		<option id="xx7" value="WV">West Virginia</option>
+		<option id="xx8" value="WI">Wisconsin</option>
+		<option id="xx9" value="WY">Wyoming</option>
+	</select>
+	
+	$('#is2_listview').change(function() {
+		var Value = $("#is2_listview").val();
+		console.log("Value = "+Value);
+	});
+######################################################################
+	<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">
+	    <h4>სია არის ეს</h4>
+		<ul data-role="listview" data-inset="true" name="is3_listview" id="is3_listview" >
+			<li><a id="xx1" ">Audi</a></li>
+			<li><a id="xx2" ">BMW</a></li>
+			<li><a id="xx3" ">Cadillac</a></li>
+			<li><a id="xx4" ">Ferrari</a></li>
+		</ul>		
+	</div>
+		
+	$('#is3_listview').delegate('a', 'click', function () {
+		 //alert("Clicked on " + this.id);
+		 console.log("Value = "+this.id);
+    });	
+######################################################################
+	<ul data-role="listview" data-inset="true" name="is_listview" id="is_listview" >
+		<li><a id="xx1" ">Audi</a></li>
+		<li><a id="xx2" ">BMW</a></li>
+		<li><a id="xx3" ">Cadillac</a></li>
+		<li><a id="xx4" ">Ferrari</a></li>
+	</ul>
+
+	$('#is_listview').delegate('a', 'click', function () {
+		 //alert("Clicked on " + this.id);
+		 console.log("Value = "+this.id);
+    });
+
+######################################################################
+      var g1 = new JustGage({
+          id: "g1",
+          value: getRandomInt(0, 100),
+          min: 0,
+          max: 100,
+          title: "Big Fella",
+          label: "pounds"
+        });
+
+		setInterval(function() {
+          g1.refresh(getRandomInt(50, 100));
+        }, 2000);
+		
+		<div id="g1"></div>
+
+######################################################################
+
+
+######################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
