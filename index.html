@@ -177,24 +177,31 @@ function SYS_LOOP() {
 //
 //
 //#####################################################################
-var Conf = [];
+var Conf = [''];
 $(document).on('pagebeforecreate',"#page_1", function(){
 
 
 	console.log("start");
-	Conf[0] = "text,ეს არის ტესტ ტექსტი"
-	Conf[1] = "button,OK,0,OK"
-	Conf[2] = "slider,0,150,1,5"
+	var r = 0;
+	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
+	r++;Conf[r] = "button,OK,0,OK";
+	r++;Conf[r] = "slider,0,150,10,5";
+	r++;Conf[r] = "flip,on,1,off,0,4";
+	r++;Conf[r] = "text_input,რაიმე ტექსტი,0";
+	r++;Conf[r] = "Password_input,რაიმე ტექსტი,0";
+	r++;Conf[r] = "select_start"
+	r++;Conf[r] = "select,1,1111"
+	r++;Conf[r] = "select,2,2222"
+	r++;Conf[r] = "select,3,3333"
+	r++;Conf[r] = "select_stop,8"
+	//r++;Conf[r] = "button,OK,0,OK";
+	//r++;Conf[r] = "collapsible_stop"
 
 	console.log(Conf.length);
 	
-	
-	
-	
-	
-	
 	var Conf_Len = Conf.length
-	var i;
+	var i; 
+	var select = ""; var select_id = ""
 	var p=['','','','','','',''];
 	for (i = 0; i < Conf_Len; i++) {
 		var Conf_Spl = Conf[i].split(',');
@@ -235,41 +242,112 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 				isGUI_Slider_Stop("page_1","content_1",isID,p[4]);
 				break;
 			
+			
+			case "flip":
+				p[1]="on"	//on
+				p[2]="1"	//on  value			
+				p[3]="off"	//off
+				p[4]="0"	//off value	
+				p[5]="0"	//OutPut	
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];	
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3];
+				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4];
+				if(Conf_Spl_Len >= 6)p[5]=Conf_Spl[5];
+				
+				var isID = "E"+i;
+				isGUI_flip("content_1",isID,p[1],p[2],p[3],p[4]);
+				isGUI_flip_Change("page_1","content_1",isID,p[5]);			
+				break;
+			
+			case "text_input":
+				var isID = "In"+i;			
+				isGUI_Input_Text("content_1",isID,"ok ok ok rrr");
+				break;
+						
+			case "Password_input":		
+				var isID = "In"+i;			
+				isGUI_Input_Password("content_1",isID,"123456");
+				break;			
+			
+			
+			case "select_start":
+				select_id = "E"+i;
+				select = '<select name="'+select_id+'" id="'+select_id+'" data-native-menu="false">';
+				break;			
+			case "select":
+				p[1]="sel_"+i;
+				p[2]="select "+i;
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];
+				select += '<option value="'+p[1]+'">'+p[2]+'</option>';
+				break;			
+			case "select_stop":
+				p[1]="0";
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				select += '</select>';
+				$('[data-role="content_1"]').append(select);	
+				isGUI_Select_Change("page_1","content_1",select_id,p[1]);
+				break;				
+			
 			default:
 				break;
 		}
 
 	}
 	
+	
+
+	
+	
+	
+	
+	
+	//	<select name="is2_listview" id="is2_listview" data-native-menu="false">
+	//		<option id="xx1" value="AL">Alabama</option>
+	//		<option id="xx2" value="AK">Alaska</option>
+	//		<option id="xx3" value="AZ">Arizona</option>
+	//		<option id="xx4" value="AR">Arkansas</option>
+	//		<option id="xx5" value="CA">California</option>
+	//		<option id="xx6" value="WA">Washington</option>
+	//		<option id="xx7" value="WV">West Virginia</option>
+	//		<option id="xx8" value="WI">Wisconsin</option>
+	//		<option id="xx9" value="WY">Wyoming</option>
+	//	</select>
+
+	//	<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">
+	//	    <h4>სია არის ეს</h4>
+	//		<ul data-role="listview" data-inset="true" name="is3_listview" id="is3_listview" >
+	//			<li><a id="xx1" ">Audi</a></li>
+	//			<li><a id="xx2" ">BMW</a></li>
+	//			<li><a id="xx3" ">Cadillac</a></li>
+	//			<li><a id="xx4" ">Ferrari</a></li>
+	//		</ul>		
+	//	</div>
+
+
+
+
 		
-	
-
-	
-	
-	
-	
-
 		//setInterval(function() {
           //isGUI_Text ("content_1","პაროლის ველი - >"); 
         //}, 1000);
 
 
 
-	isGUI_Text ("content_1","პაროლის ველი - >"); 
-	isGUI_Input_Text("content_1","b44","ok ok ok rrr");
-	isGUI_Input_Value("b44","bbbbbbbff");
+	//isGUI_Text ("content_1","პაროლის ველი - >"); 
+	///isGUI_Input_Text("content_1","b44","ok ok ok rrr");
+	//isGUI_Input_Value("b44","bbbbbbbff");
 	
-	isGUI_Input_Password("content_1","b45","123456");
-	isGUI_Input_Value("b45","123");	
+	//isGUI_Input_Password("content_1","b45","123456");
+	//isGUI_Input_Value("b45","123");	
 	
 	//isGUI_button("content_1","b46","button","ნათურის ჩართვა - m");
 	//isGUI_Click("page_1","content_1","b46",'console.log("b46xx_click");');
-	
 	//isGUI_Slider("content_1","b47xx","0","200","50");
 	//isGUI_Slider_Stop("page_1","content_1","b47xx",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
-
-	isGUI_flip("content_1","b48","დიხ","არა");
-	isGUI_flip_Change("page_1","content_1","b48",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
+	//isGUI_flip("content_1","b48","დიხ","არა");
+	//isGUI_flip_Change("page_1","content_1","b48",'console.log("Value = "+Value);isGUI_Input_Value("b44",Value);');
 
 	
 	//$('[data-role="content_1"]').append('<select name="flip-1" id="flip-1" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>');
@@ -470,6 +548,10 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 		</div>
 	</div><!-- /header -->
 	<div data-role="content_1" class="ui-content" role="main"></div>
+	
+
+	
+	
 </div><!-- /page -->
 
 <!-- ####################################################################################### -->
