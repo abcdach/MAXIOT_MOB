@@ -25,7 +25,7 @@ function isGUI_Input_Value(is_ID,is_Value){$('#'+is_ID).val(is_Value)}
 
 
 function isGUI_Button(is_ID,is_Value) {
-	return('<input id="'+is_ID+'" type="button" value="'+is_Value+'"/>'); 	
+	return('<input id="'+is_ID+'" type="button" value="'+is_Value+'"/>');
 }
 function isGUI_Click(is_Page,is_DataRole,is_ID,is_Value1,is_Value2){
 	console.log(is_Value1);	
@@ -35,7 +35,7 @@ function isGUI_Click(is_Page,is_DataRole,is_ID,is_Value1,is_Value2){
 			e.stopImmediatePropagation(); \
 			e.preventDefault(); \
 			console.log("'+is_ID+' : Out_'+is_Value1+' = '+is_Value2+'"); \
-			});});</script>'	
+			});});</script>'
 	);
 }
 
