@@ -183,12 +183,15 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	
 	var r = 0;
+	r++;Conf[r] = "collapsible_start,ეს არის collapsible"
 	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
 	r++;Conf[r] = "button,OK,0,OK";
 	r++;Conf[r] = "slider,0,150,10,5";
 	r++;Conf[r] = "flip,on,1,off,0,4";
 	r++;Conf[r] = "text_input,რაიმე ტექსტი,0";
 	r++;Conf[r] = "password_input,რაიმე ტექსტი,0";
+	r++;Conf[r] = "collapsible_stop"
+	
 	r++;Conf[r] = "select_start"
 	r++;Conf[r] = "select,1,მერსედესი"
 	r++;Conf[r] = "select,2,ტოიოტა"
@@ -196,10 +199,19 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "select,3,ფერარი"
 	r++;Conf[r] = "select,3,გოლფი"
 	r++;Conf[r] = "select_stop,4"
+	
 
 	console.log(Conf.length);
 	
+	
+	
 	var Conf_Len = Conf.length
+	
+	var isHTML =''
+	var isJAVA =''
+	
+	var isDataRole = 'content_1'
+	
 	var i; 
 	var select = ""; var select_id = ""
 	var p=['','','','','','',''];
@@ -210,93 +222,108 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 		switch(Conf_Spl[0]) {
 		
 			case "text":
-				p[1]="default"
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				isGUI_Text ("content_1",p[1]);
+			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="default";	
+				isHTML += isGUI_Text (p[1]);				
 				break;
 			
 			case "button":
-				p[1]="default"
-				p[2]="0"	//OutPut
-				p[3]="1"	//Data
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];	
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3];
+
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="default";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2]; else p[2]="0";	//OutPut	
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[3]="1";	//Data
 				
 				var isID = "E"+i;
-				isGUI_Button("content_1",isID,p[1])
+				
+				isHTML += isGUI_Button(isID,p[1]);
+				
 				isGUI_Click("page_1","content_1",isID,p[2],p[3]);
 				break;
 			
 			case "slider":
-				p[1]="0"	//min
-				p[2]="100"	//max			
-				p[3]="1"	//step
-				p[4]="0"	//OutPut
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];	
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3];
+			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="0";	//min
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2]; else p[2]="100";	//max		
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[3]="1";	//step
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[4]="0";	//OutPut
 				
 				var isID = "E"+i;
-				isGUI_Slider("content_1",isID,p[1],p[2],p[3]);
+				isHTML += isGUI_Slider(isID,p[1],p[2],p[3]);
+				
 				isGUI_Slider_Stop("page_1","content_1",isID,p[4]);
 				break;
 			
 			
 			case "flip":
-				p[1]="on"	//on
-				p[2]="1"	//on  value
-				p[3]="off"	//off
-				p[4]="0"	//off value	
-				p[5]="0"	//OutPut
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];	
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3];
-				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4];
-				if(Conf_Spl_Len >= 6)p[5]=Conf_Spl[5];
+
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="on";	//on
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2]; else p[2]="1";	//on  value	
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[3]="off";	//off
+				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4]; else p[4]="0";	//off value	
+				if(Conf_Spl_Len >= 6)p[5]=Conf_Spl[5]; else p[5]="0";	//OutPut
 				
 				var isID = "E"+i;
-				isGUI_flip("content_1",isID,p[1],p[2],p[3],p[4]);
+				isHTML += isGUI_flip(isID,p[1],p[2],p[3],p[4]);
+				
 				isGUI_flip_Change("page_1","content_1",isID,p[5]);			
 				break;
 			
 			case "text_input":
 				var isID = "In"+i;			
-				isGUI_Input_Text("content_1",isID,"ok ok ok rrr");
+				isHTML += isGUI_Input_Text(isID,"ok ok ok rrr");
 				break;
 						
 			case "password_input":		
 				var isID = "In"+i;			
-				isGUI_Input_Password("content_1",isID,"123456");
+				isHTML += isGUI_Input_Password(isID,"123456");
 				break;			
 			
 			
 			case "select_start":
 				select_id = "E"+i;
-				select = '<select name="'+select_id+'" id="'+select_id+'" data-native-menu="false">';
+				isHTML += '<select name="'+select_id+'" id="'+select_id+'" data-native-menu="false">';
 				break;			
 			case "select":
 				p[1]="sel_"+i;
 				p[2]="select "+i;
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];
-				select += '<option value="'+p[1]+'">'+p[2]+'</option>';
+				isHTML += '<option value="'+p[1]+'">'+p[2]+'</option>';
 				break;			
 			case "select_stop":
 				p[1]="0";
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				select += '</select>';
-				$('[data-role="content_1"]').append(select);	
+				isHTML += '</select>';
 				isGUI_Select_Change("page_1","content_1",select_id,p[1]);
 				break;				
 			
+			
+			case "collapsible_start":;
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="collapsible";	//on
+				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">'
+				isHTML += '<h4>'+p[1]+'</h4>'
+				break;				
+			case "collapsible_stop":
+				select_id = "E"+i;
+				isHTML += '</div>'
+				break;				
+			
+	
 			default:
 				break;
 		}
 
 	}
 	
+	$('[data-role="content_1"]').append(isHTML);
 //#--------------------------------------------	
+
+
+
+
+
+
+
 
 
 
