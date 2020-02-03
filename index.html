@@ -197,7 +197,6 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "select,3,გოლფი"
 	r++;Conf[r] = "select_stop,4"
 
-
 	console.log(Conf.length);
 	
 	var Conf_Len = Conf.length
@@ -298,6 +297,59 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	}
 	
 //#--------------------------------------------	
+
+
+
+	
+	var rrr = '<div data-role="controlgroup" data-type="horizontal">\
+        <input type="radio" name="XX_" id="xx_1" value="111" ><label for="xx_1">One</label>\
+        <input type="radio" name="XX_" id="xx_2" value="111" ><label for="xx_2">One</label>\
+        <input type="radio" name="XX_" id="xx_3" value="111" ><label for="xx_3">One</label>\
+    </div>'	
+	$('[data-role="content_1"]').append(rrr);
+
+
+	rrr = '<fieldset data-role="controlgroup">\
+		<input type="radio" name="YY_" id="yy_1" value="on"><label for="yy_1">One</label>\
+		<input type="radio" name="YY_" id="yy_2" value="off"><label for="yy_2">Two</label>\
+		<input type="radio" name="YY_" id="yy_3" value="other"><label for="yy_3">Three</label>\
+		</fieldset>'
+	$('[data-role="content_1"]').append(rrr);
+		
+	
+	rrr = '<div data-role="listview" data-inset="true" name="is_listview" id="is_listview" >\
+		<li><a id="yy_0" >Audi</a></li>\
+		<li><a id="yy_1" >BMW</a></li>\
+		<li><a id="yy_2" >Cadillac</a></li>\
+		<li><a id="yy_3" >Ferrari</a></li>\
+	</div>'
+	$('[data-role="content_1"]').append(rrr);
+	
+	
+	rrr = ''
+	rrr += '<a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>'
+	rrr += '<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">'
+	    rrr += '<form>'
+	        rrr += '<div style="padding:10px 20px;">'
+	            rrr += '<h3>Please sign in</h3>'
+	            rrr += '<label for="un" class="ui-hidden-accessible">Username:</label>'
+	            rrr += '<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">'
+	            rrr += '<label for="pw" class="ui-hidden-accessible">Password:</label>'
+	            rrr += '<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">'
+	            rrr += '<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>'
+	        rrr += '</div>'
+	    rrr += '</form>'
+	rrr += '</div>'
+$('[data-role="content_1"]').append(rrr);
+
+
+
+
+
+
+
+
+
 });
 
 
@@ -384,17 +436,13 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 			</ul>
 		</div>
 	</div><!-- /header -->
-	<div data-role="content_1" class="ui-content" role="main"></div>
 	
-	<div id="g1"></div>
-	<ul data-role="listview" data-inset="true" name="is_listview" id="is_listview" >
-		<li><a id="xx1" ">Audi</a></li>
-		<li><a value="AL1" id="xx2" ">BMW</a></li>
-		<li><a value="AL2" id="xx3" ">Cadillac</a></li>
-		<li><a value="AL3" id="xx4" ">Ferrari</a></li>
-	</ul>
 
 	
+	<div data-role="content_1" class="ui-content" role="main"></div>
+
+
+	<div id="g1"></div>
 	
 </div><!-- /page -->
 
