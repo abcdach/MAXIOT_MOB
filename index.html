@@ -189,12 +189,12 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	r++;Conf[r] = "-->,collapsible"
 	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
-	//r++;Conf[r] = "button,OK,Out_0,val='OK';";
-	
 	r++;Conf[r] = "button,OK,Out_0('OK');";
 	r++;Conf[r] = "button(b1),OK,Out_0('OK');";
 
-	r++;Conf[r] = "slider(s1),0,150,10,5";
+	//r++;Conf[r] = "slider(s1),0,150,10,Out_0('OK');";
+	r++;Conf[r] = "slider(s1),0,150,10,Put_Input('ti1',Value);Out_0(Value);";
+	
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "flip(f1),on,1,off,0,Out_4";
 	r++;Conf[r] = "flip(f2),on,1,off,0,Out_4";
@@ -204,8 +204,9 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "text_input(ti1),რაიმე ტექსტი,0";
 	r++;Conf[r] = "password_input(ti2),რაიმე ტექსტი,0";
+	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";	
-	r++;Conf[r] = "button,Put,Out_0(Get_Input('ti1'));";
+	r++;Conf[r] = "button,Get,Out_0(Get_Input('ti1'));";
 	
 	r++;Conf[r] = "select_start"
 	r++;Conf[r] = "select,1,მერსედესი"
@@ -373,7 +374,14 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0";	//min
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="100";	//max		
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="1";	//step
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[4]="0";	//OutPut
+				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="Out_0('OK');";	//OutPut
+				
+				var Lim = 5;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
 				
 				isHTML += isGUI_Slider(isID,p[1],p[2],p[3]);	
 				isGUI_Slider_Stop("page_1","content_1",isID,p[4]);

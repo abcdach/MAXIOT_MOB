@@ -44,15 +44,18 @@ function isGUI_Slider(is_ID,is_Min, is_Max, is_Step) {
 	return('<input name="'+is_ID+'" id="'+is_ID+'" type="range"  min="'+is_Min+'" max="'+is_Max+'" step="'+is_Step+'"  value="'+is_Min+'" />');
 }
 
-function isGUI_Slider_Stop(is_Page,is_DataRole,is_ID,is_OutPut){
+function isGUI_Slider_Stop(is_Page,is_DataRole,is_ID,is_Script){
 	$('[data-role="'+is_DataRole+'"]').append('<script> \
 		$(document).on("pageinit","#'+is_Page+'",function(){ \
 		$("#'+is_ID+'").on( \'slidestop\', function( event ) \
 		{ var Value = $("#'+is_ID+'").val(); \
-		console.log("'+is_ID+' : Out_'+is_OutPut+' = " + Value ); \
+		'+is_Script+'\
+		console.log("Slider_Stop('+is_ID+') : Value = " + Value ); \
+		console.log("Slider_Stop('+is_ID+') : '+is_Script+'" ); \
 		});});</script>'
 	);
 }
+
 
 //##################################
 function isGUI_flip(is_ID,is_Name1,is_Val1,is_Name2,is_Val2){
