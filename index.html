@@ -183,15 +183,16 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	
 	var r = 0;
-	r++;Conf[r] = "collapsible_start,ეს არის collapsible"
+	r++;Conf[r] = "collapsible_start,collapsible"
 	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
 	r++;Conf[r] = "button,OK,0,OK";
 	r++;Conf[r] = "slider,0,150,10,5";
+	r++;Conf[r] = "grid,2"
 	r++;Conf[r] = "flip,on,1,off,0,4";
+	r++;Conf[r] = "flip,on,1,off,0,4";
+	r++;Conf[r] = "grid,2"
 	r++;Conf[r] = "text_input,რაიმე ტექსტი,0";
-	r++;Conf[r] = "password_input,რაიმე ტექსტი,0";
-	r++;Conf[r] = "collapsible_stop"
-	
+	r++;Conf[r] = "password_input,რაიმე ტექსტი,0";		
 	r++;Conf[r] = "select_start"
 	r++;Conf[r] = "select,1,მერსედესი"
 	r++;Conf[r] = "select,2,ტოიოტა"
@@ -199,8 +200,9 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "select,3,ფერარი"
 	r++;Conf[r] = "select,3,გოლფი"
 	r++;Conf[r] = "select_stop,4"
+	r++;Conf[r] = "collapsible_stop"
 	
-	r++;Conf[r] = "collapsible_start,grid 2 collapsible"	
+	r++;Conf[r] = "collapsible_start,collapsible + grid"	
 		r++;Conf[r] = "grid,3"
 			r++;Conf[r] = "button,1,0,OK";
 			r++;Conf[r] = "button,2,0,OK";
@@ -229,12 +231,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 			r++;Conf[r] = "select_stop,4"
 
 	r++;Conf[r] = "collapsible_stop"
-	
-	
-	
-	
-	
-	
+		
 	
 	r++;Conf[r] = "grid,2"
 	r++;Conf[r] = "button,1,0,OK";
