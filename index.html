@@ -194,10 +194,13 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 
 	//r++;Conf[r] = "slider(s1),0,150,10,Out_0('OK');";
 	r++;Conf[r] = "slider(s1),0,150,10,Put_Input('ti1',Value);Out_0(Value);";
+	r++;Conf[r] = "#,2"
+	r++;Conf[r] = "button,put slider,Put_Slider('s1','34');";
+	r++;Conf[r] = "button,put slider,Out_0(Get_Slider('s1'));";
 	
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "flip(f1),on,1,off,0,Out_4";
-	r++;Conf[r] = "flip(f2),on,1,off,0,Out_4";
+	r++;Conf[r] = "flip(f2),on,1,off,0,Out_4";/**
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "text,მომხმარებელი";
 	r++;Conf[r] = "text,პაროლი";
@@ -207,13 +210,13 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";	
 	r++;Conf[r] = "button,Get,Out_0(Get_Input('ti1'));";
-	
+	**/
 	r++;Conf[r] = "select_start"
-	r++;Conf[r] = "select,1,მერსედესი"
-	r++;Conf[r] = "select,2,ტოიოტა"
-	r++;Conf[r] = "select,3,ბენტლი"
-	r++;Conf[r] = "select,3,ფერარი"
-	r++;Conf[r] = "select,3,გოლფი"
+	r++;Conf[r] = "select,Out_0('1');,მერსედესი"
+	r++;Conf[r] = "select,Out_0('ტოიოტა');,ტოიოტა"
+	r++;Conf[r] = "select,Out_0('1');,ბენტლი"
+	r++;Conf[r] = "select,Out_0('1');,ფერარი"
+	r++;Conf[r] = "select,Out_0('1');,გოლფი"
 	r++;Conf[r] = "select_stop,Out_4"
 	r++;Conf[r] = "<--" 
 	/**
@@ -521,6 +524,14 @@ function Out_0(data){
 }
 function Put_Input(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
 function Get_Input(is_ID){ return $('#'+is_ID).val();}
+
+function Put_Slider(is_ID,is_Value){ $('#'+is_ID).val(is_Value).slider("refresh");}
+function Get_Slider(is_ID){ return $('#'+is_ID).val();}
+
+
+
+
+
 
 
 
