@@ -183,6 +183,10 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	
 	var r = 0;
+	
+	//r++;Conf[r] = "button,Put,Out_0('1,2,3,4,5,6,7,8,9,0');";
+	//r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";
+	
 	r++;Conf[r] = "-->,collapsible"
 	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
 	//r++;Conf[r] = "button,OK,Out_0,val='OK';";
@@ -199,7 +203,10 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "text,პაროლი";
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "text_input(ti1),რაიმე ტექსტი,0";
-	r++;Conf[r] = "password_input(ti2),რაიმე ტექსტი,0";		
+	r++;Conf[r] = "password_input(ti2),რაიმე ტექსტი,0";
+	r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";	
+	r++;Conf[r] = "button,Put,Out_0(Get_Input('ti1'));";
+	
 	r++;Conf[r] = "select_start"
 	r++;Conf[r] = "select,1,მერსედესი"
 	r++;Conf[r] = "select,2,ტოიოტა"
@@ -270,18 +277,24 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	var isDataRole = 'content_1'
 	
-	var i; 
+	var i,b; 
 	var select = ""; var select_id = ""
-	var p=['','','','','','',''];
+	var p=['','','','','','','','','','','','','','','','','','',''];
 	
 	
 	for (i = 0; i < Conf_Len; i++) {
 		var Conf_Spl = Conf[i].split(',');
 		var Conf_Spl_Len = Conf_Spl.length;
 		
+		console.log("Conf_Spl -> " + Conf_Spl);
+		console.log("[0] : " + Conf_Spl[0]);
+		console.log("[0] : " + Conf_Spl[1]);
+		console.log("[0] : " + Conf_Spl[2]);
+		console.log("[0] : " + Conf_Spl[3]);
+		
 		
 		var isID  = "E"+i;
-		var isCMD = Conf_Spl[0].trim()
+		var isCMD = Conf_Spl[0].trim();
 		var isTemp2 = isCMD.split('(');
 		if(isTemp2.length > 1){
 			isCMD = isTemp2[0].trim();
@@ -344,6 +357,13 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="Out_0('OK');";	//SCRIPT	
 
+				var Lim = 3;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				
 				isHTML += isGUI_Button(isID,p[1]);				
 				isGUI_Click("page_1","content_1",isID,p[2]);
 				break;
@@ -491,8 +511,8 @@ $('[data-role="content_1"]').append(rrr);
 function Out_0(data){
 	console.log(data +" ->> Out_0");
 }
-
-
+function Put_Input(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
+function Get_Input(is_ID){ return $('#'+is_ID).val();}
 
 
 
