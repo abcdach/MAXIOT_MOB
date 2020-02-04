@@ -183,67 +183,74 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	
 	var r = 0;
-	r++;Conf[r] = "collapsible_start,collapsible"
+	r++;Conf[r] = "-->,collapsible"
 	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
-	r++;Conf[r] = "button,OK,0,OK";
-	r++;Conf[r] = "slider,0,150,10,5";
-	r++;Conf[r] = "grid,2"
-	r++;Conf[r] = "flip,on,1,off,0,4";
-	r++;Conf[r] = "flip,on,1,off,0,4";
-	r++;Conf[r] = "grid,2"
-	r++;Conf[r] = "text_input,რაიმე ტექსტი,0";
-	r++;Conf[r] = "password_input,რაიმე ტექსტი,0";		
+	//r++;Conf[r] = "button,OK,Out_0,val='OK';";
+	
+	r++;Conf[r] = "button,OK,Out_0('OK');";
+	r++;Conf[r] = "button(b1),OK,Out_0('OK');";
+
+	r++;Conf[r] = "slider(s1),0,150,10,5";
+	r++;Conf[r] = "#,2"
+	r++;Conf[r] = "flip(f1),on,1,off,0,Out_4";
+	r++;Conf[r] = "flip(f2),on,1,off,0,Out_4";
+	r++;Conf[r] = "#,2"
+	r++;Conf[r] = "text,მომხმარებელი";
+	r++;Conf[r] = "text,პაროლი";
+	r++;Conf[r] = "#,2"
+	r++;Conf[r] = "text_input(ti1),რაიმე ტექსტი,0";
+	r++;Conf[r] = "password_input(ti2),რაიმე ტექსტი,0";		
 	r++;Conf[r] = "select_start"
 	r++;Conf[r] = "select,1,მერსედესი"
 	r++;Conf[r] = "select,2,ტოიოტა"
 	r++;Conf[r] = "select,3,ბენტლი"
 	r++;Conf[r] = "select,3,ფერარი"
 	r++;Conf[r] = "select,3,გოლფი"
-	r++;Conf[r] = "select_stop,4"
-	r++;Conf[r] = "collapsible_stop"
-	
-	r++;Conf[r] = "collapsible_start,collapsible + grid"	
-		r++;Conf[r] = "grid,3"
-			r++;Conf[r] = "button,1,0,OK";
-			r++;Conf[r] = "button,2,0,OK";
-			r++;Conf[r] = "button,3,0,OK";
-		r++;Conf[r] = "grid,3"
-			r++;Conf[r] = "button,4,0,OK";
-			r++;Conf[r] = "button,5,0,OK";
-			r++;Conf[r] = "button,6,0,OK";
-		r++;Conf[r] = "grid,3"
-			r++;Conf[r] = "button,7,0,OK";
-			r++;Conf[r] = "button,8,0,OK";
-			r++;Conf[r] = "button,9,0,OK";
-		r++;Conf[r] = "grid,3"
-			r++;Conf[r] = "button,*,0,OK";
-			r++;Conf[r] = "button,0,0,OK";
-			r++;Conf[r] = "button,#,0,OK";
-		
-		r++;Conf[r] = "grid,2"
-			r++;Conf[r] = "button,Enter,0,OK";
-			r++;Conf[r] = "select_start"
-				r++;Conf[r] = "select,1,მერსედესი"
-				r++;Conf[r] = "select,2,ტოიოტა"
-				r++;Conf[r] = "select,3,ბენტლი"
-				r++;Conf[r] = "select,3,ფერარი"
-				r++;Conf[r] = "select,3,გოლფი"
-			r++;Conf[r] = "select_stop,4"
-
-	r++;Conf[r] = "collapsible_stop"
+	r++;Conf[r] = "select_stop,Out_4"
+	r++;Conf[r] = "<--" 
+	/**
+	r++;Conf[r] = "-->,collapsible + grid"	
+	r++;Conf[r] = "#,3"
+	r++;Conf[r] = "button,1,Out_0,OK";
+	r++;Conf[r] = "button,2,Out_0,OK";
+	r++;Conf[r] = "button,3,Out_0,OK";
+	r++;Conf[r] = "#,3"
+	r++;Conf[r] = "button,4,Out_0,OK";
+	r++;Conf[r] = "button,5,Out_0,OK";
+	r++;Conf[r] = "button,6,Out_0,OK";
+	r++;Conf[r] = "#,3"
+	r++;Conf[r] = "button,7,Out_0,OK";
+	r++;Conf[r] = "button,8,Out_0,OK";
+	r++;Conf[r] = "button,9,Out_0,OK";
+	r++;Conf[r] = "#,3"
+	r++;Conf[r] = "button,*,Out_0,OK";
+	r++;Conf[r] = "button,0,Out_0,OK";
+	r++;Conf[r] = "button,#,Out_0,OK";
+	r++;Conf[r] = "#,2"
+	r++;Conf[r] = "button,Enter,0,OK";
+	r++;Conf[r] = "select_start"
+	r++;Conf[r] = "select,Out_0 = 1,მერსედესი"
+	r++;Conf[r] = "select,2,ტოიოტა"
+	r++;Conf[r] = "select,3,ბენტლი"
+	r++;Conf[r] = "select,3,ფერარი"
+	r++;Conf[r] = "select,3,გოლფი"
+	r++;Conf[r] = "select_stop,Out_4"
+	r++;Conf[r] = "<--"
 		
 	
-	r++;Conf[r] = "grid,2"
-	r++;Conf[r] = "button,1,0,OK";
-	r++;Conf[r] = "button,2,0,OK";
+	r++;Conf[r] = "#,2"
+	r++;Conf[r] = "button,1,Out_0,OK";
+	r++;Conf[r] = "button,2,Out_0,OK";
 	
 
-	r++;Conf[r] = "button,3,0,OK";
-	r++;Conf[r] = "button,4,0,OK";
-	r++;Conf[r] = "button,5,0,OK";
-	r++;Conf[r] = "button,6,0,OK";
-	
+	r++;Conf[r] = "button,3,Out_0,OK";
+	r++;Conf[r] = "button,4,Out_0,OK";
+	r++;Conf[r] = "button,5,Out_0,OK";
+	r++;Conf[r] = "button,6,Out_0,OK";
+	**/
 
+	
+	
 	console.log(Conf.length);
 	
 	
@@ -266,14 +273,25 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	var i; 
 	var select = ""; var select_id = ""
 	var p=['','','','','','',''];
+	
+	
 	for (i = 0; i < Conf_Len; i++) {
 		var Conf_Spl = Conf[i].split(',');
 		var Conf_Spl_Len = Conf_Spl.length;
 		
 		
+		var isID  = "E"+i;
+		var isCMD = Conf_Spl[0].trim()
+		var isTemp2 = isCMD.split('(');
+		if(isTemp2.length > 1){
+			isCMD = isTemp2[0].trim();
+			var isTemp4 = isTemp2[1].split(')');
+			isID = isTemp4[0].trim();
+		}
 		
-		
-		
+		console.log("CMD : "+isCMD+"("+isID+")");
+
+
 		if(grid_ignor === 0){
 			if(grid_start===1){		
 				if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
@@ -284,10 +302,10 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 			}
 		}
 	   
-		switch(Conf_Spl[0]) {
+		switch(isCMD) {
 		
 		
-			case "grid":
+			case "#":
 			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="2";	
 				if(p[1]==="2"){isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;}
@@ -300,13 +318,13 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 				break;				
 
 		
-			case "collapsible_start":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="collapsible";	//on
+			case "-->":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
 				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
 				isHTML += '<h4>'+p[1]+'</h4>';
 				collapsible_status = 1;
 				break;				
-			case "collapsible_stop":
+			case "<--":
 				isHTML += '</div>';
 				collapsible_status = 0;
 				break;	
@@ -317,58 +335,48 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 		
 			case "text":
 			
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="default";	
-				isHTML += isGUI_Text (p[1]);				
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="default";	
+				isHTML += isGUI_Text(p[1]);				
 				break;
 			
 			case "button":
 
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="default";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2]; else p[2]="0";	//OutPut	
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[3]="1";	//Data
-				
-				var isID = "E"+i;
-				
-				isHTML += isGUI_Button(isID,p[1]);
-				
-				isGUI_Click("page_1","content_1",isID,p[2],p[3]);
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="Out_0('OK');";	//SCRIPT	
+
+				isHTML += isGUI_Button(isID,p[1]);				
+				isGUI_Click("page_1","content_1",isID,p[2]);
 				break;
 			
 			case "slider":
 			
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="0";	//min
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2]; else p[2]="100";	//max		
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[3]="1";	//step
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[4]="0";	//OutPut
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0";	//min
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="100";	//max		
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="1";	//step
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[4]="0";	//OutPut
 				
-				var isID = "E"+i;
-				isHTML += isGUI_Slider(isID,p[1],p[2],p[3]);
-				
+				isHTML += isGUI_Slider(isID,p[1],p[2],p[3]);	
 				isGUI_Slider_Stop("page_1","content_1",isID,p[4]);
 				break;
 			
 			
 			case "flip":
 
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="on";	//on
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2]; else p[2]="1";	//on  value	
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3]; else p[3]="off";	//off
-				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4]; else p[4]="0";	//off value	
-				if(Conf_Spl_Len >= 6)p[5]=Conf_Spl[5]; else p[5]="0";	//OutPut
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on";	//on
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="1";	//on  value	
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="off";	//off
+				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="0";	//off value	
+				if(Conf_Spl_Len >= 6)p[5]=Conf_Spl[5].trim(); else p[5]="0";	//OutPut
 				
-				var isID = "E"+i;
 				isHTML += isGUI_flip(isID,p[1],p[2],p[3],p[4]);
-				
 				isGUI_flip_Change("page_1","content_1",isID,p[5]);			
 				break;
 			
-			case "text_input":
-				var isID = "In"+i;			
+			case "text_input":			
 				isHTML += isGUI_Input_Text(isID,"ok ok ok rrr");
 				break;
 						
-			case "password_input":		
-				var isID = "In"+i;			
+			case "password_input":					
 				isHTML += isGUI_Input_Password(isID,"123456");
 				break;			
 			
@@ -381,8 +389,8 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 			case "select":
 				p[1]="sel_"+i;
 				p[2]="select "+i;
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2];
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
 				isHTML += '<option value="'+p[1]+'">'+p[2]+'</option>';
 				break;			
 			case "select_stop":
@@ -477,26 +485,14 @@ $('[data-role="content_1"]').append(rrr);
 $('[data-role="content_1"]').append(rrr);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
+
+
+function Out_0(data){
+	console.log(data +" ->> Out_0");
+}
+
+
 
 
 
@@ -537,12 +533,12 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 			theme_Selector("b");   
 		});			
 	//#--------------------------------------------
-		$("#start_page3").click(function (e) {
+		$("#start_page3").click(function (e){
 			e.stopImmediatePropagation();
 			e.preventDefault();	
 			console.log("#start_page3_click");
-			SYS_INIT(); 
-		});			
+			SYS_INIT();
+		});
 	//#--------------------------------------------	
 	console.log("pagebeforecreate:0:page_2");
 });
