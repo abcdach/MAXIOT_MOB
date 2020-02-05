@@ -80,12 +80,32 @@
 		<div id="g1"></div>
 
 ######################################################################
-
+function isGUI_Slider_Stop(is_Page,is_DataRole,is_ID,is_Script){
+	$('[data-role="'+is_DataRole+'"]').append('<script> \
+		$(document).on("pageinit","#'+is_Page+'",function(){ \
+		$("#'+is_ID+'").on( \'slidestop\', function( event ) \
+		{ var Value = $("#'+is_ID+'").val(); \
+		'+is_Script+'\
+		console.log("Slider_Stop('+is_ID+') : Value = " + Value ); \
+		console.log("Slider_Stop('+is_ID+') : '+is_Script+'" ); \
+		});});</script>'
+	);
+}
 
 ######################################################################
 
 
-
+function isGUI_Slider_Stop(is_Page,is_DataRole,is_ID,is_Script){
+	$('[data-role="'+is_DataRole+'"]').append('<script> \
+		$(document).on("pageinit","#'+is_Page+'",function(){ \
+		$("#'+is_ID+'").on( \'slidestop\', function( event ) \
+		{ var Value = $("#'+is_ID+'").val(); \
+		'+is_Script+'\
+		console.log("Slider_Stop('+is_ID+') : Value = " + Value ); \
+		console.log("Slider_Stop('+is_ID+') : '+is_Script+'" ); \
+		});});</script>'
+	);
+}
 
 
 
