@@ -1,4 +1,14 @@
 
+
+
+
+
+
+
+function Panel_Open(is_Value){
+	$( "#"+is_Value ).panel( "open" );
+}
+
 //##################################
 
 function HTNL_Header(is_Value){

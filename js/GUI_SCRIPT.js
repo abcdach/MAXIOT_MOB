@@ -21,4 +21,10 @@ var ggg =
 ..  input_text(IT2)\
 ..  button,input to input, Put_Input("IT2",Get_Input("IT1")); \
 ..  button,To OutPut, Out_0(Get_Input("IT1")); \
-..  <<'
+..  <<\
+..  button,panel open, Panel_Open("PAN1"); \
+..  [>](PAN1)\
+..  header,ეს არის დაგენირებული პანელი\
+..  slider(SL1),0,150,10,Out_0(Value);\
+..  [<]\
+..  '

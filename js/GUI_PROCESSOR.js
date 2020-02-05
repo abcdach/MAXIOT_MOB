@@ -15,10 +15,13 @@ function GUI_Processor(isDATA){
 	var Conf = isCODE;
 
 	
-	var Conf_Len = Conf.length
+	var Conf_Len = Conf.length;
 	
-	var isHTML =''
-	var isJAVA =''
+	
+	var isHTML_PANEL = '';
+	var isHTML_CONTENT = '';
+	var isHTML ='';
+	var isJAVA ='';
 	
 	var grid_start = 0;
 	var grid_num   = 0;
@@ -27,6 +30,9 @@ function GUI_Processor(isDATA){
 
 	
 	var collapsible_status = 0;
+	var panel_status = 0;
+	
+	
 	
 	var isDataRole = 'content_1'
 	
@@ -57,7 +63,7 @@ function GUI_Processor(isDATA){
 		
 		console.log("CMD : "+isCMD+"("+isID+")");
 
-
+		isHTML = '';
 
 		if(grid_start===1){		
 			if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
@@ -206,7 +212,18 @@ function GUI_Processor(isDATA){
 				}
 				isJAVA += JAVA_Select_Change(isID,p[2]);
 				break;			
-							
+						
+
+			case "[>]":
+				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
+				panel_status = 1;
+				break;
+
+			case "[<]":
+				isHTML += '</div>';
+				panel_status = 0;
+				break;
+						
 
 			default:
 				break;
@@ -225,7 +242,15 @@ function GUI_Processor(isDATA){
 		}
 
 		
-		
+		if( panel_status === 1)
+		{ 
+			isHTML_PANEL += isHTML;
+		}
+		else
+		{
+			isHTML_CONTENT += isHTML;
+		}
+		isHTML='';
 
 	}
 	
@@ -247,7 +272,8 @@ function GUI_Processor(isDATA){
 	
 	//isHTML = HHH + isHTML;
 	
-	$('[data-role="content_1"]').append(isHTML);
+	$('[data-role="content_1"]').append(isHTML_CONTENT);
+	$('[data-role="panel_1"]').append(isHTML_PANEL);
 	
 	
 	JAVA_APPEND("page_1","content_1",isJAVA);

@@ -123,19 +123,22 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 
 	var	 HHH = '<ul>';
 			 HHH += '<li><a href="#" id="start_page2">საწყისი</a></li>';
-			 HHH += '<li><a href="#" id="server_Disconnect">.</a></li>';
-			 HHH += '<li><a href="#" id="theme_Day" >.</a></li>';
-			 HHH += '<li><a href="#" id="theme_Night" >Test</a></li>';
+			 HHH += '<li><a href="#xx1" id="server_Disconnect">.</a></li>';
+			 HHH += '<li><a href="#PAN1" id="theme_Day" >.</a></li>';
+			 HHH += '<li><a href="#PAN1" id="theme_Night" >Test</a></li>';
 		 HHH += '</ul>';
 	$('[data-role="navbar_1"]').append(HHH);
 	
 	
 	
+	//var	 HHH = '<div data-role="panel" id="xx1" data-position="left" data-display="reveal" data-theme="a">';
+    //HHH += '<h3>მაგარი ბიჟები</h3>';
+    //HHH += '<p>This panel is positioned on the left with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>';
+    //HHH += '<p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>';
+	//HHH += '</div>';
+	//$('[data-role="navbar_2"]').append(HHH);
 	
-	
-	
-	
-	
+
 	
 });	
 
@@ -204,7 +207,6 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 
 
 
-
 <!-- ####################################################################################### -->
 
 <div data-role="page" id="page_1">
@@ -215,6 +217,11 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 		</div>
 	</div><!-- /header -->
 	<div data-role="content_1" class="ui-content" role="main"></div>
+	
+	<div data-role="panel_1" ></div>
+
+
+	
 </div><!-- /page -->
 
 <!-- ####################################################################################### -->
