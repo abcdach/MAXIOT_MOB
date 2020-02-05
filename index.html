@@ -186,7 +186,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	//r++;Conf[r] = "button,Put,Out_0('1,2,3,4,5,6,7,8,9,0');";
 	//r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";
-	
+	/**
 	r++;Conf[r] = "-->,collapsible"
 	r++;Conf[r] = "text,ეს არის ტესტ ტექსტი";
 	r++;Conf[r] = "button,OK,Out_0('OK');";
@@ -217,6 +217,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";	
 	r++;Conf[r] = "button,Get,Out_0(Get_Input('ti1'));";
 	**/
+	/**
 	r++;Conf[r] = "select_start"
 	r++;Conf[r] = "select,1,მერსედესი"
 	r++;Conf[r] = "select,2,ტოიოტა"
@@ -269,25 +270,31 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 var ggg = 
 '\
-...button(b1),OK,\
-Out_0("OK");Out_0("OK");\
-Out_0(Get_Slider("s1"));\
-...select(s1)\
-...მერსედესი,1\
-...ტოიოტა,2\
-...ბენტლი,3\
-...ფერარი,4\
-...გოლფი,5\
-...Out_0("OK");\
-Out_0(Get_Slider("s1"));\
-...'
+..  button(b1),OK, Out_0("OK"); \
+..  select(s1), \
+--  ერსედესი(1) \
+--  ტოიოტა (2) \
+--  ბენტლი (3) \
+--  ფერარი (4) \
+--  გოლფი (50), \
+	Out_0(Value); \
+    Out_0("SEL OK");\
+'
+
+var isCODE = ggg.replace(/(\r\n|\n|\r)/gm, "");
+	isCODE = ggg.replace(/(")/gm, "'");
+	isCODE = isCODE.split('..')
+console.log(isCODE);	
 	
-console.log(ggg.split('...'));	
+	
+Conf = isCODE;
 	
 	
 	
 	
-	console.log(Conf.length);
+	
+	
+	//console.log(Conf.length);
 	
 	
 	
@@ -315,11 +322,11 @@ console.log(ggg.split('...'));
 		var Conf_Spl = Conf[i].split(',');
 		var Conf_Spl_Len = Conf_Spl.length;
 		
-		console.log("Conf_Spl -> " + Conf_Spl);
-		console.log("[0] : " + Conf_Spl[0]);
-		console.log("[0] : " + Conf_Spl[1]);
-		console.log("[0] : " + Conf_Spl[2]);
-		console.log("[0] : " + Conf_Spl[3]);
+		//console.log("Conf_Spl -> " + Conf_Spl);
+		//console.log("[0] : " + Conf_Spl[0]);
+		//console.log("[0] : " + Conf_Spl[1]);
+		//console.log("[0] : " + Conf_Spl[2]);
+		//console.log("[0] : " + Conf_Spl[3]);
 		
 		
 		var isID  = "E"+i;
@@ -372,9 +379,6 @@ console.log(ggg.split('...'));
 				break;	
 
 
-				
-		
-		
 			case "text":
 			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="default";	
@@ -437,25 +441,40 @@ console.log(ggg.split('...'));
 				break;			
 			
 			
-			case "select_start":
-				select_id = "E"+i;
-				isHTML += '<select name="'+select_id+'" id="'+select_id+'" data-native-menu="false">';
-				grid_ignor = 1;
-				break;			
 			case "select":
-				p[1]="sel_"+i;
-				p[2]="select "+i;
+			
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';
+				
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
-				isHTML += '<option value="'+p[1]+'">'+p[2]+'</option>';
+				
+				//List
+				var pT = p[1].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<option value="'+pT1+'">'+pT0+'</option>';
+							//console.log("[" + pT0 + "]["+ pT1 + "]");
+						}
+					}
+				}isHTML += '</select>';				
+
+				//java Script
+				var Lim = 3;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				
+				console.log("[2] : " + p[2]);
+				isGUI_Select_Change("page_1","content_1",isID,p[2]);
 				break;			
-			case "select_stop":
-				p[1]="0";
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
-				isHTML += '</select>';
-				isGUI_Select_Change("page_1","content_1",select_id,p[1]);
-				grid_ignor = 0;
-				break;				
+							
 
 			default:
 				break;
@@ -483,7 +502,31 @@ console.log(ggg.split('...'));
 
 
 
+/**
+case "select_start":
+				select_id = "E"+i;
+				isHTML += '<select name="'+select_id+'" id="'+select_id+'" data-native-menu="false">';
+				grid_ignor = 1;
+				break;			
+			case "select":
+				p[1]="sel_"+i;
+				p[2]="select "+i;
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
+				isHTML += '<option value="'+p[1]+'">'+p[2]+'</option>';
+				break;			
+			case "select_stop":
+				p[1]="0";
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1];
+				isHTML += '</select>';
+				isGUI_Select_Change("page_1","content_1",select_id,p[1]);
+				grid_ignor = 0;
+				break;				
+**/
 
+
+
+/**
 rrr = '<fieldset class="ui-grid-b">';
     rrr += '<div class="ui-block-a"><input type="button" value="Hmm"></div>';
     rrr += '<div class="ui-block-b"><input type="reset" value="No"></div>';
@@ -539,7 +582,7 @@ $('[data-role="content_1"]').append(rrr);
 	    rrr += '</form>';
 	rrr += '</div>';
 $('[data-role="content_1"]').append(rrr);
-
+**/
 
 });
 

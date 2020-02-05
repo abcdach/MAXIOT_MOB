@@ -76,15 +76,19 @@ function isGUI_Text(is_Value){
 	return('<label><br>'+is_Value+'</label>'); 
 }
 //##################################
-function isGUI_Select_Change(is_Page,is_DataRole,is_ID,is_OutPut){
+function isGUI_Select_Change(is_Page,is_DataRole,is_ID,is_Script){
 	$('[data-role="'+is_DataRole+'"]').append('<script> \
 		$(document).on("pageinit","#'+is_Page+'",function(){ \
 		$("#'+is_ID+'").change(function(){\
 		var Value = $("#'+is_ID+'").val();\
-		console.log("'+is_ID+' : Out_'+is_OutPut+' = " + Value ); \
+		'+is_Script+'\
+		console.log("Slider_Change('+is_ID+') : Value = " + Value ); \
+		console.log("Slider_Change('+is_ID+') : '+is_Script+'" ); \
 		});});</script>'
 	);	
 }
+
+
 //##################################
  
 
