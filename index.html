@@ -216,17 +216,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	r++;Conf[r] = "#,2"
 	r++;Conf[r] = "button,Put,Put_Input('ti1','fffffff');";	
 	r++;Conf[r] = "button,Get,Out_0(Get_Input('ti1'));";
-	**/
-	/**
-	r++;Conf[r] = "select_start"
-	r++;Conf[r] = "select,1,მერსედესი"
-	r++;Conf[r] = "select,2,ტოიოტა"
-	r++;Conf[r] = "select,3,ბენტლი"
-	r++;Conf[r] = "select,4,ფერარი"
-	r++;Conf[r] = "select,5,გოლფი"
-	r++;Conf[r] = "select_stop,Out_4"
-	r++;Conf[r] = "<--" 
-	/**
+
 	r++;Conf[r] = "-->,collapsible + grid"	
 	r++;Conf[r] = "#,3"
 	r++;Conf[r] = "button,1,Out_0,OK";
@@ -270,17 +260,14 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 var ggg = 
 '\
-..  >> \
+..  >>,123 \
 ..  ##,2 \
 ..  button(b1),OK, Out_0("OK"); \
-..  select(s1), \
---  ერსედესი(1) \
---  ტოიოტა (2) \
---  ბენტლი (3) \
---  ფერარი (4) \
---  გოლფი (50), \
-	Out_0(Value); \
-    Out_0("SEL OK");\
+..  select(s1),\
+--  მერსედესი(1) --  ტოიოტა  (2) \
+--  ბენტლი  (3) --  ფერარი  (4) \
+--  გოლფი  (5) --  სიტროენი (6) ,Out_0(Value);\
+..  flip(f1),on(1),off(0),Out_0(Value);\
 ..  <<'
 
 var isCODE = ggg.replace(/(\r\n|\n|\r)/gm, "");

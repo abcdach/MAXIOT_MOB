@@ -28,17 +28,27 @@ function isGUI_Button(is_ID,is_Value) {
 	return('<input id="'+is_ID+'" type="button" value="'+is_Value+'"/>');
 }
 
+
+
+
+
 function isGUI_Click(is_Page,is_DataRole,is_ID,is_Script){
-	$('[data-role="'+is_DataRole+'"]').append('<script> \
-		$(document).on("pageinit","#'+is_Page+'",function(){ \
-		$("#'+is_ID+'").click(function (e){ \
-			e.stopImmediatePropagation(); \
-			e.preventDefault(); \
-			'+is_Script+'\
-			console.log("Click('+is_ID+') : '+is_Script+'" ); \
-			});});</script>'
-	);
+	var SCR = ''
+	SCR +='\n'+ '<script>';
+	SCR +='\n'+ '$(document).on("pageinit","#'+is_Page+'",function(){';
+	SCR +='\n'+ '	$("#'+is_ID+'").click(function (e){';
+	SCR +='\n'+ '		//e.stopImmediatePropagation();';
+	SCR +='\n'+ '		//e.preventDefault();';
+	SCR +='\n'+ '		'+is_Script;
+	//SCR +='\n'+ '		console.log("Click('+is_ID+') : '+is_Script+'" );';
+	SCR +='\n'+ '	});';
+	SCR +='\n'+ '});';
+	SCR +='\n'+ '</script>';
+				
+	$('[data-role="'+is_DataRole+'"]').append(SCR);
 }
+
+
 //##################################
 function isGUI_Slider(is_ID,is_Min, is_Max, is_Step) {
 	return('<input name="'+is_ID+'" id="'+is_ID+'" type="range"  min="'+is_Min+'" max="'+is_Max+'" step="'+is_Step+'"  value="'+is_Min+'" />');
@@ -77,16 +87,23 @@ function isGUI_Text(is_Value){
 }
 //##################################
 function isGUI_Select_Change(is_Page,is_DataRole,is_ID,is_Script){
-	$('[data-role="'+is_DataRole+'"]').append('<script> \
-		$(document).on("pageinit","#'+is_Page+'",function(){ \
-		$("#'+is_ID+'").change(function(){\
-		var Value = $("#'+is_ID+'").val();\
-		'+is_Script+'\
-		console.log("Slider_Change('+is_ID+') : Value = " + Value ); \
-		console.log("Slider_Change('+is_ID+') : '+is_Script+'" ); \
-		});});</script>'
-	);	
+	var SCR = ''
+	SCR +='\n'+ '<script>';
+	SCR +='\n'+ '$(document).on("pageinit","#'+is_Page+'",function(){';
+	SCR +='\n'+ '	$("#'+is_ID+'").change(function(){';
+	SCR +='\n'+ '		var Value = $("#'+is_ID+'").val();';
+	SCR +='\n'+ '		'+is_Script;
+	SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';
+	SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : '+is_Script+'" );';
+	SCR +='\n'+ '	});';
+	SCR +='\n'+ '});';
+	SCR +='\n'+ '</script>';
+	
+	$('[data-role="'+is_DataRole+'"]').append(SCR);
 }
+
+
+
 
 
 //##################################
