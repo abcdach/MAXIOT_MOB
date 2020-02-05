@@ -44,9 +44,9 @@ console.log("mobileinit:0");
 
 var object1 = $( document ).on( "pagecreate", function() {
 
+	console.log("pagecreate");
 
 
-console.log("pagecreate");
 
 /**
 	//#--------------------------------------------
@@ -114,6 +114,14 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 
 	console.log("pagebeforecreate page_1 start");
 	GUI_Processor(ggg);
+	
+	//function Put_Input(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
+	//<h3><span id="MyHeader_Text">შუშაბანდის განათების მართვა</span></h3>
+	
+ //Put_Input("MyHeader_Text","dddddd");
+ 
+
+	$("#page_1 h3 #MyHeader_Text").text("Your New Header");
 	
 });	
 
@@ -193,6 +201,7 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 				<li><a href="#" id="start_page2">საწყისი</a></li>
 				<li><a href="#" id="server_Disconnect">.</a></li>
 				<li><a href="#" id="theme_Day" >.</a></li>
+				<li><a href="#" id="theme_Night" >.</a></li>
 				<li><a href="#" id="theme_Night" >.</a></li>
 			</ul>
 		</div>

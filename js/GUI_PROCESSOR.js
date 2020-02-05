@@ -229,6 +229,24 @@ function GUI_Processor(isDATA){
 
 	}
 	
+	
+	
+	var HHH = '<div data-role="header">';
+	 HHH += '\n'+ '<h3><span id="MyHeader_Text">შუშაბანდის განათების მართვა</span></h3>'; 
+		 HHH += '\n'+ '<div data-role="navbar">';
+			 HHH += '\n'+ '<ul>';
+				 HHH += '\n'+ '<li><a href="#" id="start_page2">საწყისი</a></li>';
+				 HHH += '\n'+ '<li><a href="#" id="server_Disconnect">.</a></li>';
+				 HHH += '\n'+ '<li><a href="#" id="theme_Day" >.</a></li>';
+				 HHH += '\n'+ '<li><a href="#" id="theme_Night" >.</a></li>';
+				 HHH += '\n'+ '<li><a href="#" id="theme_Night" >.</a></li>';
+			 HHH += '\n'+ '</ul>';
+		 HHH += '\n'+ '</div>';
+	 HHH += '\n'+ '</div><!-- /header -->';
+	
+	
+	//isHTML = HHH + isHTML;
+	
 	$('[data-role="content_1"]').append(isHTML);
 	
 	
