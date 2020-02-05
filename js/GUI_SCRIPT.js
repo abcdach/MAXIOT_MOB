@@ -16,8 +16,9 @@ var ggg =
 ..  #slider(SL1),0,150,10,Out_0(Value);\
 ..  >>,Input \
 ..  input_password(IP1),1234\
+..  ##,2 \
 ..  input_text(IT1),რაიმე ტექსტი\
 ..  input_text(IT2)\
-..  button,input to input, Out_0(Get_Input(IT1)); \
-..  button,set, Put_Input("IT2",Get_Input("IT1")); \
+..  button,input to input, Put_Input("IT2",Get_Input("IT1")); \
+..  button,To OutPut, Out_0(Get_Input("IT1")); \
 ..  <<'

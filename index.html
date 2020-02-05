@@ -121,19 +121,13 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	
 
-		var	 HHH = '<ul>';
-				 HHH += '<li><a href="#" id="start_page2">საწყისი</a></li>';
-				 HHH += '<li><a href="#" id="server_Disconnect">.</a></li>';
-				 HHH += '<li><a href="#" id="theme_Day" >.</a></li>';
-				 HHH += '<li><a href="#" id="theme_Night" >.</a></li>';
-			 HHH += '</ul>';
-
-
-	
-	
-	//isHTML = HHH + isHTML;
-	
-	$('[data-role="content_x1"]').append(HHH);
+	var	 HHH = '<ul>';
+			 HHH += '<li><a href="#" id="start_page2">საწყისი</a></li>';
+			 HHH += '<li><a href="#" id="server_Disconnect">.</a></li>';
+			 HHH += '<li><a href="#" id="theme_Day" >.</a></li>';
+			 HHH += '<li><a href="#" id="theme_Night" >Test</a></li>';
+		 HHH += '</ul>';
+	$('[data-role="navbar_1"]').append(HHH);
 	
 	
 	
@@ -217,7 +211,7 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 	<div data-role="header">
 		<h3><span id="MyHeader_Text">შუშაბანდის განათების მართვა</span></h3>  
 		<div data-role="navbar">
-			<div data-role="content_x1" ></div>
+			<div data-role="navbar_1" ></div>
 		</div>
 	</div><!-- /header -->
 	<div data-role="content_1" class="ui-content" role="main"></div>
