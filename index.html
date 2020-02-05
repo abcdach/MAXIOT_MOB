@@ -270,6 +270,8 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 var ggg = 
 '\
+..  >> \
+..  ##,2 \
 ..  button(b1),OK, Out_0("OK"); \
 ..  select(s1), \
 --  ერსედესი(1) \
@@ -279,7 +281,7 @@ var ggg =
 --  გოლფი (50), \
 	Out_0(Value); \
     Out_0("SEL OK");\
-'
+..  <<'
 
 var isCODE = ggg.replace(/(\r\n|\n|\r)/gm, "");
 	isCODE = ggg.replace(/(")/gm, "'");
@@ -307,7 +309,7 @@ Conf = isCODE;
 	var grid_num   = 0;
 	var grid_cou   = 0;
 	var grid_add   = 0;
-	var grid_ignor = 0;
+
 	
 	var collapsible_status = 0;
 	
@@ -341,22 +343,21 @@ Conf = isCODE;
 		console.log("CMD : "+isCMD+"("+isID+")");
 
 
-		if(grid_ignor === 0){
-			if(grid_start===1){		
-				if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
-				if(grid_cou === 2){isHTML += '<div class="ui-block-b">'; grid_add = 1;}
-				if(grid_cou === 3){isHTML += '<div class="ui-block-c">'; grid_add = 1;}
-				if(grid_cou === 4){isHTML += '<div class="ui-block-d">'; grid_add = 1;}
-				if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
-			}
+
+		if(grid_start===1){		
+			if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
+			if(grid_cou === 2){isHTML += '<div class="ui-block-b">'; grid_add = 1;}
+			if(grid_cou === 3){isHTML += '<div class="ui-block-c">'; grid_add = 1;}
+			if(grid_cou === 4){isHTML += '<div class="ui-block-d">'; grid_add = 1;}
+			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
 		}
-	   
+
 		switch(isCMD) {
 		
 		
-			case "#":
+			case "##":
 			
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1]; else p[1]="2";	
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="2";	
 				if(p[1]==="2"){isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;}
 				if(p[1]==="3"){isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;}
 				if(p[1]==="4"){isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;}
@@ -367,13 +368,13 @@ Conf = isCODE;
 				break;				
 
 		
-			case "-->":
+			case ">>":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
 				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
 				isHTML += '<h4>'+p[1]+'</h4>';
 				collapsible_status = 1;
 				break;				
-			case "<--":
+			case "<<":
 				isHTML += '</div>';
 				collapsible_status = 0;
 				break;	
@@ -470,8 +471,6 @@ Conf = isCODE;
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}
-				
-				console.log("[2] : " + p[2]);
 				isGUI_Select_Change("page_1","content_1",isID,p[2]);
 				break;			
 							
@@ -481,17 +480,17 @@ Conf = isCODE;
 		}
 		
 		
-		if(grid_ignor === 0){
-			if( grid_add === 1){	
-				grid_cou ++;
-				grid_add = 0;
-				isHTML += '</div>';
-				if(grid_cou > grid_num){
-					grid_start = 0;
-					isHTML += '</fieldset>';
-				}
+
+		if( grid_add === 1){	
+			grid_cou ++;
+			grid_add = 0;
+			isHTML += '</div>';
+			if(grid_cou > grid_num){
+				grid_start = 0;
+				isHTML += '</fieldset>';
 			}
 		}
+
 		
 		
 
