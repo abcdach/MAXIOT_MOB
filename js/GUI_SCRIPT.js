@@ -19,5 +19,5 @@ var ggg =
 ..  input_text(IT1),რაიმე ტექსტი\
 ..  input_text(IT2)\
 ..  button,input to input, Out_0(Get_Input(IT1)); \
-..  button,set, Put_Input("IT1","aaaaaaaa"); \
+..  button,set, Put_Input("IT2",Get_Input("IT1")); \
 ..  <<'
