@@ -41,7 +41,10 @@ var ggg =
 '\
 ..	page,1\
 ..  label,This is a label\
-..  radio,v,--on(a)--off(b)--other(c),Out_0(Value);\
+..  >>,Radio Theme Change\
+..  radio,h,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
+..  radio,v,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
+..  <<\
 ..  >>,123 \
 ..  ##,2 \
 ..  button(BU1),OK, Out_0("OK"); \

@@ -124,29 +124,28 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	GUI_Processor(ggg);
 	
 
+/**
+rrr = '';
+//rrr += '<form class="ui-mini">';
+	rrr += '<div class="ui-field-contain" id="theme-selector">';
+		rrr += '<fieldset data-role="controlgroup" data-type="horizontal">';
+			rrr += '<legend>Theme:</legend>';
+			rrr += '<label for="a">A</label>';
+			rrr += '<input type="radio" name="theme" id="a" checked>';
+			rrr += '<label for="b">B</label>';
+			rrr += '<input type="radio" name="theme" id="b">';
+			rrr += '<label for="c">C</label>';
+			rrr += '<input type="radio" name="theme" id="c">';
+			rrr += '<label for="d">D</label>';
+			rrr += '<input type="radio" name="theme" id="d">';
+			rrr += '<label for="e">E</label>';
+			rrr += '<input type="radio" name="theme" id="e">';
+		rrr += '</fieldset>';
+	rrr += '</div>';
 
-		rrr = '';
-		//rrr += '<form class="ui-mini">';
-			rrr += '<div class="ui-field-contain" id="theme-selector">';
-				rrr += '<fieldset data-role="controlgroup" data-type="horizontal">';
-					rrr += '<legend>Theme:</legend>';
-					rrr += '<label for="a">A</label>';
-					rrr += '<input type="radio" name="theme" id="a" checked>';
-					rrr += '<label for="b">B</label>';
-					rrr += '<input type="radio" name="theme" id="b">';
-					rrr += '<label for="c">C</label>';
-					rrr += '<input type="radio" name="theme" id="c">';
-					rrr += '<label for="d">D</label>';
-					rrr += '<input type="radio" name="theme" id="d">';
-					rrr += '<label for="e">E</label>';
-					rrr += '<input type="radio" name="theme" id="e">';
-				rrr += '</fieldset>';
-			rrr += '</div>';
+	$('[data-role="content_1"]').append(rrr);
+**/
 
-			$('[data-role="content_1"]').append(rrr);
-
-
-Theme_Change("a");
 	
 });	
 
