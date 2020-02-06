@@ -393,54 +393,6 @@ function GUI_Processor(isDATA){
 				//console.log(isJAVA);
 				break;
 
-
-/**
-<div data-role="tabs" id="tabs">
-  <div data-role="navbar">
-    <ul>
-      <li><a href="#one" data-ajax="false">one</a></li>
-      <li><a href="#two" data-ajax="false">two</a></li>
-    </ul>
-  </div>
-  <div id="one" class="ui-body-d ui-content">
-    <h1>First tab contents</h1>
-  </div>
-  <div id="two">
-    <ul data-role="listview" data-inset="true">
-        <li><a href="#">Acura</a></li>
-        <li><a href="#">Audi</a></li>
-        <li><a href="#">BMW</a></li>
-        <li><a href="#">Cadillac</a></li>
-        <li><a href="#">Ferrari</a></li>
-    </ul>
-  </div>
-</div>
-**/
-
-
-/**
-    <fieldset data-role="controlgroup">
-        <legend>Vertical:</legend>
-        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
-        <label for="checkbox-v-2a">One</label>
-        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
-        <label for="checkbox-v-2b">Two</label>
-        <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
-        <label for="checkbox-v-2c">Three</label>
-    </fieldset>
-
-    <fieldset data-role="controlgroup" data-type="horizontal">
-        <legend>Horizontal:</legend>
-        <input type="checkbox" name="checkbox-h-2a" id="checkbox-h-2a">
-        <label for="checkbox-h-2a">One</label>
-        <input type="checkbox" name="checkbox-h-2b" id="checkbox-h-2b">
-        <label for="checkbox-h-2b">Two</label>
-        <input type="checkbox" name="checkbox-h-2c" id="checkbox-h-2c">
-        <label for="checkbox-h-2c">Three</label>
-    </fieldset>
-**/
-
-
 			case "->[d]":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				isHTML += '<div id="'+isID+'" '+p[1]+'>';
@@ -477,6 +429,13 @@ function GUI_Processor(isDATA){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
 				if(p[1]==="1"){
 					isHTML += '<div id="'+isID+'" class="ui-body ui-body-a ui-corner-all">';
 					if(p[2] !== "") isHTML += '<h3>'+p[2]+'</h3>';					
