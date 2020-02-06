@@ -41,6 +41,7 @@ var ggg =
 '\
 ..	page,1\
 ..  label,This is a label\
+..  radio,v,--on(a)--off(b)--other(c),Out_0(Value);\
 ..  >>,123 \
 ..  ##,2 \
 ..  button(BU1),OK, Out_0("OK"); \
@@ -72,8 +73,10 @@ var ggg =
 //..  page,1\
 //..  header,text\
 //..  navbar,--name1(href1)--name2(href2)\
+
+//..  radio,v,--name1(val1)--name2(val2)--name3(val3),Out_0(Value);\ 	//.. radio,v, .. radio,h,
 //..  select(SE1),--name1(1)--name2(2),Out_0(Value);\
-//..  slider(SL1),0,150,10,Out_0(Value);\					//..  slider(ID),MIN,MAX,STEP,JAVA;
+//..  slider(SL1),0,150,10,Out_0(Value);\									//..  slider(ID),MIN,MAX,STEP,JAVA;
 //..  button(BU1),name,Out_0(Value);\
 //..  flip(FL1),on(1),off(0),Out_0(Value);\
 //..  input_password(IP1),text\
@@ -91,7 +94,7 @@ var ggg =
 // 	Get_Slider("ID");			// slider
 //  Put_Header(1,"Header")		// Put_Header(is_Page,is_Text)
 //  Panel_Open("ID");			// [>]
-
+//  Theme_Change(is_Theme);		// is_Theme = a, b, c, d, e
 
 
 

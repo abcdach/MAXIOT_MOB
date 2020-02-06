@@ -7,39 +7,31 @@
 	<title>MAXIOT</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	
-
+	<!--..................-->
 	<link rel="stylesheet" href="MyJS/jquery/css/themes/default/jquery.mobile.icons-1.4.5.min.css">
 	<link rel="stylesheet" href="MyJS/jquery/css/themes/default/jquery.mobile.icons-1.4.5.min.css">
 	<link rel="stylesheet" href="MyJS/jquery/css/theme-classic.css">
 	<link rel="stylesheet" href="MyJS/jquery/css/themes/default/jquery.mobile-1.4.5.min.css">
 	<script src="MyJS/jquery/js/jquery.js"></script>
 	<script src="MyJS/jquery/js/jquery.mobile-1.4.5.min.js"></script>
-		
-
+	<!--..................-->
 	<script src="MyJS/justgage/raphael-2.1.4.min.js"></script>
     <script src="MyJS/justgage/justgage.js"></script>
-
-
-
-	<!--	
-	
-  -->	
-	
+	<style>#g1 {width:100px; height:80px; display: inline-block;margin: 1em;}</style>		
+	<!--..................-->
 	<script src="js/GUI_ELEMENTS.js"></script>
 	<script src="js/GUI_SCRIPT.js"></script>
 	<script src="js/GUI_PROCESSOR.js"></script>
-	
+	<!--..................-->
 	<script src="js/paho-mqtt-min.js"></script>
 	<script src="js/mqtt.js"></script>	
+	<!--..................-->	
+
 	
 
-	<style>
-      #g1 {
-        width:100px; height:80px;
-        display: inline-block;
-        margin: 1em;
-      }
-    </style>	
+	
+
+
 	
 	
 	
@@ -51,135 +43,74 @@
 	
 <script>
 $( document ).on( "mobileinit", function() { 
-
 console.log("mobileinit:1");
 console.log("mobileinit:0");
 });
 
 
-var object1 = $( document ).on( "pagecreate", function() {
-
-	console.log("pagecreate");
 
 
-
+$( document ).on( "pagecreate", function() {
 /**
 	//#--------------------------------------------
 		//if (java && java.net)
 		//ip = ''+java.net.InetAddress.getLocalHost().getHostAddress();
 		//else ip = 'unknown';
-	
 	//#--------------------------------------------
-		//MyHeader_wText("MAXIOT");
-	//#--------------------------------------------
-		$("#theme_Day").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();			    
-			theme_Selector("a");
-		});	
-	//#--------------------------------------------	
-		$("#theme_Night").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();	
-			theme_Selector("b");   
-		});			
-	//#--------------------------------------------
-		$("#server_connect").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();
-			window.open ('index.php','_self',false); 
-		});	
-	//#--------------------------------------------
-		$("#server_Disconnect").click(function (e) {
-			//e.stopImmediatePropagation();
-			//e.preventDefault();
-		});	
-	//#--------------------------------------------	
-
-		
-		
-		
-	//#--------------------------------------------	
-		$("#b2").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();	
-			theme_Selector("b");   
-		});		
-
-		$("#b3").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();	
-			theme_Selector("a");   
-		});		
-		
-			
-	//#--------------------------------------------
-
 
 	**/
+
+
+
+
+	$( "#theme-selector input" ).on( "change", function( event ) {
+		var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
+		console.log(themeClass);
+		Theme_Change(themeClass);
+	});
+
+
+
+
+
+	$( "#opt-navbars input" ).on( "change", function( event ) {
+		if ( $( "#show" ).prop( "checked" ) ) {
+			$( "#testpage .ui-navbar" ).show();
+			$( "#testpage .ui-footer h4" ).hide();
+		} else if ( $( "#hide" ).prop( "checked" ) ) {
+			$( "#testpage .ui-navbar" ).hide();
+			$( "#testpage .ui-footer h4" ).show();
+		}
+	});
+	$( "#opt-shadow input" ).on( "change", function( event ) {
+		if ( $( "#on" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "noshadow" );
+		} else if ( $( "#off" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "noshadow" );
+		}
+	});
+	$( "#opt-iconshadow input" ).on( "change", function( event ) {
+		if ( $( "#off1" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "ui-shadow-icon" );
+		} else if ( $( "#on1" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "ui-shadow-icon" );
+		}
+	});
+	$( "#opt-gradient input" ).on( "change", function( event ) {
+		if ( $( "#off2" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "nogradient" );
+		} else if ( $( "#on2" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "nogradient" );
+		}
+	});
+	$( "#opt-highlight input" ).on( "change", function( event ) {
+		if ( $( "#off3" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "nohighlight" );
+		} else if ( $( "#on3" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "nohighlight" );
+		}
+	});
 });
-
-		$( document ).on( "pagecreate", function() {
-
-
-			$( "#theme-selector input" ).on( "change", function( event ) {
-			
-			
-			
-				var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
-
-console.log(themeClass);
-
-
-				$( "#page_1" ).removeClass( "ui-page-theme-a ui-page-theme-b ui-page-theme-c ui-page-theme-d ui-page-theme-e" ).addClass( "ui-page-theme-" + themeClass );
-				$( "#ui-body-test" ).removeClass( "ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e" ).addClass( "ui-body-" + themeClass );
-				$( "#ui-bar-test, #ui-bar-form" ).removeClass( "ui-bar-a ui-bar-b ui-bar-c ui-bar-d ui-bar-e" ).addClass( "ui-bar-" + themeClass );
-				$( ".ui-collapsible-content" ).removeClass( "ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e" ).addClass( "ui-body-" + themeClass );
-				$( ".theme" ).text( themeClass );
-			});
-
-
-
-
-
-			$( "#opt-navbars input" ).on( "change", function( event ) {
-				if ( $( "#show" ).prop( "checked" ) ) {
-					$( "#testpage .ui-navbar" ).show();
-					$( "#testpage .ui-footer h4" ).hide();
-				} else if ( $( "#hide" ).prop( "checked" ) ) {
-					$( "#testpage .ui-navbar" ).hide();
-					$( "#testpage .ui-footer h4" ).show();
-				}
-			});
-			$( "#opt-shadow input" ).on( "change", function( event ) {
-				if ( $( "#on" ).prop( "checked" ) ) {
-					$( "#testpage" ).removeClass( "noshadow" );
-				} else if ( $( "#off" ).prop( "checked" ) ) {
-					$( "#testpage" ).addClass( "noshadow" );
-				}
-			});
-			$( "#opt-iconshadow input" ).on( "change", function( event ) {
-				if ( $( "#off1" ).prop( "checked" ) ) {
-					$( "#testpage" ).removeClass( "ui-shadow-icon" );
-				} else if ( $( "#on1" ).prop( "checked" ) ) {
-					$( "#testpage" ).addClass( "ui-shadow-icon" );
-				}
-			});
-			$( "#opt-gradient input" ).on( "change", function( event ) {
-				if ( $( "#off2" ).prop( "checked" ) ) {
-					$( "#testpage" ).addClass( "nogradient" );
-				} else if ( $( "#on2" ).prop( "checked" ) ) {
-					$( "#testpage" ).removeClass( "nogradient" );
-				}
-			});
-			$( "#opt-highlight input" ).on( "change", function( event ) {
-				if ( $( "#off3" ).prop( "checked" ) ) {
-					$( "#testpage" ).addClass( "nohighlight" );
-				} else if ( $( "#on3" ).prop( "checked" ) ) {
-					$( "#testpage" ).removeClass( "nohighlight" );
-				}
-			});
-		});
 
 //#####################################################################
 // 111
@@ -195,7 +126,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 
 
 		rrr = '';
-		rrr += '<form class="ui-mini">';
+		//rrr += '<form class="ui-mini">';
 			rrr += '<div class="ui-field-contain" id="theme-selector">';
 				rrr += '<fieldset data-role="controlgroup" data-type="horizontal">';
 					rrr += '<legend>Theme:</legend>';
@@ -215,7 +146,7 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 			$('[data-role="content_1"]').append(rrr);
 
 
-
+Theme_Change("a");
 	
 });	
 

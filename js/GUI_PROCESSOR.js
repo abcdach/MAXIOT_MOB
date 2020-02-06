@@ -274,6 +274,70 @@ function GUI_Processor(isDATA){
 				break;	
 
 
+			case "radio":
+			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
+				
+				var isName = "";
+				var isDataType = "";
+				if(p[1]==='v'){isName = "radio-choice-v-2"; isDataType = '';}
+				if(p[1]==='h'){isName = "radio-choice-h-2"; isDataType = 'data-type="horizontal"';}
+				
+				isHTML = '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				//List
+				var pT = p[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<input type="radio" name="'+isName+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
+        					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
+						}
+					}
+				}isHTML += '</fieldset>';			
+				console.log(isHTML);
+				//java Script
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				isJAVA += JAVA_Radio_Change(isID,p[3]);
+				//console.log(isJAVA);
+				break;
+				
+
+
+/**
+        <fieldset data-role="controlgroup">
+        <legend>Vertical:</legend>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">
+        <label for="radio-choice-v-2a">One</label>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">
+        <label for="radio-choice-v-2b">Two</label>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2c" value="other">
+        <label for="radio-choice-v-2c">Three</label>
+    	</fieldset>
+
+
+    <fieldset data-role="controlgroup" data-type="horizontal">
+        <legend>Horizontal:</legend>
+        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
+        <label for="radio-choice-h-2a">One</label>
+        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
+        <label for="radio-choice-h-2b">Two</label>
+        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2c" value="other">
+        <label for="radio-choice-h-2c">Three</label>
+    </fieldset>
+**/
+
+
 			case "[>]":
 				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
 				isHTML_PANEL ='';
