@@ -20,6 +20,7 @@ function GUI_Processor(isDATA){
 	
 	var isHTML_PANEL = '';
 	var isHTML_CONTENT = '';
+	var isHTML_NAVBAR = '';
 	var isHTML = '';
 	var isJAVA = '';
 	
@@ -235,6 +236,43 @@ function GUI_Processor(isDATA){
 				isJAVA += JAVA_Select_Change(isID,p[2]);
 				break;			
 						
+
+
+
+			case "navbar":
+			
+				isHTML_NAVBAR = '<ul>';
+				
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
+				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
+				
+				//List
+				var pT = p[1].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML_NAVBAR += '<li><a href="#'+pT1+'" id="'+isID+'_'+b+'">'+pT0+'</a></li>';
+							//isHTML += '<option value="'+pT1+'">'+pT0+'</option>';
+							//console.log("[" + pT0 + "]["+ pT1 + "]");
+						}
+					}
+				}isHTML_NAVBAR += '</ul>';			
+				$('[data-role="navbar_'+isPage+'"]').append(isHTML_NAVBAR);
+				//console.log(isHTML_NAVBAR);
+				//java Script
+				//var Lim = 3;
+				//if(Conf_Spl_Len > Lim){
+					//for (b = Lim; b < Conf_Spl_Len; b++){
+						//p[Lim-1]+=','+Conf_Spl[b];
+					//}
+				//}
+				//isJAVA += JAVA_Select_Change(isID,p[2]);
+				break;	
+
 
 			case "[>]":
 				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';

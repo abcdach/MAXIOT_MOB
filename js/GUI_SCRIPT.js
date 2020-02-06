@@ -3,6 +3,7 @@ var def_SCRIPT =
 '\
 ..	page,1\
 ..  header,is header 1\
+..  navbar,--საწყისი(popupLogin)--2(xx1)--3(PAN1)--ტესტ(PAN_0)\
 ..  [>](PAN_0)\
 ..  >>,Connection Config\
 ..  label,Host Name:\
@@ -56,6 +57,7 @@ var ggg =
 
 //..  page,1\
 //..  header,text\
+//..  navbar,--name1(href1)--name2(href2)\
 //..  select(SE1),--name1(1)--name2(2),Out_0(Value);\
 //..  slider(SL1),0,150,10,Out_0(Value);\					//..  slider(ID),MIN,MAX,STEP,JAVA;
 //..  button(BU1),name,Out_0(Value);\
