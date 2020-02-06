@@ -20,8 +20,10 @@ function GUI_Processor(isDATA){
 	
 	var isHTML_PANEL = '';
 	var isHTML_CONTENT = '';
-	var isHTML ='';
-	var isJAVA ='';
+	var isHTML = '';
+	var isJAVA = '';
+	
+	var isPage = '';
 	
 	var grid_start = 0;
 	var grid_num   = 0;
@@ -76,6 +78,18 @@ function GUI_Processor(isDATA){
 		switch(isCMD) {
 		
 		
+		
+			case "page":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
+				isPage = p[1];
+				break;	
+
+			case "header":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Header"+isPage;
+				$("#page_"+isPage+" h3 #MyHeader_Text").text(p[1]);
+				
+				break;	
+				
 			case "##":
 			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="2";	
@@ -84,8 +98,7 @@ function GUI_Processor(isDATA){
 				if(p[1]==="4"){isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;}
 				if(p[1]==="5"){isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;}
 				grid_cou   = 1;
-				grid_add   = 0;
-				grid_ignor = 0;				
+				grid_add   = 0;			
 				break;				
 
 		
@@ -101,11 +114,20 @@ function GUI_Processor(isDATA){
 				break;	
 
 
-			case "header":
+			case "label":
 			
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="default";	
-				isHTML += HTNL_Header(p[1]);				
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="label";				
+				isHTML += ('<label>'+p[1]+'</label>'); 			
 				break;
+
+			case "bar":
+			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";					
+				isHTML += '<h'+p[1]+' class="ui-bar ui-bar-a">'+p[2]+'</h'+p[1]+'>'			
+				break;
+				
+				
 			
 			case "button":
 
@@ -224,6 +246,17 @@ function GUI_Processor(isDATA){
 				panel_status = 0;
 				break;
 						
+			case "+>":
+				isHTML += '<div class="ui-corner-all custom-corners">';
+				break;
+
+			case "<+":
+				isHTML += '</div>';
+				break;
+
+
+
+
 
 			default:
 				break;
@@ -272,11 +305,11 @@ function GUI_Processor(isDATA){
 	
 	//isHTML = HHH + isHTML;
 	
-	$('[data-role="content_1"]').append(isHTML_CONTENT);
-	$('[data-role="panel_1"]').append(isHTML_PANEL);
+	$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
+	$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
 	
 	
-	JAVA_APPEND("page_1","content_1",isJAVA);
+	JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
 //#--------------------------------------------	
 
 }

@@ -8,12 +8,10 @@
 function Panel_Open(is_Value){
 	$( "#"+is_Value ).panel( "open" );
 }
-
-//##################################
-
-function HTNL_Header(is_Value){
-	return('<label>'+is_Value+'</label>'); 
+function Put_Header(is_Page,is_Text){
+	$("#page_"+is_Page+" h3 #MyHeader_Text").text(is_Text);
 }
+
 //##################################
 function HTML_Input_Text(is_ID,is_Value) {
 	return('<input id="'+is_ID+'" type="text" value="'+is_Value+'"/>');

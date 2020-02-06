@@ -113,30 +113,41 @@ var object1 = $( document ).on( "pagecreate", function() {
 $(document).on('pagebeforecreate',"#page_1", function(){
 
 	console.log("pagebeforecreate page_1 start");
+	
+	GUI_Processor(def_SCRIPT);
 	GUI_Processor(ggg);
 	
 
-	$("#page_1 h3 #MyHeader_Text").text("Your New Header");
+	
 	
 	
 	
 
 	var	 HHH = '<ul>';
-			 HHH += '<li><a href="#" id="start_page2">საწყისი</a></li>';
+			 HHH += '<li><a href="#popupLogin" id="start_page2">საწყისი</a></li>';
 			 HHH += '<li><a href="#xx1" id="server_Disconnect">.</a></li>';
 			 HHH += '<li><a href="#PAN1" id="theme_Day" >.</a></li>';
-			 HHH += '<li><a href="#PAN1" id="theme_Night" >Test</a></li>';
+			 HHH += '<li><a href="#PAN_0" id="theme_Night" >ConfigConnect</a></li>';
 		 HHH += '</ul>';
 	$('[data-role="navbar_1"]').append(HHH);
 	
 	
 	
-	//var	 HHH = '<div data-role="panel" id="xx1" data-position="left" data-display="reveal" data-theme="a">';
-    //HHH += '<h3>მაგარი ბიჟები</h3>';
-    //HHH += '<p>This panel is positioned on the left with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>';
-    //HHH += '<p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>';
-	//HHH += '</div>';
-	//$('[data-role="navbar_2"]').append(HHH);
+	rrr = '';
+	rrr += '<a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>';
+	rrr += '<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">';
+	    rrr += '<form>';
+	        rrr += '<div style="padding:10px 20px;">';
+	            rrr += '<h3>Please sign in</h3>';
+	            rrr += '<label for="un" class="ui-hidden-accessible">Username:</label>';
+	            rrr += '<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">';
+	            rrr += '<label for="pw" class="ui-hidden-accessible">Password:</label>';
+	            rrr += '<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a';
+	            rrr += '<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>';
+	        rrr += '</div>';
+	    rrr += '</form>';
+	rrr += '</div>';
+$('[data-role="content_1"]').append(rrr);
 	
 
 	
@@ -211,20 +222,57 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 
 <div data-role="page" id="page_1">
 	<div data-role="header">
-		<h3><span id="MyHeader_Text">შუშაბანდის განათების მართვა</span></h3>  
+		<h3><span id="MyHeader_Text">Page 1</span></h3>  
 		<div data-role="navbar">
 			<div data-role="navbar_1" ></div>
 		</div>
 	</div><!-- /header -->
-	<div data-role="content_1" class="ui-content" role="main"></div>
-	
+	<div data-role="content_1" class="ui-content" role="main"></div>	
 	<div data-role="panel_1" ></div>
-
-
-	
 </div><!-- /page -->
 
 <!-- ####################################################################################### -->
+
+<div data-role="page" id="page_2">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">Page 2</span></h3>  
+		<div data-role="navbar">
+			<div data-role="navbar_2" ></div>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_2" class="ui-content" role="main"></div>	
+	<div data-role="panel_2" ></div>
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_3">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">Page 3</span></h3>  
+		<div data-role="navbar">
+			<div data-role="navbar_3" ></div>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_3" class="ui-content" role="main"></div>	
+	<div data-role="panel_3" ></div>
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_4">
+	<div data-role="header">
+		<h3><span id="MyHeader_Text">Page 4</span></h3>  
+		<div data-role="navbar">
+			<div data-role="navbar_4" ></div>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_4" class="ui-content" role="main"></div>	
+	<div data-role="panel_4" ></div>
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+
 
 </body>
 </html>
