@@ -107,7 +107,7 @@ function JAVA_APPEND(is_Page,is_DataRole,is_Script){
 	SCR +='\n'+ '});';
 	SCR +='\n'+ '</script>';
 	$('[data-role="content_1"]').append(SCR);
-	
+	//$('[data-role="'+is_DataRole+'"]').append(SCR);
 }
 //##################################
 

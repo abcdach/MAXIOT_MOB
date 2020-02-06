@@ -3,7 +3,7 @@ var def_SCRIPT =
 '\
 ..	page,1\
 ..  header,is header 1\
-..  navbar,--საწყისი(page_1)--2(page_2)--3()--ტესტ(PAN0_1)\
+..  navbar,--საწყისი(page_1)--2(page_2)--3(page_3)--ტესტ(PAN0_1)\
 ..  ->[p](PAN0_1)\
 ..  	->[c],Connection Config\
 ..  		label,Host Name:\
@@ -21,7 +21,7 @@ var def_SCRIPT =
 ..  <-[p]\
 ..	page,2\
 ..  header,is header 2\
-..  navbar,--საწყისი(page_1)--2(page_2)--3()--ტესტ(PAN0_1)\
+..  navbar,--საწყისი(page_1)--2(page_2)--3(page_3)--ტესტ(PAN0_1)\
 ..  ->[c],Connection Config\
 ..  	label,Host Name:\
 ..  	input_text(IT2_1),http://maxh6/ \

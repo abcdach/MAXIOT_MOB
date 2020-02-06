@@ -17,6 +17,7 @@ function GUI_Processor(isDATA){
 	
 	var Conf_Len = Conf.length;
 	
+
 	
 	var isHTML_PANEL = '';
 	var isHTML_CONTENT = '';
@@ -43,8 +44,14 @@ function GUI_Processor(isDATA){
 	var select = ""; var select_id = ""
 	var p=['','','','','','','','','','','','','','','','','','',''];
 	
-	
 	for (i = 0; i < Conf_Len; i++) {
+		Conf[i] = Conf[i].trim();
+		Conf[i] = Conf[i].replace(/(\r\n|\n|\r)/gm, "");
+		Conf[i] = Conf[i].trim();
+	}console.log(Conf);
+	for (i = 0; i < Conf_Len; i++) {
+		
+		
 		var Conf_Spl = Conf[i].split(',');
 		var Conf_Spl_Len = Conf_Spl.length;
 		

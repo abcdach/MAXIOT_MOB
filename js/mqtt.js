@@ -4,11 +4,12 @@
 
 var client;
 var Connect_Status = 0;
+var Script_Data = '';
 
 function MQTT_Connect() {
 	console.log("MQTT_Connect");
-	//client = new Paho.MQTT.Client("68.183.111.57", Number("3004"), "1990@JQ_Test");
-	client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1990@JQ_Test");
+	//client = new Paho.MQTT.Client("68.183.111.57", Number("3004"), "1999@JQ_Test");
+	client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1999@JQ_Test");
 	client.onConnectionLost = onConnectionLost;
 	client.onMessageArrived = onMessageArrived;
 
@@ -42,8 +43,13 @@ function onFailure(err) {
 	console.log("onFailure : " + err.errorMessage);
 }
 function onMessageArrived(message) {
-  console.log("onMessageArrived:"+message.payloadString);
+  Script_Data = message.payloadString;
+  SYS_STEP ++;
+  console.log("onMessageArrived:"+Script_Data);
   console.log("onMessageArrived:"+message.destinationName);
   console.log("onMessageArrived:"+message.topic);
+  console.log("onMessageArrived:"+message.qos);
+  console.log("onMessageArrived:"+message.retained);
+  console.log("onMessageArrived:"+message.duplicate);
 }
 

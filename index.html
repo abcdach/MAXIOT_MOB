@@ -99,10 +99,14 @@ function SYS_LOOP() {
 		SYS_STEP = 3; setTimeout(SYS_LOOP, 500);	
 		break;
     case 4:
-		//console.log("SYS_LOOP:20");
-		//$.mobile.changePage("#page_3");		
+		console.log("SYS_LOOP:4");
+		console.log(Script_Data);
+		GUI_Processor(Script_Data);
+		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
 		break;
-    case 99:		
+    case 5:
+		console.log("SYS_LOOP:5");
+		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
 		break;
     default:
         break;
