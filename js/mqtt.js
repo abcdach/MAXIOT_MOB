@@ -1,32 +1,49 @@
 
 
-function Disconnect() {
-      console.log("client is disconnecting..");
-      window.client.disconnect();
-	  SYS_INIT();
-}
-
-// This function is called when the initial connect request is successful.
-function onConnectSuccess(resObj) {
-	console.log("Initial connect request succeeded.");
-	Connect_Status = 1;
-}
 
 
-// This function is called when the intial connect request failed.
-function onFailedConnect(err) {
-	console.log("Initial connect request failed. Error message : " + err.errorMessage);
-	Connect_Status = 2;
+var client;
+var Connect_Status = 0;
+
+function MQTT_Connect() {
+	console.log("MQTT_Connect");
+	//client = new Paho.MQTT.Client("68.183.111.57", Number("3004"), "1990@JQ_Test");
+	client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1990@JQ_Test");
+	client.onConnectionLost = onConnectionLost;
+	client.onMessageArrived = onMessageArrived;
+
+
+	client.connect(
+		{
+			cleanSession : false, 
+			onSuccess : onSuccess, 
+			onFailure : onFailure, 
+			//keepAliveInterval: 30, 
+			//reconnect : true,         // Enable automatic reconnect
+			//reconnectInterval: 10     // Reconnect attempt interval : 10 seconds
+	   }
+	);	
 }
+
+
+
 
 
 function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
     console.log("onConnectionLost:"+responseObject.errorMessage);
   }
-  SYS_INIT();
 }
-
+function onSuccess(resObj) {
+	console.log("onSuccess");
+	SYS_STEP ++;
+}
+function onFailure(err) {
+	console.log("onFailure : " + err.errorMessage);
+}
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
+  console.log("onMessageArrived:"+message.destinationName);
+  console.log("onMessageArrived:"+message.topic);
 }
+

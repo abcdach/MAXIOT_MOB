@@ -49,6 +49,78 @@ console.log("mobileinit:0");
 
 
 
+function SYS_LOOP_START(){
+	SYS_STEP = 0; setTimeout(SYS_LOOP, 1);
+}
+
+function SYS_INIT() {
+	//$("#Password_Button").button('enable');
+	//$("#Password_Input").textinput('enable');
+	//$("#video_Button").button('enable');
+	//$.mobile.changePage("#page_2");
+	//Disconnect();
+}
+
+
+// This function is called when the intial connect request failed.
+
+
+
+
+
+
+
+
+
+var SYS_STEP = 0;
+function SYS_LOOP() {
+    switch (SYS_STEP) {
+    case 0:
+		console.log("SYS_LOOP:0");
+		//Connect_Status = 0;
+		
+	
+		MQTT_Connect();
+		
+		
+		SYS_STEP = 1; setTimeout(SYS_LOOP, 1);
+        break;
+    case 1:
+		console.log("SYS_LOOP:1");
+		SYS_STEP = 1; setTimeout(SYS_LOOP, 500);		
+        break;									
+    case 2:
+		console.log("SYS_LOOP:2");
+		client.subscribe("99/0");
+		SYS_STEP = 3; setTimeout(SYS_LOOP, 1);
+		break;		
+    case 3:
+		console.log("SYS_LOOP:3");
+		SYS_STEP = 3; setTimeout(SYS_LOOP, 500);	
+		break;
+    case 4:
+		//console.log("SYS_LOOP:20");
+		//$.mobile.changePage("#page_3");		
+		break;
+    case 99:		
+		break;
+    default:
+        break;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $( document ).on( "pagecreate", function() {
 /**
@@ -59,8 +131,6 @@ $( document ).on( "pagecreate", function() {
 	//#--------------------------------------------
 
 	**/
-
-
 
 
 	$( "#theme-selector input" ).on( "change", function( event ) {
@@ -145,38 +215,6 @@ rrr = '';
 
 	$('[data-role="content_1"]').append(rrr);
 **/
-rrr = '';
-rrr += '<div data-role="tabs" data-type="horizontal">';
-
-    rrr += '<ul data-role="listview" data-inset="true" class="tablist-left">';
-      rrr += '<li><a href="#one" data-ajax="false">one</a></li>';
-      rrr += '<li><a href="#two" data-ajax="false">two</a></li>';
-    rrr += '</ul>';
-
-    rrr += '<div id="one" class="tablist-content">';
-    	rrr += '<h1>First tab contents</h1>';
-  	rrr += '</div>';
-
-    rrr += '<div id="two" class="tablist-content" >';
-	    rrr += '<ul id="dddtwo" class="tablist-content" data-role="listview" data-inset="true">';
-	        rrr += '<li><a href="#">Acura</a></li>';
-	        rrr += '<li><a href="#">Audi</a></li>';
-	        rrr += '<li><a href="#">BMW</a></li>';
-	        rrr += '<li><a href="#">Cadillac</a></li>';
-	        rrr += '<li><a href="#">Ferrari</a></li>';
-	    rrr += '</ul>';
-  	rrr += '</div>';
-
-    rrr += '<ul id="dddtwo" class="tablist-content" data-role="listview" data-inset="true">';
-        rrr += '<li><a href="#">Acura</a></li>';
-        rrr += '<li><a href="#">Audi</a></li>';
-        rrr += '<li><a href="#">BMW</a></li>';
-        rrr += '<li><a href="#">Cadillac</a></li>';
-        rrr += '<li><a href="#">Ferrari</a></li>';
-    rrr += '</ul>';
-
-rrr += '</div>';
-//$('[data-role="content_1"]').append(rrr);
 
 
 });	
@@ -187,17 +225,10 @@ function Out_0(data){
 
 $(document).on("pageinit","#page_1",function(){
 
-
-
-
-
-
 	$('#is_listview').delegate('a', 'click', function () {
-
 		 console.log("Value = "+this.id);
 		 console.log("Value = "+this.value);
     });
-
 	
 });	
 

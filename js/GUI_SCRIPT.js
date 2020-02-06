@@ -32,7 +32,7 @@ var def_SCRIPT =
 ..  	label,Device Name:\
 ..  	input_text(IT2_5),Mob_Test\
 ..  	##,2 \
-..  	button(BU2_1),Save, Out_0("OK"); \
+..  	button(BU2_1),Save, SYS_LOOP_START(); \
 ..  	button(BU2_2),Connect, Out_0("OK"); \
 ..  <-[c]\
 ';
@@ -42,13 +42,14 @@ var ggg =
 ..	page,1\
 ..  label,This is a label\
 ..  ->[c],checkbox\
+..  ->[c],checkbox\
 ..  	checkbox,h,--A(a)--B(b)--C(c)--D(d)--E(e),Out_0(Value);\
 ..  	checkbox,v,--A(a)--B(b)--C(c)--D(d)--E(e),Out_0(Value);\
 ..  <-[c]\
 ..  ->[c],Radio (Theme Change)\
 ..  	radio,h,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
 ..  	radio,v,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
-..  <-[c]]\
+..  <-[c]\
 ..  ->[c],123 \
 ..  	##,2 \
 ..  	button(BU1),OK, Out_0("OK"); \
@@ -65,6 +66,7 @@ var ggg =
 ..  	##,2 .. input_text(IT1),რაიმე ტექსტი .. input_text(IT2)\
 ..  	button,input to input, Put_Input("IT2",Get_Input("IT1")); \
 ..  	button,To OutPut, Out_0(Get_Input("IT1")); \
+..  <-[c]\
 ..  <-[c]\
 ..  button,panel open, Panel_Open("PAN1"); \
 ..  ->[p](PAN1)\
