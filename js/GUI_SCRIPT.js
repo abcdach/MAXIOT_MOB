@@ -4,72 +4,87 @@ var def_SCRIPT =
 ..	page,1\
 ..  header,is header 1\
 ..  navbar,--საწყისი(page_1)--2(page_2)--3()--ტესტ(PAN0_1)\
-..  [>](PAN0_1)\
-..  >>,Connection Config\
-..  label,Host Name:\
-..  input_text(IT1_1),http://maxh6/ \
-..  label,Port:\
-..  input_text(IT1_2),3004\
-..  label,Device ID:\
-..  input_text(IT1_3),1655\
-..  label,Device Name:\
-..  input_text(IT1_5),Mob_Test\
-..  ##,2 \
-..  button(BU1_1),Save, Out_0("OK"); \
-..  button(BU1_2),Connect, Out_0("OK"); \
-..  <<\
-..  [<]\
+..  ->[p](PAN0_1)\
+..  	->[c],Connection Config\
+..  		label,Host Name:\
+..  		input_text(IT1_1),http://maxh6/ \
+..  		label,Port:\
+..  		input_text(IT1_2),3004\
+..  		label,Device ID:\
+..  		input_text(IT1_3),1655\
+..  		label,Device Name:\
+..  		input_text(IT1_5),Mob_Test\
+..  		##,2 \
+..  		button(BU1_1),Save, Out_0("OK"); \
+..  		button(BU1_2),Connect, Out_0("OK"); \
+..  	<-[c]\
+..  <-[p]\
 ..	page,2\
 ..  header,is header 2\
 ..  navbar,--საწყისი(page_1)--2(page_2)--3()--ტესტ(PAN0_1)\
-..  >>,Connection Config\
-..  label,Host Name:\
-..  input_text(IT2_1),http://maxh6/ \
-..  label,Port:\
-..  input_text(IT2_2),3004\
-..  label,Device ID:\
-..  input_text(IT2_3),1655\
-..  label,Device Name:\
-..  input_text(IT2_5),Mob_Test\
-..  ##,2 \
-..  button(BU2_1),Save, Out_0("OK"); \
-..  button(BU2_2),Connect, Out_0("OK"); \
-..  <<\
+..  ->[c],Connection Config\
+..  	label,Host Name:\
+..  	input_text(IT2_1),http://maxh6/ \
+..  	label,Port:\
+..  	input_text(IT2_2),3004\
+..  	label,Device ID:\
+..  	input_text(IT2_3),1655\
+..  	label,Device Name:\
+..  	input_text(IT2_5),Mob_Test\
+..  	##,2 \
+..  	button(BU2_1),Save, Out_0("OK"); \
+..  	button(BU2_2),Connect, Out_0("OK"); \
+..  <-[c]\
 ';
 
 var ggg = 
 '\
 ..	page,1\
 ..  label,This is a label\
-..  >>,Radio Theme Change\
-..  radio,h,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
-..  radio,v,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
-..  <<\
-..  >>,123 \
-..  ##,2 \
-..  button(BU1),OK, Out_0("OK"); \
-..  select(SE1),\
---  მერსედესი(1) --  ტოიოტა  (2) \
---  ბენტლი  (3) --  ფერარი  (4) \
---  გოლფი  (5) --  სიტროენი (6) ,Out_0(Value);\
-..  flip(f1),on(1),off(0),Out_0(Value);\
-..  <<\
-..  #label,This is a slaider\
-..  #slider(SL1),0,150,10,Out_0(Value);\
-..  >>,Input \
-..  input_password(IP1),1234\
-..  ##,2 .. input_text(IT1),რაიმე ტექსტი .. input_text(IT2)\
-..  button,input to input, Put_Input("IT2",Get_Input("IT1")); \
-..  button,To OutPut, Out_0(Get_Input("IT1")); \
-..  <<\
+..  ->[c],checkbox\
+..  	checkbox,h,--A(a)--B(b)--C(c)--D(d)--E(e),Out_0(Value);\
+..  	checkbox,v,--A(a)--B(b)--C(c)--D(d)--E(e),Out_0(Value);\
+..  <-[c]\
+..  ->[c],Radio (Theme Change)\
+..  	radio,h,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
+..  	radio,v,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
+..  <-[c]]\
+..  ->[c],123 \
+..  	##,2 \
+..  	button(BU1),OK, Out_0("OK"); \
+..  	select(SE1),\
+--  	მერსედესი(1) --  ტოიოტა  (2) \
+--  	ბენტლი  (3) --  ფერარი  (4) \
+--  	გოლფი  (5) --  სიტროენი (6) ,Out_0(Value);\
+..  	flip(f1),on(1),off(0),Out_0(Value);\
+..  	label,This is a slaider\
+..  	slider(SL1),0,150,10,Out_0(Value);\
+..  <-[c]\
+..  ->[c],Input \
+..  	input_password(IP1),1234\
+..  	##,2 .. input_text(IT1),რაიმე ტექსტი .. input_text(IT2)\
+..  	button,input to input, Put_Input("IT2",Get_Input("IT1")); \
+..  	button,To OutPut, Out_0(Get_Input("IT1")); \
+..  <-[c]\
 ..  button,panel open, Panel_Open("PAN1"); \
-..  [>](PAN1)\
-..  label,ეს არის დაგენირებული პანელი\
-..  slider(SL1),0,150,10,Out_0(Value);\
-..  [<]\
-..  +>\
-..  +>\
+..  ->[p](PAN1)\
+..  	label,ეს არის დაგენირებული პანელი\
+..  	slider(SL1),0,150,10,Out_0(Value);\
+..  <-[p]\
+..  ->[c],tab\
+..  	->[t](TAB_1),v,--name1(val1)--name2(val2)--name3(val3)\
+..  		->[d](val1)..label,ეს არის ტაბ 1..<-[d]\
+..  		->[d](val2)..label,ეს არის ტაბ 2..<-[d]\
+..  		->[d](val3)..label,ეს არის ტაბ 3..<-[d]\
+..		<-[t]\
+..  <-[c]\
 ..  ';
+
+
+
+
+
+
 
 
 
@@ -77,6 +92,8 @@ var ggg =
 //..  header,text\
 //..  navbar,--name1(href1)--name2(href2)\
 
+
+//..  checkbox,v,--name1(val1)--name2(val2)--name3(val3),Out_0(Value);\ 	//.. checkbox,v, .. checkbox,h,
 //..  radio,v,--name1(val1)--name2(val2)--name3(val3),Out_0(Value);\ 	//.. radio,v, .. radio,h,
 //..  select(SE1),--name1(1)--name2(2),Out_0(Value);\
 //..  slider(SL1),0,150,10,Out_0(Value);\									//..  slider(ID),MIN,MAX,STEP,JAVA;
@@ -85,18 +102,23 @@ var ggg =
 //..  input_password(IP1),text\
 //..  input_text(IT1),text\
 //..  label(LB1),text\
-//..  ##,2\ ..##,3\	..##,4\	..##,5\		//grid
-//..  >>,name\							//collapsible start
-//..  <<\								//collapsible stop 
-//..  [>](PAN1)\						//panel start java[ Panel_Open("ID"); ]
-//..  [<]\								//panel stop
+//..  ##,2\ ..##,3\	..##,4\	..##,5\								//grid
+//..  ->[c],name\												//collapsible start
+//..  <-[c]\													//collapsible stop 
+//..  ->[p](PAN1)\												//panel start java[ Panel_Open("ID"); ]
+//..  <-[p]\													//panel stop
+//..  ->[t](TAB_1),v,--name1(val1)--name2(val2)--name3(val3)
+//..  <-[t]
+//..  ->[d](PAN1)
+//..  <-[d]
+
 
 //  Put_Input("ID","text");		// input_text, input_password
 //  Get_Input("ID");			// input_text, input_password
 // 	Put_Slider("ID","text");	// slider
 // 	Get_Slider("ID");			// slider
 //  Put_Header(1,"Header")		// Put_Header(is_Page,is_Text)
-//  Panel_Open("ID");			// [>]
+//  Panel_Open("ID");			// ->[p](ID)\
 //  Theme_Change(is_Theme);		// is_Theme = a, b, c, d, e
 
 

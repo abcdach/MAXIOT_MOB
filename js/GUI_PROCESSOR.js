@@ -102,13 +102,14 @@ function GUI_Processor(isDATA){
 				grid_add   = 0;			
 				break;				
 
-		
+			case "->[c]":
 			case ">>":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
 				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
 				isHTML += '<h4>'+p[1]+'</h4>';
 				collapsible_status = 1;
-				break;				
+				break;
+			case "<-[c]":				
 			case "<<":
 				isHTML += '</div>';
 				collapsible_status = 0;
@@ -300,7 +301,7 @@ function GUI_Processor(isDATA){
 						}
 					}
 				}isHTML += '</fieldset>';			
-				console.log(isHTML);
+				//console.log(isHTML);
 				//java Script
 				var Lim = 4;
 				if(Conf_Spl_Len > Lim){
@@ -313,37 +314,151 @@ function GUI_Processor(isDATA){
 				break;
 				
 
+			case "checkbox":
+			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
+				
+				var isName = "";
+				var isDataType = "";
+				if(p[1]==='v'){isName = isID+'_'+b; isDataType = '';}
+				if(p[1]==='h'){isName = isID+'_'+b; isDataType = 'data-type="horizontal"';}
+				
+				isHTML = '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				//List
+				var pT = p[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<input type="checkbox" name="'+isName+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
+        					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
+						}
+					}
+				}isHTML += '</fieldset>';			
+				//console.log(isHTML);
+				//java Script
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				isJAVA += JAVA_Radio_Change(isID,p[3]);
+				//console.log(isJAVA);
+				break;
+
+
+			case "->[t]":
+			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
+				
+				//var isName = "";isHTML = '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				//var isDataType = "";
+				//if(p[1]==='v'){isName = isID+'_'+b; isDataType = '';}
+				//if(p[1]==='h'){isName = isID+'_'+b; isDataType = 'data-type="horizontal"';}
+				
+				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
+				isHTML += '<div data-role="navbar">';
+				isHTML += '<ul>';
+
+				//List
+				var pT = p[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<li><a href="#'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
+						}
+					}
+				}isHTML += '</ul></div>';	
+
+				console.log(isHTML);
+				//java Script
+				//var Lim = 4;
+				//if(Conf_Spl_Len > Lim){
+					//for (b = Lim; b < Conf_Spl_Len; b++){
+						//p[Lim-1]+=','+Conf_Spl[b];
+					//}
+				//}
+				//isJAVA += JAVA_Radio_Change(isID,p[3]);
+				//console.log(isJAVA);
+				break;
+
 
 /**
-        <fieldset data-role="controlgroup">
-        <legend>Vertical:</legend>
-        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">
-        <label for="radio-choice-v-2a">One</label>
-        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">
-        <label for="radio-choice-v-2b">Two</label>
-        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2c" value="other">
-        <label for="radio-choice-v-2c">Three</label>
-    	</fieldset>
+<div data-role="tabs" id="tabs">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#one" data-ajax="false">one</a></li>
+      <li><a href="#two" data-ajax="false">two</a></li>
+    </ul>
+  </div>
+  <div id="one" class="ui-body-d ui-content">
+    <h1>First tab contents</h1>
+  </div>
+  <div id="two">
+    <ul data-role="listview" data-inset="true">
+        <li><a href="#">Acura</a></li>
+        <li><a href="#">Audi</a></li>
+        <li><a href="#">BMW</a></li>
+        <li><a href="#">Cadillac</a></li>
+        <li><a href="#">Ferrari</a></li>
+    </ul>
+  </div>
+</div>
+**/
 
+
+/**
+    <fieldset data-role="controlgroup">
+        <legend>Vertical:</legend>
+        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+        <label for="checkbox-v-2a">One</label>
+        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+        <label for="checkbox-v-2b">Two</label>
+        <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
+        <label for="checkbox-v-2c">Three</label>
+    </fieldset>
 
     <fieldset data-role="controlgroup" data-type="horizontal">
         <legend>Horizontal:</legend>
-        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
-        <label for="radio-choice-h-2a">One</label>
-        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
-        <label for="radio-choice-h-2b">Two</label>
-        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2c" value="other">
-        <label for="radio-choice-h-2c">Three</label>
+        <input type="checkbox" name="checkbox-h-2a" id="checkbox-h-2a">
+        <label for="checkbox-h-2a">One</label>
+        <input type="checkbox" name="checkbox-h-2b" id="checkbox-h-2b">
+        <label for="checkbox-h-2b">Two</label>
+        <input type="checkbox" name="checkbox-h-2c" id="checkbox-h-2c">
+        <label for="checkbox-h-2c">Three</label>
     </fieldset>
 **/
 
 
+			case "->[d]":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				isHTML += '<div id="'+isID+'" '+p[1]+'>';
+				console.log(isHTML);
+				break;
+
+			case "<-[d]":
+				isHTML += '</div>';
+				break;
+
+
+			case "->[p]":
 			case "[>]":
 				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
 				isHTML_PANEL ='';
 				panel_status = 1;
 				break;
-
+			case "<-[p]":
 			case "[<]":
 				isHTML += '</div>';
 				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
