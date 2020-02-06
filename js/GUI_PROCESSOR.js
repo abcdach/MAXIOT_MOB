@@ -473,7 +473,29 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;
 
+			case "info":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+				if(p[1]==="1"){
+					isHTML += '<div id="'+isID+'" class="ui-body ui-body-a ui-corner-all">';
+					if(p[2] !== "") isHTML += '<h3>'+p[2]+'</h3>';					
+					if(p[3] !== "") isHTML += '<p>'+p[3]+'</p>';
+					isHTML += '</div>';
+				}
+				if(p[1]==="2"){
+					if(p[2] !== "") isHTML += '<h3 class="ui-bar ui-bar-a ui-corner-all">'+p[2]+'</h3>';
+					if(p[3] !== "") isHTML += '<div class="ui-body ui-body-a ui-corner-all"><p>'+p[3]+'</p></div>';
+				}
+				if(p[1]==="3"){
+					
+					isHTML += '<div id="'+isID+'" class="ui-corner-all custom-corners">';
+					if(p[2] !== "") isHTML += '<div class="ui-bar ui-bar-a"><h3>'+p[2]+'</h3></div>';
+					if(p[3] !== "") isHTML += '<div class="ui-body ui-body-a"><p>'+p[3]+'</p></div>';
 
+					isHTML += '</div>';
+				}
+				break;
 
 
 
