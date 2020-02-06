@@ -118,22 +118,28 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	GUI_Processor(ggg);
 	
 
-	rrr = '';
-	rrr += '<a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>';
-	rrr += '<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">';
-	    rrr += '<form>';
-	        rrr += '<div style="padding:10px 20px;">';
-	            rrr += '<h3>Please sign in</h3>';
-	            rrr += '<label for="un" class="ui-hidden-accessible">Username:</label>';
-	            rrr += '<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">';
-	            rrr += '<label for="pw" class="ui-hidden-accessible">Password:</label>';
-	            rrr += '<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a';
-	            rrr += '<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>';
-	        rrr += '</div>';
-	    rrr += '</form>';
-	rrr += '</div>';
-$('[data-role="content_1"]').append(rrr);
-	
+
+		rrr = '';
+		rrr += '<form class="ui-mini">';
+			rrr += '<div class="ui-field-contain" id="theme-selector">';
+				rrr += '<fieldset data-role="controlgroup" data-type="horizontal">';
+					rrr += '<legend>Theme:</legend>';
+					rrr += '<label for="a">A</label>';
+					rrr += '<input type="radio" name="theme" id="a" checked>';
+					rrr += '<label for="b">B</label>';
+					rrr += '<input type="radio" name="theme" id="b">';
+					rrr += '<label for="c">C</label>';
+					rrr += '<input type="radio" name="theme" id="c">';
+					rrr += '<label for="d">D</label>';
+					rrr += '<input type="radio" name="theme" id="d">';
+					rrr += '<label for="e">E</label>';
+					rrr += '<input type="radio" name="theme" id="e">';
+				rrr += '</fieldset>';
+			rrr += '</div>';
+
+			//$('[data-role="content_1"]').append(rrr);
+
+
 
 	
 });	
@@ -214,6 +220,9 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 	</div><!-- /header -->
 	<div data-role="content_1" class="ui-content" role="main"></div>	
 	<div data-role="panel_1" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1>External fixed footer</h1>
+	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ####################################################################################### -->
@@ -227,6 +236,9 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 	</div><!-- /header -->
 	<div data-role="content_2" class="ui-content" role="main"></div>	
 	<div data-role="panel_2" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1>External fixed footer</h1>
+	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ####################################################################################### -->

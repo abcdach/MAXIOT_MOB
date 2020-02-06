@@ -276,11 +276,13 @@ function GUI_Processor(isDATA){
 
 			case "[>]":
 				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
+				isHTML_PANEL ='';
 				panel_status = 1;
 				break;
 
 			case "[<]":
 				isHTML += '</div>';
+				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
 				panel_status = 0;
 				break;
 						
@@ -327,7 +329,7 @@ function GUI_Processor(isDATA){
 	
 
 	$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
-	$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
+	
 
 	JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
 //#--------------------------------------------	

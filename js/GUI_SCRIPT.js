@@ -3,22 +3,38 @@ var def_SCRIPT =
 '\
 ..	page,1\
 ..  header,is header 1\
-..  navbar,--საწყისი(popupLogin)--2(xx1)--3(PAN1)--ტესტ(PAN_0)\
-..  [>](PAN_0)\
+..  navbar,--საწყისი(page_1)--2(page_2)--3()--ტესტ(PAN0_1)\
+..  [>](PAN0_1)\
 ..  >>,Connection Config\
 ..  label,Host Name:\
-..  input_text(IT0_1),http://maxh6/ \
-..  label, Port:\
-..  input_text(IT0_2),3004\
+..  input_text(IT1_1),http://maxh6/ \
+..  label,Port:\
+..  input_text(IT1_2),3004\
 ..  label,Device ID:\
-..  input_text(IT0_3),1655\
+..  input_text(IT1_3),1655\
 ..  label,Device Name:\
-..  input_text(IT0_5),Mob_Test\
+..  input_text(IT1_5),Mob_Test\
 ..  ##,2 \
-..  button(BU0_1),Save, Out_0("OK"); \
-..  button(BU0_2),Connect, Out_0("OK"); \
+..  button(BU1_1),Save, Out_0("OK"); \
+..  button(BU1_2),Connect, Out_0("OK"); \
 ..  <<\
 ..  [<]\
+..	page,2\
+..  header,is header 2\
+..  navbar,--საწყისი(page_1)--2(page_2)--3()--ტესტ(PAN0_1)\
+..  >>,Connection Config\
+..  label,Host Name:\
+..  input_text(IT2_1),http://maxh6/ \
+..  label,Port:\
+..  input_text(IT2_2),3004\
+..  label,Device ID:\
+..  input_text(IT2_3),1655\
+..  label,Device Name:\
+..  input_text(IT2_5),Mob_Test\
+..  ##,2 \
+..  button(BU2_1),Save, Out_0("OK"); \
+..  button(BU2_2),Connect, Out_0("OK"); \
+..  <<\
 ';
 
 var ggg = 
@@ -42,14 +58,12 @@ var ggg =
 ..  button,input to input, Put_Input("IT2",Get_Input("IT1")); \
 ..  button,To OutPut, Out_0(Get_Input("IT1")); \
 ..  <<\
-..  button,panel open, Panel_Open("PAN1"); \
+..  #button,panel open, Panel_Open("PAN1"); \
 ..  [>](PAN1)\
 ..  label,ეს არის დაგენირებული პანელი\
 ..  slider(SL1),0,150,10,Out_0(Value);\
 ..  [<]\
 ..  +>\
-..  button,ნინო\
-..  button,ნინო\
 ..  +>\
 ..  ';
 
