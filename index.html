@@ -225,6 +225,9 @@ rrr = '';
 
 function Out_0(data){
 	console.log(data +" ->> Out_0");
+	  message = new Paho.MQTT.Message(data);
+  message.destinationName = "0/0";
+  client.send(message);
 }
 
 $(document).on("pageinit","#page_1",function(){
