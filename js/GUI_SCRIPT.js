@@ -1,9 +1,18 @@
 
 var def_SCRIPT =
 '\
+..	page,2\
+..  header,2\
+..  button,Save 2, Out_0("OK"); \
+..	page,3\
+..  header,3\
+..  button,Save 3, Out_0("OK"); \
+..	page,4\
+..  header,4\
+..  button,Save 4, Out_0("OK"); \
 ..	page,1\
-..  header,is header 1\
-..  navbar,--საწყისი(page_1)--2(page_2)--3(page_3)--ტესტ(PAN0_1)\
+..  header,Main\
+..  #navbar,--1(page_1)--2(page_2)--3(page_3)--4(page_4)\
 ..  ->[p](PAN0_1)\
 ..  	->[c],Connection Config\
 ..  		label,Host Name:\
@@ -19,18 +28,18 @@ var def_SCRIPT =
 ..  		button(BU1_2),Connect, Out_0("OK"); \
 ..  	<-[c]\
 ..  <-[p]\
-..	page,2\
-..  header,is header 2\
-..  navbar,--საწყისი(page_1)--2(page_2)--3(page_3)--ტესტ(PAN0_1)\
+..	page,5\
+..  #header,is header 5\
+..  navbar,--1(page_1)--2(page_2)--3(page_3)--4(page_4)\
 ..  ->[c],Connection Config\
 ..  	label,Host Name:\
-..  	input_text(IT2_1),http://maxh6/ \
+..  	input_text(IT5_1),http://maxh6/ \
 ..  	label,Port:\
-..  	input_text(IT2_2),3004\
+..  	input_text(IT5_2),3004\
 ..  	label,Device ID:\
-..  	input_text(IT2_3),1655\
+..  	input_text(IT5_3),1655\
 ..  	label,Device Name:\
-..  	input_text(IT2_5),Mob_Test\
+..  	input_text(IT5_5),Mob_Test\
 ..  	##,2 \
 ..  	button(BU2_1),Save, SYS_LOOP_START(); \
 ..  	button(BU2_2),Connect, Out_0("OK"); \

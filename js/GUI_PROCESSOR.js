@@ -26,6 +26,7 @@ function GUI_Processor(isDATA){
 	var isJAVA = '';
 	
 	var isPage = '';
+	var isPage_ALD = '';
 	
 	var grid_start = 0;
 	var grid_num   = 0;
@@ -90,12 +91,20 @@ function GUI_Processor(isDATA){
 			case "page":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
 				isPage = p[1];
+				if(isPage_ALD !== isPage){
+					$('[data-role="content_'+isPage_ALD+'"]').append(isHTML_CONTENT);
+					JAVA_APPEND("page_"+isPage_ALD,"content_"+isPage_ALD,isJAVA);
+					isJAVA = ''; 
+					isHTML = ''; 
+					isHTML_PANEL   = '';  
+					isHTML_CONTENT = '';
+					isPage_ALD = isPage;
+				}
 				break;	
 
 			case "header":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Header"+isPage;
-				$("#page_"+isPage+" h3 #MyHeader_Text").text(p[1]);
-				
+				//$("#page_"+isPage+" h3 #MyHeader_Text").text(p[1]);
 				break;	
 				
 			case "##":
@@ -496,8 +505,6 @@ function GUI_Processor(isDATA){
 	
 
 	$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
-	
-
 	JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
 //#--------------------------------------------	
 
