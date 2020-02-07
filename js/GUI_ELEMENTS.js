@@ -131,7 +131,7 @@ function Panel_Open(is_Value){
 	$( "#"+is_Value ).panel( "open" );
 }
 function Put_Header(is_Page,is_Text){
-	$("#page_"+is_Page+" h3 #MyHeader_Text").text(is_Text);
+	$("#page_"+is_Page+" h1 #MyHeader_Text_"+is_Page).text(is_Text);
 }
 
 
