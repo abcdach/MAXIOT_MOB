@@ -3,11 +3,11 @@ var def_SCRIPT =
 '\
 ..	->[w],1\
 ..  header,1,Main\
-..  navbar,--Main(page_1)--Options(page_2)--Device(page_3)\
+..  navbar,1,--Main(page_1)--Options(page_2)--Device(page_3)\
 ..	<-[w]\
 ..	->[w],2\
 ..  header,2,Options\
-..  navbar,--Main(page_1)--Options(page_2)--Device(page_3)\
+..  navbar,2,--Main(page_1)--Options(page_2)--Device(page_3)\
 ..  ->[c],Connection Config\
 ..  	label,Host Name:\
 ..  	input_text(IT2_1),http://maxh6/ \
@@ -105,7 +105,7 @@ var ggg =
 
 //..  ->[w],1\
 //..  header,1,text\
-//..  navbar,--name1(href1)--name2(href2)\
+//..  navbar,1,--name1(href1)--name2(href2)\
 
 
 //..  checkbox,v,--name1(val1)--name2(val2)--name3(val3),Out_0(Value);\ 	//.. checkbox,v, .. checkbox,h,

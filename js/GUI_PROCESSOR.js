@@ -234,10 +234,10 @@ function GUI_Processor(isDATA){
 			case "navbar":
 			
 				isHTML_NAVBAR = '<ul>';	
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
-
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = isID;
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
 				//List
-				var pT = p[1].split('--');
+				var pT = p[2].split('--');
 				for (b = 0; b < pT.length; b++){
 					pT[b] = pT[b].trim();
 					if(pT[b]!==""){
@@ -249,7 +249,7 @@ function GUI_Processor(isDATA){
 						}
 					}
 				}isHTML_NAVBAR += '</ul>';			
-				$('[data-role="navbar_'+isPage+'"]').append(isHTML_NAVBAR);
+				$('[data-role="navbar_'+p[1]+'"]').append(isHTML_NAVBAR);
 				break;	
 
 
