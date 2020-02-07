@@ -383,10 +383,71 @@ $(document).on('pagebeforecreate',"#page_2", function(){
 		 console.log("Value = "+this.value);
     });
 ######################################################################
+	$( "#theme-selector input" ).on( "change", function( event ) {
+		var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
+		console.log(themeClass);
+		Theme_Change(themeClass);
+	});
+
+
+
+
+
+	$( "#opt-navbars input" ).on( "change", function( event ) {
+		if ( $( "#show" ).prop( "checked" ) ) {
+			$( "#testpage .ui-navbar" ).show();
+			$( "#testpage .ui-footer h4" ).hide();
+		} else if ( $( "#hide" ).prop( "checked" ) ) {
+			$( "#testpage .ui-navbar" ).hide();
+			$( "#testpage .ui-footer h4" ).show();
+		}
+	});
+	$( "#opt-shadow input" ).on( "change", function( event ) {
+		if ( $( "#on" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "noshadow" );
+		} else if ( $( "#off" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "noshadow" );
+		}
+	});
+	$( "#opt-iconshadow input" ).on( "change", function( event ) {
+		if ( $( "#off1" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "ui-shadow-icon" );
+		} else if ( $( "#on1" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "ui-shadow-icon" );
+		}
+	});
+	$( "#opt-gradient input" ).on( "change", function( event ) {
+		if ( $( "#off2" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "nogradient" );
+		} else if ( $( "#on2" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "nogradient" );
+		}
+	});
+	$( "#opt-highlight input" ).on( "change", function( event ) {
+		if ( $( "#off3" ).prop( "checked" ) ) {
+			$( "#testpage" ).addClass( "nohighlight" );
+		} else if ( $( "#on3" ).prop( "checked" ) ) {
+			$( "#testpage" ).removeClass( "nohighlight" );
+		}
+	});
+######################################################################
+/**
+	//#--------------------------------------------
+		//if (java && java.net)
+		//ip = ''+java.net.InetAddress.getLocalHost().getHostAddress();
+		//else ip = 'unknown';
+	//#--------------------------------------------
+
+	**/
 
 ######################################################################
+/**
+rrr = '';
 
-######################################################################
+	rrr += '</div>';
+
+	$('[data-role="content_1"]').append(rrr);
+**/
 
 ######################################################################
 

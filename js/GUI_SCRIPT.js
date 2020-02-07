@@ -1,16 +1,19 @@
 
 var def_SCRIPT =
 '\
-..	page,2\
+..	->[w],2\
 ..  header,2\
 ..  button,Save 2, Out_0("OK"); \
-..	page,3\
+..	<-[w]\
+..	->[w],3\
 ..  header,3\
 ..  button,Save 3, Out_0("OK"); \
-..	page,4\
+..	<-[w]\
+..	->[w],4\
 ..  header,4\
 ..  button,Save 4, Out_0("OK"); \
-..	page,1\
+..  <-[w]\
+..	->[w],1\
 ..  header,Main\
 ..  #navbar,--1(page_1)--2(page_2)--3(page_3)--4(page_4)\
 ..  ->[p](PAN0_1)\
@@ -28,7 +31,8 @@ var def_SCRIPT =
 ..  		button(BU1_2),Connect, Out_0("OK"); \
 ..  	<-[c]\
 ..  <-[p]\
-..	page,5\
+..  <-[w]\
+..	->[w],5\
 ..  #header,is header 5\
 ..  navbar,--1(page_1)--2(page_2)--3(page_3)--4(page_4)\
 ..  ->[c],Connection Config\
@@ -44,11 +48,13 @@ var def_SCRIPT =
 ..  	button(BU2_1),Save, SYS_LOOP_START(); \
 ..  	button(BU2_2),Connect, Out_0("OK"); \
 ..  <-[c]\
+..  <-[w]\
 ';
 
 var ggg = 
 '\
-..	page,1\
+..	->[w],1\
+..  button(xxBU1),OK, Page_change("page_3");\
 ..  label,This is a label\
 ..  ->[c],checkbox\
 ..  ->[c],checkbox\
@@ -98,6 +104,7 @@ var ggg =
 ..			<-[d]\
 ..		<-[t]\
 ..  <-[c]\
+..  <-[w]\
 ..  ';
 
 
@@ -108,7 +115,7 @@ var ggg =
 
 
 
-//..  page,1\
+//..  ->[w],1\
 //..  header,text\
 //..  navbar,--name1(href1)--name2(href2)\
 

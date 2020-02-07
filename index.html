@@ -27,201 +27,28 @@
 	<script src="js/mqtt.js"></script>	
 	<!--..................-->	
 
-	
-
-	
-
-
-	
-	
-	
-	
-	<!--
+<!--
 <script src="js/dygraph-combined.js"></script>
-  -->
-
+-->
+<!-- ####################################################################################### -->
 	
 <script>
 $( document ).on( "mobileinit", function() { 
 console.log("*** mobileinit:1");
 console.log("*** mobileinit:0");
 });
-
-
-
-function SYS_LOOP_START(){
-	SYS_STEP = 0; setTimeout(SYS_LOOP, 1);
-}
-
-function SYS_INIT() {
-	//$("#Password_Button").button('enable');
-	//$("#Password_Input").textinput('enable');
-	//$("#video_Button").button('enable');
-	//$.mobile.changePage("#page_2");
-	//Disconnect();
-}
-
-
-// This function is called when the intial connect request failed.
-
-
-
-
-
-
-
-
-
-var SYS_STEP = 0;
-function SYS_LOOP() {
-    switch (SYS_STEP) {
-    case 0:
-		console.log("SYS_LOOP:0");
-		//Connect_Status = 0;
-		
-	
-		MQTT_Connect();
-		
-		
-		SYS_STEP = 1; setTimeout(SYS_LOOP, 1);
-        break;
-    case 1:
-		console.log("SYS_LOOP:1");
-		SYS_STEP = 1; setTimeout(SYS_LOOP, 500);		
-        break;									
-    case 2:
-		console.log("SYS_LOOP:2");
-		client.subscribe("99/0");
-		SYS_STEP = 3; setTimeout(SYS_LOOP, 1);
-		break;		
-    case 3:
-		console.log("SYS_LOOP:3");
-		SYS_STEP = 3; setTimeout(SYS_LOOP, 500);	
-		break;
-    case 4:
-		console.log("SYS_LOOP:4");
-		console.log(Script_Data);
-		GUI_Processor(Script_Data);
-		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
-		break;
-    case 5:
-		console.log("SYS_LOOP:5");
-		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
-		break;
-    default:
-        break;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//#####################################################################
 $( document ).on( "pagecreate", function() {
-console.log("*** pagecreate:1");
-
-
-
-/**
-	//#--------------------------------------------
-		//if (java && java.net)
-		//ip = ''+java.net.InetAddress.getLocalHost().getHostAddress();
-		//else ip = 'unknown';
-	//#--------------------------------------------
-
-	**/
-
-
-	$( "#theme-selector input" ).on( "change", function( event ) {
-		var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
-		console.log(themeClass);
-		Theme_Change(themeClass);
-	});
-
-
-
-
-
-	$( "#opt-navbars input" ).on( "change", function( event ) {
-		if ( $( "#show" ).prop( "checked" ) ) {
-			$( "#testpage .ui-navbar" ).show();
-			$( "#testpage .ui-footer h4" ).hide();
-		} else if ( $( "#hide" ).prop( "checked" ) ) {
-			$( "#testpage .ui-navbar" ).hide();
-			$( "#testpage .ui-footer h4" ).show();
-		}
-	});
-	$( "#opt-shadow input" ).on( "change", function( event ) {
-		if ( $( "#on" ).prop( "checked" ) ) {
-			$( "#testpage" ).removeClass( "noshadow" );
-		} else if ( $( "#off" ).prop( "checked" ) ) {
-			$( "#testpage" ).addClass( "noshadow" );
-		}
-	});
-	$( "#opt-iconshadow input" ).on( "change", function( event ) {
-		if ( $( "#off1" ).prop( "checked" ) ) {
-			$( "#testpage" ).removeClass( "ui-shadow-icon" );
-		} else if ( $( "#on1" ).prop( "checked" ) ) {
-			$( "#testpage" ).addClass( "ui-shadow-icon" );
-		}
-	});
-	$( "#opt-gradient input" ).on( "change", function( event ) {
-		if ( $( "#off2" ).prop( "checked" ) ) {
-			$( "#testpage" ).addClass( "nogradient" );
-		} else if ( $( "#on2" ).prop( "checked" ) ) {
-			$( "#testpage" ).removeClass( "nogradient" );
-		}
-	});
-	$( "#opt-highlight input" ).on( "change", function( event ) {
-		if ( $( "#off3" ).prop( "checked" ) ) {
-			$( "#testpage" ).addClass( "nohighlight" );
-		} else if ( $( "#on3" ).prop( "checked" ) ) {
-			$( "#testpage" ).removeClass( "nohighlight" );
-		}
-	});
+	console.log("*** pagecreate:1");
 	console.log("*** pagecreate:0");
 });
-function Out_0(data){
-	console.log(data +" ->> Out_0");
-	  message = new Paho.MQTT.Message(data);
-  message.destinationName = "0/0";
-  client.send(message);
-}
-
 //#####################################################################
-// 111
-//#####################################################################
-
 $(document).on('pagebeforecreate',"#page_1", function(){
-
 	console.log("*** pagebeforecreate:1:page_1");
-	
 	GUI_Processor(def_SCRIPT);
 	GUI_Processor(ggg);
-	
-
-/**
-rrr = '';
-
-	rrr += '</div>';
-
-	$('[data-role="content_1"]').append(rrr);
-**/
-
 	console.log("*** pagebeforecreate:0:page_1");
 });	
-
-
-
 $(document).on('pagebeforecreate',"#page_2", function(){    
 	console.log("*** pagebeforecreate:1:page_2");
 	console.log("*** pagebeforecreate:0:page_2");
@@ -238,10 +65,7 @@ $(document).on('pagebeforecreate',"#page_5", function(){
 	console.log("*** pagebeforecreate:1:page_5");
 	console.log("*** pagebeforecreate:0:page_5");
 });
-
-
-
-
+//#####################################################################
 $(document).on("pageinit","#page_1",function(){
 	console.log("*** pageinit:1:page_1");
 	console.log("*** pageinit:0:page_1");
@@ -262,19 +86,8 @@ $(document).on("pageinit","#page_5",function(){
 	console.log("*** pageinit:1:page_5");
 	console.log("*** pageinit:0:page_5");
 });	
-
-
-
-
-
-
-//<a href="tryit.asp-filename=tryjqmob_pages.html#page_4">Go to Page 4</a>
-
+//#####################################################################
 </script>
-
-
-
-	
 </head>
 <body>
 

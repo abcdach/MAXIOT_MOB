@@ -4,18 +4,7 @@
 
 function GUI_Processor(isDATA){
 
-	var isCODE = isDATA.replace(/(\r\n|\n|\r)/gm, "");
-		isCODE = isDATA.replace(/(")/gm, "'");
-		isCODE = isCODE.split('..')
-		
 
-	//console.log(isCODE);	
-		
-		
-	var Conf = isCODE;
-
-	
-	var Conf_Len = Conf.length;
 	
 
 	
@@ -26,7 +15,7 @@ function GUI_Processor(isDATA){
 	var isJAVA = '';
 	
 	var isPage = '';
-	var isPage_ALD = '';
+	//var isPage_ALD = '';
 	
 	var grid_start = 0;
 	var grid_num   = 0;
@@ -36,18 +25,39 @@ function GUI_Processor(isDATA){
 	
 	var collapsible_status = 0;
 	var panel_status = 0;
+
+	//var isDataRole = 'content_1'
 	
 	
-	
-	var isDataRole = 'content_1'
 	
 	var i,b; 
 	var select = ""; var select_id = ""
 	var p=['','','','','','','','','','','','','','','','','','',''];
 	
+	
+	
+		//var isCODE = isDATA.replace(/(\r\n|\n|\r)/gm, "");
+		//isCODE = isDATA.replace(/(")/gm, "'");
+		//isCODE = isCODE.split('..')'
+		
+
+	//console.log(isCODE);	
+		
+		
+	//var Conf = isCODE;
+
+	
+	//var Conf_Len = Conf.length;		
+		
+
+	//console.log(isCODE);	
+		
+	var Conf = isDATA.split('..');
+	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
 		Conf[i] = Conf[i].trim();
 		Conf[i] = Conf[i].replace(/(\r\n|\n|\r)/gm, "");
+		Conf[i] = Conf[i].replace(/(")/gm, "'");
 		Conf[i] = Conf[i].trim();
 	}console.log(Conf);
 	for (i = 0; i < Conf_Len; i++) {
@@ -55,14 +65,7 @@ function GUI_Processor(isDATA){
 		
 		var Conf_Spl = Conf[i].split(',');
 		var Conf_Spl_Len = Conf_Spl.length;
-		
-		//console.log("Conf_Spl -> " + Conf_Spl);
-		//console.log("[0] : " + Conf_Spl[0]);
-		//console.log("[0] : " + Conf_Spl[1]);
-		//console.log("[0] : " + Conf_Spl[2]);
-		//console.log("[0] : " + Conf_Spl[3]);
-		
-		
+			
 		var isID  = "E"+i;
 		var isCMD = Conf_Spl[0].trim();
 		var isTemp2 = isCMD.split('(');
@@ -88,20 +91,27 @@ function GUI_Processor(isDATA){
 		
 		
 		
-			case "page":
+			case "->[w]":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
 				isPage = p[1];
-				if(isPage_ALD !== isPage){
-					$('[data-role="content_'+isPage_ALD+'"]').append(isHTML_CONTENT);
-					JAVA_APPEND("page_"+isPage_ALD,"content_"+isPage_ALD,isJAVA);
-					isJAVA = ''; 
-					isHTML = ''; 
-					isHTML_PANEL   = '';  
-					isHTML_CONTENT = '';
-					isPage_ALD = isPage;
-				}
-				break;	
 
+				isJAVA = ''; 
+				isHTML = ''; 
+				isHTML_PANEL   = '';  
+				isHTML_CONTENT = '';
+
+				break;	
+			case "<-[w]":
+
+				if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
+				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
+				isJAVA = ''; 
+				isHTML = ''; 
+				isHTML_PANEL   = '';  
+				isHTML_CONTENT = '';
+
+				break;
+				
 			case "header":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Header"+isPage;
 				//$("#page_"+isPage+" h3 #MyHeader_Text").text(p[1]);
@@ -302,7 +312,7 @@ function GUI_Processor(isDATA){
 				if(p[1]==='v'){isName = "radio-choice-v-2"; isDataType = '';}
 				if(p[1]==='h'){isName = "radio-choice-h-2"; isDataType = 'data-type="horizontal"';}
 				
-				isHTML = '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				isHTML += '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
 				//List
 				var pT = p[2].split('--');
 				for (b = 0; b < pT.length; b++){
@@ -341,7 +351,7 @@ function GUI_Processor(isDATA){
 				if(p[1]==='v'){isName = isID+'_'+b; isDataType = '';}
 				if(p[1]==='h'){isName = isID+'_'+b; isDataType = 'data-type="horizontal"';}
 				
-				isHTML = '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				isHTML += '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
 				//List
 				var pT = p[2].split('--');
 				for (b = 0; b < pT.length; b++){
@@ -412,7 +422,7 @@ function GUI_Processor(isDATA){
 			case "->[d]":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				isHTML += '<div id="'+isID+'" '+p[1]+'>';
-				console.log(isHTML);
+				//console.log(isHTML);
 				break;
 
 			case "<-[d]":
@@ -499,13 +509,18 @@ function GUI_Processor(isDATA){
 		{
 			isHTML_CONTENT += isHTML;
 		}
-		isHTML='';
+		//isHTML='';
 
 	}
-	
+	//if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage_ALD+'"]').append(isHTML_CONTENT);
+	//if(isJAVA.length>0)JAVA_APPEND("page_"+isPage_ALD,"content_"+isPage_ALD,isJAVA);
+	//isJAVA = ''; 
+	//isHTML = ''; 
+	//isHTML_PANEL   = '';  
+	//isHTML_CONTENT = '';
 
-	$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
-	JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
+	//$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
+	//JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
 //#--------------------------------------------	
 
 }
