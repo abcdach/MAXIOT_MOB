@@ -35,7 +35,7 @@ function SYS_LOOP() {
 		break;
     case 5:
 		console.log("SYS_LOOP:5");
-		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
+		//SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
 		break;
     default:
         break;
@@ -80,7 +80,8 @@ function onMessageArrived(message) {
 	var isData  = message.payloadString;
 	var isTopic = message.topic;
 	
-	//elem.dispatchEvent(event);
+	console.log('Topic(' +isTopic+ ') = ' + isData);  
+	
 
 		switch(isTopic) {
 		
@@ -89,20 +90,18 @@ function onMessageArrived(message) {
 				GUI_Processor(isData);
 				SYS_STEP ++;
 				break;
-				
+			
 			case '0':
-				console.log('Topic(' +isTopic+ ') = ' + isData);
-				document.body.dispatchEvent(new CustomEvent("hello", { detail: {data: isData} }));  
 				Dispatch_Event("In_0",isData);
 				break;
 			case '1':
-				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				Dispatch_Event("In_1",isData);	
 				break;
 			case '2':
-				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				Dispatch_Event("In_2",isData);	
 				break;
 			case '3':
-				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				Dispatch_Event("In_3",isData);	
 				break;
 				
 			default:
