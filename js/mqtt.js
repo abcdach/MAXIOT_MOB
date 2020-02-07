@@ -30,8 +30,7 @@ function SYS_LOOP() {
 		break;
     case 4:
 		console.log("SYS_LOOP:4");
-		//console.log(Script_Data);
-		GUI_Processor(Script_Data);
+		client.subscribe("0");
 		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
 		break;
     case 5:
@@ -46,7 +45,6 @@ function SYS_LOOP() {
 //#####################################################################
 var client;
 var Connect_Status = 0;
-var Script_Data = '';
 
 function MQTT_Connect(){
 	console.log("MQTT_Connect");
@@ -76,14 +74,35 @@ function onFailure(err) {
 	console.log("onFailure : " + err.errorMessage);
 }
 function onMessageArrived(message) {
-  Script_Data = message.payloadString;
-  SYS_STEP ++;
-  console.log("onMessageArrived:"+Script_Data);
-  console.log("onMessageArrived:"+message.destinationName);
-  console.log("onMessageArrived:"+message.topic);
-  console.log("onMessageArrived:"+message.qos);
-  console.log("onMessageArrived:"+message.retained);
-  console.log("onMessageArrived:"+message.duplicate);
+	var isData  = message.payloadString;
+	var isTopic = message.topic;
+
+		switch(isTopic) {
+		
+			case '99':
+				console.log(isData);
+				GUI_Processor(isData);
+				SYS_STEP ++;
+				break;
+				
+			case '0':
+				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				break;
+			case '1':
+				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				break;
+			case '2':
+				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				break;
+			case '3':
+				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				break;
+				
+			default:
+				break;
+		}
+		
+
 }
 //#####################################################################
 function Out_0(data){
