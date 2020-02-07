@@ -47,6 +47,7 @@ var def_SCRIPT =
 ..  	##,2 \
 ..  	button(BU2_1),Save, SYS_LOOP_START(); \
 ..  	button(BU2_2),Connect, Out_0("OK"); \
+.. event,In_0,Out_0(Value);\
 ..  <-[c]\
 ..  <-[w]\
 ';

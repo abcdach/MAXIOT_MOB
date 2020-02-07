@@ -133,6 +133,8 @@ function GUI_Processor(isDATA){
 				isHTML += HTML_Button(isID,p[1]);				
 				isJAVA += JAVA_Button_Click(isID,p[2]);
 				break;
+				
+			
 			
 			case "slider":
 			
@@ -405,8 +407,22 @@ function GUI_Processor(isDATA){
 				}
 				break;
 
+			case "event":
 
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Event";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";	
 
+				var Lim = 3;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}				
+				var is_JAVA = JAVA_Add_Event_Listener(p[1],p[2]);
+				is_JAVA = '<script>'+is_JAVA+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(is_JAVA);
+				break;	
+				
 			default:
 				break;
 		}

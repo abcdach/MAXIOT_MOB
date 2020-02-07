@@ -73,9 +73,14 @@ function onSuccess(resObj) {
 function onFailure(err) {
 	console.log("onFailure : " + err.errorMessage);
 }
+  
+  //let event = new Event("hello", {bubbles: true}); // (2)
+  
 function onMessageArrived(message) {
 	var isData  = message.payloadString;
 	var isTopic = message.topic;
+	
+	//elem.dispatchEvent(event);
 
 		switch(isTopic) {
 		
@@ -86,7 +91,9 @@ function onMessageArrived(message) {
 				break;
 				
 			case '0':
-				console.log('Topic(' +isTopic+ ') = ' + isData);	
+				console.log('Topic(' +isTopic+ ') = ' + isData);
+				document.body.dispatchEvent(new CustomEvent("hello", { detail: {data: isData} }));  
+				Dispatch_Event("In_0",isData);
 				break;
 			case '1':
 				console.log('Topic(' +isTopic+ ') = ' + isData);	
@@ -104,6 +111,9 @@ function onMessageArrived(message) {
 		
 
 }
+function Dispatch_Event(is_Name, is_Data){
+	document.body.dispatchEvent(new CustomEvent(is_Name, { detail: {data: is_Data} }));
+}
 //#####################################################################
 function Out_0(data){
 	console.log(data +" ->> Out_0");
@@ -111,7 +121,15 @@ function Out_0(data){
 	message.destinationName = "0/0";
 	client.send(message);
 }
+function Out_1(data){
+	console.log(data +" ->> Out_1");
+	message = new Paho.MQTT.Message(data);
+	message.destinationName = "1/1";
+	client.send(message);
+}
 //#####################################################################
+
+
 
 
 

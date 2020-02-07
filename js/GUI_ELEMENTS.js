@@ -82,7 +82,22 @@ function JAVA_Select_Change(is_ID,is_Script){
 	return SCR;
 }
 //##################################
+ function JAVA_Add_Event_Listener(is_Name,is_Script){
+	var SCR = ''
+	SCR +='\n'+ '	document.body.addEventListener("In_0", function(event) {';
+	SCR +='\n'+ '		var Value = event.detail.data;';
+	SCR +='\n'+ '		'+is_Script;
+	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';
+	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : '+is_Script+'" );';
+	SCR +='\n'+ '	});';
 
+	return SCR;
+}
+  //document.body.addEventListener("In_0", function(event) {
+	//var Value = event.detail.data;
+	//console.log("Event is called: 222 " + event.detail.data);
+  //});
+//################################## 
 function JAVA_APPEND(is_Page,is_Script){
 	var SCR = '';
 	SCR +='\n'+ '<script>';

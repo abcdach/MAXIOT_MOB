@@ -47,8 +47,32 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	console.log("*** pagebeforecreate:1:page_1");
 	GUI_Processor(def_SCRIPT);
 	GUI_Processor(ggg);
+	
+	
+	//var DDD = ''
+	//DDD +='\n'+ '<script>';
+	//DDD +='\n'+ 'function In_0(Data){';
+	//DDD +='\n'+ 'console.log("In_xxx(" +Data+ ")");}';
+	//DDD +='\n'+ '<\/script>';
+	//$('[data-role="IS_JAVA_SCRIPT"]').append(DDD);
+
+  //document.addEventListener("hello", function(event) { // (1)
+    //alert("Hello from " + event.target.tagName); // Hello from H1
+  //});
+
+
+  //document.body.addEventListener("In_0", function(event) {
+	//console.log("Event is called: 111 " + event.detail.data);
+  //});
+  
+
+	
 	console.log("*** pagebeforecreate:0:page_1");
 });	
+
+
+
+
 $(document).on('pagebeforecreate',"#page_2", function(){    
 	console.log("*** pagebeforecreate:1:page_2");
 	console.log("*** pagebeforecreate:0:page_2");
@@ -87,6 +111,10 @@ $(document).on("pageinit","#page_5",function(){
 	console.log("*** pageinit:0:page_5");
 });	
 //#####################################################################
+
+
+
+
 </script>
 </head>
 <body>
