@@ -79,8 +79,13 @@ function GUI_Processor(isDATA){
 				break;
 				
 			case "header":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Header"+isPage;
-				//$("#page_"+isPage+" h3 #MyHeader_Text").text(p[1]);
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]=isPage;
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				
+				//var isHeader += '<h1><span id="MyHeader_Text"></span>'+p[2]+'</h1>'; 
+				//$('[data-role="content_'+p[1]+'"]').append(isHeader);
+				$("#page_"+p[1]+" h1 #MyHeader_Text_"+p[1]).text(p[2]);
+				//console.log('');
 				break;	
 				
 			case "##":

@@ -1,53 +1,25 @@
 
 var def_SCRIPT =
 '\
-..	->[w],2\
-..  header,2\
-..  button,Save 2, Out_0("OK"); \
-..	<-[w]\
-..	->[w],3\
-..  header,3\
-..  button,Save 3, Out_0("OK"); \
-..	<-[w]\
-..	->[w],4\
-..  header,4\
-..  button,Save 4, Out_0("OK"); \
-..  <-[w]\
 ..	->[w],1\
-..  header,Main\
-..  #navbar,--1(page_1)--2(page_2)--3(page_3)--4(page_4)\
-..  ->[p](PAN0_1)\
-..  	->[c],Connection Config\
-..  		label,Host Name:\
-..  		input_text(IT1_1),http://maxh6/ \
-..  		label,Port:\
-..  		input_text(IT1_2),3004\
-..  		label,Device ID:\
-..  		input_text(IT1_3),1655\
-..  		label,Device Name:\
-..  		input_text(IT1_5),Mob_Test\
-..  		##,2 \
-..  		button(BU1_1),Save, Out_0("OK"); \
-..  		button(BU1_2),Connect, Out_0("OK"); \
-..  	<-[c]\
-..  <-[p]\
-..  <-[w]\
-..	->[w],5\
-..  #header,is header 5\
-..  navbar,--1(page_1)--2(page_2)--3(page_3)--4(page_4)\
+..  header,1,Main\
+..  navbar,--Main(page_1)--Options(page_2)--Device(page_3)\
+..	<-[w]\
+..	->[w],2\
+..  header,2,Options\
+..  navbar,--Main(page_1)--Options(page_2)--Device(page_3)\
 ..  ->[c],Connection Config\
 ..  	label,Host Name:\
-..  	input_text(IT5_1),http://maxh6/ \
+..  	input_text(IT2_1),http://maxh6/ \
 ..  	label,Port:\
-..  	input_text(IT5_2),3004\
+..  	input_text(IT2_2),3004\
 ..  	label,Device ID:\
-..  	input_text(IT5_3),1655\
+..  	input_text(IT2_3),1655\
 ..  	label,Device Name:\
-..  	input_text(IT5_5),Mob_Test\
+..  	input_text(IT2_5),Mob_Test\
 ..  	##,2 \
 ..  	button(BU2_1),Save, SYS_LOOP_START(); \
 ..  	button(BU2_2),Connect, Out_0("OK"); \
-.. event,In_0,Out_0(Value);\
 ..  <-[c]\
 ..  <-[w]\
 ';
@@ -66,6 +38,21 @@ var ggg =
 ..  	radio,h,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
 ..  	radio,v,--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);\
 ..  <-[c]\
+..  ->[p](PAN0_1)\
+..  	->[c],Connection Config\
+..  		label,Host Name:\
+..  		input_text(IT1_1),http://maxh6/ \
+..  		label,Port:\
+..  		input_text(IT1_2),3004\
+..  		label,Device ID:\
+..  		input_text(IT1_3),1655\
+..  		label,Device Name:\
+..  		input_text(IT1_5),Mob_Test\
+..  		##,2 \
+..  		button(BU1_1),Save, Out_0("OK"); \
+..  		button(BU1_2),Connect, Out_0("OK"); \
+..  	<-[c]\
+..  <-[p]\
 ..  ->[c],123 \
 ..  	##,2 \
 ..  	button(BU1),OK, Out_0("OK"); \
@@ -117,7 +104,7 @@ var ggg =
 
 
 //..  ->[w],1\
-//..  header,text\
+//..  header,1,text\
 //..  navbar,--name1(href1)--name2(href2)\
 
 
@@ -139,7 +126,7 @@ var ggg =
 //..  <-[t]
 //..  ->[d](PAN1)
 //..  <-[d]
-
+//..  event,In_0,Out_0(Value);\
 
 //  Put_Input("ID","text");		// input_text, input_password
 //  Get_Input("ID");			// input_text, input_password
@@ -148,7 +135,7 @@ var ggg =
 //  Put_Header(1,"Header")		// Put_Header(is_Page,is_Text)
 //  Panel_Open("ID");			// ->[p](ID)\
 //  Theme_Change(is_Theme);		// is_Theme = a, b, c, d, e
-
+//  Dispatch_Event(is_Name, is_Data)
 
 
 
