@@ -1,57 +1,25 @@
 
 
-
+var isID_Counter = 0;
 
 function GUI_Processor(isDATA){
 
-
-	
-
-	
 	var isHTML_PANEL = '';
 	var isHTML_CONTENT = '';
 	var isHTML_NAVBAR = '';
 	var isHTML = '';
 	var isJAVA = '';
-	
 	var isPage = '';
-	//var isPage_ALD = '';
-	
 	var grid_start = 0;
 	var grid_num   = 0;
 	var grid_cou   = 0;
 	var grid_add   = 0;
-
-	
 	var collapsible_status = 0;
 	var panel_status = 0;
-
-	//var isDataRole = 'content_1'
-	
-	
-	
 	var i,b; 
 	var select = ""; var select_id = ""
 	var p=['','','','','','','','','','','','','','','','','','',''];
-	
-	
-	
-		//var isCODE = isDATA.replace(/(\r\n|\n|\r)/gm, "");
-		//isCODE = isDATA.replace(/(")/gm, "'");
-		//isCODE = isCODE.split('..')'
-		
 
-	//console.log(isCODE);	
-		
-		
-	//var Conf = isCODE;
-
-	
-	//var Conf_Len = Conf.length;		
-		
-
-	//console.log(isCODE);	
-		
 	var Conf = isDATA.split('..');
 	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
@@ -66,7 +34,7 @@ function GUI_Processor(isDATA){
 		var Conf_Spl = Conf[i].split(',');
 		var Conf_Spl_Len = Conf_Spl.length;
 			
-		var isID  = "E"+i;
+		var isID  = "E"+isID_Counter; isID_Counter++;
 		var isCMD = Conf_Spl[0].trim();
 		var isTemp2 = isCMD.split('(');
 		if(isTemp2.length > 1){
@@ -89,8 +57,6 @@ function GUI_Processor(isDATA){
 
 		switch(isCMD) {
 		
-		
-		
 			case "->[w]":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
 				isPage = p[1];
@@ -104,7 +70,7 @@ function GUI_Processor(isDATA){
 			case "<-[w]":
 
 				if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
-				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
+				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,isJAVA);
 				isJAVA = ''; 
 				isHTML = ''; 
 				isHTML_PANEL   = '';  
@@ -129,18 +95,15 @@ function GUI_Processor(isDATA){
 				break;				
 
 			case "->[c]":
-			case ">>":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
 				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
 				isHTML += '<h4>'+p[1]+'</h4>';
 				collapsible_status = 1;
 				break;
 			case "<-[c]":				
-			case "<<":
 				isHTML += '</div>';
 				collapsible_status = 0;
 				break;	
-
 
 			case "label":
 			
@@ -154,8 +117,6 @@ function GUI_Processor(isDATA){
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";					
 				isHTML += '<h'+p[1]+' class="ui-bar ui-bar-a">'+p[2]+'</h'+p[1]+'>'			
 				break;
-				
-				
 			
 			case "button":
 
@@ -262,17 +223,12 @@ function GUI_Processor(isDATA){
 				}
 				isJAVA += JAVA_Select_Change(isID,p[2]);
 				break;			
-						
-
-
 
 			case "navbar":
 			
-				isHTML_NAVBAR = '<ul>';
-				
+				isHTML_NAVBAR = '<ul>';	
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
-				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
-				
+
 				//List
 				var pT = p[1].split('--');
 				for (b = 0; b < pT.length; b++){
@@ -283,21 +239,10 @@ function GUI_Processor(isDATA){
 							var pT0 = pTT[0].trim();
 							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
 							isHTML_NAVBAR += '<li><a href="#'+pT1+'" id="'+isID+'_'+b+'">'+pT0+'</a></li>';
-							//isHTML += '<option value="'+pT1+'">'+pT0+'</option>';
-							//console.log("[" + pT0 + "]["+ pT1 + "]");
 						}
 					}
 				}isHTML_NAVBAR += '</ul>';			
 				$('[data-role="navbar_'+isPage+'"]').append(isHTML_NAVBAR);
-				//console.log(isHTML_NAVBAR);
-				//java Script
-				//var Lim = 3;
-				//if(Conf_Spl_Len > Lim){
-					//for (b = Lim; b < Conf_Spl_Len; b++){
-						//p[Lim-1]+=','+Conf_Spl[b];
-					//}
-				//}
-				//isJAVA += JAVA_Select_Change(isID,p[2]);
 				break;	
 
 
@@ -327,7 +272,7 @@ function GUI_Processor(isDATA){
 						}
 					}
 				}isHTML += '</fieldset>';			
-				//console.log(isHTML);
+
 				//java Script
 				var Lim = 4;
 				if(Conf_Spl_Len > Lim){
@@ -336,7 +281,6 @@ function GUI_Processor(isDATA){
 					}
 				}
 				isJAVA += JAVA_Radio_Change(isID,p[3]);
-				//console.log(isJAVA);
 				break;
 				
 
@@ -366,7 +310,6 @@ function GUI_Processor(isDATA){
 						}
 					}
 				}isHTML += '</fieldset>';			
-				//console.log(isHTML);
 				//java Script
 				var Lim = 4;
 				if(Conf_Spl_Len > Lim){
@@ -375,7 +318,6 @@ function GUI_Processor(isDATA){
 					}
 				}
 				isJAVA += JAVA_Radio_Change(isID,p[3]);
-				//console.log(isJAVA);
 				break;
 
 
@@ -383,12 +325,7 @@ function GUI_Processor(isDATA){
 			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
-				
-				//var isName = "";isHTML = '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
-				//var isDataType = "";
-				//if(p[1]==='v'){isName = isID+'_'+b; isDataType = '';}
-				//if(p[1]==='h'){isName = isID+'_'+b; isDataType = 'data-type="horizontal"';}
-				
+
 				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
 				isHTML += '<div data-role="navbar">';
 				isHTML += '<ul>';
@@ -406,29 +343,15 @@ function GUI_Processor(isDATA){
 						}
 					}
 				}isHTML += '</ul></div>';	
-
-				//console.log(isHTML);
-				//java Script
-				//var Lim = 4;
-				//if(Conf_Spl_Len > Lim){
-					//for (b = Lim; b < Conf_Spl_Len; b++){
-						//p[Lim-1]+=','+Conf_Spl[b];
-					//}
-				//}
-				//isJAVA += JAVA_Radio_Change(isID,p[3]);
-				//console.log(isJAVA);
 				break;
 
 			case "->[d]":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				isHTML += '<div id="'+isID+'" '+p[1]+'>';
-				//console.log(isHTML);
 				break;
-
 			case "<-[d]":
 				isHTML += '</div>';
 				break;
-
 
 			case "->[p]":
 			case "[>]":
@@ -501,26 +424,13 @@ function GUI_Processor(isDATA){
 		}
 
 		
-		if( panel_status === 1)
-		{ 
+		if( panel_status === 1){ 
 			isHTML_PANEL += isHTML;
 		}
-		else
-		{
+		else{
 			isHTML_CONTENT += isHTML;
 		}
-		//isHTML='';
-
 	}
-	//if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage_ALD+'"]').append(isHTML_CONTENT);
-	//if(isJAVA.length>0)JAVA_APPEND("page_"+isPage_ALD,"content_"+isPage_ALD,isJAVA);
-	//isJAVA = ''; 
-	//isHTML = ''; 
-	//isHTML_PANEL   = '';  
-	//isHTML_CONTENT = '';
-
-	//$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
-	//JAVA_APPEND("page_"+isPage,"content_"+isPage,isJAVA);
 //#--------------------------------------------	
 
 }

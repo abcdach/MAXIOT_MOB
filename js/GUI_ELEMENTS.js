@@ -83,8 +83,7 @@ function JAVA_Select_Change(is_ID,is_Script){
 }
 //##################################
 
-function JAVA_APPEND(is_Page,is_DataRole,is_Script){
-
+function JAVA_APPEND(is_Page,is_Script){
 	var SCR = '';
 	SCR +='\n'+ '<script>';
 	SCR +='\n'+ '$(document).on("pageinit","#'+is_Page+'",function(){';
@@ -92,12 +91,9 @@ function JAVA_APPEND(is_Page,is_DataRole,is_Script){
 	SCR +='\n'+  '	'
 	SCR +='\n'+ '});';
 	SCR +='\n'+ '</script>';
-	$('[data-role="content_1"]').append(SCR);
-	//$('[data-role="'+is_DataRole+'"]').append(SCR);
+	$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 }
 //##################################
-
-
 
 
 

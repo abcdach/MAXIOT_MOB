@@ -21,7 +21,7 @@ function SYS_LOOP() {
         break;									
     case 2:
 		console.log("SYS_LOOP:2");
-		client.subscribe("99/0");
+		client.subscribe("99");
 		SYS_STEP = 3; setTimeout(SYS_LOOP, 1);
 		break;		
     case 3:
@@ -30,7 +30,7 @@ function SYS_LOOP() {
 		break;
     case 4:
 		console.log("SYS_LOOP:4");
-		console.log(Script_Data);
+		//console.log(Script_Data);
 		GUI_Processor(Script_Data);
 		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
 		break;
