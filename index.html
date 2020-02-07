@@ -43,8 +43,8 @@
 	
 <script>
 $( document ).on( "mobileinit", function() { 
-console.log("mobileinit:1");
-console.log("mobileinit:0");
+console.log("*** mobileinit:1");
+console.log("*** mobileinit:0");
 });
 
 
@@ -127,6 +127,10 @@ function SYS_LOOP() {
 
 
 $( document ).on( "pagecreate", function() {
+console.log("*** pagecreate:1");
+
+
+
 /**
 	//#--------------------------------------------
 		//if (java && java.net)
@@ -184,45 +188,8 @@ $( document ).on( "pagecreate", function() {
 			$( "#testpage" ).removeClass( "nohighlight" );
 		}
 	});
+	console.log("*** pagecreate:0");
 });
-
-//#####################################################################
-// 111
-//#####################################################################
-
-$(document).on('pagebeforecreate',"#page_1", function(){
-
-	console.log("pagebeforecreate page_1 start");
-	
-	GUI_Processor(def_SCRIPT);
-	GUI_Processor(ggg);
-	
-
-/**
-rrr = '';
-//rrr += '<form class="ui-mini">';
-	rrr += '<div class="ui-field-contain" id="theme-selector">';
-		rrr += '<fieldset data-role="controlgroup" data-type="horizontal">';
-			rrr += '<legend>Theme:</legend>';
-			rrr += '<label for="a">A</label>';
-			rrr += '<input type="radio" name="theme" id="a" checked>';
-			rrr += '<label for="b">B</label>';
-			rrr += '<input type="radio" name="theme" id="b">';
-			rrr += '<label for="c">C</label>';
-			rrr += '<input type="radio" name="theme" id="c">';
-			rrr += '<label for="d">D</label>';
-			rrr += '<input type="radio" name="theme" id="d">';
-			rrr += '<label for="e">E</label>';
-			rrr += '<input type="radio" name="theme" id="e">';
-		rrr += '</fieldset>';
-	rrr += '</div>';
-
-	$('[data-role="content_1"]').append(rrr);
-**/
-
-
-});	
-
 function Out_0(data){
 	console.log(data +" ->> Out_0");
 	  message = new Paho.MQTT.Message(data);
@@ -230,50 +197,74 @@ function Out_0(data){
   client.send(message);
 }
 
-$(document).on("pageinit","#page_1",function(){
+//#####################################################################
+// 111
+//#####################################################################
 
-	$('#is_listview').delegate('a', 'click', function () {
-		 console.log("Value = "+this.id);
-		 console.log("Value = "+this.value);
-    });
+$(document).on('pagebeforecreate',"#page_1", function(){
+
+	console.log("*** pagebeforecreate:1:page_1");
 	
+	GUI_Processor(def_SCRIPT);
+	GUI_Processor(ggg);
+	
+
+/**
+rrr = '';
+
+	rrr += '</div>';
+
+	$('[data-role="content_1"]').append(rrr);
+**/
+
+	console.log("*** pagebeforecreate:0:page_1");
 });	
 
 
 
-
-//#####################################################################
-// 222
-//
-//
-//#####################################################################
-
 $(document).on('pagebeforecreate',"#page_2", function(){    
-	console.log("pagebeforecreate:1:page_2");
-	//#--------------------------------------------
-		$("#theme_Day").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();
-			console.log("#theme_Day_click");			
-			theme_Selector("a");
-		});	
-	//#--------------------------------------------	
-		$("#theme_Night").click(function (e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();	
-			console.log("#theme_Night_click");
-			theme_Selector("b");   
-		});			
-	//#--------------------------------------------
-		$("#start_page3").click(function (e){
-			e.stopImmediatePropagation();
-			e.preventDefault();	
-			console.log("#start_page3_click");
-			SYS_INIT();
-		});
-	//#--------------------------------------------	
-	console.log("pagebeforecreate:0:page_2");
+	console.log("*** pagebeforecreate:1:page_2");
+	console.log("*** pagebeforecreate:0:page_2");
 });
+$(document).on('pagebeforecreate',"#page_3", function(){    
+	console.log("*** pagebeforecreate:1:page_3");
+	console.log("*** pagebeforecreate:0:page_3");
+});
+$(document).on('pagebeforecreate',"#page_4", function(){    
+	console.log("*** pagebeforecreate:1:page_4");
+	console.log("*** pagebeforecreate:0:page_4");
+});
+$(document).on('pagebeforecreate',"#page_5", function(){    
+	console.log("*** pagebeforecreate:1:page_5");
+	console.log("*** pagebeforecreate:0:page_5");
+});
+
+
+
+
+$(document).on("pageinit","#page_1",function(){
+	console.log("*** pageinit:1:page_1");
+	console.log("*** pageinit:0:page_1");
+});	
+$(document).on("pageinit","#page_2",function(){
+	console.log("*** pageinit:1:page_2");
+	console.log("*** pageinit:0:page_2");
+});	
+$(document).on("pageinit","#page_3",function(){
+	console.log("*** pageinit:1:page_3");
+	console.log("*** pageinit:0:page_3");
+});	
+$(document).on("pageinit","#page_4",function(){
+	console.log("*** pageinit:1:page_4");
+	console.log("*** pageinit:0:page_4");
+});	
+$(document).on("pageinit","#page_5",function(){
+	console.log("*** pageinit:1:page_5");
+	console.log("*** pageinit:0:page_5");
+});	
+
+
+
 
 
 

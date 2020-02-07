@@ -9,7 +9,7 @@ function GUI_Processor(isDATA){
 		isCODE = isCODE.split('..')
 		
 
-	console.log(isCODE);	
+	//console.log(isCODE);	
 		
 		
 	var Conf = isCODE;
@@ -397,7 +397,7 @@ function GUI_Processor(isDATA){
 					}
 				}isHTML += '</ul></div>';	
 
-				console.log(isHTML);
+				//console.log(isHTML);
 				//java Script
 				//var Lim = 4;
 				//if(Conf_Spl_Len > Lim){
