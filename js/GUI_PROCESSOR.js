@@ -13,14 +13,15 @@
 //..input_text(ID),text										//
 //..label(ID),text											//
 //..##,2 ..##,3 ..##,4 ..##,5								// grid
-//..->[w],1     {{GUI Content}}  ..<-[w]					//
-//..->[c],name  {{GUI Content}}  ..<-[c]					// collapsible
-//..->[p](PAN1) {{GUI Content}}  ..<-[p]					//
+//..[w],1     ..{ GUI Content ..}							//
+//..[c],name  ..{ GUI Content ..}							// collapsible
+//..[p](PAN1) ..{ GUI Content ..}							//
 //-------------------------------------------				//panel start java[ Panel_Open("ID"); ]											//panel stop
-//..->[t](ID),v,--name2(ID_1)--name3(ID_2)					//
-//..  ->[d](ID_1){{GUI Content}}..<-[d]						//
-//..  ->[d](ID_2){{GUI Content}}..<-[d]						//
-//..<-[t]													//
+//..[t](ID),v,--name2(ID_1)--name3(ID_2)
+//..{ 														//
+//..  [d](ID_1)..{ GUI Content ..}							//
+//..  [d](ID_2)..{ GUI Content ..}							//
+//..}														//
 //-------------------------------------------				//
 //..  event,In_0,Out_0(Value);								//
 
@@ -30,6 +31,10 @@
 var isID_Counter = 0;
 
 function GUI_Processor(isDATA){
+	
+	var Current_Mark = '';
+	var Mark_Pointer =  0;
+	var Mark_Steck   = ['','','','','','','','','','','','','','','','','','',''];
 
 	var isHTML_PANEL = '';
 	var isHTML_CONTENT = '';
@@ -80,6 +85,32 @@ function GUI_Processor(isDATA){
 		
 		
 		console.log("CMD : "+isCMD+"("+isID+")");
+		
+		
+		if(isCMD === "{"){
+			if(Current_Mark === 'w')Mark_Pointer = 0;
+			Mark_Steck[Mark_Pointer] = Current_Mark;
+			Mark_Pointer ++;
+			//console.log("********   Current_Mark : "+Current_Mark);
+			//console.log("********   Mark_Pointer : "+Mark_Pointer);
+			//console.log("********   Mark_Steck : "+Mark_Steck);			
+		}
+
+		if(isCMD === "}"){
+			if(Mark_Pointer > 0){
+				Mark_Pointer --;
+				Current_Mark = Mark_Steck[Mark_Pointer];
+				switch(Current_Mark){
+					case "w": isCMD = "<-[w]"; break;
+					case "c": isCMD = "<-[c]"; break;
+					case "p": isCMD = "<-[p]"; break;
+					case "t": isCMD = "<-[t]"; break;
+					case "d": isCMD = "<-[d]"; break;
+					default: break;
+				}
+			}			
+		}
+		
 
 		isHTML = '';
 
@@ -92,8 +123,10 @@ function GUI_Processor(isDATA){
 		}
 
 		switch(isCMD) {
-		
-			case "->[w]":
+			
+
+			case "[w]":
+				Current_Mark = 'w';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
 				isPage = p[1];
 
@@ -135,7 +168,8 @@ function GUI_Processor(isDATA){
 				grid_add   = 0;			
 				break;				
 
-			case "->[c]":
+			case "[c]":
+				Current_Mark = 'c';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
 				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
 				isHTML += '<h4>'+p[1]+'</h4>';
@@ -271,7 +305,7 @@ function GUI_Processor(isDATA){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = isID;
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
 				
-				isHTML_NAVBAR = '<ul>';					
+				isHTML_NAVBAR = '<ul id="'+isID+'" >';					
 				//List
 				var pT = p[2].split('--');
 				for (b = 0; b < pT.length; b++){
@@ -364,8 +398,8 @@ function GUI_Processor(isDATA){
 				break;
 
 
-			case "->[t]":
-			
+			case "[t]":
+				Current_Mark = 't';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
 
@@ -388,7 +422,8 @@ function GUI_Processor(isDATA){
 				}isHTML += '</ul></div>';	
 				break;
 
-			case "->[d]":
+			case "[d]":
+				Current_Mark = 'd';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				isHTML += '<div id="'+isID+'" '+p[1]+'>';
 				break;
@@ -396,14 +431,13 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;
 
-			case "->[p]":
-			case "[>]":
+			case "[p]":
+				Current_Mark = 'p';
 				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
 				isHTML_PANEL ='';
 				panel_status = 1;
 				break;
 			case "<-[p]":
-			case "[<]":
 				isHTML += '</div>';
 				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
 				panel_status = 0;

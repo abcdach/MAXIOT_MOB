@@ -1,15 +1,23 @@
 
 
-//  Put_Input("ID","text");		// input_text, input_password
-//  Get_Input("ID");			// input_text, input_password
-// 	Put_Slider("ID","text");	// slider
-// 	Get_Slider("ID");			// slider
-//  Put_Header(1,"text")		// Put_Header(is_Page,is_Text)
-//  Panel_Open("ID");			// ->[p](ID)\
-//  Theme_Change(Theme);		// Theme = a, b, c, d, e
-//  Dispatch_Event(Name,Data);  //
+//  Put_Input("ID","text");			// input_text, input_password
+//  Get_Input("ID");				// input_text, input_password
+// 	Put_Slider("ID","text");		// slider
+// 	Get_Slider("ID");				// slider
+//  Put_Header(1,"text")			// Put_Header(is_Page,is_Text)
+//  Panel_Open("ID");				// ->[p](ID)\
+//  Theme_Change("Theme");			// Theme = a, b, c, d, e
+//  Dispatch_Event("Name","Data");  //
+//  Element_Hide("ID");				// 
+//  Element_Show("ID");				// 
 
+function Element_Hide(is_ID) {
+	$('#'+is_ID).hide();
+}
 
+function Element_Show(is_ID) {
+	$('#'+is_ID).show();
+}
 //##################################
 function HTML_Input_Text(is_ID,is_Value) {
 	return('<input id="'+is_ID+'" type="text" value="'+is_Value+'"/>');
