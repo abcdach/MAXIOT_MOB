@@ -20,7 +20,7 @@
 	<style>#g1 {width:100px; height:80px; display: inline-block;margin: 1em;}</style>		
 	<!--..................-->
 	<script src="js/GUI_ELEMENTS.js"></script>
-	<script src="js/GUI_SCRIPT.js"></script>
+	<script src="GUI_SCRIPT.dg"></script>
 	<script src="js/GUI_PROCESSOR.js"></script>
 	<!--..................-->
 	<script src="js/paho-mqtt-min.js"></script>
@@ -45,27 +45,12 @@ $( document ).on( "pagecreate", function() {
 //#####################################################################
 $(document).on('pagebeforecreate',"#page_1", function(){
 	console.log("*** pagebeforecreate:1:page_1");
-	GUI_Processor(def_SCRIPT);
-	GUI_Processor(ggg);
 	
-	
-	//var DDD = ''
-	//DDD +='\n'+ '<script>';
-	//DDD +='\n'+ 'function In_0(Data){';
-	//DDD +='\n'+ 'console.log("In_xxx(" +Data+ ")");}';
-	//DDD +='\n'+ '<\/script>';
-	//$('[data-role="IS_JAVA_SCRIPT"]').append(DDD);
-
-  //document.addEventListener("hello", function(event) { // (1)
-    //alert("Hello from " + event.target.tagName); // Hello from H1
-  //});
+console.log(START_SCRIPT);
 
 
-  //document.body.addEventListener("In_0", function(event) {
-	//console.log("Event is called: 111 " + event.detail.data);
-  //});
-  
-
+	GUI_Processor(START_SCRIPT);
+	GUI_Processor(IS_TEST_SCRIPT);
 	
 	console.log("*** pagebeforecreate:0:page_1");
 });	

@@ -1,5 +1,32 @@
 
 
+
+//..header,1,text											//
+//..navbar,1,--name1(ID_1)--name2(ID_1)						//
+//..checkbox(ID),v,--name1(val1)--name2(val2),Out_0(Value); //.. checkbox,v, .. checkbox,h,
+//..radio(ID),v,--name1(val1)--name2(val2)),Out_0(Value);	//.. radio,v, .. radio,h,
+//..select(ID),--name1(1)--name2(2),Out_0(Value);			//
+//..slider(ID),0,150,10,Out_0(Value);						//.. slider(ID),MIN,MAX,STEP,{{Java content}};
+//..button(ID),name,Out_0(Value);							//
+//..flip(ID),on(1),off(0),Out_0(Value);						//
+//..input_password(ID),text									//
+//..input_text(ID),text										//
+//..label(ID),text											//
+//..##,2 ..##,3 ..##,4 ..##,5								// grid
+//..->[w],1     {{GUI Content}}  ..<-[w]					//
+//..->[c],name  {{GUI Content}}  ..<-[c]					// collapsible
+//..->[p](PAN1) {{GUI Content}}  ..<-[p]					//
+//-------------------------------------------				//panel start java[ Panel_Open("ID"); ]											//panel stop
+//..->[t](ID),v,--name2(ID_1)--name3(ID_2)					//
+//..  ->[d](ID_1){{GUI Content}}..<-[d]						//
+//..  ->[d](ID_2){{GUI Content}}..<-[d]						//
+//..<-[t]													//
+//-------------------------------------------				//
+//..  event,In_0,Out_0(Value);								//
+
+
+
+
 var isID_Counter = 0;
 
 function GUI_Processor(isDATA){
@@ -24,9 +51,9 @@ function GUI_Processor(isDATA){
 	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
 		Conf[i] = Conf[i].trim();
-		Conf[i] = Conf[i].replace(/(\r\n|\n|\r)/gm, "");
+		//Conf[i] = Conf[i].replace(/(\r\n|\n|\r)/gm, "");
 		Conf[i] = Conf[i].replace(/(")/gm, "'");
-		Conf[i] = Conf[i].trim();
+		//Conf[i] = Conf[i].trim();
 	}console.log(Conf);
 	for (i = 0; i < Conf_Len; i++) {
 		
@@ -36,12 +63,21 @@ function GUI_Processor(isDATA){
 			
 		var isID  = "E"+isID_Counter; isID_Counter++;
 		var isCMD = Conf_Spl[0].trim();
+		
+		
+
 		var isTemp2 = isCMD.split('(');
 		if(isTemp2.length > 1){
-			isCMD = isTemp2[0].trim();
 			var isTemp4 = isTemp2[1].split(')');
-			isID = isTemp4[0].trim();
+			isID  = isTemp4[0].trim();
+			isCMD = isTemp2[0].trim();
+			isCMD = isCMD.replace(/(\r\n|\n|\r)/gm, "");
+			isCMD = isCMD.trim();
 		}
+		
+		
+		
+		
 		
 		console.log("CMD : "+isCMD+"("+isID+")");
 
@@ -232,10 +268,10 @@ function GUI_Processor(isDATA){
 				break;			
 
 			case "navbar":
-			
-				isHTML_NAVBAR = '<ul>';	
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = isID;
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
+				
+				isHTML_NAVBAR = '<ul>';					
 				//List
 				var pT = p[2].split('--');
 				for (b = 0; b < pT.length; b++){

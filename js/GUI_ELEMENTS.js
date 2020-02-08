@@ -1,5 +1,13 @@
 
 
+//  Put_Input("ID","text");		// input_text, input_password
+//  Get_Input("ID");			// input_text, input_password
+// 	Put_Slider("ID","text");	// slider
+// 	Get_Slider("ID");			// slider
+//  Put_Header(1,"text")		// Put_Header(is_Page,is_Text)
+//  Panel_Open("ID");			// ->[p](ID)\
+//  Theme_Change(Theme);		// Theme = a, b, c, d, e
+//  Dispatch_Event(Name,Data);  //
 
 
 //##################################
@@ -133,6 +141,12 @@ function Panel_Open(is_Value){
 function Put_Header(is_Page,is_Text){
 	$("#page_"+is_Page+" h1 #MyHeader_Text_"+is_Page).text(is_Text);
 }
+
+
+
+
+
+
 
 
 
