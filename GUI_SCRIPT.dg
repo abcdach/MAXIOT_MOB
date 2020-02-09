@@ -21,7 +21,7 @@ const START_SCRIPT =`
 		როგორიც
 	..}
 	..button,PopUp Open, Popup_Open('POP1_1');
-	..[pop](POP1_2),10px 20px
+	..[pop](isConfig_pop),10px 20px
 	..{
 		..label, Host Name:
 		..input_text, http://maxh6/
@@ -35,7 +35,7 @@ const START_SCRIPT =`
 		..button,Save,SYS_LOOP_START();
 		..button,Connect,Out_0("OK");
 	..}
-	..button,PopUp Open, Popup_Open('POP1_2');
+	..button,isConfig_pop, Popup_Open('isConfig_pop');
 ..}
 
 

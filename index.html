@@ -60,27 +60,6 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	GUI_Processor(START_SCRIPT);
 	GUI_Processor(IS_TEST_SCRIPT);
 	
-	
-	/**
-	rrr = '';
-	rrr += '<a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>';
-	rrr += '<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all  data-transition="flip"">';
-	    rrr += '<form>';
-	        rrr += '<div style="padding:10px 20px;">';
-	            rrr += '<h3>Please sign in</h3>';
-	            rrr += '<label for="un" class="ui-hidden-accessible">Username:</label>';
-	            rrr += '<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">';
-	            rrr += '<label for="pw" class="ui-hidden-accessible">Password:</label>';
-	            rrr += '<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a';
-	            rrr += '<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>';
-	        rrr += '</div>';
-	    rrr += '</form>';
-	rrr += '</div>';
-	$('[data-role="content_1"]').append(rrr);
-	**/
-	
-
-	
 	console.log("*** pagebeforecreate:0:page_1");
 });	
 
@@ -193,7 +172,7 @@ function disconnect_To_Server(){}
 <div data-role="page" id="page_1">
 	<div data-role="header">
 
-		<a href="#page_2" class="ui-btn  ui-icon-gear ui-btn-icon-notext ui-corner-all"></a>
+		<a href="#isConfig_pop" class="ui-btn  ui-icon-gear ui-btn-icon-notext ui-corner-all"></a>
 		<a onclick="Connect_To_Server()"  class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all">No text</a>
 		
 		<h1><span id="MyHeader_Text_1"></span></h1>

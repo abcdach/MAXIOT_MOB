@@ -11,7 +11,7 @@
 //  Element_Hide('ID');				// 
 //  Element_Show('ID');				// 
 //  Page_change('page_3');
-//  Popup_Open('ID');				// 
+//  Popup_Open('ID');				//"none","pop","fade","flip","turn","flow","slide","slide","slidefade","slidefade","slideup","slidedown"
 
 
 	//$('#item3').remove();

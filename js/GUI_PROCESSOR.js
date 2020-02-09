@@ -16,6 +16,7 @@
 //..[w],1     ..{ GUI Content ..}							//
 //..[c],name  ..{ GUI Content ..}							// collapsible
 //..[p](PAN1) ..{ GUI Content ..}							//
+//..[pop](POP1_2),10px 20px ..{ GUI Content ..}				//
 //-------------------------------------------				//panel start java[ Panel_Open("ID"); ]											//panel stop
 //..[t](ID),v,--name2(ID_1)--name3(ID_2)
 //..{ 														//
@@ -448,6 +449,8 @@ function GUI_Processor(isDATA){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
 				Current_Mark = 'pop';
 				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
+				isHTML += '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>';
+
 				isHTML += '<div style="padding:'+p[1]+';">';
 				break;
 			case "<-[pop]":
