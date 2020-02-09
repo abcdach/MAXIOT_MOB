@@ -5,6 +5,9 @@ const START_SCRIPT =`
 
 ..[w],1
 ..{
+	..##,2 
+	..button,Panel Open, Loader_Show('hiiiiiii');
+	..button,Panel Open, Loader_Hide();
 	..button,Panel Open, Panel_Open('PA1_1');
 	..[p](PA1_1)
 	..{

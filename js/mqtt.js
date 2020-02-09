@@ -10,7 +10,7 @@ var SYS_STEP = 0;
 function SYS_LOOP() {
     switch (SYS_STEP) {
     case 0:
-		console.log("SYS_LOOP:0");
+		console.log("SYS_LOOP:0");Loader_Show('Connecting');
 		//Connect_Status = 0;
 		MQTT_Connect();
 		SYS_STEP = 1; setTimeout(SYS_LOOP, 1);
@@ -34,7 +34,7 @@ function SYS_LOOP() {
 		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
 		break;
     case 5:
-		console.log("SYS_LOOP:5");
+		console.log("SYS_LOOP:5");Loader_Hide();
 		//SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
 		break;
     default:

@@ -12,12 +12,28 @@
 //  Element_Show('ID');				// 
 //  Page_change('page_3');
 //  Popup_Open('ID');				//"none","pop","fade","flip","turn","flow","slide","slide","slidefade","slidefade","slideup","slidedown"
+//  Loader_Show('Connecting');
+//  Loader_Hide();
 
 
 	//$('#item3').remove();
 	//$('#page1').page();
 	//$.mobile.changePage( url, { transition: "slideup" });
 	//$('#'+is_ID).animate({left: '250px'});
+	
+	
+
+function Loader_Hide() {
+	$.mobile.loading( "hide" );
+}
+function Loader_Show(is_Text) {
+	$.mobile.loading( 'show', {
+		text: is_Text,
+		textVisible: true,
+		theme: 'b',
+		html: ""
+	});
+}
 	
 function Popup_Open(is_ID) {
         $('#'+is_ID).popup("open",{ transition: "pop" }); 
