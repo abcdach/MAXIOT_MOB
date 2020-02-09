@@ -33,13 +33,13 @@ var isID_Counter = 0;
 
 function GUI_Processor(isDATA){
 	
-	var Current_Mark = '';
-	var Mark_Pointer =  0;
-	var Mark_Steck   = ['','','','','','','','','','','','','','','','','','',''];
-
-	var isHTML_PANEL = '';
+	var Current_Mark   = '';
+	var Mark_Pointer   = 0 ;
+	var Mark_Steck     = ['','','','','','','','','','','','','','','','','','',''];
+	var Tmp_JAVA       = '';
+	var isHTML_PANEL   = '';
 	var isHTML_CONTENT = '';
-	var isHTML_NAVBAR = '';
+	var isHTML_NAVBAR  = '';
 	var isHTML = '';
 	var isJAVA = '';
 	var isPage = '';
@@ -136,31 +136,24 @@ function GUI_Processor(isDATA){
 				isHTML = ''; 
 				isHTML_PANEL   = '';  
 				isHTML_CONTENT = '';
-
 				break;	
 			case "<-[w]":
-
 				if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
 				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,isJAVA);
 				isJAVA = ''; 
 				isHTML = ''; 
 				isHTML_PANEL   = '';  
 				isHTML_CONTENT = '';
-
 				break;
 				
 			case "header":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]=isPage;
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
-				
-				//var isHeader += '<h1><span id="MyHeader_Text"></span>'+p[2]+'</h1>'; 
-				//$('[data-role="content_'+p[1]+'"]').append(isHeader);
+
 				$("#page_"+p[1]+" h1 #MyHeader_Text_"+p[1]).text(p[2]);
-				//console.log('');
 				break;	
 				
 			case "##":
-			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="2";	
 				if(p[1]==="2"){isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;}
 				if(p[1]==="3"){isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;}
@@ -183,20 +176,17 @@ function GUI_Processor(isDATA){
 				break;	
 
 			case "label":
-			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="label";				
 				isHTML += ('<label>'+p[1]+'</label>'); 			
 				break;
 
 			case "bar":
-			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";					
 				isHTML += '<h'+p[1]+' class="ui-bar ui-bar-a">'+p[2]+'</h'+p[1]+'>'			
 				break;
 			
 			case "button":
-
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="Out_0('OK');";	//SCRIPT	
 
@@ -214,7 +204,6 @@ function GUI_Processor(isDATA){
 			
 			
 			case "slider":
-			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0";	//min
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="100";	//max		
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="1";	//step
@@ -233,11 +222,9 @@ function GUI_Processor(isDATA){
 			
 			
 			case "flip":
-
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
-
 
 				var pTT=p[1].split('(');
 				if(pTT.length === 2){
@@ -272,12 +259,10 @@ function GUI_Processor(isDATA){
 			
 			
 			case "select":
-			
-				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';
-				
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
 				
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';
 				//List
 				var pT = p[1].split('--');
 				for (b = 0; b < pT.length; b++){
@@ -326,7 +311,6 @@ function GUI_Processor(isDATA){
 
 
 			case "radio":
-			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
@@ -498,8 +482,8 @@ function GUI_Processor(isDATA){
 				}
 				break;
 
-			case "event":
 
+			case "event":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Event";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";	
 
@@ -509,9 +493,9 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}				
-				var is_JAVA = JAVA_Add_Event_Listener(p[1],p[2]);
-				is_JAVA = '<script>'+is_JAVA+'</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(is_JAVA);
+				Tmp_JAVA = JAVA_Add_Event_Listener(p[1],p[2]);
+				Tmp_JAVA = '<script>'+Tmp_JAVA+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(Tmp_JAVA);
 				break;	
 				
 				
@@ -526,13 +510,13 @@ function GUI_Processor(isDATA){
 				isHTML += 'src="'+p[2]+'"';
 				isHTML += 'frameborder="0"></iframe>';			
 			
-				is_JAVA = '';
-				is_JAVA +='\n'+ '$( window ).resize(function(){';
-				is_JAVA +='\n'+ '	console.log("*** resize:1 ########################");';
-				is_JAVA +='\n'+ '	$( "#'+isID+'" ).attr( "width", $( window ).width() - 30 )';
-				is_JAVA +='\n'+ '});';
-				is_JAVA = '<script>'+is_JAVA+'</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(is_JAVA);
+				Tmp_JAVA = '';
+				Tmp_JAVA +='\n'+ '$( window ).resize(function(){';
+				Tmp_JAVA +='\n'+ '	console.log("*** resize:1 ########################");';
+				Tmp_JAVA +='\n'+ '	$( "#'+isID+'" ).attr( "width", $( window ).width() - 30 )';
+				Tmp_JAVA +='\n'+ '});';
+				Tmp_JAVA = '<script>'+Tmp_JAVA+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(Tmp_JAVA);
 				break;
 				
 				
@@ -540,13 +524,32 @@ function GUI_Processor(isDATA){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 								
-				isHTML += '<div id="g1"></div>';			
+								
+				//isID = 'gauge';
+								
+				isHTML += '<div id="'+isID+'"></div>';			
 
-				isJAVA +='\n'+ 'var g1 = new JustGage({ id: "g1", value: getRandomInt(0, 100),';
-				isJAVA +='\n'+ 'min: 0, max: 100, title: "Big Fella", label: "pounds" });';
+				isJAVA +='\n'+ 'var '+isID+' = new JustGage({\n';
+				isJAVA +='\n'+ '	id: "'+isID+'",\n';
+				isJAVA +='\n'+ '	value: getRandomInt(0, 100),\n';
+				isJAVA +='\n'+ '	min: 0,\n';
+				isJAVA +='\n'+ '	max: 100,\n';
+				isJAVA +='\n'+ '	title: "Big Fella",\n';
+				isJAVA +='\n'+ '	label: "pounds"\n';
+				isJAVA +='\n'+ '});';
+				
+				var isSTYLE = '<style>#'+isID+' {width:100px; height:80px; display: inline-block;margin: 1em;}</style>';
+				$('[data-role="IS_STYLE"]').append(isSTYLE);
+				
+				//g1.refresh(55);
 				break;				
 				
-				
+		  //id: "g1",
+          //value: getRandomInt(0, 100),
+         // min: 0,
+         // max: 100,
+         // title: "Big Fella",
+         // label: "pounds"
 				
 			default:
 				break;

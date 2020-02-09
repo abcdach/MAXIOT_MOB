@@ -4,6 +4,7 @@ const START_SCRIPT =`
 ..[w],1
 ..{
 	..JustGage
+	..JustGage
 	..#iframe,200,http://www.myvideo.ge/flv_player/live.php?c=rustavi2
 	..button,iframe, $( "#player" ).attr( "width", 200).attr( "height", 200);
 	..button,Panel Open, Loader_Hide();
