@@ -5,8 +5,9 @@ const START_SCRIPT =`
 
 ..[w],1
 ..{
+	..iframe,150,https://www.youtube.com/watch?v=_my8gzPN5DU=http://example.com
 	..##,2 
-	..button,Panel Open, Loader_Show('hiiiiiii');
+	..button,iframe, $( "#player" ).attr( "width", 200).attr( "height", 200);
 	..button,Panel Open, Loader_Hide();
 	..button,Panel Open, Panel_Open('PA1_1');
 	..[p](PA1_1)
@@ -14,16 +15,13 @@ const START_SCRIPT =`
 		..info,3,სათაური 3, 
 		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები 
 		დაწერილია ისე, რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, 
-		როგორიც
+		როგორი
 	..}
 	..[pop](POP1_1)
 	..{
-		..info,3,სათაური 3, 
-		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები 
-		დაწერილია ისე, რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, 
-		როგორიც
+		..iframe,70,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
 	..}
-	..button,PopUp Open, Popup_Open('POP1_1');
+	..button,iframe, Popup_Open('POP1_1');
 	..[pop](isConfig_pop),10px 20px
 	..{
 		..label, Host Name:

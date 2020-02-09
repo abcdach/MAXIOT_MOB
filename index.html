@@ -103,11 +103,17 @@ $(document).on("pageinit","#page_5",function(){
 	console.log("*** pageinit:1:page_5");
 	console.log("*** pageinit:0:page_5");
 });	
-/**
+
+
+$( window ).resize(function(){
+  //console.log("*** resize:1 ########################");
+});
+
+
 // popup examples
-$( document ).on( "pagecreate", function() {
-	console.log("*** pagecreate:1:page_5");
-    // The window width and height are decreased by 30 to take the tolerance of 15 pixels at each side into account
+$( document ).on( "pagecreate","#POP1_1",function() {
+	console.log("*** pagecreate:1");
+ /**   // The window width and height are decreased by 30 to take the tolerance of 15 pixels at each side into account
     function scale( width, height, padding, border ) {
         var scrWidth = $( window ).width() - 30,
             scrHeight = $( window ).height() - 30,
@@ -149,9 +155,9 @@ $( document ).on( "pagecreate", function() {
                 .attr( "width", 0 )
                 .attr( "height", 0 );
         }
-    });
+    });**/
 });
-**/
+
 
 //#####################################################################
 

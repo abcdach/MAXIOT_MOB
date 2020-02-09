@@ -23,6 +23,10 @@
 	
 	
 
+
+
+
+
 function Loader_Hide() {
 	$.mobile.loading( "hide" );
 }

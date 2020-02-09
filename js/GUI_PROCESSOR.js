@@ -514,6 +514,29 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA_SCRIPT"]').append(is_JAVA);
 				break;	
 				
+				
+			case "iframe":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				
+				var is_width  = $( window ).width() - 30;
+				var is_height = p[1]; //$( window ).height() - 30;
+				
+				isHTML += '<iframe id="'+isID+'" type="text/html" width="'+is_width+'" height="'+is_height+'"';
+				isHTML += 'src="'+p[2]+'"';
+				isHTML += 'frameborder="0"></iframe>';			
+			
+				is_JAVA = '';
+				is_JAVA +='\n'+ '$( window ).resize(function(){';
+				is_JAVA +='\n'+ '	console.log("*** resize:1 ########################");';
+				is_JAVA +='\n'+ '	$( "#'+isID+'" ).attr( "width", $( window ).width() - 30 )';
+				is_JAVA +='\n'+ '});';
+				is_JAVA = '<script>'+is_JAVA+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(is_JAVA);
+				break;
+				
+				
+				
 			default:
 				break;
 		}
