@@ -1,20 +1,32 @@
 
 
-//  Put_Input("ID","text");			// input_text, input_password
-//  Get_Input("ID");				// input_text, input_password
-// 	Put_Slider("ID","text");		// slider
-// 	Get_Slider("ID");				// slider
-//  Put_Header(1,"text")			// Put_Header(is_Page,is_Text)
-//  Panel_Open("ID");				// ->[p](ID)\
-//  Theme_Change("Theme");			// Theme = a, b, c, d, e
-//  Dispatch_Event("Name","Data");  //
-//  Element_Hide("ID");				// 
-//  Element_Show("ID");				// 
+//  Put_Input('ID','text');			// input_text, input_password
+//  Get_Input('ID');				// input_text, input_password
+// 	Put_Slider('ID','text');		// slider
+// 	Get_Slider('ID');				// slider
+//  Put_Header(1,'text')			// Put_Header(is_Page,is_Text)
+//  Panel_Open('ID');				// ->[p](ID)\
+//  Theme_Change('Theme');			// Theme = a, b, c, d, e
+//  Dispatch_Event('Name','Data');  //
+//  Element_Hide('ID');				// 
+//  Element_Show('ID');				// 
+//  Page_change('page_3');
+//  Popup_Open('ID');				// 
 
+
+	//$('#item3').remove();
+	//$('#page1').page();
+	//$.mobile.changePage( url, { transition: "slideup" });
+	//$('#'+is_ID).animate({left: '250px'});
+	
+function Popup_Open(is_ID) {
+        $('#'+is_ID).popup("open",{ transition: "pop" }); 
+        //setTimeout(function(){  $("#p").popup("close"); }, 5000);
+}
+	
 function Element_Hide(is_ID) {
 	$('#'+is_ID).hide();
 }
-
 function Element_Show(is_ID) {
 	$('#'+is_ID).show();
 }

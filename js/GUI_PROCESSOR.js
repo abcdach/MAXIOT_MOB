@@ -93,7 +93,7 @@ function GUI_Processor(isDATA){
 			Mark_Pointer ++;
 			//console.log("********   Current_Mark : "+Current_Mark);
 			//console.log("********   Mark_Pointer : "+Mark_Pointer);
-			//console.log("********   Mark_Steck : "+Mark_Steck);			
+			console.log("********   Mark_Steck : "+Mark_Steck);			
 		}
 
 		if(isCMD === "}"){
@@ -106,6 +106,7 @@ function GUI_Processor(isDATA){
 					case "p": isCMD = "<-[p]"; break;
 					case "t": isCMD = "<-[t]"; break;
 					case "d": isCMD = "<-[d]"; break;
+					case "pop": isCMD = "<-[pop]"; break;
 					default: break;
 				}
 			}			
@@ -442,6 +443,17 @@ function GUI_Processor(isDATA){
 				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
 				panel_status = 0;
 				break;
+
+			case "[pop]":
+				Current_Mark = 'pop';
+				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
+				isHTML += '<div style="padding:10px 20px;">';
+				break;
+			case "<-[pop]":
+				isHTML += '</div>';
+				isHTML += '</div>';
+				break;
+
 						
 			case "+>":
 				isHTML += '<div class="ui-corner-all custom-corners">';
@@ -521,6 +533,13 @@ function GUI_Processor(isDATA){
 		else{
 			isHTML_CONTENT += isHTML;
 		}
+		
+		//pop_status = 0;
+		
+		
+		
+		
+		
 	}
 //#--------------------------------------------	
 

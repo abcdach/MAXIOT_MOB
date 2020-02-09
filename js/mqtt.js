@@ -62,6 +62,7 @@ function MQTT_Connect(){
 	});	
 }
 function onConnectionLost(responseObject) {
+  Connect_Status = 0;
   if (responseObject.errorCode !== 0) {
     console.log("onConnectionLost:"+responseObject.errorMessage);
   }
@@ -88,6 +89,8 @@ function onMessageArrived(message) {
 			case '99':
 				console.log(isData);
 				GUI_Processor(isData);
+				Page_change("page_3");
+				Connect_Status = 1;
 				SYS_STEP ++;
 				break;
 			

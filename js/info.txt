@@ -558,8 +558,57 @@ MAXIOT სისტემის ყველა ძირითადი პრ�
 
 
 ######################################################################
-
+		/**
+		var isTemp3;
+		if(isPCH === 0){			
+			isTemp3 = isCMD.split('[');
+		}else{
+			isTemp3 = isTemp2[1].split('[');
+		}
+		
+		if(isTemp3.length > 1){
+			var isTemp5 = isTemp3[1].split(']');
+			isOPT  = isTemp5[0].trim();
+			if(isPCH === 0){
+				isCMD = isTemp3[0].trim();
+				isCMD = isCMD.replace(/(\r\n|\n|\r)/gm, "");
+				isCMD = isCMD.trim();				
+			}
+			isPCH = 2;
+		}
+		if(isCMD === ''){
+			if(isPCH === 2){
+				isCMD = "["+isOPT+"]";
+				isOPT = "";
+			}
+		}
+		**/
 ######################################################################
+
+//..header,1,text											//
+//..navbar,1,--name1(ID_1)--name2(ID_1)						//
+//..checkbox(ID),v,--name1(val1)--name2(val2),Out_0(Value); //.. checkbox,v, .. checkbox,h,
+//..radio(ID),v,--name1(val1)--name2(val2)),Out_0(Value);	//.. radio,v, .. radio,h,
+//..select(ID),--name1(1)--name2(2),Out_0(Value);			//
+//..slider(ID),0,150,10,Out_0(Value);						//.. slider(ID),MIN,MAX,STEP,{{Java content}};
+//..button(ID),name,Out_0(Value);							//
+//..flip(ID),on(1),off(0),Out_0(Value);						//
+//..input_password(ID),text									//
+//..input_text(ID),text										//
+//..label(ID),text											//
+//..##,2 ..##,3 ..##,4 ..##,5								// grid
+//..[w],1     ..{ GUI Content ..}							// page				Page_change("page_3");
+//..[c],name  ..{ GUI Content ..}							// collapsible
+//..[p](ID)   ..{ GUI Content ..}							// panel			Panel_Open("ID");
+//..[pop](ID) ..{ GUI Content ..}
+//-------------------------------------------				//										
+//..[t](ID),v,--name2(ID_1)--name3(ID_2)					//
+//..{ 														//
+//..  [d](ID_1)..{ GUI Content ..}							//
+//..  [d](ID_2)..{ GUI Content ..}							//
+//..}														//
+//-------------------------------------------				//
+//..  event,In_0,Out_0(Value);								//
 
 ######################################################################
 
