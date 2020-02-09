@@ -26,7 +26,14 @@
 	<script src="js/paho-mqtt-min.js"></script>
 	<script src="js/mqtt.js"></script>	
 	<!--..................-->	
-
+	
+	<script src="MyJS/dygraphs/dygraph.min.js"></script>
+    <link rel="stylesheet" href="MyJS/dygraphs/dygraph.css">
+			
+	<!--..................-->	
+	
+	
+	
 <style>
 .ui-icon-myicon:after {
     background-image: url("MyPIC/111.png");
@@ -34,9 +41,6 @@
     background-size: 18px 18px;
 }
 </style>	
-
-
-
 
 <!--
 <script src="js/dygraph-combined.js"></script>
@@ -59,9 +63,65 @@ $(document).on('pagebeforecreate',"#page_1", function(){
 	
 	GUI_Processor(START_SCRIPT);
 	GUI_Processor(IS_TEST_SCRIPT);
+	
+	
+	
+
+
+
 
 	console.log("*** pagebeforecreate:0:page_1");
 });	
+
+ var g1;
+$(document).on("pageshow", "#page_1", function(){
+
+    //if (!g1){
+        //g1 = new Dygraph(document.getElementById("graph"),         
+            //"Date,Temperature\n" +
+            //"2008-05-07,75\n" +
+            //"2008-05-08,70\n" +
+            //"2008-05-09,80\n");       
+   // }
+	
+       g1 = new Dygraph(
+            document.getElementById("graph"),
+            [
+              [1, null, 3],
+              [2, 2, null],
+              [3, null, 7],
+              [4, 5, null],
+              [5, null, 5],
+              [6, 3, null]
+            ],
+            {
+              labels: ['x', 'A', 'B' ],
+              connectSeparatedPoints: true,
+              drawPoints: true
+            }
+          ); 
+
+	
+	
+}); 
+/**
+$(document).on("pagecreate","#page_1", function(){ 
+    $( "#graph1" ).on( "collapsibleexpand", function( event, ui ) {
+		console.log("*eeeeeeeeeeeeeeeeeeeee");
+        g1.resize();    
+    });
+});
+
+
+$( document ).on( "pagecontainershow", function( event, ui ) {
+console.log("*xxxxxxxxxxxxxxxxxxxxxxxxxx");
+    //DrawChart('graph');   
+});
+*/
+
+
+
+
 
 
 
@@ -110,53 +170,6 @@ $( window ).resize(function(){
 });
 
 
-// popup examples
-$( document ).on( "pagecreate","#POP1_1",function() {
-	console.log("*** pagecreate:1");
- /**   // The window width and height are decreased by 30 to take the tolerance of 15 pixels at each side into account
-    function scale( width, height, padding, border ) {
-        var scrWidth = $( window ).width() - 30,
-            scrHeight = $( window ).height() - 30,
-            ifrPadding = 2 * padding,
-            ifrBorder = 2 * border,
-            ifrWidth = width + ifrPadding + ifrBorder,
-            ifrHeight = height + ifrPadding + ifrBorder,
-            h, w;
-        if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
-            w = ifrWidth;
-            h = ifrHeight;
-        } else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
-            w = scrWidth;
-            h = ( scrWidth / ifrWidth ) * ifrHeight;
-        } else {
-            h = scrHeight;
-            w = ( scrHeight / ifrHeight ) * ifrWidth;
-        }
-        return {
-            'width': w - ( ifrPadding + ifrBorder ),
-            'height': h - ( ifrPadding + ifrBorder )
-        };
-    };
-    $( ".ui-popup iframe" )
-        .attr( "width", 0 )
-        .attr( "height", "auto" );
-    $( "#popupVideo" ).on({
-        popupbeforeposition: function() {
-            // call our custom function scale() to get the width and height
-            var size = scale( 497, 298, 15, 1 ),
-                w = size.width,
-                h = size.height;
-            $( "#popupVideo iframe" )
-                .attr( "width", w )
-                .attr( "height", h );
-        },
-        popupafterclose: function() {
-            $( "#popupVideo iframe" )
-                .attr( "width", 0 )
-                .attr( "height", 0 );
-        }
-    });**/
-});
 
 
 //#####################################################################
@@ -182,11 +195,10 @@ function disconnect_To_Server(){}
 		<a onclick="Connect_To_Server()"  class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all">No text</a>
 		
 		<h1><span id="MyHeader_Text_1"></span></h1>
-		<div data-role="navbar" >
-			<div data-role="navbar_1" ></div>
-		</div>
+		<div data-role="navbar" ></div>
+		<div data-role="navbar_1" ></div>
+		
 	</div><!-- /header -->
-
 	
 	<div data-role="content_1" class="ui-content" role="main"></div>	
 

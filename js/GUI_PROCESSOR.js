@@ -543,13 +543,39 @@ function GUI_Processor(isDATA){
 				
 				//g1.refresh(55);
 				break;				
+
+		 
+			case "Dygraph":
+				//if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
+				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+								
+								
+				//isID = 'gauge';
+								
+				//isHTML += '<div id="'+isID+'"></div>';	
+				//isHTML += '<div id="graph"></div>';				
+				var w = $( window ).width() - 80;
+				isHTML += '<div id="graph" style="height: 200px; width: '+w+'px;"></div>';
+
+
+				//isJAVA +='\n'+ 'var '+isID+' = new JustGage({\n';
+				//isJAVA +='\n'+ '	id: "'+isID+'",\n';
+				//isJAVA +='\n'+ '	value: getRandomInt(0, 100),\n';
+				//isJAVA +='\n'+ '	min: 0,\n';
+				//isJAVA +='\n'+ '	max: 100,\n';
+				//isJAVA +='\n'+ '	title: "Big Fella",\n';
+				//isJAVA +='\n'+ '	label: "pounds"\n';
+				//isJAVA +='\n'+ '});';
 				
-		  //id: "g1",
-          //value: getRandomInt(0, 100),
-         // min: 0,
-         // max: 100,
-         // title: "Big Fella",
-         // label: "pounds"
+				//var isSTYLE = '<style>#'+isID+' {width:100px; height:80px; display: inline-block;margin: 1em;}</style>';
+				//$('[data-role="IS_STYLE"]').append(isSTYLE);
+				
+				//g1.refresh(55);
+				break;			 
+		 
+		 
+		 
+		 
 				
 			default:
 				break;

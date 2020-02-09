@@ -3,14 +3,23 @@ const START_SCRIPT =`
 
 ..[w],1
 ..{
-	..JustGage
-	..JustGage
+
+	..Dygraph
+	..[c],Dygraph
+	..{
+		..#Dygraph
+	..}
+	..[c],JustGages
+	..{
+		..JustGage
+		..JustGage
+	..}
 	..#iframe,200,http://www.myvideo.ge/flv_player/live.php?c=rustavi2
 	..button,iframe, $( "#player" ).attr( "width", 200).attr( "height", 200);
 	..button,Panel Open, Loader_Hide();
 	..button,Panel Open, Panel_Open('PA1_1');
 	..[p](PA1_1)
-	..{
+	..{ ..#Dygraph
 		..info,3,სათაური 3, 
 		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები 
 		დაწერილია ისე, რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, 
@@ -18,7 +27,8 @@ const START_SCRIPT =`
 	..}
 	..[pop](POP1_1)
 	..{
-		..iframe,150,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
+		..#Dygraph
+		..iframe,250,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
 	..}
 	..button,iframe, Popup_Open('POP1_1');
 	..[pop](isConfig_pop),10px 20px
