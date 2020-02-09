@@ -21,7 +21,7 @@ const START_SCRIPT =`
 		როგორიც
 	..}
 	..button,PopUp Open, Popup_Open('POP1_1');
-	..[pop](POP1_2)
+	..[pop](POP1_2),10px 20px
 	..{
 		..label, Host Name:
 		..input_text, http://maxh6/

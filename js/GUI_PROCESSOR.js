@@ -445,9 +445,10 @@ function GUI_Processor(isDATA){
 				break;
 
 			case "[pop]":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
 				Current_Mark = 'pop';
 				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
-				isHTML += '<div style="padding:10px 20px;">';
+				isHTML += '<div style="padding:'+p[1]+';">';
 				break;
 			case "<-[pop]":
 				isHTML += '</div>';
