@@ -536,6 +536,17 @@ function GUI_Processor(isDATA){
 				break;
 				
 				
+			case "JustGage":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+								
+				isHTML += '<div id="g1"></div>';			
+
+				isJAVA +='\n'+ 'var g1 = new JustGage({ id: "g1", value: getRandomInt(0, 100),';
+				isJAVA +='\n'+ 'min: 0, max: 100, title: "Big Fella", label: "pounds" });';
+				break;				
+				
+				
 				
 			default:
 				break;
