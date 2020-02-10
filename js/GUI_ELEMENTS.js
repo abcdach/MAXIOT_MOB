@@ -1,19 +1,24 @@
+/** 
+Put_Input Get_Input Put_Slider Get_Slider
+Put_Header Panel_Open Theme_Change Dispatch_Event
+Element_Hide Element_Show Page_change Popup_Open
+Loader_Show Loader_Hide
+**/
 
-
-//  Put_Input('ID','text');			// input_text, input_password
-//  Get_Input('ID');				// input_text, input_password
-// 	Put_Slider('ID','text');		// slider
-// 	Get_Slider('ID');				// slider
-//  Put_Header(1,'text')			// Put_Header(is_Page,is_Text)
-//  Panel_Open('ID');				// ->[p](ID)\
-//  Theme_Change('Theme');			// Theme = a, b, c, d, e
-//  Dispatch_Event('Name','Data');  //
-//  Element_Hide('ID');				// 
-//  Element_Show('ID');				// 
-//  Page_change('page_3');
-//  Popup_Open('ID');				//"none","pop","fade","flip","turn","flow","slide","slide","slidefade","slidefade","slideup","slidedown"
-//  Loader_Show('Connecting');
-//  Loader_Hide();
+//-  Put_Input('ID','text');			// input_text, input_password
+//-  Get_Input('ID');				// input_text, input_password
+//-  Put_Slider('ID','text');		// slider
+//-  Get_Slider('ID');				// slider
+//-  Put_Header(1,'text')			// Put_Header(is_Page,is_Text)
+//-  Panel_Open('ID');				// ->[p](ID)\
+//-  Theme_Change('Theme');			// Theme = a, b, c, d, e
+//-  Dispatch_Event('Name','Data');  //
+//-  Element_Hide('ID');				// 
+//-  Element_Show('ID');				// 
+//-  Page_change('page_3');
+//-  Popup_Open('ID');				//"none","pop","fade","flip","turn","flow","slide","slide","slidefade","slidefade","slideup","slidedown"
+//-  Loader_Show('Connecting');
+//-  Loader_Hide();
 
 
 	//$('#item3').remove();

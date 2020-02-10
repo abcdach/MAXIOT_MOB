@@ -1,6 +1,12 @@
-
-
-
+/**
+..iframe ..button ..info ..input_password
+..##  ..label ..input_text  ..header ..navbar 
+..select ..info ..input_password ..slider ..flip 
+..radio ..checkbox ..header ..label ..JustGage ..Dygraph
+**/
+/**
+..[c] ..[p] ..[w] ..[d]  ..[t] ..[pop]
+**/
 //..header,1,text											//
 //..navbar,1,--name1(ID_1)--name2(ID_1)						//
 //..checkbox(ID),v,--name1(val1)--name2(val2),Out_0(Value); //.. checkbox,v, .. checkbox,h,

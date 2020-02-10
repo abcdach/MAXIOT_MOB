@@ -1,4 +1,22 @@
 
+/**
+..iframe ..button ..info ..input_password
+..##  ..label ..input_text  ..header ..navbar 
+..select ..info ..input_password ..slider ..flip 
+..radio ..checkbox ..header ..label ..JustGage ..Dygraph
+**/
+/** 
+Put_Input Get_Input Put_Slider Get_Slider
+Put_Header Panel_Open Theme_Change Dispatch_Event
+Element_Hide Element_Show Page_change Popup_Open
+Loader_Show Loader_Hide 
+Out_0 Out_1 Out_2 Out_3 Out_4 Out_5 Out_6 Out_7
+In_0 In_1 In_2 In_3 
+SYS_LOOP_START console.log
+**/
+
+
+
 const START_SCRIPT =`
 
 ..[w],1
@@ -7,19 +25,19 @@ const START_SCRIPT =`
 	..Dygraph
 	..[c],Dygraph
 	..{
-		..#Dygraph
+		..//Dygraph
 	..}
 	..[c],JustGages
 	..{
 		..JustGage
 		..JustGage
 	..}
-	..#iframe,200,http://www.myvideo.ge/flv_player/live.php?c=rustavi2
+	..iframe,200,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
 	..button,iframe, $( "#player" ).attr( "width", 200).attr( "height", 200);
 	..button,Panel Open, Loader_Hide();
 	..button,Panel Open, Panel_Open('PA1_1');
 	..[p](PA1_1)
-	..{ ..#Dygraph
+	..{ ..//Dygraph
 		..info,3,სათაური 3, 
 		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები 
 		დაწერილია ისე, რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, 
@@ -27,7 +45,7 @@ const START_SCRIPT =`
 	..}
 	..[pop](POP1_1)
 	..{
-		..#Dygraph
+		..//Dygraph
 		..iframe,250,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
 	..}
 	..button,iframe, Popup_Open('POP1_1');
@@ -52,27 +70,27 @@ const START_SCRIPT =`
 ..[w],6
 ..{
 	..header,1,Main
-	..#navbar(nav1_1),1,
-		#-- Main(page_1)
-		#-- Options(page_2)
-		#-- Device(page_3)
-	..#navbar(nav1_2),1,
-		#-- 222 Main(page_1)
-		#-- 222 Options(page_2)
-		#-- 222 Device(page_3)
+	..//navbar(nav1_1),1,
+		//-- Main(page_1)
+		//-- Options(page_2)
+		//-- Device(page_3)
+	..//navbar(nav1_2),1,
+		//-- 222 Main(page_1)
+		//-- 222 Options(page_2)
+		//-- 222 Device(page_3)
 	..##,2 
-	..button,Nav Hide,Element_Hide("nav1_1"); Element_Show("nav1_2");
-	..button,Nav Show,Element_Show("nav1_1"); Element_Hide("nav1_2");
+	..button,Nav Hide,Element_Hide("nav1_1");Element_Show("nav1_2");
+	..button,Nav Show,Element_Show("nav1_1");Element_Hide("nav1_2");
 	..##,2 
-	..button,Nav Hide,localStorage.setItem("username","1234567890");
+	..button,Nav Hide, ("username","1234567890");
 	..button,Nav Show, var username = console.log(localStorage.getItem("username"));
 ..}
 ..[w],2
 ..{
 	..header,2,Options
-	..#navbar,2,--Main(page_1)--Options(page_2)--Device(page_3)
-	..#[c],Connection Config
-	..#{
+	..//navbar,2,--Main(page_1)--Options(page_2)--Device(page_3)
+	..//[c],Connection Config
+	..//{
 		..label, Host Name:
 		..input_text(IT2_1), http://maxh6/
 		..label,Port:
@@ -84,7 +102,7 @@ const START_SCRIPT =`
 		..##,2 
 		..button(BU2_1),Save,SYS_LOOP_START();
 		..button(BU2_2),Connect,Out_0("OK");
-	..#}
+	..//}
 ..}
 `;
 
@@ -99,7 +117,7 @@ const IS_TEST_SCRIPT =`
 	..{
 		..[c],checkbox
 		..{
-			..checkbox,h,--A(a)--B(b)--C(c)--D(d)--E(e),Out_0(Value);
+			..checkbox,h,--A(a)--B(b)--C(c)--D(d)--E(e),Out_1(Value);
 			..checkbox,v,--A(a)--B(b)--C(c)--D(d)--E(e),Out_0(Value);
 		..}
 		..[c],Radio (Theme Change)
@@ -129,7 +147,7 @@ const IS_TEST_SCRIPT =`
 		..[c],123
 		..{
 			..##,2 
-			..button(BU1),OK, Out_0("OK"); 
+			..button(BU1),OK,Out_0("OK"); 
 			..select(SE1),
 			-- მერსედესი(1) --  ტოიოტა  (2) 
 			-- ბენტლი  (3) --  ფერარი  (4)
@@ -137,9 +155,9 @@ const IS_TEST_SCRIPT =`
 			..flip(f1),on(1),off(0),Out_0(Value);
 			..label, This is a slaider
 			..slider(SL1), 0,150,10,Out_0(Value);
-			..}
-			..[c],Input 
-			..{
+		..}
+		..[c],Input 
+		..{
 			..input_password(IP1),1234
 			..##,2 ..input_text(IT1),რაიმე ტექსტი ..input_text(IT2)
 			..button,input to input, Put_Input("IT2",Get_Input("IT1"));
@@ -182,15 +200,5 @@ const IS_TEST_SCRIPT =`
 ..}
 `;
 
-
-
-
-/**
-input_password button ##
-label input_text header navbar  
-select  info input_password slider 
-flip radio checkbox header  label
-
-**/
 
 
