@@ -662,7 +662,11 @@ function scale( width, height, padding, border ) {
 
 
 ######################################################################
-
+    <input type="button" data-icon="delete" value="Left (default)">
+    <input type="button" data-icon="delete" data-iconpos="right" value="Right">
+    <input type="button" data-icon="delete" data-iconpos="top" value="Top">
+    <input type="button" data-icon="delete" data-iconpos="bottom" value="Bottom">
+    <input type="button" data-icon="delete" data-iconpos="notext" value="Icon only">
 ######################################################################
 
 ######################################################################

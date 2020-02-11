@@ -227,7 +227,7 @@ function GUI_Processor(isDATA){
 					}
 				}
 
-				var html = '<a onclick="'+isID+'()"  class="ui-btn '+p[2]+'">'+p[1]+'</a>';
+				var html = '<a onclick="'+isID+'()"  class="'+p[2]+'">'+p[1]+'</a>';
 				//$('#header_1').append(html); // matebs boloshi 
 				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
 				$('#header_1').prepend(html);  // dasva sul tavshi 				
@@ -255,7 +255,7 @@ function GUI_Processor(isDATA){
 					}
 				}
 
-				isHTML += '<a onclick="'+isID+'()"  class="ui-btn '+p[2]+'">'+p[1]+'</a>';
+				isHTML += '<a onclick="'+isID+'()"  class="'+p[2]+'">'+p[1]+'</a>';
 				//$('#header_1').append(html); // matebs boloshi 
 				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
 				//$('#header_1').prepend(html);  // dasva sul tavshi 				

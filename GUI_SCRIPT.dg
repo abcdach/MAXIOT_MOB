@@ -33,24 +33,33 @@ const START_SCRIPT =`
 ..{
 	..navbar(nnav1_1),1,--Main(page_1)--Options(page_2)--Device(page_3)
 		
-	..button_header(mmmID1_1),name, 
+	..//button_header(mmmID1_1),name,
+	ui-btn
 	ui-btn-icon-notext 
 	ui-corner-all 
 	ui-icon-cloud, console.log('1111111');
 
 	..button_header(ID1_2),name,
-	ui-btn-icon-notext 
-	ui-corner-all 
-	ui-icon-cloud, console.log('2222222');
+	ui-input-btn ui-btn ui-icon-delete ui-btn-icon-top
+	, console.log('2222222');
 	
-	..##,2 
-	..button_class, name, ui-btn-icon-notext ui-corner-all ui-icon-cloud, console.log('3333333');
-	..button_class, name, ui-btn-icon-notext ui-corner-all ui-icon-cloud, console.log('4444444');
+
 	
 	..//Dygraph
-	..[c],Dygraph
+	..[c],is button
 	..{
-		..//Dygraph
+		..//##,2 
+		..button_class, name, ui-btn  ui-btn-icon-notext ui-corner-all ui-icon-cloud, console.log('4444444');
+		..button_class, name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left , console.log('3333333');
+		..button_class, name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-right , console.log('3333333');
+		..button_class, name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-top , console.log('3333333');
+		..button_class, name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-bottom , console.log('3333333');
+		..button_class, name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-notext , console.log('3333333');
+		..button_class, name, , console.log('3333333');
+		..button_class, name, , console.log('3333333');
+		..button_class, name, , console.log('3333333');
+		
+
 	..}
 	..[c],JustGages
 	..{
