@@ -114,6 +114,7 @@ function GUI_Processor(isDATA){
 					case "t": isCMD = "<-[t]"; break;
 					case "d": isCMD = "<-[d]"; break;
 					case "pop": isCMD = "<-[pop]"; break;
+					case "m": isCMD = "<-[m]"; break; // vebgverdistvis
 					default: break;
 				}
 			}			
@@ -641,7 +642,68 @@ function GUI_Processor(isDATA){
 		 
 		 
 		 
-		 
+	
+				
+				
+				
+				
+				
+			//#######################################################################################
+			//#######################################################################################	
+			case "[m]":
+				Current_Mark = 'm';
+				isHTML = '<h2> . </h2>';
+				isHTML += '<ul class="jqm-list ui-alt-icon ui-nodisc-icon">';
+				isHTML_PANEL ='';
+				panel_status = 1;
+				break;
+			case "<-[m]":
+				isHTML += '</ul>';
+				$('[data-role="panel_1"]').append(isHTML_PANEL);
+				panel_status = 0;
+				break;
+			
+			
+			case "m_objects":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
+				//isHTML_NAVBAR = '<ul id="'+isID+'" >';
+
+				
+				isHTML += '<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-collapsible-collapsed">';
+				isHTML += '<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">';
+				isHTML += '<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">';
+				isHTML += p[1]+'<span class="ui-collapsible-heading-status"></span>';
+				isHTML += '</a>';
+				isHTML += '</h3>';
+				isHTML += '<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">';
+				isHTML += '<ul>';				
+
+				//List
+				var pT = p[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<li><a href="'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
+						}
+					}
+				}
+
+				isHTML += '</ul>';
+				isHTML += '</div>';
+				isHTML += '</li>';
+				break;				
+
+			case "m_object":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				isHTML += '<li><a href="'+p[2]+'" data-ajax="false">'+p[1]+'</a></li>';
+				break;
+				
 				
 			default:
 				break;
