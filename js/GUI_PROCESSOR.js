@@ -184,7 +184,7 @@ function GUI_Processor(isDATA){
 
 			case "label":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="label";				
-				isHTML += ('<label>'+p[1]+'</label>'); 			
+				isHTML += ('<label>'+p[1]+'</label>');
 				break;
 
 			case "bar":
@@ -650,6 +650,21 @@ function GUI_Processor(isDATA){
 				
 			//#######################################################################################
 			//#######################################################################################	
+			case "html_element":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";	
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}					
+				isHTML += p[1]+p[3]+p[2];		
+				break;
+			
+			
+			
 			case "[m]":
 				Current_Mark = 'm';
 				isHTML = '<h2> . </h2>';
