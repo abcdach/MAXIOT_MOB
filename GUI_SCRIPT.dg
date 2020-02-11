@@ -5,24 +5,49 @@
 ..select ..info ..input_password ..slider ..flip 
 ..radio ..checkbox ..header ..label ..JustGage ..Dygraph
 **/
+/**
+put_input_text('ID','text');
+get_input_text('ID');
+put_input_Password('ID','text');
+get_input_Password('ID');
+**/
 /** 
-Put_Input Get_Input Put_Slider Get_Slider
-Put_Header Panel_Open Theme_Change Dispatch_Event
+Put_Header
+
+
+Panel_Open Theme_Change Dispatch_Event
 Element_Hide Element_Show Page_change Popup_Open
 Loader_Show Loader_Hide 
 Out_0 Out_1 Out_2 Out_3 Out_4 Out_5 Out_6 Out_7
 In_0 In_1 In_2 In_3 
 SYS_LOOP_START console.log
 **/
-
+/** 
+..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]
+**/
 
 
 const START_SCRIPT =`
 
 ..[w],1
 ..{
+	..navbar(nnav1_1),1,--Main(page_1)--Options(page_2)--Device(page_3)
+		
+	..button_class(mmmID1_1),name,
+	ui-btn 
+	ui-btn-icon-notext 
+	ui-corner-all 
+	ui-icon-cloud, Out_0('it1_22');
 
-	..Dygraph
+	..button_class(ID1_2),name,
+	ui-btn 
+	ui-btn-icon-notext 
+	ui-corner-all 
+	ui-icon-cloud, put_input_text('it1_22','mmmmmm');
+
+
+	
+	..//Dygraph
 	..[c],Dygraph
 	..{
 		..//Dygraph
@@ -32,21 +57,28 @@ const START_SCRIPT =`
 		..JustGage
 		..JustGage
 	..}
-	..iframe,200,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
+	..//iframe,200,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
 	..button,iframe, $( "#player" ).attr( "width", 200).attr( "height", 200);
-	..button,Panel Open, Loader_Hide();
-	..button,Panel Open, Panel_Open('PA1_1');
+	..//button,Panel Open, Loader_Hide();
+	
+	..button,Panel Open,
+		Panel_Open('PA1_1');
+	
 	..[p](PA1_1)
-	..{ ..//Dygraph
-		..info,3,სათაური 3, 
-		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები 
-		დაწერილია ისე, რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, 
-		როგორი
+	..{
+		..info,3,MAXIOT სისტემა, 
+		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები დაწერილია 
+		ისე, რომ სრულფასოვნად გაეშვას ნებისმიერ მიკროკომპიუტერებზე
+		..label, ეს არის სლიდერი
+		..slider,0,200,1,put_input_text('it1_22',Value);
+		..input_text(it1_22)
 	..}
+	
+	
+	
 	..[pop](POP1_1)
 	..{
-		..//Dygraph
-		..iframe,250,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
+		..iframe,250,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com 
 	..}
 	..button,iframe, Popup_Open('POP1_1');
 	..[pop](isConfig_pop),10px 20px

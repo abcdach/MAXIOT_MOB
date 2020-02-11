@@ -1,12 +1,18 @@
 /** 
-Put_Input Get_Input Put_Slider Get_Slider
+put_input_text get_input_text put_input_Password  get_input_Password
 Put_Header Panel_Open Theme_Change Dispatch_Event
 Element_Hide Element_Show Page_change Popup_Open
 Loader_Show Loader_Hide
 **/
 
-//-  Put_Input('ID','text');			// input_text, input_password
-//-  Get_Input('ID');				// input_text, input_password
+/**
+put_input_text('ID','text');
+get_input_text('ID');
+put_input_Password('ID','text');
+get_input_Password('ID');
+**/
+
+
 //-  Put_Slider('ID','text');		// slider
 //-  Get_Slider('ID');				// slider
 //-  Put_Header(1,'text')			// Put_Header(is_Page,is_Text)
@@ -62,10 +68,12 @@ function HTML_Input_Text(is_ID,is_Value) {
 function HTML_Input_Password(is_ID,is_Value) {
 	return('<input id="'+is_ID+'" type="password" value="'+is_Value+'"/>');
 }
-function Put_Input(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
-function Get_Input(is_ID){ return $('#'+is_ID).val();}
+function put_input_text(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
+function get_input_text(is_ID){ return $('#'+is_ID).val();}
+function put_input_Password(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
+function get_input_Password(is_ID){ return $('#'+is_ID).val();}
 //##################################
-function HTML_Button(is_ID,is_Value) {return('<input id="'+is_ID+'" type="button" value="'+is_Value+'"/>');}
+
 function JAVA_Button_Click(is_ID,is_Script){
 	var SCR = ''
 	SCR +='\n'+ '	$("#'+is_ID+'").click(function (e){';
@@ -74,6 +82,9 @@ function JAVA_Button_Click(is_ID,is_Script){
 	SCR +='\n'+ '	});';	
 	return SCR;
 }
+//##################################
+
+
 //##################################
 function HTML_Slider(is_ID,is_Min, is_Max, is_Step) {
 	return('<input name="'+is_ID+'" id="'+is_ID+'" type="range"  min="'+is_Min+'" max="'+is_Max+'" step="'+is_Step+'"  value="'+is_Min+'" />');

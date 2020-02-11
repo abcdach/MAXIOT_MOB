@@ -83,7 +83,7 @@ $(document).on("pageshow", "#page_1", function(){
             //"2008-05-08,70\n" +
             //"2008-05-09,80\n");       
    // }
-	
+	/**
        g1 = new Dygraph(
             document.getElementById("graph"),
             [
@@ -101,6 +101,11 @@ $(document).on("pageshow", "#page_1", function(){
             }
           ); 
 
+	**/
+
+
+			
+			
 	
 	
 }); 
@@ -145,6 +150,17 @@ $(document).on('pagebeforecreate',"#page_5", function(){
 //#####################################################################
 $(document).on("pageinit","#page_1",function(){
 	console.log("*** pageinit:1:page_1");
+	
+
+//$('#fffdd').click(function() {
+  //alert('Handler for .click() called.');
+//});
+
+//$(document).ready("#fffdd").click(function() {
+      //alert('button clicked');
+//});
+
+	
 	console.log("*** pageinit:0:page_1");
 });	
 $(document).on("pageinit","#page_2",function(){
@@ -187,16 +203,26 @@ function disconnect_To_Server(){}
 <div data-role="IS_STYLE" ></div>
 <div data-role="IS_JAVA_SCRIPT" ></div>
 <!-- ####################################################################################### -->
-
-<div data-role="page" id="page_1">
-	<div data-role="header">
-
+<!--
+		
+		<a href="#isConfig_pop" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn  ui-icon-gear ui-btn-icon-notext ui-corner-all"></a>
+		
 		<a href="#isConfig_pop" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn  ui-icon-gear ui-btn-icon-notext ui-corner-all"></a>
 		<a onclick="Connect_To_Server()"  class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-corner-all">No text</a>
-		
+class="ui-btn  ui-icon-gear ui-btn-icon-notext ui-corner-all"
+
+		<a id="#fffdd"  class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear" /></a>
+		<a id="#fffdbb" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud" /></a>
 		<h1><span id="MyHeader_Text_1"></span></h1>
-		<div data-role="navbar" ></div>
-		<div data-role="navbar_1" ></div>
+		<a id="#x111"  class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear" /></a>
+ -->
+<div data-role="page" id="page_1">
+	<div data-role="header" id="header_1">
+
+		<h1><span id="MyHeader_Text_1"></span></h1>
+		<div data-role="navbar">
+			<div data-role="navbar_1" ></div>
+		</div>
 		
 	</div><!-- /header -->
 	

@@ -194,7 +194,7 @@ function GUI_Processor(isDATA){
 			
 			case "button":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="Out_0('OK');";	//SCRIPT	
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";	//SCRIPT	
 
 				var Lim = 3;
 				if(Conf_Spl_Len > Lim){
@@ -203,17 +203,49 @@ function GUI_Processor(isDATA){
 					}
 				}
 				
-				isHTML += HTML_Button(isID,p[1]);				
+				isHTML += '<input id="'+isID+'" type="button" value="'+p[1]+'"/>';
 				isJAVA += JAVA_Button_Click(isID,p[2]);
 				break;
 				
-			
-			
+				
+				
+				
+				
+				
+			//..button_class('ID'),name,ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
+				
+			case "button_class":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+
+
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+				var html = '<a onclick="'+isID+'()"  class="ui-btn '+p[2]+'">'+p[1]+'</a>';
+				//$('#header_1').append(html); // matebs boloshi 
+				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
+				$('#header_1').prepend(html);  // dasva sul tavshi 				
+
+				var SCR = ''
+				SCR +='\n'+ 'function '+isID+'(){';
+				SCR +='\n'+ '		'+p[3];
+				SCR +='\n'+ '}';
+				SCR = '<script>'+SCR+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
+				break;				
+
+
 			case "slider":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0";	//min
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="100";	//max		
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="1";	//step
-				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="Out_0('OK');";	//OutPut
+				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="";	//OutPut
 				
 				var Lim = 5;
 				if(Conf_Spl_Len > Lim){
@@ -607,10 +639,7 @@ function GUI_Processor(isDATA){
 			isHTML_CONTENT += isHTML;
 		}
 		
-		//pop_status = 0;
-		
-		
-		
+
 		
 		
 	}
