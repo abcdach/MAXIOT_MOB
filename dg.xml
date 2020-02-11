@@ -13,7 +13,7 @@
             <Keywords name="Numbers, suffix1"></Keywords>
             <Keywords name="Numbers, suffix2"></Keywords>
             <Keywords name="Numbers, range"></Keywords>
-            <Keywords name="Operators1">, </Keywords>
+            <Keywords name="Operators1">, ;</Keywords>
             <Keywords name="Operators2"></Keywords>
             <Keywords name="Folders in code1, open"></Keywords>
             <Keywords name="Folders in code1, middle"></Keywords>
@@ -26,7 +26,7 @@
             <Keywords name="Folders in comment, close"></Keywords>
             <Keywords name="Keywords1">..{ ..} ..</Keywords>
             <Keywords name="Keywords2">--</Keywords>
-            <Keywords name="Keywords3">..iframe ..button ..info ..input_password&#x000D;&#x000A;..##  ..label ..input_text  ..header ..navbar &#x000D;&#x000A;..select ..info ..input_password ..slider ..flip &#x000D;&#x000A;..radio ..checkbox ..header ..label ..JustGage ..Dygraph</Keywords>
+            <Keywords name="Keywords3">..iframe ..button ..info ..input_password&#x000D;&#x000A;..## ..label ..input_text ..header ..navbar &#x000D;&#x000A;..select ..info ..input_password ..slider ..flip &#x000D;&#x000A;..radio ..checkbox ..header ..label ..JustGage ..Dygraph</Keywords>
             <Keywords name="Keywords4">Put_Input Get_Input Put_Slider Get_Slider&#x000D;&#x000A;Put_Header Panel_Open Theme_Change Dispatch_Event&#x000D;&#x000A;Element_Hide Element_Show Page_change Popup_Open&#x000D;&#x000A;Loader_Show Loader_Hide &#x000D;&#x000A;Out_0 Out_1 Out_2 Out_3 Out_4 Out_5 Out_6 Out_7&#x000D;&#x000A;In_0 In_1 In_2 In_3 &#x000D;&#x000A;SYS_LOOP_START console.log</Keywords>
             <Keywords name="Keywords5">..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]</Keywords>
             <Keywords name="Keywords6"></Keywords>

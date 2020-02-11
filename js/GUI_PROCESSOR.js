@@ -214,7 +214,7 @@ function GUI_Processor(isDATA){
 				
 			//..button_class('ID'),name,ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
 				
-			case "button_class":
+			case "button_header":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
@@ -231,6 +231,34 @@ function GUI_Processor(isDATA){
 				//$('#header_1').append(html); // matebs boloshi 
 				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
 				$('#header_1').prepend(html);  // dasva sul tavshi 				
+
+				var SCR = ''
+				SCR +='\n'+ 'function '+isID+'(){';
+				SCR +='\n'+ '		'+p[3];
+				SCR +='\n'+ '}';
+				SCR = '<script>'+SCR+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
+				break;
+				
+				
+				
+			case "button_class":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+
+
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+				isHTML += '<a onclick="'+isID+'()"  class="ui-btn '+p[2]+'">'+p[1]+'</a>';
+				//$('#header_1').append(html); // matebs boloshi 
+				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
+				//$('#header_1').prepend(html);  // dasva sul tavshi 				
 
 				var SCR = ''
 				SCR +='\n'+ 'function '+isID+'(){';
