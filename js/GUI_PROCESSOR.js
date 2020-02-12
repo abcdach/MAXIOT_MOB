@@ -665,6 +665,34 @@ function GUI_Processor(isDATA){
 			
 			
 			
+			case "block":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
+
+				isHTML += '<div class="ui-block-a">';
+				isHTML += '<div class="jqm-block-content">';
+				isHTML += '<h3>MAXIOT სისტემის პლატფორმა</h3>';		
+
+				//List
+				var pT = p[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<p><a href="'+pT1+'" data-ajax="false">'+pT0+'</a></p>';
+						}
+					}
+				}
+
+				isHTML += '</div>';
+				isHTML += '</div>';
+				break;		
+			
+			
+			
 			case "[m]":
 				Current_Mark = 'm';
 				isHTML = '<h2> . </h2>';

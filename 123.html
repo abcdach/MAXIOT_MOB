@@ -24,54 +24,26 @@ $( document ).on( "mobileinit", function() {
 console.log("*** mobileinit:1");
 console.log("*** mobileinit:0");
 });
-//#####################################################################
 $( document ).on( "pagecreate", function() {
 	console.log("*** pagecreate:1");
 	console.log("*** pagecreate:0");
 });
-//#####################################################################
 $(document).on('pagebeforecreate',"#page_1", function(){
 	console.log("*** pagebeforecreate:1:page_1");
-	
-	//GUI_Processor(START_SCRIPT);
-	//GUI_Processor(IS_TEST_SCRIPT);
-	
-	
 	GUI_Processor(x11);
-
-
-
-
 	console.log("*** pagebeforecreate:0:page_1");
 });	
-
 $(document).on("pageshow", "#page_1", function(){
-
-	
+	console.log("*** pageshow:1:page_1");
+	console.log("*** pageshow:0:page_1");
 }); 
-
-//#####################################################################
 $(document).on("pageinit","#page_1",function(){
 	console.log("*** pageinit:1:page_1");
-	
-
-//$('#fffdd').click(function() {
-  //alert('Handler for .click() called.');
-//});
-
-//$(document).ready("#fffdd").click(function() {
-      //alert('button clicked');
-//});
-
-	
 	console.log("*** pageinit:0:page_1");
 });	
 
 $( window ).resize(function(){
-  //console.log("*** resize:1 ########################");
 });
-
-
 </script>	
 	
 <div data-role="IS_STYLE" ></div>
@@ -84,26 +56,19 @@ $( window ).resize(function(){
 		<h2><img src="_assets/img/jquery-logo.png" alt="MaxIOT Systems"></h2>
 		<p>MAXIOT</p>
 		<a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
-		<!--<a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Search</a>-->
 	</div><!-- /header -->
 	
-	
-	
+<!-- ####################################################################################### -->
+
 	<div data-role="content_1" class="ui-content jqm-content" role="main"></div>	
-	
-
-
-<!-- ####################################################################################### -->
-
-<div data-role="panel_1" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a" >
-</div><!-- /panel -->
+	<div data-role="panel_1" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a" ></div>
 
 <!-- ####################################################################################### -->
 
-<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
-	<p>jQuery Mobile Demos version <span class="jqm-version"></span></p>
-	<p>Copyright 2014 The jQuery Foundation</p>
-</div><!-- /footer -->
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+		<p>MAXIOT (The internet of things)</span></p>
+		<p>© Copyright 2020, David Chkhaidze</p>
+	</div><!-- /footer -->
 	
 <!-- ####################################################################################### -->	
 
