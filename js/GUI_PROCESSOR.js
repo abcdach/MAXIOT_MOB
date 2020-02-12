@@ -260,7 +260,6 @@ function GUI_Processor(isDATA){
 				//$('#header_1').append(html); // matebs boloshi 
 				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
 				//$('#header_1').prepend(html);  // dasva sul tavshi 				
-
 				var SCR = ''
 				SCR +='\n'+ 'function '+isID+'(){';
 				SCR +='\n'+ '		'+p[3];
@@ -671,7 +670,7 @@ function GUI_Processor(isDATA){
 
 				isHTML += '<div class="ui-block-a">';
 				isHTML += '<div class="jqm-block-content">';
-				isHTML += '<h3>MAXIOT სისტემის პლატფორმა</h3>';		
+				isHTML += '<h3>'+p[1]+'</h3>';		
 
 				//List
 				var pT = p[2].split('--');

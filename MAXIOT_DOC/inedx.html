@@ -4,19 +4,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>jQuery Mobile Demos</title>
+	<title>MAXIOT</title>
 	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="stylesheet" href="X2/css/themes/default/jquery.mobile-1.4.5.min.css">
-	<link rel="stylesheet" href="X2/_assets/css/jqm-demos.css">
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<script src="X2/js/jquery.js"></script>
-	<script src="X2/_assets/js/index.js"></script>
-	<script src="X2/js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="_assets/js/index.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 	
 	<!--..................-->
-	<script src="js/GUI_ELEMENTS.js"></script>
-	<script src="X2/GUI_SCRIPT.dg"></script>
-	<script src="js/GUI_PROCESSOR.js"></script>
+	<script src="../js/GUI_ELEMENTS.js"></script>
+	<script src="GUI_SCRIPT.dg"></script>
+	<script src="GUI_M.dg"></script>
+	<script src="../js/GUI_PROCESSOR.js"></script>
 	<!--..................-->	
 	
 <script>
@@ -30,8 +31,18 @@ $( document ).on( "pagecreate", function() {
 });
 $(document).on('pagebeforecreate',"#page_1", function(){
 	console.log("*** pagebeforecreate:1:page_1");
+	
+	//var query = getQueryParams(document.location.search);
+	//;
+	
+	
+	
 	GUI_Processor(x11);
-	console.log("*** pagebeforecreate:0:page_1");
+	GUI_Processor(x15);
+	
+	console.log("fffff");
+	//console.log(getUrlVars() );
+	console.log("*** pagebeforecreate:0:page_1n");
 });	
 $(document).on("pageshow", "#page_1", function(){
 	console.log("*** pageshow:1:page_1");
@@ -40,10 +51,45 @@ $(document).on("pageshow", "#page_1", function(){
 $(document).on("pageinit","#page_1",function(){
 	console.log("*** pageinit:1:page_1");
 	console.log("*** pageinit:0:page_1");
-});	
+});
 
 $( window ).resize(function(){
 });
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+function refreshPage() { console.log("***");
+ // $.mobile.changePage(
+   // window.location.href,
+    //{ 
+      //allowSamePageTransition : true,
+     //transition              : 'none',
+      //showLoadMsg             : false,
+      //reloadPage              : true
+    //}
+ // );
+}
+
+function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
+
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+
+
 </script>	
 	
 <div data-role="IS_STYLE" ></div>
