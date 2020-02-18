@@ -49,7 +49,8 @@ var Connect_Status = 0;
 function MQTT_Connect(){
 	console.log("MQTT_Connect");
 	//client = new Paho.MQTT.Client("68.183.111.57", Number("3004"), "1999@JQ_Test");
-	client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1999@JQ_Test");
+	//client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1999@JQ_Test");
+	client = new Paho.MQTT.Client("max1", Number("4004"), "1999@JQ_Test");
 	client.onConnectionLost = onConnectionLost;
 	client.onMessageArrived = onMessageArrived;
 	client.connect({
@@ -113,9 +114,7 @@ function onMessageArrived(message) {
 		
 
 }
-function Dispatch_Event(is_Name, is_Data){
-	document.body.dispatchEvent(new CustomEvent(is_Name, { detail: {data: is_Data} }));
-}
+
 //#####################################################################
 function Out_0(data){
 	console.log(data +" ->> Out_0");

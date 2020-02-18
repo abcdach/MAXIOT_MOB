@@ -15,26 +15,81 @@ get_input_Password('ID');
 Put_Header
 
 
-Panel_Open Theme_Change Dispatch_Event
-Element_Hide Element_Show Page_change Popup_Open
-Loader_Show Loader_Hide 
+Panel_Open 
+Theme_Change 
+Dispatch_Event
+Element_Hide 
+Element_Show 
+Page_change 
+Popup_Open
+Loader_Show 
+Loader_Hide 
 Out_0 Out_1 Out_2 Out_3 Out_4 Out_5 Out_6 Out_7
 In_0 In_1 In_2 In_3 
-SYS_LOOP_START console.log
+SYS_LOOP_START 
+console.log
 **/
 /** 
 ..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]
 **/
 
+/** 
+		<a href="#page_1" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
+		<a onclick="disconnect_To_Server()"  class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">No text</a>
+**/		
+
 
 const START_SCRIPT =`
+..[w],3
+..{
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
+		Page_change('page_1');
+..}
+
+..[w],1
+..{
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
+		console.log('1111111');
+		Connect_To_Server();
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
+		Popup_Open('isConfig_pop');
+
+	..[pop](isConfig_pop),10px 20px
+	..{
+		..label, Host Name:
+		..input_text, http://maxh6/
+		..label,Port:
+		..input_text, 3004
+		..label,Device ID:
+		..input_text, 1655
+		..label,Device Name:
+		..input_text,Mob_Test
+		..##,2 
+		..button,Save,SYS_LOOP_START();
+		..button,Connect,Out_0("OK");
+	..}	
+
+..}
+`;
+
+
+
+
+const START_SCRIPT3 =`
 
 ..[w],1
 ..{
 
 	..navbar(nnav1_1),1,--Main(page_1)--Options(page_2)--Device(page_3)
-	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, console.log('1111111');
-	..button_header,name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left ui-mini, console.log('2222222');
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
+		console.log('1111111');
+		Connect_To_Server();
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-btn-icon-left, console.log('1111111');
+	
+	
+	
+	..#button_header,name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left ui-mini, console.log('2222222');
 	
 	..//Dygraph
 	..[c],is button

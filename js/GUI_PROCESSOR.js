@@ -183,7 +183,7 @@ function GUI_Processor(isDATA){
 				break;	
 
 			case "label":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="label";				
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";				
 				isHTML += ('<label>'+p[1]+'</label>');
 				break;
 
@@ -231,7 +231,7 @@ function GUI_Processor(isDATA){
 				var html = '<a onclick="'+isID+'()"  class="'+p[2]+'">'+p[1]+'</a>';
 				//$('#header_1').append(html); // matebs boloshi 
 				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
-				$('#header_1').prepend(html);  // dasva sul tavshi 				
+				$('#header_'+isPage).prepend(html);  // dasva sul tavshi 				
 
 				var SCR = ''
 				SCR +='\n'+ 'function '+isID+'(){';

@@ -18,7 +18,7 @@ get_input_Password('ID');
 //-  Put_Header(1,'text')			// Put_Header(is_Page,is_Text)
 //-  Panel_Open('ID');				// ->[p](ID)\
 //-  Theme_Change('Theme');			// Theme = a, b, c, d, e
-//-  Dispatch_Event('Name','Data');  //
+//-  Dispatch_Event('Name','Data'); // event,In_0,Out_0(Value);
 //-  Element_Hide('ID');				// 
 //-  Element_Show('ID');				// 
 //-  Page_change('page_3');
@@ -27,13 +27,23 @@ get_input_Password('ID');
 //-  Loader_Hide();
 
 
+
+
+
+//JAVA_Add_Event_Listener(is_Name,is_Script)
+
+
+
+
 	//$('#item3').remove();
 	//$('#page1').page();
 	//$.mobile.changePage( url, { transition: "slideup" });
 	//$('#'+is_ID).animate({left: '250px'});
 	
 	
-
+function Dispatch_Event(is_Name, is_Data){
+	document.body.dispatchEvent(new CustomEvent(is_Name, { detail: {data: is_Data} }));
+}
 
 
 
