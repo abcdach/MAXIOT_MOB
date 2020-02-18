@@ -158,7 +158,7 @@ function JAVA_Select_Change(is_ID,is_Script){
 //##################################
  function JAVA_Add_Event_Listener(is_Name,is_Script){
 	var SCR = ''
-	SCR +='\n'+ '	document.body.addEventListener("In_0", function(event) {';
+	SCR +='\n'+ '	document.body.addEventListener("'+is_Name+'", function(event) {';
 	SCR +='\n'+ '		var Value = event.detail.data;';
 	SCR +='\n'+ '		'+is_Script;
 	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';

@@ -34,6 +34,23 @@ function SYS_LOOP() {
 		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
 		break;
     case 5:
+		console.log("SYS_LOOP:5");
+		client.subscribe("1");
+		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
+		break;		
+    case 6:
+		console.log("SYS_LOOP:6");
+		client.subscribe("2");
+		SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
+		break;		
+    case 7:
+		console.log("SYS_LOOP:7");
+		client.subscribe("3");
+		SYS_STEP = 8; setTimeout(SYS_LOOP, 500);		
+		break;		
+		
+		
+    case 8:
 		console.log("SYS_LOOP:5");Loader_Hide();
 		//SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
 		break;
