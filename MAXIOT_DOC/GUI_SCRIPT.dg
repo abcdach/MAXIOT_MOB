@@ -9,7 +9,7 @@
 put_input_text('ID','text');
 get_input_text('ID');
 put_input_Password('ID','text');
-get_input_Password('ID');
+get_input_Password('ID'); 30:3A:64:44:BD:6C    B0:4E:26:80:AA:84
 **/
 /** 
 Put_Header

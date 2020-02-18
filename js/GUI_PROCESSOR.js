@@ -694,8 +694,8 @@ function GUI_Processor(isDATA){
 			
 			case "[m]":
 				Current_Mark = 'm';
-				isHTML = '<h2> . </h2>';
-				isHTML += '<ul class="jqm-list ui-alt-icon ui-nodisc-icon">';
+				isHTML = '<h1>  </h1>';
+				isHTML = '<ul class="jqm-list ui-alt-icon ui-nodisc-icon">';
 				isHTML_PANEL ='';
 				panel_status = 1;
 				break;
