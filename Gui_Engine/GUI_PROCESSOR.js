@@ -585,6 +585,26 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA_SCRIPT"]').append(Tmp_JAVA);
 				break;
 				
+			case "iframe2":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="100";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="100";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+				
+				var is_width  = p[2]; //$( window ).width() - 30;
+				var is_height = p[1]; //$( window ).height() - 30;
+				
+				isHTML += '<iframe id="'+isID+'" type="text/html" width="'+is_width+'" height="'+is_height+'"';
+				isHTML += 'src="'+p[3]+'"';
+				isHTML += 'frameborder="0"></iframe>';			
+			
+				Tmp_JAVA = '';
+				Tmp_JAVA +='\n'+ '$( window ).resize(function(){';
+				Tmp_JAVA +='\n'+ '	console.log("*** resize:1 ########################");';
+				Tmp_JAVA +='\n'+ '	$( "#'+isID+'" ).attr( "width", $( window ).width() - 30 )';
+				Tmp_JAVA +='\n'+ '});';
+				Tmp_JAVA = '<script>'+Tmp_JAVA+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(Tmp_JAVA);
+				break;				
 				
 			case "JustGage":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";

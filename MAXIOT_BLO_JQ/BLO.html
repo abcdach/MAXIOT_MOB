@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blockly Demo: Fixed Blockly</title>
+  <script src="BLO/js/blockly_compressed.js"></script>
+  <script src="BLO/js/blocks_compressed.js"></script>
+  <script src="BLO/js/javascript_compressed.js"></script>
+  <script src="BLO/js/en.js"></script>
+  <script src="BLO/dach.js"></script>
+
+  
+  <script src="BLO/Comp/xbutton.js"></script>
+  <script src="BLO/Comp/xslider.js"></script>
+  <script src="BLO/Comp/xpage.js"></script>
+  
+<xml id="toolbox" style="display: none">
+<category name="Compon" >
+	<block type="xpage"></block>
+	<block type="xbutton"></block>
+	<block type="xslider"></block>
+</category>
+
+<category name="Text" >
+	<block type="text"></block>
+	<block type="text_multiline"></block>
+	<block type="j_out"></block>
+	<block type="j_java"></block>
+	<block type="controls_if"></block>
+	<block type="logic_compare"></block>
+	<block type="controls_repeat_ext"></block>
+	<block type="math_number">
+	<field name="NUM">123</field>
+	</block>
+	<block type="math_arithmetic"></block>
+	<block type="text_print"></block>
+</category>
+</xml> 
+  
+  <style>
+
+  </style>
+</head>
+<body>
+<p>
+    <button onclick="showCode()">Show Script</button>
+    <!-- <button onclick="runCode()">Run JavaScript</button>-->
+    <button onclick="toXml()">Save XML</button>
+    <button onclick="Read_File()">Load XML</button>
+	<!-- <button onclick="ggg()">gggggggg</button>-->
+</p>
+<table>
+	<tr>	  
+        <td>
+			<div id="blocklyDiv" style="height: 410px; width: 550px;"></div>
+        </td>	  
+        <td>
+			<textarea id="importExport"style="height: 400px; width: 200px; "></textarea>
+        </td>
+	</tr>
+</table>
+
+<script src="BLO/dach2.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
