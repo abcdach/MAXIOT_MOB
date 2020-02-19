@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MAXIOT</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	
+	<!--..................-->
+	<link rel="stylesheet" href="MyJS/jquery/css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+	<link rel="stylesheet" href="MyJS/jquery/css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+	<link rel="stylesheet" href="MyJS/jquery/css/theme-classic.css">
+	<link rel="stylesheet" href="MyJS/jquery/css/themes/default/jquery.mobile-1.4.5.min.css">
+	<script src="MyJS/jquery/js/jquery.js"></script>
+	<script src="MyJS/jquery/js/jquery.mobile-1.4.5.min.js"></script>
+	<!--..................-->
+	<script src="MyJS/justgage/raphael-2.1.4.min.js"></script>
+    <script src="MyJS/justgage/justgage.js"></script>
+			
+	<!--..................-->
+	<script src="../Gui_Engine/GUI_PROCESSOR.js"></script>
+	<script src="../Gui_Engine/GUI_ELEMENTS.js"></script>
+	<script src="GUI_SCRIPT.dg"></script>
+	
+	<!--..................-->
+	<script src="js/paho-mqtt-min.js"></script>
+	<script src="js/mqtt.js"></script>	
+	<!--..................-->	
+	
+	<script src="MyJS/dygraphs/dygraph.min.js"></script>
+    <link rel="stylesheet" href="MyJS/dygraphs/dygraph.css">
+			
+	<!--..................-->	
+	
+	
+	
+<style>
+.ui-icon-myicon:after {
+    background-image: url("MyPIC/111.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
+</style>	
+
+<!--
+<script src="js/dygraph-combined.js"></script>
+-->
+<!-- ####################################################################################### -->
+	
+<script>
+$( document ).on( "mobileinit", function() { 
+console.log("*** mobileinit:1");
+console.log("*** mobileinit:0");
+});
+//#####################################################################
+$( document ).on( "pagecreate", function() {
+	console.log("*** pagecreate:1");
+	console.log("*** pagecreate:0");
+});
+//#####################################################################
+$(document).on('pagebeforecreate',"#page_1", function(){
+	console.log("*** pagebeforecreate:1:page_1");
+	
+	GUI_Processor(START_SCRIPT);
+	GUI_Processor(IS_TEST_SCRIPT);
+	
+	
+	
+
+
+
+
+	console.log("*** pagebeforecreate:0:page_1");
+});	
+
+ var g1;
+$(document).on("pageshow", "#page_1", function(){
+
+    //if (!g1){
+        //g1 = new Dygraph(document.getElementById("graph"),         
+            //"Date,Temperature\n" +
+            //"2008-05-07,75\n" +
+            //"2008-05-08,70\n" +
+            //"2008-05-09,80\n");       
+   // }
+	/**
+       g1 = new Dygraph(
+            document.getElementById("graph"),
+            [
+              [1, null, 3],
+              [2, 2, null],
+              [3, null, 7],
+              [4, 5, null],
+              [5, null, 5],
+              [6, 3, null]
+            ],
+            {
+              labels: ['x', 'A', 'B' ],
+              connectSeparatedPoints: true,
+              drawPoints: true
+            }
+          ); 
+
+	**/
+
+
+			
+			
+	
+	
+}); 
+/**
+$(document).on("pagecreate","#page_1", function(){ 
+    $( "#graph1" ).on( "collapsibleexpand", function( event, ui ) {
+		console.log("*eeeeeeeeeeeeeeeeeeeee");
+        g1.resize();    
+    });
+});
+
+
+$( document ).on( "pagecontainershow", function( event, ui ) {
+console.log("*xxxxxxxxxxxxxxxxxxxxxxxxxx");
+    //DrawChart('graph');   
+});
+*/
+
+
+
+
+
+
+
+
+$(document).on('pagebeforecreate',"#page_2", function(){    
+	console.log("*** pagebeforecreate:1:page_2");
+	console.log("*** pagebeforecreate:0:page_2");
+});
+$(document).on('pagebeforecreate',"#page_3", function(){    
+	console.log("*** pagebeforecreate:1:page_3");
+	console.log("*** pagebeforecreate:0:page_3");
+});
+$(document).on('pagebeforecreate',"#page_4", function(){    
+	console.log("*** pagebeforecreate:1:page_4");
+	console.log("*** pagebeforecreate:0:page_4");
+});
+$(document).on('pagebeforecreate',"#page_5", function(){    
+	console.log("*** pagebeforecreate:1:page_5");
+	console.log("*** pagebeforecreate:0:page_5");
+});
+//#####################################################################
+$(document).on("pageinit","#page_1",function(){
+	console.log("*** pageinit:1:page_1");
+	
+
+//$('#fffdd').click(function() {
+  //alert('Handler for .click() called.');
+//});
+
+//$(document).ready("#fffdd").click(function() {
+      //alert('button clicked');
+//});
+
+	
+	console.log("*** pageinit:0:page_1");
+});	
+$(document).on("pageinit","#page_2",function(){
+	console.log("*** pageinit:1:page_2");
+	console.log("*** pageinit:0:page_2");
+});	
+$(document).on("pageinit","#page_3",function(){
+	console.log("*** pageinit:1:page_3");
+	console.log("*** pageinit:0:page_3");
+});	
+$(document).on("pageinit","#page_4",function(){
+	console.log("*** pageinit:1:page_4");
+	console.log("*** pageinit:0:page_4");
+});	
+$(document).on("pageinit","#page_5",function(){
+	console.log("*** pageinit:1:page_5");
+	console.log("*** pageinit:0:page_5");
+});	
+
+
+$( window ).resize(function(){
+  //console.log("*** resize:1 ########################");
+});
+
+
+
+
+//#####################################################################
+
+function Connect_To_Server(){
+	if(Connect_Status === 0)SYS_LOOP_START();
+	if(Connect_Status === 1)Page_change("page_3");
+}
+function disconnect_To_Server(){}
+
+</script>
+</head>
+<body>
+
+<div data-role="IS_STYLE" ></div>
+<div data-role="IS_JAVA_SCRIPT" ></div>
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_1">
+	<div data-role="header" id="header_1">
+
+		<h1><span id="MyHeader_Text_1"></span></h1>
+		<div data-role="navbar">
+			<div data-role="navbar_1" ></div>
+		</div>
+		
+	</div><!-- /header -->
+	
+	<div data-role="content_1" class="ui-content" role="main"></div>	
+	<div data-role="panel_1" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1> </h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+
+<div data-role="page" id="page_2">
+	<div data-role="header" id="header_2">
+
+		<h1><span id="MyHeader_Text_2"></span></h1>
+		<div data-role="navbar">
+			<div data-role="navbar_2" ></div>
+		</div>
+		
+	</div><!-- /header -->
+	
+	<div data-role="content_2" class="ui-content" role="main"></div>	
+	<div data-role="panel_2" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1> </h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+
+<div data-role="page" id="page_3">
+	<div data-role="header" id="header_3">
+
+		<h1><span id="MyHeader_Text_3"></span></h1>
+		<div data-role="navbar">
+			<div data-role="navbar_3" ></div>
+		</div>
+		
+	</div><!-- /header -->
+	
+	<div data-role="content_3" class="ui-content" role="main"></div>	
+	<div data-role="panel_3" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1> </h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+<!-- ####################################################################################### -->
+
+<div data-role="page" id="page_4">
+	<div data-role="header">
+		<a href="#page_1" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
+		<h1><span id="MyHeader_Text_4"></span></h1> 
+		<!--<a href="#page_5" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-gear">Options</a> -->
+		<div data-role="navbar">
+			<div data-role="navbar_4" ></div>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_4" class="ui-content" role="main"></div>	
+	<div data-role="panel_4" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1> </h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+<div data-role="page" id="page_5">
+	<div data-role="header">
+		<a href="#page_1" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
+		<h1><span id="MyHeader_Text_5">Options</span></h1> 
+		<!--<a href="#page_5" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-gear">Options</a>-->
+		<div data-role="navbar">
+			<div data-role="navbar_5" ></div>
+		</div>
+	</div><!-- /header -->
+	<div data-role="content_5" class="ui-content" role="main"></div>	
+	<div data-role="panel_5" ></div>
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<h1> </h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- ####################################################################################### -->
+
+
+</body>
+</html>
