@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blockly Demo: Fixed Blockly</title>
+  <script src="js/blockly_compressed.js"></script>
+  <script src="js/blocks_compressed.js"></script>
+  <script src="js/javascript_compressed.js"></script>
+  <script src="js/en.js"></script>
+  <script src="dach.js"></script>
+  
+  <script src="FileSaver.js"></script>
+
+  
+  <script src="Comp/xButton.js"></script>
+  <script src="Comp/xSlider.js"></script>
+  <script src="Comp/xPage.js"></script>
+  
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+
+<category name="Compon" >
+<block type="xpage"></block>
+<block type="xButton"></block>
+<block type="xSlider"></block>
+</category>
+
+
+    <category name="Text" >
+<block type="text_multiline"></block>
+
+
+<block type="j_out"></block>
+<block type="j_java"></block>
+
+
+<block type="controls_if"></block>
+<block type="logic_compare"></block>
+<block type="controls_repeat_ext"></block>
+<block type="math_number">
+<field name="NUM">123</field>
+</block>
+<block type="math_arithmetic"></block>
+<block type="text"></block>
+<block type="text_print"></block>
+    </category>
+
+
+
+</xml> 
+  
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
+</head>
+<body>
+<p>
+    <button onclick="showCode()">Show Script</button>
+    <button onclick="runCode()">Run JavaScript</button>
+	
+    <button onclick="toXml()">Save XML</button>
+    <button onclick="fromXml()">Load XML</button>
+	
+	<button onclick="ggg()">gggggggg</button>
+</p>
+
+  
+
+<table>
+	<tr>
+	  
+        <td>
+			<div id="blocklyDiv" style="height: 580px; width: 800px;"></div>
+        </td>	  
+        <td>
+			<textarea id="importExport"style="width: 200px; height: 480px;"></textarea>
+        </td>
+
+	</tr>
+</table>
+
+<script>
+
+var demoWorkspace = Blockly.inject('blocklyDiv',
+    {toolbox: document.getElementById('toolbox'),
+     zoom:
+         {controls: true,
+          wheel: true,
+          startScale: 1.0,
+          maxScale: 3,
+          minScale: 0.3,
+          scaleSpeed: 1.2},
+     trashcan: true});
+
+
+
+    function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      alert(code);
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP =
+          'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+	
+      function toXml() {
+        var output = document.getElementById('importExport');
+        var xml = Blockly.Xml.workspaceToDom(demoWorkspace);
+        output.value = Blockly.Xml.domToPrettyText(xml);
+        output.focus();
+        output.select();
+		
+		//Save_File(output.value);
+		
+
+		
+      }
+	  
+	  var is_001 ='<xml xmlns="https://developers.google.com/blockly/xml">';
+  is_001 +='<block type="xpage" id="LvuXtaKV*$`0B0p$e_!M" x="0" y="0">';
+    is_001 +='<field name="NAME">1</field>';
+  is_001 +='</block>';
+  is_001 +='<block type="xButton" id="uc,]|oUE8UJgWrDU`^a~" x="0" y="0"/>';
+  is_001 +='<block type="xpage" id="()fC;4ec^Agn}^)cr5Uj" x="111" y="159">';
+    is_001 +='<field name="NAME">1</field>';
+    is_001 +='<statement name="NAME">';
+     is_001 +=' <block type="xButton" id="fe;O1CqKD8~aO2(NqrzC">';
+       is_001 +=' <next>';
+        is_001 +='  <block type="xSlider" id="?*!l};!m-#J{yG)2E}GS"/>';
+      is_001 +=' </next>';
+     is_001 +=' </block>';
+   is_001 +=' </statement>';
+  is_001 +='</block>';
+is_001 +='</xml>';
+
+
+
+      function fromXml() {
+        var input = document.getElementById('importExport');
+        var xml = Blockly.Xml.textToDom(input.value);
+        Blockly.Xml.domToWorkspace(xml, demoWorkspace);
+      }	
+	  
+	 
+      function ggg() {
+        Save_File("ggggggggggggggggg");
+      }	
+	  	 
+	 
+	 
+	function Save_File(is_data) {
+		var isFile;
+		var fname = prompt("Please enter your name:", "project.xml");
+		if (fname == null || fname == "") {
+		isFile = "project.xml";
+		} else {
+		//isFile = fname + ".xml";
+		isFile = fname;
+		}
+
+		let a = document.createElement('a');
+		a.href = "data:application/octet-stream,"+encodeURIComponent(is_data);
+		a.download = isFile;
+		a.click();
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

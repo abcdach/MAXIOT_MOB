@@ -51,7 +51,7 @@ function SYS_LOOP() {
 		
 		
     case 8:
-		console.log("SYS_LOOP:5");Loader_Hide();
+		console.log("SYS_LOOP:8");Loader_Hide();
 		//SYS_STEP = 5; setTimeout(SYS_LOOP, 500);	
 		break;
     default:
@@ -67,7 +67,7 @@ function MQTT_Connect(){
 	console.log("MQTT_Connect");
 	//client = new Paho.MQTT.Client("68.183.111.57", Number("3004"), "1999@JQ_Test");
 	//client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1999@JQ_Test");
-	client = new Paho.MQTT.Client("max1", Number("4004"), "1999@JQ_Test");
+	client = new Paho.MQTT.Client("MAXH5", Number("4004"), "1999@JQ_Test");
 	client.onConnectionLost = onConnectionLost;
 	client.onMessageArrived = onMessageArrived;
 	client.connect({

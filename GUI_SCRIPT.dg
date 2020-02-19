@@ -66,8 +66,8 @@ const START_SCRIPT =`
 		..label,Device Name:
 		..input_text,Mob_Test
 		..##,2 
-		..button,Save,SYS_LOOP_START();
-		..button,Connect,Out_0("OK");
+		..button,Save,Out_0("OK");
+		..button,Connect,Connect_To_Server();
 	..}	
 
 ..}
