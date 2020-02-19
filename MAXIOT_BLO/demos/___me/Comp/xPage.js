@@ -21,6 +21,6 @@ Blockly.JavaScript['xpage'] = function(block) {
   var dropdown_name = block.getFieldValue('NAME');
   var statements_script = Blockly.JavaScript.statementToCode(block, 'Script');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+  var code = '..[w],'+dropdown_name+'\n..{\n'+statements_script+'\n..}\n';
   return code;
 };

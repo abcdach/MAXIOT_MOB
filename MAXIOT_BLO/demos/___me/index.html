@@ -15,40 +15,31 @@
   <script src="FileSaver.js"></script>
 
   
-  <script src="Comp/xButton.js"></script>
-  <script src="Comp/xSlider.js"></script>
-  <script src="Comp/xPage.js"></script>
+  <script src="Comp/xbutton.js"></script>
+  <script src="Comp/xslider.js"></script>
+  <script src="Comp/xpage.js"></script>
   
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-
 <category name="Compon" >
-<block type="xpage"></block>
-<block type="xButton"></block>
-<block type="xSlider"></block>
+	<block type="xpage"></block>
+	<block type="xbutton"></block>
+	<block type="xslider"></block>
 </category>
 
-
-    <category name="Text" >
-<block type="text_multiline"></block>
-
-
-<block type="j_out"></block>
-<block type="j_java"></block>
-
-
-<block type="controls_if"></block>
-<block type="logic_compare"></block>
-<block type="controls_repeat_ext"></block>
-<block type="math_number">
-<field name="NUM">123</field>
-</block>
-<block type="math_arithmetic"></block>
-<block type="text"></block>
-<block type="text_print"></block>
-    </category>
-
-
-
+<category name="Text" >
+	<block type="text"></block>
+	<block type="text_multiline"></block>
+	<block type="j_out"></block>
+	<block type="j_java"></block>
+	<block type="controls_if"></block>
+	<block type="logic_compare"></block>
+	<block type="controls_repeat_ext"></block>
+	<block type="math_number">
+	<field name="NUM">123</field>
+	</block>
+	<block type="math_arithmetic"></block>
+	<block type="text_print"></block>
+</category>
 </xml> 
   
   <style>
@@ -68,9 +59,10 @@
     <button onclick="runCode()">Run JavaScript</button>
 	
     <button onclick="toXml()">Save XML</button>
-    <button onclick="fromXml()">Load XML</button>
+    <button onclick="Read_File()">Load XML</button>
 	
 	<button onclick="ggg()">gggggggg</button>
+
 </p>
 
   
@@ -79,10 +71,10 @@
 	<tr>
 	  
         <td>
-			<div id="blocklyDiv" style="height: 580px; width: 800px;"></div>
+			<div id="blocklyDiv" style="height: 500px; width: 650px;"></div>
         </td>	  
         <td>
-			<textarea id="importExport"style="width: 200px; height: 480px;"></textarea>
+			<textarea id="importExport"style="width: 280px; height: 450px;"></textarea>
         </td>
 
 	</tr>
@@ -107,54 +99,37 @@ var demoWorkspace = Blockly.inject('blocklyDiv',
       // Generate JavaScript code and display it.
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      alert(code);
+      //alert(code);
+		var output = document.getElementById('importExport');
+		output.value = code;
+		//output.focus();
+		//output.select();
     }
 
-    function runCode() {
-      // Generate JavaScript code and run it.
-      window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP =
-          'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      try {
-        eval(code);
-      } catch (e) {
-        alert(e);
-      }
-    }
+	function runCode() {
+		// Generate JavaScript code and run it.
+		window.LoopTrap = 1000;
+		Blockly.JavaScript.INFINITE_LOOP_TRAP =
+		  'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+		var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+		Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+		try {
+			//eval(code);
+		} catch (e) {
+			//alert(e);
+		}
+	}
 	
       function toXml() {
-        var output = document.getElementById('importExport');
+        //var output = document.getElementById('importExport');
         var xml = Blockly.Xml.workspaceToDom(demoWorkspace);
-        output.value = Blockly.Xml.domToPrettyText(xml);
-        output.focus();
-        output.select();
-		
-		//Save_File(output.value);
-		
-
-		
+		var Text_XML = Blockly.Xml.domToPrettyText(xml);
+        //output.value = Blockly.Xml.domToPrettyText(xml);
+        //output.focus();
+        //output.select();		
+		Save_File(Text_XML);
       }
 	  
-	  var is_001 ='<xml xmlns="https://developers.google.com/blockly/xml">';
-  is_001 +='<block type="xpage" id="LvuXtaKV*$`0B0p$e_!M" x="0" y="0">';
-    is_001 +='<field name="NAME">1</field>';
-  is_001 +='</block>';
-  is_001 +='<block type="xButton" id="uc,]|oUE8UJgWrDU`^a~" x="0" y="0"/>';
-  is_001 +='<block type="xpage" id="()fC;4ec^Agn}^)cr5Uj" x="111" y="159">';
-    is_001 +='<field name="NAME">1</field>';
-    is_001 +='<statement name="NAME">';
-     is_001 +=' <block type="xButton" id="fe;O1CqKD8~aO2(NqrzC">';
-       is_001 +=' <next>';
-        is_001 +='  <block type="xSlider" id="?*!l};!m-#J{yG)2E}GS"/>';
-      is_001 +=' </next>';
-     is_001 +=' </block>';
-   is_001 +=' </statement>';
-  is_001 +='</block>';
-is_001 +='</xml>';
-
-
 
       function fromXml() {
         var input = document.getElementById('importExport');
@@ -162,10 +137,33 @@ is_001 +='</xml>';
         Blockly.Xml.domToWorkspace(xml, demoWorkspace);
       }	
 	  
-	 
-      function ggg() {
-        Save_File("ggggggggggggggggg");
-      }	
+function ggg() {
+		demoWorkspace.clear();
+		//Blockly.mainWorkspace.clear();
+}
+
+		 
+	function Read_File() {
+		var input = document.createElement('input');
+		input.type = 'file';
+		input.onchange = e => { 
+		   // getting a hold of the file reference
+		   var file = e.target.files[0]; 
+		   // setting up the reader
+		   var reader = new FileReader();
+		   reader.readAsText(file); // this is reading as data url
+		   // here we tell the reader what to do when it's done reading...
+		   reader.onload = readerEvent => {
+			  var content = readerEvent.target.result; // this is the content!
+			  console.log(content);
+			//var input = document.getElementById('importExport');
+			Blockly.mainWorkspace.clear();
+			var xml = Blockly.Xml.textToDom(content);
+			Blockly.Xml.domToWorkspace(xml, demoWorkspace);
+		   }
+		}
+		input.click();
+	}	
 	  	 
 	 
 	 
@@ -184,13 +182,23 @@ is_001 +='</xml>';
 		a.download = isFile;
 		a.click();
 	}
-	
-	
-	
-	
-	
-	
-	
+
 </script>
+
+
+
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

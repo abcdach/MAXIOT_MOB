@@ -6,21 +6,23 @@
 //
 //-----------------------------------------------
 
-Blockly.Blocks['xSlider'] = {
+Blockly.Blocks['xslider'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Slider");
     this.appendValueInput("ID")
-        .setCheck("Number")
-        .appendField("ID");
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Slider     ID");
     this.appendValueInput("Min")
         .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Min");
     this.appendValueInput("Max")
         .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Max");
     this.appendValueInput("Step")
         .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Step");
     this.appendStatementInput("Execute")
         .setCheck(null)
@@ -33,7 +35,8 @@ Blockly.Blocks['xSlider'] = {
   }
 };
 
-Blockly.JavaScript['xSlider'] = function(block) {
+
+Blockly.JavaScript['xslider'] = function(block) {
   var value_id = Blockly.JavaScript.valueToCode(block, 'ID', Blockly.JavaScript.ORDER_ATOMIC);
   var value_min = Blockly.JavaScript.valueToCode(block, 'Min', Blockly.JavaScript.ORDER_ATOMIC);
   var value_max = Blockly.JavaScript.valueToCode(block, 'Max', Blockly.JavaScript.ORDER_ATOMIC);
@@ -43,3 +46,9 @@ Blockly.JavaScript['xSlider'] = function(block) {
   var code = '..slider,'+value_min+','+value_max+','+value_step+','+statements_execute+'\n';
   return code;
 };
+
+
+
+
+
+
