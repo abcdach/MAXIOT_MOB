@@ -97,24 +97,44 @@
   </style>
 </head>
 <body>
-
-<p>
-<button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+<!--
+button id="dialog-link" class="ui-button ui-corner-all ui-widget">
 <span class="ui-icon ui-icon-newwin"></span>Open
 </button>
 <button id="dialog-link2" class="ui-button ui-corner-all ui-widget">
 <span class="ui-icon ui-icon-newwin"></span>Open2
 </button>
+    <button onclick="runCode()">Run JavaScript</button>
+	
+	<button onclick="ggg()">gggggggg</button>
+-->	
+<p>    
+<button class="ui-button ui-corner-all ui-widget" onclick="Read_File()">Load</button>
+<button class="ui-button ui-corner-all ui-widget" onclick="toXml()"    >Save</button>
+<button class="ui-button ui-corner-all ui-widget" onclick="showCode()" >Show Script</button>
 </p>
+
+
+
+<table>
+	<tr>
+	  
+        <td>
+			<div id="blocklyDiv" style="height: 450px; width: 650px;"></div>
+        </td>	  
+        <td>
+			<textarea id="importExport"style="height: 450px; width: 280px; "></textarea>
+        </td>
+
+	</tr>
+</table>
 
 
 	
 
 <div id="dialog" title="blockly">
-	<div id="blocklyDiv" style="height: 410px; width: 550px;"></div>
 </div>
 <div id="dialog2" title="blockly2">
-	<textarea id="importExport"style="height: 400px; width: 200px; "></textarea>
 </div>
 
 

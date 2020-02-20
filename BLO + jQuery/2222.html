@@ -1,0 +1,257 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <link href="JQ/jquery-ui.css" rel="stylesheet">
+  <script src="JQ/js/jquery-3.4.1.min.js"></script>
+  <script src="JQ/jquery-ui.js"></script>
+  
+  
+   <script src="BLO/js/blockly_compressed.js"></script>
+  <script src="BLO/js/blocks_compressed.js"></script>
+  <script src="BLO/js/javascript_compressed.js"></script>
+  <script src="BLO/js/en.js"></script>
+  <script src="BLO/dach.js"></script>
+
+  
+  <script src="BLO/Comp/xbutton.js"></script>
+  <script src="BLO/Comp/xslider.js"></script>
+  <script src="BLO/Comp/xpage.js"></script>
+  
+<xml id="toolbox" style="display: none">
+<category name="Compon" >
+	<block type="xpage"></block>
+	<block type="xbutton"></block>
+	<block type="xslider"></block>
+</category>
+
+<category name="Text" >
+	<block type="text"></block>
+	<block type="text_multiline"></block>
+	<block type="j_out"></block>
+	<block type="j_java"></block>
+	<block type="controls_if"></block>
+	<block type="logic_compare"></block>
+	<block type="controls_repeat_ext"></block>
+	<block type="math_number">
+	<field name="NUM">123</field>
+	</block>
+	<block type="math_arithmetic"></block>
+	<block type="text_print"></block>
+</category>
+</xml>  
+  
+  
+  
+  
+  
+  
+  
+  
+  <style>
+  body{
+		font-family: "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+  </style>
+</head>
+<body>
+<!--
+button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+<span class="ui-icon ui-icon-newwin"></span>Open
+</button>
+<button id="dialog-link2" class="ui-button ui-corner-all ui-widget">
+<span class="ui-icon ui-icon-newwin"></span>Open2
+</button>
+    <button onclick="runCode()">Run JavaScript</button>
+	
+	<button onclick="ggg()">gggggggg</button>
+-->	
+<p>    
+<button class="ui-button ui-corner-all ui-widget" onclick="Read_File()">Load</button>
+<button class="ui-button ui-corner-all ui-widget" onclick="toXml()"    >Save</button>
+<button class="ui-button ui-corner-all ui-widget" onclick="showCode()" >Show Script</button>
+</p>
+
+
+
+<table>
+	<tr>
+	  
+        <td>
+			<div id="blocklyDiv" style="height: 450px; width: 650px;"></div>
+        </td>	  
+        <td>
+			<textarea id="importExport"style="height: 450px; width: 280px; "></textarea>
+        </td>
+
+	</tr>
+</table>
+
+
+	
+
+<div id="dialog" title="blockly">
+</div>
+<div id="dialog2" title="blockly2">
+</div>
+
+
+
+
+			
+
+<script src="BLO/dach2.js"></script>
+
+
+
+<script>
+
+$( "#dialog" ).dialog({
+	autoOpen: false,
+	width: 600,
+	buttons: [
+		{
+			text: "Load",
+			click: function() {
+				Read_File();
+			}
+		},
+		{
+			text: "Save",
+			click: function() {
+				toXml();
+			}
+		},
+		{
+			text: "showCode",
+			click: function() {
+				showCode();
+			}
+		}
+	]
+});
+// Link to open the dialog
+$( "#dialog-link" ).click(function( event ) {
+	$( "#dialog" ).dialog( "open" );
+	event.preventDefault();
+});
+// Hover states on the static widgets
+$( "#dialog-link, #icons li" ).hover(
+	function() {
+		$( this ).addClass( "ui-state-hover" );
+	},
+	function() {
+		$( this ).removeClass( "ui-state-hover" );
+	}
+);
+
+
+
+
+
+$( "#dialog2" ).dialog({
+	autoOpen: false,
+	width: 600,
+	buttons: [
+		{
+			text: "Load",
+			click: function() {
+				Read_File();
+			}
+		},
+		{
+			text: "Save",
+			click: function() {
+				toXml();
+			}
+		},
+		{
+			text: "showCode",
+			click: function() {
+				showCode();
+			}
+		}
+	]
+});
+// Link to open the dialog
+$( "#dialog-link2" ).click(function( event ) {
+	$( "#dialog2" ).dialog( "open" );
+	event.preventDefault();
+});
+// Hover states on the static widgets
+$( "#dialog-link2, #icons li" ).hover(
+	function() {
+		$( this ).addClass( "ui-state-hover" );
+	},
+	function() {
+		$( this ).removeClass( "ui-state-hover" );
+	}
+);
+
+
+
+
+
+
+
+
+
+$( "#accordion" ).accordion();
+$( "#button1" ).button();
+$( "#button" ).button();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

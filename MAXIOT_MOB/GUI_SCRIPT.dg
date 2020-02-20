@@ -55,6 +55,19 @@ const START_SCRIPT =`
 	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
 		Popup_Open('isConfig_pop');
 
+	..[m]
+	..{
+		..m_object ,Home,index.html?page=is00
+		..m_object ,1111,index.html?page=is01
+		..m_object ,2222,index.html?page=is02
+		..m_objects,MAXIOT სისტემის პლატფორმა,
+			--მიკროკომპიუტერი(page_1)
+			--ოპერატიული მეხსიერება(page_2)
+			--დამატებითი პერიფერიული მოწყობილობა(page_3)
+	..}	
+
+
+
 	..[pop](isConfig_pop),10px 20px
 	..{
 		..label, Host Name:
