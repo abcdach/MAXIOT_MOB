@@ -49,7 +49,7 @@ console.log
 
 
 
-const START_SCRIPT =`
+const START_SCRIPTy =`
 
 
 
@@ -59,6 +59,14 @@ const START_SCRIPT =`
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l
 	..navbar(nav1),--page_1(1)--page_2(2)--page_3(3)
+	..javascript,
+		console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+
+	..js_pc,
+		console.log("js_pc xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		console.log("js_pc yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+
 ..}
 ..[w],1
 ..{
@@ -75,7 +83,7 @@ const START_SCRIPT =`
 
 
 
-const START_SCRIPTx =`
+const START_SCRIPT =`
 ..[w],3
 ..{
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
@@ -89,23 +97,55 @@ const START_SCRIPTx =`
 		Connect_To_Server();
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
 		Popup_Open('isConfig_pop');
-
+		
+	..js_pc,
+		put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
+		put_input_text('it_pop1_Port',Read_Memory('mem_Port'));
+		put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
+		put_input_text('it_pop1_Device_Name',Read_Memory('mem_Device_Name'));
+		console.log("js_pc ----------------------------------------------");		
+		console.log('it_pop1_Host: ',Read_Memory('mem_Host'));
+		console.log('it_pop1_Port: ',Read_Memory('mem_Port'));
+		console.log('it_pop1_Device_ID: ',Read_Memory('mem_Device_ID'));
+		console.log('it_pop1_Device_Name: ',Read_Memory('mem_Device_Name'));
+		console.log("js_pc ----------------------------------------------");
+		
 	..[pop](isConfig_pop),10px 20px
 	..{
-		..label, Host Name:
-		..input_text, http://maxh6/
+		..label,Host:
+		..input_text(it_pop1_Host), http://maxh6/
 		..label,Port:
-		..input_text, 3004
+		..input_text(it_pop1_Port), 3004
 		..label,Device ID:
-		..input_text, 1655
+		..input_text(it_pop1_Device_ID), 1655
 		..label,Device Name:
-		..input_text,Mob_Test
+		..input_text(it_pop1_Device_Name),Mob_Test
 		..##,2 
-		..button,Save,Out_0("OK");
-		..button,Connect,Connect_To_Server();
+		..button,Save,
+			console.log("js_pc ----------------------------------------------");
+			console.log('Host: ',       get_input_text('it_pop1_Host'));
+			console.log('Port: ',       get_input_text('it_pop1_Port'));
+			console.log('Device_ID: ',  get_input_text('it_pop1_Device_ID'));
+			console.log('Device_Name: ',get_input_text('it_pop1_Device_Name'));
+			console.log("js_pc ----------------------------------------------");
+			Write_Memory('mem_Host', 		get_input_text('it_pop1_Host'));
+			Write_Memory('mem_Port', 		get_input_text('it_pop1_Port'));
+			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
+			Write_Memory('mem_Device_Name', get_input_text('it_pop1_Device_Name'));
+		..
 	..}	
 ..}
 `;
+
+
+
+
+
+
+
+
+
+
 
 
 

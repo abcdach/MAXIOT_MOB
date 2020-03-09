@@ -4,6 +4,17 @@
 ..select ..info ..input_password ..slider ..flip 
 ..radio ..checkbox ..header ..label ..JustGage ..Dygraph
 ..header_button
+..js
+..javascript
+..js_pbc
+..js_pagebeforecreate
+..javascript_pagebeforecreate
+..js_pc
+..js_pagecreate
+..javascript_pagecreate
+..js_pi
+..js_pageinit
+..javascript_pageinit
 **/
 /**
 ..[c] ..[p] ..[w] ..[d]  ..[t] ..[pop]
@@ -36,9 +47,22 @@
 //..}														//
 //-------------------------------------------				//
 //..if_event, event_name, *JavaScript*(Value)				//..event,In_0,Out_0(Value);	Dispatch_Event("In_0",isData);
-
-
-
+//-------------------------------------------				//
+//..js,*JavaScript*
+//..javascript
+//
+//..js_pbc,*JavaScript*
+//..js_pagebeforecreate,*JavaScript*
+//..javascript_pagebeforecreate,*JavaScript*
+//
+//..js_pc,*JavaScript*
+//..js_pagecreate,*JavaScript*
+//..javascript_pagecreate,*JavaScript*
+//
+//..js_pi,*JavaScript*
+//..js_pageinit,*JavaScript*
+//..javascript_pageinit,*JavaScript*
+//-------------------------------------------				//
 
 var isID_Counter = 0;
 
@@ -272,6 +296,93 @@ function GUI_Processor(isDATA){
 				SCR = '<script>'+SCR+'</script>';
 				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 				break;				
+
+			case "js":
+			case "javascript":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				var SCR = '<script>'+p[1]+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
+				break;
+				
+				
+			case "js_pbc":		
+			case "js_pagebeforecreate":	
+			case "javascript_pagebeforecreate":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
+
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				
+				var SCR = '';
+				SCR +='\n'+ '<script>';
+				SCR +='\n'+ '$(document).on("pagebeforecreate","#page_'+isPage+'",function(){';
+				SCR +='\n'+  '	' + p[1];
+				SCR +='\n'+  '	'
+				SCR +='\n'+ '});';
+				SCR +='\n'+ '</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
+				break;				
+				
+			case "js_pc":		
+			case "js_pagecreate":	
+			case "javascript_pagecreate":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
+
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				
+				var SCR = '';
+				SCR +='\n'+ '<script>';
+				SCR +='\n'+ '$(document).on("pagecreate","#page_'+isPage+'",function(){';
+				SCR +='\n'+  '	' + p[1];
+				SCR +='\n'+  '	'
+				SCR +='\n'+ '});';
+				SCR +='\n'+ '</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
+				break;	
+				
+			case "js_pi":		
+			case "js_pageinit":	
+			case "javascript_pageinit":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
+
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				
+				var SCR = '';
+				SCR +='\n'+ '<script>';
+				SCR +='\n'+ '$(document).on("pageinit","#page_'+isPage+'",function(){';
+				SCR +='\n'+  '	' + p[1];
+				SCR +='\n'+  '	'
+				SCR +='\n'+ '});';
+				SCR +='\n'+ '</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
+				break;					
+				
+				
+				
+				
+
+
 
 
 			case "slider":

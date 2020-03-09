@@ -1,7 +1,10 @@
 
 
 
-
+//- Write_Memory(memory_name, data); 	// Write_Memory('myCat', 'Tom');
+//- Read_Memory(memory_name);			// Read_Memory('myCat');
+//- Delete_Memory(memory_name);			// Delete_Memory('myCat');
+//- Clear_All_Memory();					// Clear_All_Memory();
 
 
 
@@ -17,8 +20,30 @@
 
 
 
+	js
+	javascript
+	---------------------------
+	js_pbc
+	js_pagebeforecreate
+	javascript_pagebeforecreate
+	---------------------------
+	js_pc
+	js_pagecreate
+	javascript_pagecreate
+	---------------------------
+	js_pi
+	js_pageinit
+	javascript_pageinit
+	---------------------------
+	
+			
 
-
+			
+			
+			
+			
+			
+			
 
 
 
