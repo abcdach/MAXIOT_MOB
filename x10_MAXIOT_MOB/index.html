@@ -50,7 +50,7 @@
 $(document).on('pagebeforecreate',"#page_1", function(){
 	console.log("*** pagebeforecreate:1:page_1");
 	
-	Create_Page('6');
+	Create_Page('3');
 	GUI_Processor(START_SCRIPT);
 	//console.log("is_1");
 	console.log("*** pagebeforecreate:0:page_1");
@@ -82,23 +82,12 @@ $( document ).on( "pagecontainershow", function( event, ui ) {
 	console.log("*** pagecontainershow:0:");
 });
 
-
-
-
-
-
-
 //#####################################################################
 
 $( document ).on( "mobileinit", function() { 
 console.log("*** mobileinit:1");
 console.log("*** mobileinit:0");
 });
-
-
-
-//#####################################################################
-
 
 $( window ).resize(function(){
   //console.log("*** resize:1 ########################");
@@ -107,93 +96,29 @@ $( window ).resize(function(){
 });
 
 //#####################################################################
-//var Connect_Status = 0;
-function Connect_To_Server(){
-
-//Read_Memory('mem_Host');
-//Read_Memory('mem_Port');
-//Read_Memory('mem_Device_ID');
-//Read_Memory('mem_Device_Name');
-
-
-	if(Connect_Status === 0)SYS_LOOP_START();
-	if(Connect_Status === 1)Page_change("page_3");
-}
-function disconnect_To_Server(){}
 
 </script>
 
-
-
-
-
-
 </head>
-<body data-role="IS_P_TEMP">
+
+
+<body data-role="IS_HTML_body">
 	<div  data-role="IS_STYLE" ></div>
 	<div  data-role="IS_JAVA_SCRIPT" ></div>
 	<!-- ####################################################################################### -->
-
 	<div data-role="page" id="page_1">
 		<div data-role="header" id="header_1">
-
 			<h1><span id="MyHeader_Text_1"></span></h1>
 			<div data-role="navbar">
 				<div data-role="navbar_1" ></div>
 			</div>
-			
 		</div><!-- /header -->
-		
 		<div data-role="content_1" class="ui-content" role="main"></div>	
 		<div data-role="panel_1" ></div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
 			<h1> </h1>
 		</div><!-- /footer -->
 	</div><!-- /page -->
-
 	<!-- ####################################################################################### -->
-
-
-	<div data-role="page" id="page_2">
-		<div data-role="header" id="header_2">
-
-			<h1><span id="MyHeader_Text_2"></span></h1>
-			<div data-role="navbar">
-				<div data-role="navbar_2" ></div>
-			</div>
-			
-		</div><!-- /header -->
-		
-		<div data-role="content_2" class="ui-content" role="main"></div>	
-		<div data-role="panel_2" ></div>
-		<div data-role="footer" data-position="fixed" data-theme="a">
-			<h1> </h1>
-		</div><!-- /footer -->
-	</div><!-- /page -->
-
-	<!-- ####################################################################################### -->
-
-
-	<div data-role="page" id="page_3">
-		<div data-role="header" id="header_3">
-
-			<h1><span id="MyHeader_Text_3"></span></h1>
-			<div data-role="navbar">
-				<div data-role="navbar_3" ></div>
-			</div>
-			
-		</div><!-- /header -->
-		
-		<div data-role="content_3" class="ui-content" role="main"></div>	
-		<div data-role="panel_3" ></div>
-		<div data-role="footer" data-position="fixed" data-theme="a">
-			<h1> </h1>
-		</div><!-- /footer -->
-	</div><!-- /page -->
-
-
-	<!-- ####################################################################################### -->
-
-
 </body>
 </html>

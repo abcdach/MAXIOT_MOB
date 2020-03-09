@@ -78,7 +78,7 @@ function Put_Header_Text(is_Page,is_Text)   {$("#page_"+is_Page+" h1 #MyHeader_T
 function get_input_text(is_ID){ return $('#'+is_ID).val();}
 function get_input_Password(is_ID){ return $('#'+is_ID).val();}
 //##################################
-function Page_change(is_Value){$.mobile.changePage("#"+is_Value);}
+function Page_change(is_Value){$.mobile.changePage("#page_"+is_Value);}
 function Panel_Open(is_Value){$( "#"+is_Value ).panel( "open" );}
 
 
@@ -108,8 +108,9 @@ function Create_Page(PageName){
 	SCR +='\n'+ '		<h1> </h1>';
 	SCR +='\n'+ '	</div><!-- /footer -->';
 	SCR +='\n'+ '</div>';
+	SCR +='\n'+ '<!-- ####################################################################################### -->';
 
-	$('[data-role="IS_P_TEMP"]').append(SCR);		
+	$('[data-role="IS_HTML_body"]').append(SCR);		
 }
 
 

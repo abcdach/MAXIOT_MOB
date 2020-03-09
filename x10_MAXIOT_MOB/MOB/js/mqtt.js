@@ -2,10 +2,10 @@
 var client;
 var Connect_Status = 0;
 
-var MQTT_HOST = "MAXH5";
-var MQTT_PORT = "4004";
-var MQTT_DEV_ID = "1999";
-var MQTT_DEV_Name = "JQ_Test";
+var MQTT_HOST = "";
+var MQTT_PORT = "";
+var MQTT_DEV_ID = "";
+var MQTT_DEV_Name = "";
 
 //#####################################################################
 
@@ -67,20 +67,12 @@ function SYS_LOOP() {
 }
 
 //#####################################################################
-var MQTT_HOST = "192.168.0.105";
-var MQTT_PORT = "4004";
-var MQTT_DEV_ID = "1999";
-var MQTT_DEV_Name = "JQ_Test";
+
 
 function MQTT_Connect(){
 	console.log("MQTT_Connect");
 	
 	client = new Paho.MQTT.Client(MQTT_HOST, Number(MQTT_PORT), MQTT_DEV_ID+"@"+MQTT_DEV_Name);
-	
-	
-	//client = new Paho.MQTT.Client("68.183.111.57", Number("3004"), "1999@JQ_Test");
-	//client = new Paho.MQTT.Client("ismaxioth6", Number("4004"), "1999@JQ_Test");
-	//client = new Paho.MQTT.Client("MAXH5", Number("4004"), "1999@JQ_Test");
 	client.onConnectionLost = onConnectionLost;
 	client.onMessageArrived = onMessageArrived;
 	client.connect({
@@ -120,7 +112,7 @@ function onMessageArrived(message) {
 			case '99':
 				console.log(isData);
 				GUI_Processor(isData);
-				Page_change("page_3");
+				Page_change("3");
 				Connect_Status = 1;
 				SYS_STEP ++;
 				break;

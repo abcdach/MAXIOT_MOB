@@ -83,19 +83,15 @@ const START_SCRIPTy =`
 
 
 
-const START_SCRIPT =`
-..[w],6
-..{
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
-		Page_change('page_1');
-	..slider,0,200,1,put_input_text('it6_22',Value);
-..}
+
+
+
+var Part_1 =`
 ..[w],3
 ..{
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
-		Page_change('page_1');	
+		Page_change('1');	
 ..}
 ..[w],1
 ..{
@@ -103,30 +99,43 @@ const START_SCRIPT =`
 		Connect_To_Server();
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
 		Popup_Open('isConfig_pop');
-	..navbar(nav1),--page_1(1)--page_2(2)--page_6(6)
+	
+	..js,
+		function Connect_To_Server(){
+			MQTT_HOST     = Read_Memory('mem_Host');
+			MQTT_PORT     = Read_Memory('mem_Port');
+			MQTT_DEV_ID   = Read_Memory('mem_Device_ID');
+			MQTT_DEV_Name = Read_Memory('mem_Device_Name');
+			if(Connect_Status === 0)SYS_LOOP_START();
+			if(Connect_Status === 1)Page_change('3');
+		}
+	
+	..js,
+		function Refresh_isConfig(){
+			put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
+			put_input_text('it_pop1_Port',Read_Memory('mem_Port'));
+			put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
+			put_input_text('it_pop1_Device_Name',Read_Memory('mem_Device_Name'));
+			console.log("js_pc ----------------------------------------------");		
+			console.log('it_pop1_Host: ',Read_Memory('mem_Host'));
+			console.log('it_pop1_Port: ',Read_Memory('mem_Port'));
+			console.log('it_pop1_Device_ID: ',Read_Memory('mem_Device_ID'));
+			console.log('it_pop1_Device_Name: ',Read_Memory('mem_Device_Name'));
+			console.log("js_pc ----------------------------------------------");
+		}
 		
-	..js_pc,
-		put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
-		put_input_text('it_pop1_Port',Read_Memory('mem_Port'));
-		put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
-		put_input_text('it_pop1_Device_Name',Read_Memory('mem_Device_Name'));
-		console.log("js_pc ----------------------------------------------");		
-		console.log('it_pop1_Host: ',Read_Memory('mem_Host'));
-		console.log('it_pop1_Port: ',Read_Memory('mem_Port'));
-		console.log('it_pop1_Device_ID: ',Read_Memory('mem_Device_ID'));
-		console.log('it_pop1_Device_Name: ',Read_Memory('mem_Device_Name'));
-		console.log("js_pc ----------------------------------------------");
+	..js_pc, Refresh_isConfig();
 		
 	..[pop](isConfig_pop),10px 20px
 	..{
 		..label,Host:
-		..input_text(it_pop1_Host), http://maxh6/
+		..input_text(it_pop1_Host),
 		..label,Port:
-		..input_text(it_pop1_Port), 3004
+		..input_text(it_pop1_Port),
 		..label,Device ID:
-		..input_text(it_pop1_Device_ID), 1655
+		..input_text(it_pop1_Device_ID),
 		..label,Device Name:
-		..input_text(it_pop1_Device_Name),Mob_Test
+		..input_text(it_pop1_Device_Name),
 		..##,2 
 		..button,Save,
 			console.log("js_pc ----------------------------------------------");
@@ -139,13 +148,13 @@ const START_SCRIPT =`
 			Write_Memory('mem_Port', 		get_input_text('it_pop1_Port'));
 			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
 			Write_Memory('mem_Device_Name', get_input_text('it_pop1_Device_Name'));
-		..
+		..button,Refresh, Refresh_isConfig();
 	..}	
 ..}
 `;
 
 
-
+var START_SCRIPT = Part_1;
 
 
 
