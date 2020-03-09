@@ -9,14 +9,17 @@
 ..[c] ..[p] ..[w] ..[d]  ..[t] ..[pop]
 **/
 //..header_text, text										//
-//..header_button, text, ui-..., javascript					// ..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete, Page_change('page_1');
-//..navbar,1,--name1(ID_1)--name2(ID_1)						//
-//..checkbox(ID),v,--name1(val1)--name2(val2),Out_0(Value); //.. checkbox,v, .. checkbox,h,
-//..radio(ID),v,--name1(val1)--name2(val2)),Out_0(Value);	//.. radio,v, .. radio,h,
-//..select(ID),--name1(1)--name2(2),Out_0(Value);			//
-//..slider(ID),0,150,10,Out_0(Value);						//.. slider(ID),MIN,MAX,STEP,{{Java content}};
-//..button(ID),name,Out_0(Value);							//
-//..flip(ID),on(1),off(0),Out_0(Value);						//
+//..header_button, text, ui-..., *JavaScript*				//..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete, Page_change('page_1');
+//..navbar,--name1(page num)--name2(page num)				//..navbar,--page_1(1)--page_2(2)--page_3(3)
+
+//..button(ID),name,*JavaScript*							//..button(ID),name,Out_0("1");
+
+//..checkbox(ID),v,--name1(val1)--name2(val2), *JavaScript*(Value);  		//..checkbox,v, .. checkbox,h,
+//..radio(ID),v,--name1(val1)--name2(val2)), *JavaScript*(Value);	//..radio,v, .. radio,h,
+//..select(ID),--name1(1)--name2(2), *JavaScript*(Value);			//
+//..slider(ID),0,150,10, *JavaScript*(Value);						//..slider(ID),MIN,MAX,STEP,{{Java content}};
+
+//..flip(ID),on(1),off(0), *JavaScript*(Value);						//
 //..input_password(ID),text									//
 //..input_text(ID),text										//
 //..label(ID),text											//
@@ -32,7 +35,7 @@
 //..  [d](ID_2)..{ GUI Content ..}							//
 //..}														//
 //-------------------------------------------				//
-//..  event,In_0,Out_0(Value);								//
+//..if_event, event_name, *JavaScript*(Value)				//..event,In_0,Out_0(Value);	Dispatch_Event("In_0",isData);
 
 
 
@@ -369,7 +372,8 @@ function GUI_Processor(isDATA){
 						if(pTT.length === 2){
 							var pT0 = pTT[0].trim();
 							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML_NAVBAR += '<li><a href="#'+pT1+'" id="'+isID+'_'+b+'">'+pT0+'</a></li>';
+							//isHTML_NAVBAR += '<li><a href="#'+pT1+'" id="'+isID+'_'+b+'">'+pT0+'</a></li>';
+							isHTML_NAVBAR += '<li><a href="#page_'+pT1+'" id="'+isID+'_'+b+'">'+pT0+'</a></li>';
 						}
 					}
 				}isHTML_NAVBAR += '</ul>';			
@@ -551,7 +555,7 @@ function GUI_Processor(isDATA){
 				break;
 
 
-			case "event":
+			case "if_event":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="Event";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";	
 
@@ -561,10 +565,18 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}				
-				Tmp_JAVA = JAVA_Add_Event_Listener(p[1],p[2]);
+				//-----------------------------------------------------			
+					Tmp_JAVA  ='\n'+ '	document.body.addEventListener("'+p[1]+'", function(event) {';
+					Tmp_JAVA +='\n'+ '		var Value = event.detail.data;';
+					Tmp_JAVA +='\n'+ '		'+p[2];
+					//Tmp_JAVA +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';
+					//Tmp_JAVA +='\n'+ '		console.log("Slider_Change('+is_ID+') : '+is_Script+'" );';
+					Tmp_JAVA +='\n'+ '	});';				
+				//-----------------------------------------------------
 				Tmp_JAVA = '<script>'+Tmp_JAVA+'</script>';
 				$('[data-role="IS_JAVA_SCRIPT"]').append(Tmp_JAVA);
 				break;	
+							
 				
 				
 			case "iframe":

@@ -58,16 +58,20 @@ const START_SCRIPT =`
 	..header_text,Header Text
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l
-	..navbar,--page_1(page_1)--page_2(page_2)--page_3(page_3)
+	..navbar(nav1),--page_1(1)--page_2(2)--page_3(3)
 ..}
-
+..[w],1
+..{
+	..button, Button Text, console.log("1"); Write_Memory('isIP', '192.168.0.105');
+	..button,,console.log("Read_Memory:"+Read_Memory('isIP'));
+..}
 
 
 
 `;
 
 
-
+//..if_event, In_0, put_input_text('t3_1',Value);
 
 
 

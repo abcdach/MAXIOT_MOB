@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+ევენთები
+----------------------------------
+ევენთის მიმღების შექმნა:
+	..if_event, isABC, console.log("isABC:"+Value);
+ევენთის გადაცემა
+	Dispatch_Event('isABC','I am Buuton'); 
+
+	..button(b1_1), Button Text, console.log("1"); Dispatch_Event('isABC','I am Buuton'); 
+	..if_event, isABC, console.log("isABC:"+Value);
+
+
+
+
+
+
+
+

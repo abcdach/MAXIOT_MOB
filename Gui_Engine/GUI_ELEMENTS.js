@@ -1,5 +1,8 @@
 /** 
-put_input_text get_input_text put_input_Password  get_input_Password
+put_input_text 
+get_input_text 
+put_input_Password  
+get_input_Password
 Put_Header_Text
 Panel_Open
 Theme_Change 
@@ -10,6 +13,10 @@ Page_change
 Popup_Open
 Loader_Show 
 Loader_Hide
+Write_Memory
+Read_Memory
+Delete_Memory
+Clear_All_Memory
 **/
 
 /**
@@ -24,7 +31,7 @@ get_input_Password('ID');
 //-  Get_Slider('ID');				// slider
 //-  Panel_Open('ID');				// ->[p](ID)\
 //-  Theme_Change('Theme');			// Theme = a, b, c, d, e
-//-  Dispatch_Event('Name','Data'); // event,In_0,Out_0(Value);
+
 //-  Element_Hide('ID');			// 
 //-  Element_Show('ID');			// 
 //-  Page_change('page_3');			//
@@ -32,13 +39,26 @@ get_input_Password('ID');
 //-  Loader_Show('Connecting');
 //-  Loader_Hide();
 
+//- console.log(text);
+
+//- Write_Memory(memory_name, data); 	// Write_Memory('myCat', 'Tom');
+//- Read_Memory(memory_name);			// Read_Memory('myCat');
+//- Delete_Memory(memory_name);			// Delete_Memory('myCat');
+//- Clear_All_Memory();					// Clear_All_Memory();
 
 
-
-
-//JAVA_Add_Event_Listener(is_Name,is_Script)
-
-
+function Write_Memory(is_Name, is_Data){
+	localStorage.setItem(is_Name,is_Data);
+}
+function Read_Memory(is_Name){
+	return localStorage.getItem(is_Name);
+}
+function Delete_Memory(is_Name){
+	localStorage.removeItem(is_Name);
+}
+function Clear_All_Memory(){
+	localStorage.clear();
+}
 
 
 	//$('#item3').remove();
@@ -162,17 +182,17 @@ function JAVA_Select_Change(is_ID,is_Script){
 	return SCR;
 }
 //##################################
- function JAVA_Add_Event_Listener(is_Name,is_Script){
-	var SCR = ''
-	SCR +='\n'+ '	document.body.addEventListener("'+is_Name+'", function(event) {';
-	SCR +='\n'+ '		var Value = event.detail.data;';
-	SCR +='\n'+ '		'+is_Script;
+// function JAVA_Add_Event_Listener(is_Name,is_Script){
+//	var SCR = ''
+//	SCR +='\n'+ '	document.body.addEventListener("'+is_Name+'", function(event) {';
+//	SCR +='\n'+ '		var Value = event.detail.data;';
+//	SCR +='\n'+ '		'+is_Script;
 	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';
 	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : '+is_Script+'" );';
-	SCR +='\n'+ '	});';
+//	SCR +='\n'+ '	});';
 
-	return SCR;
-}
+//	return SCR;
+//}
   //document.body.addEventListener("In_0", function(event) {
 	//var Value = event.detail.data;
 	//console.log("Event is called: 222 " + event.detail.data);
