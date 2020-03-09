@@ -47,3 +47,48 @@
 
 
 
+ var g1;
+$(document).on("pageshow", "#page_1", function(){
+
+    //if (!g1){
+        //g1 = new Dygraph(document.getElementById("graph"),         
+            //"Date,Temperature\n" +
+            //"2008-05-07,75\n" +
+            //"2008-05-08,70\n" +
+            //"2008-05-09,80\n");       
+   // }
+	/**
+       g1 = new Dygraph(
+            document.getElementById("graph"),
+            [
+              [1, null, 3],
+              [2, 2, null],
+              [3, null, 7],
+              [4, 5, null],
+              [5, null, 5],
+              [6, 3, null]
+            ],
+            {
+              labels: ['x', 'A', 'B' ],
+              connectSeparatedPoints: true,
+              drawPoints: true
+            }
+          ); 
+
+	**/
+
+}); 
+/**
+$(document).on("pagecreate","#page_1", function(){ 
+    $( "#graph1" ).on( "collapsibleexpand", function( event, ui ) {
+		console.log("*eeeeeeeeeeeeeeeeeeeee");
+        g1.resize();    
+    });
+});
+
+
+$( document ).on( "pagecontainershow", function( event, ui ) {
+console.log("*xxxxxxxxxxxxxxxxxxxxxxxxxx");
+    //DrawChart('graph');   
+});
+*/

@@ -47,68 +47,60 @@ get_input_Password('ID');
 //- Clear_All_Memory();					// Clear_All_Memory();
 
 
-function Write_Memory(is_Name, is_Data){
-	localStorage.setItem(is_Name,is_Data);
-}
-function Read_Memory(is_Name){
-	return localStorage.getItem(is_Name);
-}
-function Delete_Memory(is_Name){
-	localStorage.removeItem(is_Name);
-}
-function Clear_All_Memory(){
-	localStorage.clear();
-}
-
-
 	//$('#item3').remove();
 	//$('#page1').page();
 	//$.mobile.changePage( url, { transition: "slideup" });
 	//$('#'+is_ID).animate({left: '250px'});
-	
-	
-function Dispatch_Event(is_Name, is_Data){
-	document.body.dispatchEvent(new CustomEvent(is_Name, { detail: {data: is_Data} }));
-}
 
 
 
 
-function Loader_Hide() {
-	$.mobile.loading( "hide" );
-}
-function Loader_Show(is_Text) {
-	$.mobile.loading( 'show', {
-		text: is_Text,
-		textVisible: true,
-		theme: 'b',
-		html: ""
-	});
-}
-	
-function Popup_Open(is_ID) {
-        $('#'+is_ID).popup("open",{ transition: "pop" }); 
-        //setTimeout(function(){  $("#p").popup("close"); }, 5000);
-}
-	
-function Element_Hide(is_ID) {
-	$('#'+is_ID).hide();
-}
-function Element_Show(is_ID) {
-	$('#'+is_ID).show();
-}
 //##################################
-function HTML_Input_Text(is_ID,is_Value) {
-	return('<input id="'+is_ID+'" type="text" value="'+is_Value+'"/>');
-}
-function HTML_Input_Password(is_ID,is_Value) {
-	return('<input id="'+is_ID+'" type="password" value="'+is_Value+'"/>');
-}
-function put_input_text(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
+function Write_Memory(is_Name, is_Data){localStorage.setItem(is_Name,is_Data);}
+function Read_Memory(is_Name){return localStorage.getItem(is_Name);}
+function Delete_Memory(is_Name){localStorage.removeItem(is_Name);}
+function Clear_All_Memory(){localStorage.clear();}
+//##################################
+function Dispatch_Event(is_Name, is_Data){document.body.dispatchEvent(new CustomEvent(is_Name, { detail: {data: is_Data} }));}
+//##################################
+function Loader_Hide()       {$.mobile.loading( "hide" );}
+function Loader_Show(is_Text){$.mobile.loading( 'show', {text: is_Text,textVisible: true,theme: 'b',html: ""});}
+//##################################
+function Popup_Open(is_ID) {$('#'+is_ID).popup("open",{ transition: "pop" });}
+//##################################	
+function Element_Hide(is_ID) {$('#'+is_ID).hide();}
+function Element_Show(is_ID) {$('#'+is_ID).show();}
+//##################################
+function put_input_text(is_ID,is_Value)     {$('#'+is_ID).val(is_Value);}
+function put_input_Password(is_ID,is_Value) {$('#'+is_ID).val(is_Value);}
+function Put_Header_Text(is_Page,is_Text)   {$("#page_"+is_Page+" h1 #MyHeader_Text_"+is_Page).text(is_Text);}
+
 function get_input_text(is_ID){ return $('#'+is_ID).val();}
-function put_input_Password(is_ID,is_Value){ $('#'+is_ID).val(is_Value);}
 function get_input_Password(is_ID){ return $('#'+is_ID).val();}
 //##################################
+function Page_change(is_Value){$.mobile.changePage("#"+is_Value);}
+function Panel_Open(is_Value){$( "#"+is_Value ).panel( "open" );}
+
+
+function Theme_Change(is_Theme){
+	var themeClass = is_Theme;
+	$( "#page_1" ).removeClass( "ui-page-theme-a ui-page-theme-b ui-page-theme-c ui-page-theme-d ui-page-theme-e" ).addClass( "ui-page-theme-" + themeClass );
+	$( "#ui-body-test" ).removeClass( "ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e" ).addClass( "ui-body-" + themeClass );
+	$( "#ui-bar-test, #ui-bar-form" ).removeClass( "ui-bar-a ui-bar-b ui-bar-c ui-bar-d ui-bar-e" ).addClass( "ui-bar-" + themeClass );
+	$( ".ui-collapsible-content" ).removeClass( "ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e" ).addClass( "ui-body-" + themeClass );
+	$( ".theme" ).text( themeClass );
+};
+
+
+
+
+
+
+
+
+
+function HTML_Input_Text(is_ID,is_Value) {return('<input id="'+is_ID+'" type="text" value="'+is_Value+'"/>');}
+function HTML_Input_Password(is_ID,is_Value) {return('<input id="'+is_ID+'" type="password" value="'+is_Value+'"/>');}
 
 function JAVA_Button_Click(is_ID,is_Script){
 	var SCR = ''
@@ -118,8 +110,6 @@ function JAVA_Button_Click(is_ID,is_Script){
 	SCR +='\n'+ '	});';	
 	return SCR;
 }
-//##################################
-
 
 //##################################
 function HTML_Slider(is_ID,is_Min, is_Max, is_Step) {
@@ -182,21 +172,6 @@ function JAVA_Select_Change(is_ID,is_Script){
 	return SCR;
 }
 //##################################
-// function JAVA_Add_Event_Listener(is_Name,is_Script){
-//	var SCR = ''
-//	SCR +='\n'+ '	document.body.addEventListener("'+is_Name+'", function(event) {';
-//	SCR +='\n'+ '		var Value = event.detail.data;';
-//	SCR +='\n'+ '		'+is_Script;
-	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';
-	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : '+is_Script+'" );';
-//	SCR +='\n'+ '	});';
-
-//	return SCR;
-//}
-  //document.body.addEventListener("In_0", function(event) {
-	//var Value = event.detail.data;
-	//console.log("Event is called: 222 " + event.detail.data);
-  //});
 //################################## 
 function JAVA_APPEND(is_Page,is_Script){
 	var SCR = '';
@@ -214,25 +189,7 @@ function JAVA_APPEND(is_Page,is_Script){
 
 //$("#Password_Button").button('enable');
 
-function Page_change(is_Value){
-	$.mobile.changePage("#"+is_Value);
-}
 
-function Theme_Change(is_Theme){
-	var themeClass = is_Theme;
-	$( "#page_1" ).removeClass( "ui-page-theme-a ui-page-theme-b ui-page-theme-c ui-page-theme-d ui-page-theme-e" ).addClass( "ui-page-theme-" + themeClass );
-	$( "#ui-body-test" ).removeClass( "ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e" ).addClass( "ui-body-" + themeClass );
-	$( "#ui-bar-test, #ui-bar-form" ).removeClass( "ui-bar-a ui-bar-b ui-bar-c ui-bar-d ui-bar-e" ).addClass( "ui-bar-" + themeClass );
-	$( ".ui-collapsible-content" ).removeClass( "ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e" ).addClass( "ui-body-" + themeClass );
-	$( ".theme" ).text( themeClass );
-};
-
-function Panel_Open(is_Value){
-	$( "#"+is_Value ).panel( "open" );
-}
-function Put_Header_Text(is_Page,is_Text){
-	$("#page_"+is_Page+" h1 #MyHeader_Text_"+is_Page).text(is_Text);
-}
 
 
 

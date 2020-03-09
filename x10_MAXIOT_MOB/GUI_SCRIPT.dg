@@ -84,19 +84,25 @@ const START_SCRIPTy =`
 
 
 const START_SCRIPT =`
+..[w],6
+..{
+	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
+	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
+		Page_change('page_1');	
+..}
 ..[w],3
 ..{
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
-		Page_change('page_1');
+		Page_change('page_1');	
 ..}
-
 ..[w],1
 ..{
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
 		Connect_To_Server();
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
 		Popup_Open('isConfig_pop');
+	..navbar(nav1),--page_1(1)--page_2(2)--page_6(6)
 		
 	..js_pc,
 		put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
