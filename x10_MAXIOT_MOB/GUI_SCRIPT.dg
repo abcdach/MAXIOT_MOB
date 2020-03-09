@@ -88,7 +88,8 @@ const START_SCRIPT =`
 ..{
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
-		Page_change('page_1');	
+		Page_change('page_1');
+	..slider,0,200,1,put_input_text('it6_22',Value);
 ..}
 ..[w],3
 ..{

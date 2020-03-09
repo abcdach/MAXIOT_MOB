@@ -92,6 +92,27 @@ function Theme_Change(is_Theme){
 };
 
 
+function Create_Page(PageName){
+	
+	var SCR = '';
+	SCR +='\n'+ '<div data-role="page" id="page_'+PageName+'" data-url="page_'+PageName+'">';
+	SCR +='\n'+ '	<div data-role="header" id="header_'+PageName+'">';
+	SCR +='\n'+ '		<h1><span id="MyHeader_Text_'+PageName+'"></span></h1>';
+	SCR +='\n'+ '		<div data-role="navbar">';
+	SCR +='\n'+ '			<div data-role="navbar_'+PageName+'"></div>';
+	SCR +='\n'+ '		</div>	';
+	SCR +='\n'+ '	</div><!-- /header -->';
+	SCR +='\n'+ '	<div data-role="content_'+PageName+'" class="ui-content" role="main"></div>	';
+	SCR +='\n'+ '	<div data-role="panel_'+PageName+'"></div>';
+	SCR +='\n'+ '	<div data-role="footer" data-position="fixed" data-theme="a">';
+	SCR +='\n'+ '		<h1> </h1>';
+	SCR +='\n'+ '	</div><!-- /footer -->';
+	SCR +='\n'+ '</div>';
+
+	$('[data-role="IS_P_TEMP"]').append(SCR);		
+}
+
+
 
 
 
