@@ -30,7 +30,7 @@
 //..select(ID),--name1(1)--name2(2), *JavaScript*(Value);			//
 //..slider(ID),0,150,10, *JavaScript*(Value);						//..slider(ID),MIN,MAX,STEP,{{Java content}};
 
-//..flip(ID),on(1),off(0), *JavaScript*(Value);						//
+//..flip(ID),on(1),off(0), *JavaScript*(Value);				//
 //..input_password(ID),text									//
 //..input_text(ID),text										//
 //..label(ID),text											//
