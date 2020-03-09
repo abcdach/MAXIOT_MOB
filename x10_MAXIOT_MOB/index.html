@@ -26,86 +26,22 @@
 	<!--..................-->
 	<script src="MOB/js/paho-mqtt-min.js"></script>
 	<script src="MOB/js/mqtt.js"></script>	
-	<!--..................-->	
-	
-	<script src="MOB/MyJS/dygraphs/dygraph.min.js"></script>
-    <link rel="stylesheet" href="MOB/MyJS/dygraphs/dygraph.css">
-			
-	<!--..................-->	
-	
-	
-	
-<style>
-.ui-icon-myicon:after {
-    background-image: url("MyPIC/111.png");
-    /* Make your icon fit */
-    background-size: 18px 18px;
-}
-</style>	
+	<!--..................-->
 
-
-<!-- ####################################################################################### -->
-	
-<script>
-$(document).on('pagebeforecreate',"#page_1", function(){
-	console.log("*** pagebeforecreate:1:page_1");
-	
-	Create_Page('3');
-	GUI_Processor(START_SCRIPT);
-	//console.log("is_1");
-	console.log("*** pagebeforecreate:0:page_1");
-});
-$(document).on("pagecreate","#page_1", function(){
-	console.log("*** pagecreate:1:page_1");
-	//console.log("is_2");
-	console.log("*** pagecreate:0:page_1");
-});
-$( document ).on( "pagecreate", function() {
-	console.log("*** pagecreate:1");
-	//console.log("is_3");
-	console.log("*** pagecreate:0");
-});
-$(document).on("pageinit","#page_1",function(){
-	console.log("*** pageinit:1:page_1");
-	//console.log("is_4");
-	console.log("*** pageinit:0:page_1");
-});	
-$(document).on("pageshow", "#page_1", function(){
-	console.log("*** pageshow:1:page_1");
-	//console.log("is_5");
-	console.log("*** pageshow:0:page_1");
-}); 
-//#####################################################################
-$( document ).on( "pagecontainershow", function( event, ui ) {
-	console.log("*** pagecontainershow:1:");
-	//console.log("is_6");
-	console.log("*** pagecontainershow:0:");
-});
-
-//#####################################################################
-
-$( document ).on( "mobileinit", function() { 
-console.log("*** mobileinit:1");
-console.log("*** mobileinit:0");
-});
-
-$( window ).resize(function(){
-  //console.log("*** resize:1 ########################");
-	console.log("*** resize:1:");
-	console.log("*** resize:0:");
-});
-
-//#####################################################################
-
-</script>
-
+	<script>
+	$(document).on('pagebeforecreate',"#page_1", function(){
+		console.log("*** pagebeforecreate:1:page_1");	
+		Create_Page('3');
+		GUI_Processor(START_SCRIPT);
+		console.log("*** pagebeforecreate:0:page_1");
+	});
+	</script>
 </head>
-
 
 <body data-role="IS_HTML_body">
 	<div  data-role="IS_STYLE" ></div>
 	<div  data-role="IS_JAVA_SCRIPT" ></div>
-	<!-- ####################################################################################### -->
+	<!-- ############################### -->
 	<div data-role="page" id="page_1">
 		<div data-role="header" id="header_1">
 			<h1><span id="MyHeader_Text_1"></span></h1>
@@ -119,6 +55,6 @@ $( window ).resize(function(){
 			<h1> </h1>
 		</div><!-- /footer -->
 	</div><!-- /page -->
-	<!-- ####################################################################################### -->
+	<!-- ############################### -->
 </body>
 </html>
