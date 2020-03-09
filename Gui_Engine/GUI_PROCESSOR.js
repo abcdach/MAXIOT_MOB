@@ -3,11 +3,13 @@
 ..##  ..label ..input_text  ..header ..navbar 
 ..select ..info ..input_password ..slider ..flip 
 ..radio ..checkbox ..header ..label ..JustGage ..Dygraph
+..header_button
 **/
 /**
 ..[c] ..[p] ..[w] ..[d]  ..[t] ..[pop]
 **/
-//..header,1,text											//
+//..header_text, text										//
+//..header_button, text, ui-..., javascript					// ..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete, Page_change('page_1');
 //..navbar,1,--name1(ID_1)--name2(ID_1)						//
 //..checkbox(ID),v,--name1(val1)--name2(val2),Out_0(Value); //.. checkbox,v, .. checkbox,h,
 //..radio(ID),v,--name1(val1)--name2(val2)),Out_0(Value);	//.. radio,v, .. radio,h,
@@ -153,11 +155,11 @@ function GUI_Processor(isDATA){
 				isHTML_CONTENT = '';
 				break;
 				
-			case "header":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]=isPage;
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+			case "header_text":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 
-				$("#page_"+p[1]+" h1 #MyHeader_Text_"+p[1]).text(p[2]);
+				$("#page_"+isPage+" h1 #MyHeader_Text_"+isPage).text(p[1]);
 				break;	
 				
 			case "##":
@@ -215,7 +217,7 @@ function GUI_Processor(isDATA){
 				
 			//..button_class('ID'),name,ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
 				
-			case "button_header":
+			case "header_button":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
@@ -355,12 +357,11 @@ function GUI_Processor(isDATA){
 				break;			
 
 			case "navbar":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = isID;
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
 				
 				isHTML_NAVBAR = '<ul id="'+isID+'" >';					
 				//List
-				var pT = p[2].split('--');
+				var pT = p[1].split('--');
 				for (b = 0; b < pT.length; b++){
 					pT[b] = pT[b].trim();
 					if(pT[b]!==""){
@@ -372,7 +373,8 @@ function GUI_Processor(isDATA){
 						}
 					}
 				}isHTML_NAVBAR += '</ul>';			
-				$('[data-role="navbar_'+p[1]+'"]').append(isHTML_NAVBAR);
+				//$('[data-role="navbar_'+p[1]+'"]').append(isHTML_NAVBAR);
+				$('[data-role="navbar_'+isPage+'"]').append(isHTML_NAVBAR);
 				break;	
 
 

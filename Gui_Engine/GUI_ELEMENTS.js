@@ -1,8 +1,15 @@
 /** 
 put_input_text get_input_text put_input_Password  get_input_Password
-Put_Header Panel_Open Theme_Change Dispatch_Event
-Element_Hide Element_Show Page_change Popup_Open
-Loader_Show Loader_Hide
+Put_Header_Text
+Panel_Open
+Theme_Change 
+Dispatch_Event
+Element_Hide
+Element_Show
+Page_change
+Popup_Open
+Loader_Show 
+Loader_Hide
 **/
 
 /**
@@ -12,16 +19,15 @@ put_input_Password('ID','text');
 get_input_Password('ID');
 **/
 
-
+//-  Put_Header_Text(1,'text')		// Put_Header_Text(is_Page,is_Text)
 //-  Put_Slider('ID','text');		// slider
 //-  Get_Slider('ID');				// slider
-//-  Put_Header(1,'text')			// Put_Header(is_Page,is_Text)
 //-  Panel_Open('ID');				// ->[p](ID)\
 //-  Theme_Change('Theme');			// Theme = a, b, c, d, e
 //-  Dispatch_Event('Name','Data'); // event,In_0,Out_0(Value);
-//-  Element_Hide('ID');				// 
-//-  Element_Show('ID');				// 
-//-  Page_change('page_3');
+//-  Element_Hide('ID');			// 
+//-  Element_Show('ID');			// 
+//-  Page_change('page_3');			//
 //-  Popup_Open('ID');				//"none","pop","fade","flip","turn","flow","slide","slide","slidefade","slidefade","slideup","slidedown"
 //-  Loader_Show('Connecting');
 //-  Loader_Hide();
@@ -204,7 +210,7 @@ function Theme_Change(is_Theme){
 function Panel_Open(is_Value){
 	$( "#"+is_Value ).panel( "open" );
 }
-function Put_Header(is_Page,is_Text){
+function Put_Header_Text(is_Page,is_Text){
 	$("#page_"+is_Page+" h1 #MyHeader_Text_"+is_Page).text(is_Text);
 }
 
