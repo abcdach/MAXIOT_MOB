@@ -162,7 +162,7 @@ function GUI_Processor(isDATA){
 
 		switch(isCMD) {
 			
-
+			case "[page]":
 			case "[w]":
 				Current_Mark = 'w';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
@@ -188,6 +188,14 @@ function GUI_Processor(isDATA){
 
 				$("#page_"+isPage+" h1 #MyHeader_Text_"+isPage).text(p[1]);
 				break;	
+
+			case "create_page":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				if(p[1].length > 0){
+					Create_Page(p[1]);
+				}
+				break;	
+
 				
 			case "##":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="2";	

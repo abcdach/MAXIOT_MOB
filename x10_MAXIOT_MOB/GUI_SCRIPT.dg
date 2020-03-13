@@ -183,12 +183,12 @@ var MQTT_1 =`
 			case 4:
 				console.log("SYS_LOOP:4");
 				client.subscribe("0");
-				SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
+				SYS_STEP = 8; setTimeout(SYS_LOOP, 500);		
 				break;
 			case 5:
 				console.log("SYS_LOOP:5");
 				client.subscribe("1");
-				SYS_STEP = 5; setTimeout(SYS_LOOP, 500);		
+				SYS_STEP = 8; setTimeout(SYS_LOOP, 500);		
 				break;		
 			case 6:
 				console.log("SYS_LOOP:6");

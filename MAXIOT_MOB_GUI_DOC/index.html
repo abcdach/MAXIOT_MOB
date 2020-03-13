@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MAXIOT</title>
+	<link rel="shortcut icon" href="MOB/icon.png">
+	
+	<!--..................-->
+	<link rel="stylesheet" href="MOB/MyJS/jquery/css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+	<link rel="stylesheet" href="MOB/MyJS/jquery/css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+	<link rel="stylesheet" href="MOB/MyJS/jquery/css/theme-classic.css">
+	<link rel="stylesheet" href="MOB/MyJS/jquery/css/themes/default/jquery.mobile-1.4.5.min.css">
+	<!--..................-->
+	<script src="MOB/MyJS/jquery/js/jquery.js"></script>
+	<script src="MOB/MyJS/jquery/js/jquery.mobile-1.4.5.min.js"></script>
+	<!--..................-->
+	<script src="MOB/MyJS/justgage/raphael-2.1.4.min.js"></script>
+    <script src="MOB/MyJS/justgage/justgage.js"></script>
+	<!--..................-->
+	<script src="../Gui_Engine/GUI_PROCESSOR.js"></script>
+	<script src="../Gui_Engine/GUI_ELEMENTS.js"></script>
+	<script src="GUI_SCRIPT.dg"></script>
+	<!--..................-->
+	<script src="MOB/js/paho-mqtt-min.js"></script>
+	<!--..................-->
+
+	<script>
+	$(document).on('pagebeforecreate',"#page_1", function(){
+		console.log("*** pagebeforecreate:1:page_1");	
+		Create_Page('3');
+		GUI_Processor(START_SCRIPT);
+		
+		var SCR = ''
+		SCR +='\n'+ '<div class="ui-field-contain">';
+		SCR +='\n'+ '<label for="name">Text Input:</label>';
+		SCR +='\n'+ '<input type="text" name="name" id="name" value="">';
+		SCR +='\n'+ '</div>';
+		$('[data-role="content_1"]').append(SCR);	
+		
+	SCR  ='\n'+ '<form>';
+    //SCR +='\n'+ '<label for="textarea-1">Textarea:</label>';
+    SCR +='\n'+ '<textarea cols="40" rows="4" id="textarea-1"></textarea>';
+    SCR +='\n'+ '</form>';
+	$('[data-role="content_1"]').append(SCR);		
+	
+	//div id="target" style="overflow: scroll; width: 200px; height: 100px;"
+	
+	SCR  ='\n'+ '<div id="foo" style="width:200px;"    style="height:200px;"         >';
+	
+		SCR +='\n'+ 'Hello Foo';
+		SCR +='\n'+ '<a href="#" data-role="button" data-rel="back">Close dialog</a>';
+		
+		SCR +='\n'+ '<form>';
+		//SCR +='\n'+ '<label for="textarea-1">Textarea:</label>';
+		SCR +='\n'+ '<textarea cols="40" rows="4" id="textarea-1"></textarea>';
+		SCR +='\n'+ '</form>';	
+	
+	SCR +='\n'+ '</div>';
+	$('[data-role="content_1"]').append(SCR);
+	
+		
+		
+		console.log("*** pagebeforecreate:0:page_1");
+	});
+	</script>
+</head>
+
+<body data-role="IS_HTML_body">
+	<div  data-role="IS_STYLE" ></div>
+	<div  data-role="IS_JAVA_SCRIPT" ></div>
+	<!-- ############################### -->
+	<div data-role="page" id="page_1">
+		<div data-role="header" id="header_1">
+			<h1><span id="MyHeader_Text_1"></span></h1>
+			<div data-role="navbar">
+				<div data-role="navbar_1" ></div>
+			</div>
+		</div><!-- /header -->
+		<div data-role="content_1" class="ui-content" role="main"></div>	
+		<div data-role="panel_1" ></div>
+		<div data-role="footer" data-position="fixed" data-theme="a">
+			<h1> </h1>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	<!-- ############################### -->
+</body>
+</html>
