@@ -169,18 +169,7 @@ function JAVA_flip_Change(is_ID,is_Script){
 	return SCR;
 }
 
-//##################################
-function JAVA_Select_Change(is_ID,is_Script){
-	var SCR = ''
-	SCR +='\n'+ '	$("#'+is_ID+'").change(function(){';
-	SCR +='\n'+ '		var Value = $("#'+is_ID+'").val();';
-	SCR +='\n'+ '		'+is_Script;
-	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : Value = " + Value );';
-	//SCR +='\n'+ '		console.log("Slider_Change('+is_ID+') : '+is_Script+'" );';
-	SCR +='\n'+ '	});';
 
-	return SCR;
-}
 
 //##################################
  function JAVA_Radio_Change(is_ID,is_Script){

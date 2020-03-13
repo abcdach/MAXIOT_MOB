@@ -99,7 +99,16 @@ function GUI_Processor(isDATA){
 	var select = ""; var select_id = ""
 	var p=['','','','','','','','','','','','','','','','','','',''];
 
-	var Conf = isDATA.split('..');
+	var Conf  = isDATA;
+	for (i = 0; i < 1000; i++) {
+		var doo = Conf.indexOf("\\..");
+		if(doo === -1)break;
+		console.log("gggggggggggggg "+doo);
+		Conf = Conf.replace("\\..","<ad1899345>");
+	}
+
+	//console.log(Conf);
+	Conf = Conf.split('..');
 	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
 		Conf[i] = Conf[i].trim();
@@ -268,6 +277,7 @@ function GUI_Processor(isDATA){
 			
 			case "button":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
+				p[1] = p[1].replace("<ad1899345>","..");
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";	//SCRIPT	
 
 				var Lim = 3;
@@ -450,7 +460,7 @@ function GUI_Processor(isDATA){
 			case "flip":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
 
 				var pTT=p[1].split('(');
 				if(pTT.length === 2){
@@ -480,7 +490,7 @@ function GUI_Processor(isDATA){
 					for (b = Lim; b < Conf_Spl_Len; b++){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
-				}
+				}p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
 
 				isHTML += '<input id="'+isID+'" type="text" value="'+p[1]+'"/>'
 				break;
@@ -550,8 +560,53 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}
-				isJAVA += JAVA_Select_Change(isID,p[2]);
+				isJAVA +='\n'+ '	$("#'+isID+'").change(function(){';
+				isJAVA +='\n'+ '		var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+p[2];
+				isJAVA +='\n'+ '	});';
 				break;			
+
+
+
+			case "listview":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
+				
+
+				isHTML += '<ul id="'+isID+'" data-role="listview" data-inset="true" data-divider-theme="a">';
+				//List
+				var pT = p[1].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<li id="'+pT1+'" ><a>'+pT0+'</a></li>';
+							//console.log("[" + pT0 + "]["+ pT1 + "]");
+						}else{
+							
+							isHTML += '<li data-role="list-divider">'+pT0+'</li>';
+						}
+					}
+				}isHTML += '</ul>';				
+
+				//java Script
+				var Lim = 3;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				isJAVA +='\n'+ '	$("#'+isID+'").delegate("li", "click", function () {';
+				isJAVA +='\n'+ '		var Value = $(this).attr("id")';// $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+p[2];
+				isJAVA +='\n'+ '	});';				
+				break;
+
+
+
 
 			case "navbar":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
@@ -579,7 +634,7 @@ function GUI_Processor(isDATA){
 			case "radio":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
 				
 				var isName = "";
 				var isDataType = "";
@@ -617,7 +672,7 @@ function GUI_Processor(isDATA){
 			
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="Out_0(Value);";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
 				
 				var isName = "";
 				var isDataType = "";

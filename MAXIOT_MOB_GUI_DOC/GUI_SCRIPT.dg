@@ -48,7 +48,7 @@ const mmm =`
 ..html,
 <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
 	<li data-filtertext="page transitions animated pages popup navigation flip slide fade pop">
-		<a href="./transitions/" data-ajax="false">Transitions</a>
+		<a href="./transitions/" data-ajax="false">dddTransitions</a>
 	</li>
 	<li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
 		<h3>3rd party API demos</h3>
@@ -66,28 +66,156 @@ const mmm =`
 	</li>
 	
 </ul>
+
+`;
+
+
+
+const isMen1 =`
+..listview,
+	-- Home(1)
+	-- widget 
+	-- button(wi_Button)
+	-- გოლფი(2) 			
+	-- widget  
+	-- სიტროენი(2)
+	,console.log(Value);Page_change(Value);
+`;
+const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
+
+const fff=`
+..[page],1
+..{
+	..header_text,Home ..[p](m1)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
+	
+	..create_page,wi_Button
+	
+..}
+..[page],wi_Button
+..{
+	..header_text,widget Button ..[p](m2)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m2');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m2');
+..}
+
+
 `;
 
 
 
 
-const fff =`
+const fffhh =`
 
 
 
 ..[page],1
 ..{
+
+	..listview,
+		-- widget 
+		-- button(2)
+		-- გოლფი(5) 			
+		-- widget  
+		-- სიტროენი(6)
+		,console.log(Value);
+
+	..html,
+	<ul id="myList3" data-role="listview" data-inset="true" data-divider-theme="a">
+		<li data-role="list-divider">Mail</li>
+		<li id="1" ><a href="#">Inbox</a></li>
+		<li><a href="#">Outbox</a></li>
+		<li data-role="list-divider">Contacts</li>
+		<li><a href="#">Friends</a></li>
+		<li><a href="#">Work</a></li>
+	</ul>
+	..js_pc,
+     //on the js code use delegate
+     $('#myList3').delegate('li', 'click', function () {
+         alert($(this).attr('id'));
+     });
+
+
+
+
+
 	..[p](PAN1) 
 	..{ 
-	..html(ht1),<ul data-role="listview">
-				<li><a href="#">`+ggg+`</a></li>
-				<li><a href="#">Audi</a></li>
-				<li><a href="#">BMW</a></li>
-				<li><a href="#">Cadillac</a></li>
-				<li><a href="#">Ferrari</a></li>
-				</ul>		
-	..}	
+
+
+	..html,
+     <ul data-role="listview" id="myList">
+       <li id="1" >text</li>
+	   <li id="2" >text</li>
+	   <li id="3" data-role="list-divider" >text</li>
+	   <li id="4" >text</li>
+     </ul>
+	..js_pc,
+     //on the js code use delegate
+     $('#myList').delegate('li', 'click', function () {
+         alert($(this).attr('id'));
+     });
+
+
+
+
+
+
+
+
+	..html,
+
+	<ul data-role="listview" data-inset="true" data-divider-theme="a">
+		<li data-role="list-divider">Mail</li>
+		<li><a href="#">Inbox</a></li>
+		<li><a href="#">Outbox</a></li>
+		<li data-role="list-divider">Contacts</li>
+		<li><a href="#">Friends</a></li>
+		<li><a href="#">Work</a></li>
+	</ul>
+
+
+			
+<form>
+    <input id="filterTable-input" data-type="search">
+</form>
+<table data-role="table" id="movie-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+    <thead>
+        <tr>
+            <th data-priority="1">Rank</th>
+            <th data-priority="persist">Movie Title</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td><a href="http://en.wikipedia.org/wiki/Citizen_Kane" data-rel="external">Citizen Kane</a></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td><a href="http://en.wikipedia.org/wiki/Casablanca_(film)" data-rel="external">Casablanca</a></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td><a href="http://en.wikipedia.org/wiki/The_Godfather" data-rel="external">The Godfather</a></td>
+            </tr>
+        </tbody>
+    </table>		
+			
+	..html,<ol data-role="listview">
+				<li><a href="#">Inbox</a></li>
+				<li>Audi</li>
+				<li data-role="list-divider">BMW</li>
+				<li>Cadillac</li>
+				<li>Ferrari</li>
+			</ol>
+				
+	..}
+	..html,<tr>
 	..button, Open panel, Panel_Open('PAN1');
+	..button, Open panel, Panel_Open('PAN3');
+	..html,</tr>
 	`+nav+`
 	..header_text,Header Text
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
@@ -128,7 +256,7 @@ const fff =`
 		..info,3,პროგრამის კოდი,navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
 	..}
 	..textarea(ta1), navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
-	..input_text,daiiiiii,..ffffff
+	..input_text,daiiiiii,\\..ffffff
 	..info,3,პროგრამის კოდი,navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
 
 ..}
