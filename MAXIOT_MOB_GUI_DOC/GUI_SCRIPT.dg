@@ -58,14 +58,25 @@ const fff =`
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l
 	..navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
-	..create_page, MyPage
-
+	..create_page,MyPage
 ..}
 
 ..[page],MyPage
 ..{
 	..header_text,MyPage
 	..navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
+	
+	..[style],width:400px;
+	..{
+		..##,2
+		..textarea(ta1), ეს არის ჩემი ტექსტი, რომელიც ჩასმულია textarea-ში
+		..textarea(ta1), ეს არის ჩემი ტექსტი, რომელიც ჩასმულია textarea-ში
+		..info,3,პროგრამის კოდი,navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
+	..}
+	..textarea(ta1), navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
+	..input_text,daiiiiii,..ffffff
+	..info,3,პროგრამის კოდი,navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
+
 ..}
 
 

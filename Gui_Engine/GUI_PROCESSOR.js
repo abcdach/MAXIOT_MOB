@@ -19,23 +19,36 @@
 /**
 ..[c] ..[p] ..[w] ..[d]  ..[t] ..[pop]
 **/
+
+
+
+//-------------------------------------------				//
 //..header_text, text										//
 //..header_button, text, ui-..., *JavaScript*				//..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete, Page_change('page_1');
 //..navbar,--name1(page num)--name2(page num)				//..navbar,--page_1(1)--page_2(2)--page_3(3)
-
+//-------------------------------------------				//
 //..button(ID),name,*JavaScript*							//..button(ID),name,Out_0("1");
-
 //..checkbox(ID),v,--name1(val1)--name2(val2), *JavaScript*(Value);  		//..checkbox,v, .. checkbox,h,
 //..radio(ID),v,--name1(val1)--name2(val2)), *JavaScript*(Value);	//..radio,v, .. radio,h,
 //..select(ID),--name1(1)--name2(2), *JavaScript*(Value);			//
 //..slider(ID),0,150,10, *JavaScript*(Value);						//..slider(ID),MIN,MAX,STEP,{{Java content}};
-
 //..flip(ID),on(1),off(0), *JavaScript*(Value);				//
 //..input_password(ID),text									//
 //..input_text(ID),text										//
+//..textarea(ID),text										//
 //..label(ID),text											//
+//..info(ID),1/2/3,text										//
+//-------------------------------------------				//
+
+//..[style],parameters  ..{ GUI Content ..}					//..[style],width:400px;..{ GUI Content ..}	
+
+
+
 //..##,2 ..##,3 ..##,4 ..##,5								// grid
+//..create_page,Page name									// ..create_page,MyPage
 //..[w],1     ..{ GUI Content ..}							//
+//..[page],1  ..{ GUI Content ..}							//
+
 //..[c],name  ..{ GUI Content ..}							// collapsible
 //..[p](PAN1) ..{ GUI Content ..}							//
 //..[pop](POP1_2),10px 20px ..{ GUI Content ..}				//
@@ -140,10 +153,13 @@ function GUI_Processor(isDATA){
 					case "w": isCMD = "<-[w]"; break;
 					case "c": isCMD = "<-[c]"; break;
 					case "p": isCMD = "<-[p]"; break;
+					//case "page": isCMD = "<-[p]"; break;
 					case "t": isCMD = "<-[t]"; break;
 					case "d": isCMD = "<-[d]"; break;
 					case "pop": isCMD = "<-[pop]"; break;
 					case "m": isCMD = "<-[m]"; break; // vebgverdistvis
+					case "s": isCMD = "<-[s]"; break;
+					//case "stile": isCMD = "<-[s]"; break;
 					default: break;
 				}
 			}			
@@ -182,6 +198,8 @@ function GUI_Processor(isDATA){
 				isHTML_CONTENT = '';
 				break;
 				
+
+				
 			case "header_text":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
@@ -206,6 +224,26 @@ function GUI_Processor(isDATA){
 				grid_cou   = 1;
 				grid_add   = 0;			
 				break;				
+
+
+			case "[style]":
+			case "[s]":
+				Current_Mark = 's';
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				isHTML += '<div style="'+p[1]+'">';
+				break;
+			case "<-[s]":				
+				isHTML += '</div>';
+				break;	
+
+
+
 
 			case "[c]":
 				Current_Mark = 'c';
@@ -439,8 +477,34 @@ function GUI_Processor(isDATA){
 			
 			case "input_text":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				isHTML += HTML_Input_Text(isID,p[1]);
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+				isHTML += '<input id="'+isID+'" type="text" value="'+p[1]+'"/>'
 				break;
+				
+				
+			case "textarea":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				isHTML += '<form>';
+				isHTML += '<textarea cols="40" rows="4" id="'+isID+'">'+p[1]+'</textarea>';
+				isHTML += '</form>';
+				break;				
+				
+				
+				
+				
+				
 						
 			case "input_password":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";			

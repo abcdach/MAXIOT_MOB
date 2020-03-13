@@ -26,6 +26,7 @@ put_input_Password('ID','text');
 get_input_Password('ID');
 **/
 
+//-  Create_Page('text')			// Create_Page('MyPage')
 //-  Put_Header_Text(1,'text')		// Put_Header_Text(is_Page,is_Text)
 //-  Put_Slider('ID','text');		// slider
 //-  Get_Slider('ID');				// slider
@@ -121,7 +122,7 @@ function Create_Page(PageName){
 
 
 
-function HTML_Input_Text(is_ID,is_Value) {return('<input id="'+is_ID+'" type="text" value="'+is_Value+'"/>');}
+
 function HTML_Input_Password(is_ID,is_Value) {return('<input id="'+is_ID+'" type="password" value="'+is_Value+'"/>');}
 
 function JAVA_Button_Click(is_ID,is_Script){
