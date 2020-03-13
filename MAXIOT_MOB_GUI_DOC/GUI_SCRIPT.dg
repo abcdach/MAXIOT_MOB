@@ -33,6 +33,92 @@ console.log
 ..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]
 **/
 
+const isMen1 =`
+..listview,
+	-- Home(1)
+	-- widget 
+	-- button(wi_Button)
+	-- checkbox(wi_checkbox) 			
+
+	,console.log(Value);Page_change(Value);
+`;
+const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
+
+const fff=`
+..[page],1
+..{
+	..header_text,Home ..[p](m1)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
+	
+	..html,	
+	<form>
+	    <fieldset data-role="controlgroup">
+	        <legend>Vertical:</legend>
+	        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+	        <label for="checkbox-v-2a">One</label>
+	        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+	        <label for="checkbox-v-2b">Two</label>
+	        <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
+	        <label for="checkbox-v-2c">Three</label>
+	    </fieldset>
+	</form>	
+	
+	
+	`+isMen1+`
+	..create_page,wi_Button
+	..create_page,wi_checkbox
+	
+..}
+..[page],wi_Button
+..{
+	..header_text,widget Button ..[p](m2)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m2');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m2');
+
+
+		..info,3,widget Button,\\..button(ID),name,*JavaScript*
+		..info,1,example,\\..button, isButton, alert("widget Button");
+		..button(ddd), isButton, alert("widget Button");
+
+
+..}
+..[page],wi_checkbox
+..{
+	..header_text,widget checkbox ..[p](m3)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m3');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m3');
+
+		..info,3,widget Button,
+		\\..checkbox(ID), v, --name1(val1)--name2(val2), alert(Value);
+		..info,1,example,
+		\\..checkbox, v, --name1(val1)--name2(val2), alert(Value);
+		..checkbox,v,--name1(val1)--name2(val2), alert(Value);
+		..info,1,example,
+		\\..checkbox, h, --name1(val1)--name2(val2), alert(Value);
+		..checkbox,h,--name1(val1)--name2(val2), alert(Value);
+..}
+`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** 	
 ..[w],1
 ..{
@@ -68,41 +154,6 @@ const mmm =`
 </ul>
 
 `;
-
-
-
-const isMen1 =`
-..listview,
-	-- Home(1)
-	-- widget 
-	-- button(wi_Button)
-	-- გოლფი(2) 			
-	-- widget  
-	-- სიტროენი(2)
-	,console.log(Value);Page_change(Value);
-`;
-const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
-
-const fff=`
-..[page],1
-..{
-	..header_text,Home ..[p](m1)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
-	
-	..create_page,wi_Button
-	
-..}
-..[page],wi_Button
-..{
-	..header_text,widget Button ..[p](m2)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m2');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m2');
-..}
-
-
-`;
-
 
 
 

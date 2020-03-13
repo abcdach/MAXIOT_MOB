@@ -18,6 +18,7 @@
 **/
 /**
 ..[c] ..[p] ..[w] ..[d]  ..[t] ..[pop]
+p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
 **/
 
 
@@ -701,7 +702,16 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}
-				isJAVA += JAVA_Radio_Change(isID,p[3]);
+
+				isJAVA +='\n'+ '	$( "#'+isID+' input" ).on( "change", function( event ) {';
+				isJAVA +='\n'+ '		var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
+				isJAVA +='\n'+ '		'+p[3];
+				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : Value = " + Value );';
+				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : '+is_Script+'" );';
+				isJAVA +='\n'+ '	});';
+	
+	//$('input.answer').not(this).prop('checked', false).checkboxradio("refresh");
+	
 				break;
 
 
@@ -782,7 +792,7 @@ function GUI_Processor(isDATA){
 					for (b = Lim; b < Conf_Spl_Len; b++){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
-				}
+				}p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
 				if(p[1]==="1"){
 					isHTML += '<div id="'+isID+'" class="ui-body ui-body-a ui-corner-all">';
 					if(p[2] !== "") isHTML += '<h3>'+p[2]+'</h3>';					
