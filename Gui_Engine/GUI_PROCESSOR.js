@@ -42,8 +42,6 @@
 
 //..[style],parameters  ..{ GUI Content ..}					//..[style],width:400px;..{ GUI Content ..}	
 
-
-
 //..##,2 ..##,3 ..##,4 ..##,5								// grid
 //..create_page,Page name									// ..create_page,MyPage
 //..[w],1     ..{ GUI Content ..}							//
@@ -502,7 +500,20 @@ function GUI_Processor(isDATA){
 				break;				
 				
 				
-				
+			case "html":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+				isHTML += '<div id="'+isID+'">';
+				isHTML += p[1];
+				isHTML += '</div>';
+								
+				break;					
 				
 				
 						

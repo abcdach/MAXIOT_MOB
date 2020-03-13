@@ -33,17 +33,40 @@ console.log
 ..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]
 **/
 
-/** 
-		<a href="#page_1" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
-		<a onclick="disconnect_To_Server()"  class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">No text</a>
-		
-		
+/** 	
 ..[w],1
 ..{
 ..header,1,text
 ..}
 		
 **/		
+
+const nav =`..navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)`;
+const ggg =`oooeeeeeee`;
+
+const mmm =`
+..html,
+<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+	<li data-filtertext="page transitions animated pages popup navigation flip slide fade pop">
+		<a href="./transitions/" data-ajax="false">Transitions</a>
+	</li>
+	<li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false">
+		<h3>3rd party API demos</h3>
+		<ul>
+			<li data-filtertext="backbone requirejs navigation router">
+				<a href="#" data-ajax="false">Backbone RequireJS</a>
+			</li>
+			<li data-filtertext="google maps geolocation demo">
+				<a href="#" data-ajax="false">Google Maps geolocation</a>
+			</li>
+			<li data-filtertext="google maps hybrid">
+				<a href="#" data-ajax="false">Google Maps list toggle</a>
+			</li>
+		</ul>
+	</li>
+	
+</ul>
+`;
 
 
 
@@ -54,19 +77,50 @@ const fff =`
 
 ..[page],1
 ..{
+	..[p](PAN1) 
+	..{ 
+	..html(ht1),<ul data-role="listview">
+				<li><a href="#">`+ggg+`</a></li>
+				<li><a href="#">Audi</a></li>
+				<li><a href="#">BMW</a></li>
+				<li><a href="#">Cadillac</a></li>
+				<li><a href="#">Ferrari</a></li>
+				</ul>		
+	..}	
+	..button, Open panel, Panel_Open('PAN1');
+	`+nav+`
 	..header_text,Header Text
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
 	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l
-	..navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
 	..create_page,MyPage
+	..create_page,2
 ..}
-
+..[page],2
+..{
+	`+nav+`
+	..html(ht1),<ul data-role="listview">
+				<li><a href="#">`+ggg+`</a></li>
+				<li><a href="#">Audi</a></li>
+				<li><a href="#">BMW</a></li>
+				<li><a href="#">Cadillac</a></li>
+				<li><a href="#">Ferrari</a></li>
+				</ul>
+..}
 ..[page],MyPage
 ..{
+	`+nav+`
 	..header_text,MyPage
-	..navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
 	
-	..[style],width:400px;
+
+	..//js_pc,Element_Hide('ht1');
+	
+	..html(ht2),<div class="ui-field-contain">
+				<label for="name">Text Input:</label>
+				<input type="text" name="name" id="name" value="">
+				</div>
+	
+	
+	..[style],width:400px; color:red;
 	..{
 		..##,2
 		..textarea(ta1), ეს არის ჩემი ტექსტი, რომელიც ჩასმულია textarea-ში
@@ -78,15 +132,6 @@ const fff =`
 	..info,3,პროგრამის კოდი,navbar(nav1),--page_1(1)--page_2(2)--MyPage(MyPage)
 
 ..}
-
-
-..[w],1
-..{
-	..button, Button Text, console.log("1"); Write_Memory('isIP', '192.168.0.105');
-	..button,,console.log("Read_Memory:"+Read_Memory('isIP'));
-..}
-
-
 
 `;
 
