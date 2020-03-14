@@ -42,6 +42,7 @@ const isMen1 =`
 	-- radio(wi_radio)
 	-- select(wi_select)
 	-- slider(wi_slider)
+	-- flip(wi_flip)
 	,console.log("Page_change:"+Value);Page_change(Value);
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
@@ -61,6 +62,7 @@ const fff=`
 	..create_page,wi_radio
 	..create_page,wi_select
 	..create_page,wi_slider
+	..create_page,wi_flip
 	
 	
 
@@ -131,6 +133,19 @@ const fff=`
 		..info,1,example,
 		\\..slider,0,150,10, alert(Value);
 		..slider,0,150,10, alert(Value);
+
+..}
+..[page],wi_flip
+..{
+	..header_text,widget flip ..[p](i_flip)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_flip');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_flip');
+
+		..info,3,widget slider,
+		\\..flip(ID),on(1),off(0), *JavaScript*(Value);	
+		..info,1,example,
+		\\..flip,on(1),off(0), alert(Value);
+		..flip,on(1),off(0), alert(Value);
 
 ..}
 `;
