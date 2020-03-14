@@ -677,10 +677,10 @@ function GUI_Processor(isDATA){
 				
 				var isName = "";
 				var isDataType = "";
-				if(p[1]==='v'){isName = isID+'_'+b; isDataType = '';}
-				if(p[1]==='h'){isName = isID+'_'+b; isDataType = 'data-type="horizontal"';}
-				
-				isHTML += '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				if(p[1]==='v'){isDataType = '';}
+				if(p[1]==='h'){isDataType = 'data-type="horizontal"';}
+
+				isHTML += '<fieldset data-role="controlgroup" '+isDataType+'>';
 				//List
 				var pT = p[2].split('--');
 				for (b = 0; b < pT.length; b++){
@@ -690,8 +690,14 @@ function GUI_Processor(isDATA){
 						if(pTT.length === 2){
 							var pT0 = pTT[0].trim();
 							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<input type="checkbox" name="'+isName+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
+							isHTML += '<input type="checkbox" name="'+isID+'_'+b+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
         					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
+
+							isJAVA +='\n'+ '$("#'+isID+'_'+b+'").on("change", function () {';
+							isJAVA +='\n'+ '	var Status = $(this).prop("checked");';
+							isJAVA +='\n'+ '	var Value  = $(this).val()';
+							isJAVA +='\n'+ '	'+isID+'(Status,Value);';
+							isJAVA +='\n'+ '});';
 						}
 					}
 				}isHTML += '</fieldset>';			
@@ -703,12 +709,23 @@ function GUI_Processor(isDATA){
 					}
 				}
 
-				isJAVA +='\n'+ '	$( "#'+isID+' input" ).on( "change", function( event ) {';
-				isJAVA +='\n'+ '		var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
+				isJAVA +='\n'+ 'function '+isID+'(Status,Value){';
+				isJAVA +='\n'+ '	console.log( "ggggggggggggggggg");';
+				isJAVA +='\n'+ '	console.log( Status);';
+				isJAVA +='\n'+ '	console.log( Value );';
 				isJAVA +='\n'+ '		'+p[3];
+				isJAVA +='\n'+ '}';
+
+
+
+				//isJAVA +='\n'+ '	$( "#'+isID+' input" ).on( "change", function( event ) {';
+				//isJAVA +='\n'+ '		var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
+				//isJAVA +='\n'+ '		'+p[3];
 				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : Value = " + Value );';
 				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : '+is_Script+'" );';
-				isJAVA +='\n'+ '	});';
+				//isJAVA +='\n'+ '	});';
+				
+				//isJAVA +='\n'+ '$("[#'+isID+']").prop("checked", true).checkboxradio("refresh");';
 	
 	//$('input.answer').not(this).prop('checked', false).checkboxradio("refresh");
 	

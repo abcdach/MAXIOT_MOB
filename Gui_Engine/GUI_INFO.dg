@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+
+
+
+
+##########################################################################
+## checkbox
+..html,		
+
+<input type="checkbox" name="gggg_1" id="gggg_1" value="xx1">
+<label for="gggg_1">jjjj</label>
+<input type="checkbox" name="gggg_2" id="gggg_2" value="xx2">
+<label for="gggg_2">jjjj</label>
+
+..js,
+function kkkkk(){
+	console.log( "ffffffffffffffff");
+}
+..js_pc,
+$("#gggg_1 ").on("change", function () {
+  console.log( $(this).prop("checked") ); /* returns true or false */
+  console.log( $(this).val() ); /* return value */
+  kkkkk();
+});
+$("#gggg_2 ").on("change", function () {
+  console.log( $(this).prop("checked") ); /* returns true or false */
+  console.log( $(this).val() ); /* return value */
+  kkkkk();
+});
+
+##########################################################################
+
+
+
+
+
+
