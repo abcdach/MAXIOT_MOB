@@ -135,22 +135,8 @@ function JAVA_Button_Click(is_ID,is_Script){
 }
 
 //##################################
-function HTML_Slider(is_ID,is_Min, is_Max, is_Step) {
-	return('<input name="'+is_ID+'" id="'+is_ID+'" type="range"  min="'+is_Min+'" max="'+is_Max+'" step="'+is_Step+'"  value="'+is_Min+'" />');
-}
-function JAVA_Slider_Stop(is_ID,is_Script){
-	var SCR = ''
 
-	SCR +='\n'+ '	$("#'+is_ID+'").on( \'slidestop\', function( event ){';
-	SCR +='\n'+ '		var Value = $("#'+is_ID+'").val();';
-	SCR +='\n'+ '		'+is_Script;
-	//SCR +='\n'+ '		console.log("Slider_Stop('+is_ID+') : Value = " + Value );';
-	//SCR +='\n'+ '		console.log("Slider_Stop('+is_ID+') : '+is_Script+'" );';
-	SCR +='\n'+ '	})';
-		
-	return SCR;	
-	
-}
+
 function Put_Slider(is_ID,is_Value){ $('#'+is_ID).val(is_Value).slider("refresh");}
 function Get_Slider(is_ID){ return $('#'+is_ID).val();}
 //##################################

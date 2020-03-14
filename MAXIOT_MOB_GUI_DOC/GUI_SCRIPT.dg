@@ -32,13 +32,16 @@ console.log
 /** 
 ..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]
 **/
-
+//-- widget 
 const isMen1 =`
 ..listview,
 	-- Home(1)
-	-- widget 
+	-- .
 	-- button(wi_Button)
-	-- checkbox(wi_checkbox) 			
+	-- checkbox(wi_checkbox)
+	-- radio(wi_radio)
+	-- select(wi_select)
+	-- slider(wi_slider)
 	,console.log("Page_change:"+Value);Page_change(Value);
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
@@ -50,73 +53,87 @@ const fff=`
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
 	
-	`+isMen1+`
-	..create_page,wi_Button
-	..create_page,wi_checkbox	
-	
 
 	
+	`+isMen1+`
+	..create_page,wi_Button
+	..create_page,wi_checkbox
+	..create_page,wi_radio
+	..create_page,wi_select
+	..create_page,wi_slider
 	
 	
-	
-..html,		
-<fieldset data-role="controlgroup" id="gggg" >
-<input type="checkbox" name="gggg_1" id="gggg_1" value="xx1">
-<label for="gggg_1">jjjj</label>
-<input type="checkbox" name="gggg_2" id="gggg_2" value="xx2">
-<label for="gggg_2">jjjj</label>
-</fieldset>	
-..js_pc,
-$("#gggg_1 ").on("change", function () {
-  var Status = $(this).prop("checked");
-  var Value  = $(this).val()
-  gggg(Status,Value);
-});
-$("#gggg_2 ").on("change", function () {
-  var Status = $(this).prop("checked");
-  var Value  = $(this).val()
-  gggg(Status,Value);
-});
-function gggg(Status,Value){
-console.log( "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-  console.log( Status);
-  console.log( Value );
-}
+
 ..}
 ..[page],wi_Button
 ..{
-	..header_text,widget Button ..[p](m2)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m2');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m2');
-
+	..header_text,widget Button ..[p](i_Button)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_Button');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_Button');
 
 		..info,3,widget Button,\\..button(ID),name,*JavaScript*
 		..info,1,example,\\..button, isButton, alert("widget Button");
 		..button(ddd), isButton, alert("widget Button");
 
-
 ..}
 ..[page],wi_checkbox
 ..{
-	..header_text,widget checkbox ..[p](m3)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m3');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m3');
+	..header_text,widget checkbox ..[p](i_checkbox)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_checkbox');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_checkbox');
 
 		..info,3,widget Button,
 		\\..checkbox(ID), v, --name1(val1)--name2(val2), alert(Value);
 		..info,1,example,
 		\\..checkbox, v, --name1(val1)--name2(val2), alert(Value);
 		..checkbox,v,--name1(val1)--name1(val1), alert(Value);
-		..checkbox,v,--name1(val1), alert(Value);
 		..info,1,example,
 		\\..checkbox, h, --name1(val1)--name2(val2), alert(Value);
 		..checkbox,h,--name1(val1)--name2(val2), alert(Value);
 ..}
+..[page],wi_radio
+..{
+	..header_text,widget radio ..[p](i_radio)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_radio');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_radio');
+
+		..info,3,widget radio,
+		\\..radio(ID), v, --name1(val1)--name2(val2), alert(Value);
+		..info,1,example,
+		\\..radio, v, --name1(val1)--name2(val2), alert(Value);
+		..radio,v,--name1(val1)--name1(val1), alert(Value);
+		..radio,v,--name1(val1), alert(Value);
+		..info,1,example,
+		\\..radio, h, --name1(val1)--name2(val2), alert(Value);
+		..radio,h,--name1(val1)--name2(val2), alert(Value);
+..}
+..[page],wi_select
+..{
+	..header_text,widget select ..[p](i_select)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_select');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_select');
+
+		..info,3,widget select,
+		\\..select(ID),--name1(val1)--name2(val2), alert(Value);
+		..info,1,example,
+		\\..select,--name1(val1)--name1(val2), alert(Value);
+		..select,--name1(val1)--name1(val2), alert(Value);
+
+..}
+..[page],wi_slider
+..{
+	..header_text,widget slider ..[p](i_slider)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_slider');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_slider');
+
+		..info,3,widget slider,
+		\\..slider(ID),0,150,10, *JavaScript*(Value);
+		..info,1,example,
+		\\..slider,0,150,10, alert(Value);
+		..slider,0,150,10, alert(Value);
+
+..}
 `;
-
-
-
-
 
 
 

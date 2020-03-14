@@ -452,10 +452,19 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}
+
+				isHTML += '<input name="'+isID+'" id="'+isID+'" type="range"  min="'+p[1]+'" max="'+p[2]+'" step="'+p[3]+'"  value="'+p[1]+'" />'
+					
+				isJAVA +='\n'+ '	$("#'+isID+'").on( \'slidestop\', function( event ){';
+				isJAVA +='\n'+ '		var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+p[4];
+				isJAVA +='\n'+ '	})';
 				
-				isHTML += HTML_Slider(isID,p[1],p[2],p[3]);	
-				isJAVA += JAVA_Slider_Stop(isID,p[4]);
 				break;
+			
+	
+			
+			
 			
 			
 			case "flip":
@@ -588,9 +597,9 @@ function GUI_Processor(isDATA){
 							//console.log("[" + pT0 + "]["+ pT1 + "]");
 						}else{
 							
-							isHTML += '<li data-role="list-divider">'+pT0+'</li>';
+							isHTML += '<li data-role="list-divider">'+pT[b]+'</li>';
 						}
-					}
+					} //else isHTML += '<li data-role="list-divider"> </li>';
 				}isHTML += '</ul>';				
 
 				//java Script
@@ -665,9 +674,26 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}
-				isJAVA += JAVA_Radio_Change(isID,p[3]);
+						
+				isJAVA +='\n'+ '	$( "#'+isID+' input" ).on( "change", function( event ) {';
+				isJAVA +='\n'+ '		var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
+				isJAVA +='\n'+ '		'+p[3];
+				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : Value = " + Value );';
+				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : '+is_Script+'" );';
+				isJAVA +='\n'+ '	});';				
 				break;
 				
+
+
+
+
+
+
+
+
+
+
+
 
 			case "checkbox":
 			
@@ -710,25 +736,10 @@ function GUI_Processor(isDATA){
 				}
 
 				isJAVA +='\n'+ 'function '+isID+'(Status,Value){';
-				isJAVA +='\n'+ '	console.log( "ggggggggggggggggg");';
-				isJAVA +='\n'+ '	console.log( Status);';
-				isJAVA +='\n'+ '	console.log( Value );';
+				//isJAVA +='\n'+ '	console.log( Status);';
+				//isJAVA +='\n'+ '	console.log( Value );';
 				isJAVA +='\n'+ '		'+p[3];
 				isJAVA +='\n'+ '}';
-
-
-
-				//isJAVA +='\n'+ '	$( "#'+isID+' input" ).on( "change", function( event ) {';
-				//isJAVA +='\n'+ '		var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
-				//isJAVA +='\n'+ '		'+p[3];
-				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : Value = " + Value );';
-				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : '+is_Script+'" );';
-				//isJAVA +='\n'+ '	});';
-				
-				//isJAVA +='\n'+ '$("[#'+isID+']").prop("checked", true).checkboxradio("refresh");';
-	
-	//$('input.answer').not(this).prop('checked', false).checkboxradio("refresh");
-	
 				break;
 
 

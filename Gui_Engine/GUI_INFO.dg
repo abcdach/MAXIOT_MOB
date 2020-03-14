@@ -36,7 +36,15 @@ $("#gggg_2 ").on("change", function () {
 
 ##########################################################################
 
-
+	..html,
+	<input name="div-slider" id="div-slider" type="range"  min="0" max="100" step="5"  value="0" />
+	
+..js_pc,
+$("#div-slider").change(function() {
+  var Value = $("#slider-1").val();
+  console.log("slider_value "+Value);
+});	
+##########################################################################	
 
 
 
