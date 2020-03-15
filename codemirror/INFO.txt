@@ -1,0 +1,72 @@
+
+grep 'word' filename
+grep 'word' file1 file2 file3
+grep 'string1 string2'  filename
+cat otherfile | grep 'something'
+command | grep 'something'
+command option1 | grep 'data'
+grep --color 'data' fileName
+
+
+http://myregexp.com/
+https://regexper.com/#%2F%5B-%5D%7B3%7D%2F
+https://regex101.com/
+http://regexstorm.net/tester
+https://www.debuggex.com/
+https://rubular.com/
+
+
+
+	[abcdef]		//ერთი სიმბოლო უნდა იყოს a ან b ან c ან d ან e ან f
+	[a-f]			//ერთი სიმბოლო უნდა იყოს a დან f მდე
+	[a-f_&0-9]		//ერთი სიმბოლო უნდა იყოს a დან f მდე ან _ ან & ან 0 დან 9 დე
+	
+	[^abcdef]		//ერთი სიმბოლო არ უნდა იყოს  a ან b ან c ან d ან e ან f
+	[^a-f]			//ერთი სიმბოლო არ უნდა იყოს  a დან f მდე
+	[^a-f_&0-9]		//ერთი სიმბოლო არ უნდა იყოს  a დან f მდე ან _ ან & ან 0 დან 9 დე
+
+	[A-Za-z_-]		//ერთი სიმბოლო უნდა იყოს A დან Z მდე ან a დან z მდე ან _ ან - (- უნდა იყოს ან ყველაზე პირველი ან ყველაზე ბოლო)
+	[A-Z+--]		//ერთი სიმბოლო უნდა იყოს A დან Z მდე ან + დან - მდე          (- უნდა იყოს ან ყველაზე პირველი ან ყველაზე ბოლო)
+	[--/A-Z]
+	
+	[A-Za-z_-]		//ერთი სიმბოლო უნდა იყოს A დან Z მდე ან a დან z მდე ან _ ან - (- უნდა იყოს ან ყველაზე პირველი ან ყველაზე ბოლო)
+	
+	
+	?				//zero or one times	  0 ან 1
+	*				//zero or more times  0 ან 0<
+	+				//სიმბოლო რომლის მერე დგას შეიძლება გამეორდეს  1 ან 1<    ln+  = ln lnn lnnnnnn 
+	
+	{n}				//წესი უნდა გაიმეორდეს n ჯერ
+	{n,m}			//წესი უნდა გაიმეორდეს n დან m ჯერ
+	{n,}			//წესი უნდა გაიმეორდეს n დან უსასრულობამდე
+	
+	.				//ერთ-ერთ ნებისმიერი სიმბოლოსგან მაგრამ არა \n 
+	
+	.*d 			// ტექსტის ყველა სიმბოლო ბოლოდან პირვე;ივე d-დე
+	.*?d 			// ტექსტის ყველა სიმბოლო პირველივე d-დე
+	
+	.+				//უკნიდან ძიების დაწყება (ძალიან ანელებ ძიების პროცესს)
+	w+				//მოიძია მთლიანი სიტყვები
+	
+	\s				//პრაბელი
+	\b	ankeri  	//მხოლოდ სრული სიტყვები მხოლოდ
+	
+	
+	.cm-s-ambiance .cm-comment { color: #555; font-style:italic; }
+.cm-s-abcdef span.cm-header { color: aquamarine; font-weight: bold; }	
+.cm-s-neat span.cm-keyword { line-height: 1em; font-weight: bold; color: blue; }	
+	Line 31: .cm-s-mdn-like .cm-comment { color:#777; font-weight:normal; }
+ .CodeMirror {border: 1px solid black; font-size:13px}	
+	
+	
+	--\s*[a-z0-9_(]+.\)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

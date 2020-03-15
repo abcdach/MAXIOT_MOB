@@ -1,0 +1,15 @@
+
+.cm-s-duotone-light.CodeMirror { background: #faf8f5; color: #000000; }
+.cm-s-duotone-light div.CodeMirror-selected { background: #e3dcce !important; }
+.cm-s-duotone-light .CodeMirror-gutters { background: #faf8f5; border-right: 0px; }
+.cm-s-duotone-light .CodeMirror-linenumber { color: #cdc4b1; }
+
+
+.cm-s-duotone-light span.cm-conteiner { color: #ff19ff;}
+.cm-s-duotone-light span.cm-keyword { color: #0000ac; font-style:italic;} 
+.cm-s-duotone-light span.cm-ishtml { color: #ff2b41; font-style:italic;}
+.cm-s-duotone-light span.cm-islist { color: #ff8000; }
+.cm-s-duotone-light span.cm-inn { color: #0f8a1b; font-style:italic;}
+.cm-s-duotone-light span.cm-java { color: #8f1f8f;}
+
+
