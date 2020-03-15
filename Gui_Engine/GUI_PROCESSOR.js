@@ -101,56 +101,32 @@ function GUI_Processor(isDATA){
 	var p=['','','','','','','','','','','','','','','','','','',''];
 	var isPARA=['','','','','','','','','','','','','','','','','','',''];
 	var isPAYLOAD = "";
+	
+
 	var Conf  = isDATA;
+//####################################################################################
+	//\\.. simbolos shenacvleba <ad1899345>
 	for (i = 0; i < 1000; i++) {
 		var doo = Conf.indexOf("\\..");
 		if(doo === -1)break;
-		console.log("gggggggggggggg "+doo);
+		console.log("#### \\\\.. "+doo);
 		Conf = Conf.replace("\\..","<ad1899345>");
 	}
-
-	//console.log(Conf);
+//####################################################################################
 	Conf = Conf.split('..');
 	console.log("x11:"+Conf);
-	
+//####################################################################################	
 	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
 		Conf[i] = Conf[i].trim();
 		Conf[i] = Conf[i].replace(/(")/gm, "'");
 	}
-	
-	
-	console.log("x11:"+Conf);
-	
-	
+//####################################################################################	
 	for (i = 0; i < Conf_Len; i++) {
-		
-		
+//####################################################################################			
 		var Conf_Spl = Conf[i].split(',');
-		
-		
-		
-		
-		console.log(Conf_Spl);
-		
-	
-		
 		var Conf_Spl_Len = Conf_Spl.length;
-		
-		
-			
-
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
+//####################################################################################				
 		// ID nomeris amogeba
 		var isID  = "E"+isID_Counter; isID_Counter++;
 		var isCMD = Conf_Spl[0].trim();
@@ -161,19 +137,40 @@ function GUI_Processor(isDATA){
 			isCMD = isTemp2[0].trim();
 			isCMD = isCMD.replace(/(\r\n|\n|\r)/gm, "");
 			isCMD = isCMD.trim();
-		}
-		
-//####################################################################################
-//##
-//##
-//##
+		}	
 //####################################################################################		
-		
 		var p_NUM = 0;  // parametebis raodenoba
 		switch(isCMD) {
 			case "codemirror": 		p_NUM = 1; break;
 			case "codemirror_text": p_NUM = 2; break;
 			case "flip": 			p_NUM = 3; break;
+			case "[page]":			p_NUM = 1; break;
+			case "[w]":				p_NUM = 1; break;
+			case "##":				p_NUM = 1; break;
+			case "header_text":		p_NUM = 1; break;
+			case "create_page":		p_NUM = 1; break;
+			case "label":			p_NUM = 1; break;
+			case "button":			p_NUM = 2; break;
+			case "header_button":	p_NUM = 3; break;
+			case "slider":			p_NUM = 4; break;
+			case "input_password":	p_NUM = 1; break;
+			case "html":			p_NUM = 1; break;
+			case "textarea":		p_NUM = 1; break;
+			case "input_text":		p_NUM = 1; break;
+			case "checkbox":		p_NUM = 3; break;
+			case "radio":			p_NUM = 3; break;
+			case "select":			p_NUM = 2; break;
+			case "js":								p_NUM = 1; break;
+			case "javascript":						p_NUM = 1; break;
+			case "js_pbc":							p_NUM = 1; break;
+			case "js_pagebeforecreate":				p_NUM = 1; break;	
+			case "javascript_pagebeforecreate":		p_NUM = 1; break;	
+			case "js_pc":							p_NUM = 1; break;	
+			case "js_pagecreate":					p_NUM = 1; break;	
+			case "javascript_pagecreate":			p_NUM = 1; break;		
+			case "js_pi":							p_NUM = 1; break;	
+			case "js_pageinit":						p_NUM = 1; break;	
+			case "javascript_pageinit":				p_NUM = 1; break;		
 		}		
 		
 		isPAYLOAD = "";
@@ -181,12 +178,10 @@ function GUI_Processor(isDATA){
 		for (ix = 1; ix < Conf_Spl_Len; ix++) {
 			var id = Conf_Spl[ix]
 			if(ix < p_NUM){
-				//console.log(ix + " ###COMA: " + id);
-				isPARA[ix] = id;
+				isPARA[ix] = id.trim();
 			}
 			else
 			{
-				//console.log(ix + " ###DATA: " + id);
 				if(isPAYLOAD.length === 0){
 					isPAYLOAD = isPAYLOAD + id;
 				}else{
@@ -208,24 +203,6 @@ function GUI_Processor(isDATA){
 		}		
 		console.log("#############################");
 //####################################################################################
-//##
-//##
-//##
-//####################################################################################		
-		
-		
-		
-		
-		
-		//isPAYLOAD
-		
-		
-		
-		
-		
-		//console.log("CMD : "+isCMD+"("+isID+")");
-		
-		
 		if(isCMD === "{"){
 			if(Current_Mark === 'w')Mark_Pointer = 0;
 			Mark_Steck[Mark_Pointer] = Current_Mark;
@@ -253,7 +230,10 @@ function GUI_Processor(isDATA){
 				}
 			}			
 		}
-		
+//####################################################################################		
+
+
+
 
 		isHTML = '';
 
@@ -265,14 +245,13 @@ function GUI_Processor(isDATA){
 			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
 		}
 
-
+//####################################################################################
 
 
 
 		switch(isCMD) {
 			
 			case "flip":
-			
 				var pTT=isPARA[1].split('(');
 				if(pTT.length === 2){
 					var pT0 = pTT[0].trim();
@@ -285,16 +264,12 @@ function GUI_Processor(isDATA){
 				}				
 				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
 
-				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
-				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+isPAYLOAD;
-				isJAVA +='\n'+ '	});';
-				
+				isJAVA +='\n'+ '$("#'+isID+'").on( \'change\', function( event )';
+				isJAVA +='\n'+ '	{ var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '	'+isPAYLOAD;
+				isJAVA +='\n'+ '});';
 				break;			
 
-			
-				
-			
 			case "codemirror":
 				// lineNumbers: true
 				// tabSize:4
@@ -304,72 +279,263 @@ function GUI_Processor(isDATA){
 				
 				isHTML += '<div id="'+isID+'"></div>';
 				
-				//isJAVA +='\n'+ 'var sc = document.getElementById("modecode");';
 				isJAVA +='\n'+ 'var el_'+isID+' = document.getElementById("'+isID+'");';
 				isJAVA +='\n'+ 'var  '+isID+' = CodeMirror(el_'+isID+', {';
 				isJAVA +='\n'+ isPAYLOAD;
 				isJAVA +='\n'+ '});';
 				isJAVA +='\n'+ ' '+isID+'.setOption("theme", "duotone-light");';
-
 				break;		
 				
 			case "codemirror_text":
-			
 				isJAVA +='\n'+ ' '+isPARA[1]+'.setValue(`'+isPAYLOAD+'\n`);';
 				isJAVA +='\n'+ ' '+isPARA[1]+'.refresh();';	
 				break;							
 			
-			
-			
-			
-			
-			
 			case "[page]":
 			case "[w]":
 				Current_Mark = 'w';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
-				isPage = p[1];
-
-				isJAVA = ''; 
-				isHTML = ''; 
-				isHTML_PANEL   = '';  
-				isHTML_CONTENT = '';
-				break;	
-			case "<-[w]":
-				if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
-				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,isJAVA);
-				isJAVA = ''; 
-				isHTML = ''; 
+				if(isPAYLOAD === "")isPAYLOAD="1";
+				isPage = isPAYLOAD;
+				isHTML = '';isJAVA = ''; 
 				isHTML_PANEL   = '';  
 				isHTML_CONTENT = '';
 				break;
-				
+			case "<-[w]":
+				if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
+				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,isJAVA);
+				isJAVA = ''; isHTML = ''; 
+				isHTML_PANEL   = '';  
+				isHTML_CONTENT = '';
+				break;	
 
-				
+			case "##":
+				if(isPAYLOAD==="2"){isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;}
+				if(isPAYLOAD==="3"){isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;}
+				if(isPAYLOAD==="4"){isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;}
+				if(isPAYLOAD==="5"){isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;}
+				grid_cou   = 1; grid_add   = 0;			
+				break;
+
 			case "header_text":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
-
-				$("#page_"+isPage+" h1 #MyHeader_Text_"+isPage).text(p[1]);
+				$("#page_"+isPage+" h1 #MyHeader_Text_"+isPage).text(isPAYLOAD);
 				break;	
 
 			case "create_page":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				if(p[1].length > 0){
-					Create_Page(p[1]);
-				}
+				if(isPAYLOAD.length > 0)Create_Page(isPAYLOAD);
 				break;	
 
-				
-			case "##":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="2";	
-				if(p[1]==="2"){isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;}
-				if(p[1]==="3"){isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;}
-				if(p[1]==="4"){isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;}
-				if(p[1]==="5"){isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;}
-				grid_cou   = 1;
-				grid_add   = 0;			
+			case "label":			
+				isHTML += ('<label>'+isPAYLOAD+'</label>');
+				break;
+
+			case "button":
+				isHTML += '<input id="'+isID+'" type="button" value="'+isPARA[1]+'"/>';
+				isJAVA +='\n'+ '$("#'+isID+'").click(function (e){';
+				isJAVA +='\n'+ '	'+isPAYLOAD;
+				isJAVA +='\n'+ '});';						
 				break;				
+				
+			//..button_class('ID'),name,ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 				
+			case "header_button":
+				var html = '<a onclick="'+isID+'()"  class="'+isPARA[2]+'">'+isPARA[1]+'</a>';
+				$('#header_'+isPage).prepend(html);  // dasva sul tavshi 				
+				var SCR = ''
+				SCR +='\n'+ 'function '+isID+'(){';
+				SCR +='\n'+ '	'+isPAYLOAD;
+				SCR +='\n'+ '}';
+				SCR = '<script>'+SCR+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
+				break;
+				
+			case "js_pbc":		
+			case "js_pagebeforecreate":	
+			case "javascript_pagebeforecreate":
+				var SCR = '';
+				SCR +='\n'+ '<script>';
+				SCR +='\n'+ '$(document).on("pagebeforecreate","#page_'+isPage+'",function(){';
+				SCR +='\n'+ '	' + isPAYLOAD;
+				SCR +='\n'+ '});';
+				SCR +='\n'+ '</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
+				break;				
+				
+			case "js_pc":		
+			case "js_pagecreate":	
+			case "javascript_pagecreate":
+				var SCR = '';
+				SCR +='\n'+ '<script>';
+				SCR +='\n'+ '$(document).on("pagecreate","#page_'+isPage+'",function(){';
+				SCR +='\n'+  '	' + isPAYLOAD;
+				SCR +='\n'+ '});';
+				SCR +='\n'+ '</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
+				break;	
+				
+			case "js_pi":		
+			case "js_pageinit":	
+			case "javascript_pageinit":
+				var SCR = '';
+				SCR +='\n'+ '<script>';
+				SCR +='\n'+ '$(document).on("pageinit","#page_'+isPage+'",function(){';
+				SCR +='\n'+  '	' + isPAYLOAD;
+				SCR +='\n'+ '});';
+				SCR +='\n'+ '</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
+				break;
+				
+			case "slider":
+				isHTML += '<input name="'+isID+'" id="'+isID+'" type="range"  min="'+isPARA[1]+'" max="'+isPARA[2]+'" step="'+isPARA[3]+'"  value="'+isPARA[1]+'" />'
+				isJAVA +='\n'+ '	$("#'+isID+'").on( \'slidestop\', function( event ){';
+				isJAVA +='\n'+ '		var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+isPAYLOAD;
+				isJAVA +='\n'+ '	})';
+				break;		
+
+			case "input_text":
+				isHTML += '<input id="'+isID+'" type="text" value="'+isPAYLOAD+'"/>'
+				break;
+				
+			case "textarea":
+				isHTML += '<form>';
+				isHTML += '<textarea cols="40" rows="4" id="'+isID+'">'+isPAYLOAD+'</textarea>';
+				isHTML += '</form>';
+				break;				
+
+			case "html":
+				isHTML += '<div id="'+isID+'">';
+				isHTML += isPAYLOAD;
+				isHTML += '</div>';					
+				break;		
+				
+			case "input_password":			
+				isHTML += '<input id="'+isID+'" type="password" value="'+isPAYLOAD+'"/>';
+				break;	
+
+			case "js":
+			case "javascript":
+				var SCR = '<script>'+isPAYLOAD+'</script>';
+				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
+				break;
+
+			case "select":
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';
+				//List
+				var pT = isPARA[1].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<option value="'+pT1+'">'+pT0+'</option>';
+						}
+					}
+				}isHTML += '</select>';				
+
+				isJAVA +='\n'+ '$("#'+isID+'").change(function(){';
+				isJAVA +='\n'+ '	var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '	'+isPAYLOAD;
+				isJAVA +='\n'+ '});';
+				break;	
+
+
+
+			case "radio":
+				var isName = "";
+				var isDataType = "";
+				if(isPARA[1]==='v'){isName = "radio-choice-v-2"; isDataType = '';}
+				if(isPARA[1]==='h'){isName = "radio-choice-h-2"; isDataType = 'data-type="horizontal"';}
+				
+				isHTML += '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
+				//List
+				var pT = isPARA[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<input type="radio" name="'+isName+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
+        					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
+						}
+					}
+				}isHTML += '</fieldset>';			
+	
+				isJAVA +='\n'+ '$( "#'+isID+' input" ).on( "change", function( event ) {';
+				isJAVA +='\n'+ '	var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
+				isJAVA +='\n'+ '	'+isPAYLOAD;
+				isJAVA +='\n'+ '});';				
+				break;
+				
+
+			case "checkbox":
+				var isName = "";
+				var isDataType = "";
+				if(isPARA[1]==='v'){isDataType = '';}
+				if(isPARA[1]==='h'){isDataType = 'data-type="horizontal"';}
+
+				isHTML += '<fieldset data-role="controlgroup" '+isDataType+'>';
+				//List
+				var pT = isPARA[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<input type="checkbox" name="'+isID+'_'+b+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
+        					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
+
+							isJAVA +='\n'+ '$("#'+isID+'_'+b+'").on("change", function () {';
+							isJAVA +='\n'+ '	var Status = $(this).prop("checked");';
+							isJAVA +='\n'+ '	var Value  = $(this).val()';
+							isJAVA +='\n'+ '	'+isID+'(Status,Value);';
+							isJAVA +='\n'+ '});';
+						}
+					}
+				}isHTML += '</fieldset>';			
+
+				isJAVA +='\n'+ 'function '+isID+'(Status,Value){';
+				isJAVA +='\n'+ '	'+isPAYLOAD;
+				isJAVA +='\n'+ '}';
+				break;				
+//####################################################################################
+//##	isPAYLOAD
+//##	isPARA
+//##
+//####################################################################################			
+
+
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			case "[style]":
@@ -388,6 +554,7 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;	
 
+
 			case "[c]":
 				Current_Mark = 'c';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
@@ -400,96 +567,9 @@ function GUI_Processor(isDATA){
 				collapsible_status = 0;
 				break;	
 
-//####################################################################################
-//##
-//##
-//##
-//####################################################################################
-
-			
-
-				
 				
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			case "label":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";				
-				isHTML += ('<label>'+p[1]+'</label>');
-				break;
-
-			case "bar":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";					
-				isHTML += '<h'+p[1]+' class="ui-bar ui-bar-a">'+p[2]+'</h'+p[1]+'>'			
-				break;
-			
-			case "button":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
-				p[1] = p[1].replace("<ad1899345>","..");
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";	//SCRIPT	
-
-				var Lim = 3;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
 				
-				isHTML += '<input id="'+isID+'" type="button" value="'+p[1]+'"/>';
-				isJAVA += JAVA_Button_Click(isID,p[2]);
-				break;
-				
-				
-				
-				
-				
-				
-			//..button_class('ID'),name,ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
-				
-			case "header_button":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-
-
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-
-				var html = '<a onclick="'+isID+'()"  class="'+p[2]+'">'+p[1]+'</a>';
-				//$('#header_1').append(html); // matebs boloshi 
-				//$('#header_1').html(html);   // saertod gamocvala mteli shigtavsi
-				$('#header_'+isPage).prepend(html);  // dasva sul tavshi 				
-
-				var SCR = ''
-				SCR +='\n'+ 'function '+isID+'(){';
-				SCR +='\n'+ '		'+p[3];
-				SCR +='\n'+ '}';
-				SCR = '<script>'+SCR+'</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
-				break;
 				
 				
 				
@@ -518,86 +598,13 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 				break;				
 
-			case "js":
-			case "javascript":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-				var SCR = '<script>'+p[1]+'</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
-				break;
-				
-				
-			case "js_pbc":		
-			case "js_pagebeforecreate":	
-			case "javascript_pagebeforecreate":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
 
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-				
-				var SCR = '';
-				SCR +='\n'+ '<script>';
-				SCR +='\n'+ '$(document).on("pagebeforecreate","#page_'+isPage+'",function(){';
-				SCR +='\n'+  '	' + p[1];
-				SCR +='\n'+  '	'
-				SCR +='\n'+ '});';
-				SCR +='\n'+ '</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
-				break;				
-				
-			case "js_pc":		
-			case "js_pagecreate":	
-			case "javascript_pagecreate":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
+			
 
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
 				
-				var SCR = '';
-				SCR +='\n'+ '<script>';
-				SCR +='\n'+ '$(document).on("pagecreate","#page_'+isPage+'",function(){';
-				SCR +='\n'+  '	' + p[1];
-				SCR +='\n'+  '	'
-				SCR +='\n'+ '});';
-				SCR +='\n'+ '</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
-				break;	
 				
-			case "js_pi":		
-			case "js_pageinit":	
-			case "javascript_pageinit":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="1";
-
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
 				
-				var SCR = '';
-				SCR +='\n'+ '<script>';
-				SCR +='\n'+ '$(document).on("pageinit","#page_'+isPage+'",function(){';
-				SCR +='\n'+  '	' + p[1];
-				SCR +='\n'+  '	'
-				SCR +='\n'+ '});';
-				SCR +='\n'+ '</script>';
-				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);				
-				break;					
 				
 				
 				
@@ -606,27 +613,7 @@ function GUI_Processor(isDATA){
 
 
 
-			case "slider":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0";	//min
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="100";	//max		
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="1";	//step
-				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="";	//OutPut
-				
-				var Lim = 5;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
 
-				isHTML += '<input name="'+isID+'" id="'+isID+'" type="range"  min="'+p[1]+'" max="'+p[2]+'" step="'+p[3]+'"  value="'+p[1]+'" />'
-					
-				isJAVA +='\n'+ '	$("#'+isID+'").on( \'slidestop\', function( event ){';
-				isJAVA +='\n'+ '		var Value = $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+p[4];
-				isJAVA +='\n'+ '	})';
-				
-				break;
 			
 	
 			
@@ -653,98 +640,14 @@ function GUI_Processor(isDATA){
 				
 				
 			
-			case "input_text":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
-
-				isHTML += '<input id="'+isID+'" type="text" value="'+p[1]+'"/>'
-				break;
-				
-				
-			case "textarea":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-				isHTML += '<form>';
-				isHTML += '<textarea cols="40" rows="4" id="'+isID+'">'+p[1]+'</textarea>';
-				isHTML += '</form>';
-				break;				
-				
-				
-			case "html":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-
-				isHTML += '<div id="'+isID+'">';
-				isHTML += p[1];
-				isHTML += '</div>';
-								
-				break;					
-				
-				
-						
-			case "input_password":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";	
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}				
-				isHTML += '<input id="'+isID+'" type="password" value="'+p[1]+'"/>';
-				break;		
+	
 
 
 
 				
 			
 			
-			case "select":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
-				
-				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';
-				//List
-				var pT = p[1].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<option value="'+pT1+'">'+pT0+'</option>';
-							//console.log("[" + pT0 + "]["+ pT1 + "]");
-						}
-					}
-				}isHTML += '</select>';				
-
-				//java Script
-				var Lim = 3;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-				isJAVA +='\n'+ '	$("#'+isID+'").change(function(){';
-				isJAVA +='\n'+ '		var Value = $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+p[2];
-				isJAVA +='\n'+ '	});';
-				break;			
+		
 
 
 
@@ -811,48 +714,6 @@ function GUI_Processor(isDATA){
 				break;	
 
 
-			case "radio":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-				
-				var isName = "";
-				var isDataType = "";
-				if(p[1]==='v'){isName = "radio-choice-v-2"; isDataType = '';}
-				if(p[1]==='h'){isName = "radio-choice-h-2"; isDataType = 'data-type="horizontal"';}
-				
-				isHTML += '<fieldset data-role="controlgroup" id="'+isID+'" '+isDataType+'>';
-				//List
-				var pT = p[2].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<input type="radio" name="'+isName+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
-        					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
-						}
-					}
-				}isHTML += '</fieldset>';			
-
-				//java Script
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-						
-				isJAVA +='\n'+ '	$( "#'+isID+' input" ).on( "change", function( event ) {';
-				isJAVA +='\n'+ '		var Value = $( "#'+isID+' input:checked" ).attr( "value" );';
-				isJAVA +='\n'+ '		'+p[3];
-				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : Value = " + Value );';
-				//isJAVA +='\n'+ '		console.log("Slider_Change('+isID+') : '+is_Script+'" );';
-				isJAVA +='\n'+ '	});';				
-				break;
-				
 
 
 
@@ -863,54 +724,6 @@ function GUI_Processor(isDATA){
 
 
 
-
-
-			case "checkbox":
-			
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-				
-				var isName = "";
-				var isDataType = "";
-				if(p[1]==='v'){isDataType = '';}
-				if(p[1]==='h'){isDataType = 'data-type="horizontal"';}
-
-				isHTML += '<fieldset data-role="controlgroup" '+isDataType+'>';
-				//List
-				var pT = p[2].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<input type="checkbox" name="'+isID+'_'+b+'" id="'+isID+'_'+b+'" value="'+pT1+'">';
-        					isHTML += '<label for="'+isID+'_'+b+'">'+pT0+'</label>';
-
-							isJAVA +='\n'+ '$("#'+isID+'_'+b+'").on("change", function () {';
-							isJAVA +='\n'+ '	var Status = $(this).prop("checked");';
-							isJAVA +='\n'+ '	var Value  = $(this).val()';
-							isJAVA +='\n'+ '	'+isID+'(Status,Value);';
-							isJAVA +='\n'+ '});';
-						}
-					}
-				}isHTML += '</fieldset>';			
-				//java Script
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-
-				isJAVA +='\n'+ 'function '+isID+'(Status,Value){';
-				//isJAVA +='\n'+ '	console.log( Status);';
-				//isJAVA +='\n'+ '	console.log( Value );';
-				isJAVA +='\n'+ '		'+p[3];
-				isJAVA +='\n'+ '}';
-				break;
 
 
 			case "[t]":
@@ -1101,44 +914,6 @@ function GUI_Processor(isDATA){
 				//g1.refresh(55);
 				break;				
 
-		 
-			case "Dygraph":
-				//if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
-				//if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
-								
-								
-				//isID = 'gauge';
-								
-				//isHTML += '<div id="'+isID+'"></div>';	
-				//isHTML += '<div id="graph"></div>';				
-				var w = $( window ).width() - 80;
-				isHTML += '<div id="graph" style="height: 200px; width: '+w+'px;"></div>';
-
-
-				//isJAVA +='\n'+ 'var '+isID+' = new JustGage({\n';
-				//isJAVA +='\n'+ '	id: "'+isID+'",\n';
-				//isJAVA +='\n'+ '	value: getRandomInt(0, 100),\n';
-				//isJAVA +='\n'+ '	min: 0,\n';
-				//isJAVA +='\n'+ '	max: 100,\n';
-				//isJAVA +='\n'+ '	title: "Big Fella",\n';
-				//isJAVA +='\n'+ '	label: "pounds"\n';
-				//isJAVA +='\n'+ '});';
-				
-				//var isSTYLE = '<style>#'+isID+' {width:100px; height:80px; display: inline-block;margin: 1em;}</style>';
-				//$('[data-role="IS_STYLE"]').append(isSTYLE);
-				
-				//g1.refresh(55);
-				break;			 
-		 
-		 
-		 
-	
-				
-				
-				
-				
-				
-			//#######################################################################################
 			//#######################################################################################	
 			case "html_element":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
@@ -1195,6 +970,11 @@ function GUI_Processor(isDATA){
 				$('[data-role="panel_1"]').append(isHTML_PANEL);
 				panel_status = 0;
 				break;
+				
+				
+				
+				
+				
 			
 			
 			case "m_objects":
@@ -1238,6 +1018,13 @@ function GUI_Processor(isDATA){
 				break;
 				
 				
+			case "bar":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";					
+				isHTML += '<h'+p[1]+' class="ui-bar ui-bar-a">'+p[2]+'</h'+p[1]+'>'			
+				break;
+				
+				
 			default:
 				break;
 		}
@@ -1252,20 +1039,13 @@ function GUI_Processor(isDATA){
 				grid_start = 0;
 				isHTML += '</fieldset>';
 			}
-		}
-
-		
+		}		
 		if( panel_status === 1){ 
 			isHTML_PANEL += isHTML;
 		}
 		else{
 			isHTML_CONTENT += isHTML;
 		}
-		
-
-		
-		
 	}
-//#--------------------------------------------	
 
 }

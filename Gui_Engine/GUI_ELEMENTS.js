@@ -132,15 +132,6 @@ function do_Replace(isText,FromText, ToText){
 
 
 
-function JAVA_Button_Click(is_ID,is_Script){
-	var SCR = ''
-	SCR +='\n'+ '	$("#'+is_ID+'").click(function (e){';
-	SCR +='\n'+ '		'+is_Script;
-	//SCR +='\n'+ '		console.log("Click('+is_ID+') : '+is_Script+'" );';
-	SCR +='\n'+ '	});';	
-	return SCR;
-}
-
 //##################################
 
 
