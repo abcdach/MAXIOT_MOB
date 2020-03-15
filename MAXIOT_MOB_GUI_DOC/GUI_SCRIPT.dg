@@ -187,7 +187,7 @@ const fff=`
 	..label,Syntax
 	..codemirror(Cmir_select_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
 	..codemirror_text,Cmir_select_1,
-	\\\\..select(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
+	\\..select(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
 	..label,Example
 	..codemirror(Cmir_select_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
 	..codemirror_text,Cmir_select_2,
@@ -202,7 +202,6 @@ const fff=`
 	\\--Maserati    (1914–present)
 	\\--Pagani      (1992–present), put_input_text('it4',Value);
 	\\..input_text(it4)
-
 
 	..##,2	
 	..select,
@@ -222,12 +221,19 @@ const fff=`
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_slider');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_slider');
 
-		..info,3,widget slider,
-		\\..slider(ID),0,150,10, *JavaScript*(Value);
-		..info,1,example,
-		\\..slider,0,150,10, alert(Value);
-		..slider,0,150,10, alert(Value);
-
+	..label,Syntax
+	..codemirror(Cmir_slider_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_slider_1,
+	\\..slider(ID), min, max, step, *JavaScript*(Value); *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_slider_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_slider_2,
+	\\..##,2	
+	\\..slider,0,150,1,put_input_text('it5',Value);
+	\\..input_text(it5)	
+	..##,2	
+	..slider,0,150,1,put_input_text('it5',Value);
+	..input_text(it5)
 ..}
 ..[page],wi_flip
 ..{
@@ -235,14 +241,20 @@ const fff=`
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_flip');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_flip');
 
-		..info,3,widget slider,
-		\\..flip(ID),on(1),off(0), *JavaScript*(Value);	
-		..info,1,example,
-		\\..flip,on(1),off(0), alert(Value);
-		..##,2
-		..flip,on(1),off(0), put_input_text('te_flip',Value);
-		..input_text(te_flip)
-		
+	..label,Syntax
+	..codemirror(Cmir_flip_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_flip_1,
+	\\..flip(ID), on(1), off(0), *JavaScript*(Value);[Value] 
+	..label,Example
+	..codemirror(Cmir_flip_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_flip_2,
+	\\..##,2
+	\\..flip,on(1),off(0), put_input_text('it6',Value);
+	\\..input_text(it6)
+	..##,2
+	..flip,on(1),off(0), put_input_text('it6',Value);
+	..input_text(it6)
+
 
 ..}
 `;
