@@ -19,9 +19,33 @@
 	<script src="MOB/MyJS/justgage/raphael-2.1.4.min.js"></script>
     <script src="MOB/MyJS/justgage/justgage.js"></script>
 	<!--..................-->
+	<link rel="stylesheet" href="../codemirror/lib/codemirror.css">
+	<script src="../codemirror/lib/codemirror.js"></script>
+	<script src="../codemirror/addon/mode/simple.js"></script>
+	<link rel="stylesheet" href="../codemirror/theme/001.css">
+	<script id="modecode">
+	CodeMirror.defineSimpleMode("simplemode", {
+	  start: [
+		{regex: /((--\s*\w+\s*(,|\((\s*\w+\s*)|\s*\(\s*)\)?)|(--\s*(.+)))/,token: "islist"},
+		{regex: /([.]{2}[a-z_]+\s*,)/,token: "keyword"},
+		{regex: /([.]{2}\[[a-z_].*?\])/,token: "conteiner"},// ..[w]
+		{regex: /(\.\.{|\.\.})/,token: "conteiner"},// ..{}
+		{regex: /(<.*>)/,token: "ishtml"},//	
+		{regex: /(\(.*?\))/,token: "inn"},//
+		{regex: /alert|Panel_Open/, token: "java"},
+	  ],
+	});
+	</script>
+	<!--..................-->
 	<script src="../Gui_Engine/GUI_PROCESSOR.js"></script>
 	<script src="../Gui_Engine/GUI_ELEMENTS.js"></script>
 	<script src="GUI_SCRIPT.dg"></script>
+	<style>
+	  .CodeMirror {border: 1px solid silver; margin-bottom: 1em; }
+	  dt { text-indent: -2em; padding-left: 2em; margin-top: 1em; }
+	  dd { margin-left: 1.5em; margin-bottom: 1em; }
+	  dt {margin-top: 1em;}
+	</style>
 	<!--..................-->
 	<script src="MOB/js/paho-mqtt-min.js"></script>
 	<!--..................-->
@@ -35,12 +59,14 @@
   </style>
 	<script>
 	$(document).on('pagebeforecreate',"#page_1", function(){
+
 		console.log("*** pagebeforecreate:1:page_1");	
 		Create_Page('3');
 		GUI_Processor(START_SCRIPT);		
 		console.log("*** pagebeforecreate:0:page_1");
 	});
 	</script>
+
 </head>
 
 <body data-role="IS_HTML_body">

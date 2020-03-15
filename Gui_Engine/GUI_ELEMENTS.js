@@ -140,22 +140,6 @@ function JAVA_Button_Click(is_ID,is_Script){
 function Put_Slider(is_ID,is_Value){ $('#'+is_ID).val(is_Value).slider("refresh");}
 function Get_Slider(is_ID){ return $('#'+is_ID).val();}
 //##################################
-function isGUI_flip(is_ID,is_Name1,is_Val1,is_Name2,is_Val2){
-	return('<select name="'+is_ID+'" id="'+is_ID+'" data-role="slider"><option value="'+is_Val2+'">'+is_Name2+'</option><option value="'+is_Val1+'">'+is_Name1+'</option></select>');
-}	
-function JAVA_flip_Change(is_ID,is_Script){
-	var SCR = ''
-	SCR +='\n'+ '	$("#'+is_ID+'").on( \'change\', function( event )';
-	SCR +='\n'+ '		{ var Value = $("#'+is_ID+'").val();';
-	SCR +='\n'+ '		'+is_Script;
-	//SCR +='\n'+ '		console.log("flip_Change('+is_ID+') : Value = " + Value );';
-	//SCR +='\n'+ '		console.log("flip_Change('+is_ID+') : '+is_Script+'" );';
-	SCR +='\n'+ '	});';
-
-	return SCR;
-}
-
-
 
 //##################################
 //##################################

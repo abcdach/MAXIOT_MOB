@@ -466,6 +466,66 @@ function GUI_Processor(isDATA){
 			
 			
 			
+			case "codemirror":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";		
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="";
+				
+				
+				isHTML += '<div id="code"></div>';
+				
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+	
+
+				isJAVA +='\n'+ 'var sc = document.getElementById("modecode");';
+				isJAVA +='\n'+ 'var code = document.getElementById("code");';
+				isJAVA +='\n'+ 'var editor = CodeMirror(code, {';
+				isJAVA +='\n'+ p[1];
+				//isJAVA +='\n'+ '	lineNumbers: true,';tabSize:4, indentUnit:4, indentWithTabs:true, mode: "simplemode"
+				//isJAVA +='\n'+ '	tabSize: 4,';
+				//isJAVA +='\n'+ '	indentUnit: 4,';
+				//isJAVA +='\n'+ '	indentWithTabs: true,';
+				//isJAVA +='\n'+ '	mode: "simplemode"';
+				isJAVA +='\n'+ '});';
+
+				isJAVA +='\n'+ 'editor.setOption("theme", "duotone-light");';
+
+
+				isJAVA +='\n'+ 'var txt= "..flip,on(1),off(0), alert(Value);"';
+				
+
+				isJAVA +='\n'+ 'editor.setValue(txt);';
+				isJAVA +='\n'+ 'editor.refresh();';
+
+
+
+
+				
+				break;			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			case "flip":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
@@ -482,7 +542,8 @@ function GUI_Processor(isDATA){
 					var pT2 = pTT[0].trim();
 					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
 				}				
-				isHTML += isGUI_flip(isID,pT0,pT1,pT2,pT3);
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
+
 				
 				var Lim = 4;
 				if(Conf_Spl_Len > Lim){
@@ -490,8 +551,18 @@ function GUI_Processor(isDATA){
 						p[Lim-1]+=','+Conf_Spl[b];
 					}
 				}
-				isJAVA += JAVA_flip_Change(isID,p[3]);			
+
+				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
+				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+p[3];
+				isJAVA +='\n'+ '	});';
+				
 				break;
+				
+				
+	
+				
+				
 			
 			case "input_text":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
