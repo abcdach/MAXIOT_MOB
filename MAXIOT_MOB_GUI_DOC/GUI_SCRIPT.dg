@@ -46,12 +46,11 @@ const isMen1 =`
 	,console.log("Page_change:"+Value);Page_change(Value);
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
-const fffkk=`
+const fff=`
 ..[page],1
 ..{
-
-	..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
-	..codemirror_text,CODE_ID,
+	..codemirror(Cmir_1), lineNumbers: true,  mode:'simplemode'
+	..codemirror_text,Cmir_1,
 	\\..js_pbc, editor.refresh();
 	\\..js_pbc, editor.refresh();
 	
@@ -64,14 +63,13 @@ const fffkk=`
 	//..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
 	//..codemirror_text,fffff,
 	//\\..js_pbc, editor.refresh();\\..js_pbc, editor.refresh();
-const fff=`
+const fffe=`
 ..[page],1
 ..{
 
 
-
-	..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
-	..codemirror_text,CODE_ID,
+	..codemirror(Cmir_1), lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
+	..codemirror_text,Cmir_1,
 	\\..js_pbc, editor.refresh();
 	\\..js_pbc, editor.refresh();
 

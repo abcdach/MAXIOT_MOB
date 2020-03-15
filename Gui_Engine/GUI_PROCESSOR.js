@@ -163,10 +163,13 @@ function GUI_Processor(isDATA){
 			isCMD = isCMD.trim();
 		}
 		
-		
+//####################################################################################
+//##
+//##
+//##
+//####################################################################################		
 		
 		var p_NUM = 0;  // parametebis raodenoba
-		
 		switch(isCMD) {
 			case "codemirror": 		p_NUM = 1; break;
 			case "codemirror_text": p_NUM = 2; break;
@@ -193,8 +196,6 @@ function GUI_Processor(isDATA){
 			}	
 		}
 		console.log("#############################");
-		
-
 		if(p_NUM !== 0){	
 			for (ix = 1; ix < p_NUM; ix++){			
 				isPARA[ix] = do_Replace(isPARA[ix],"<ad1899345>","..")
@@ -206,7 +207,11 @@ function GUI_Processor(isDATA){
 			console.log("isPAYLOAD: " + isPAYLOAD);
 		}		
 		console.log("#############################");
-		
+//####################################################################################
+//##
+//##
+//##
+//####################################################################################		
 		
 		
 		
@@ -229,11 +234,6 @@ function GUI_Processor(isDATA){
 			//console.log("********   Mark_Pointer : "+Mark_Pointer);
 			console.log("********   Mark_Steck : "+Mark_Steck);			
 		}
-
-
-
-
-
 		if(isCMD === "}"){
 			if(Mark_Pointer > 0){
 				Mark_Pointer --;
@@ -265,6 +265,10 @@ function GUI_Processor(isDATA){
 			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
 		}
 
+
+
+
+
 		switch(isCMD) {
 			
 			case "flip":
@@ -287,78 +291,9 @@ function GUI_Processor(isDATA){
 				isJAVA +='\n'+ '	});';
 				
 				break;			
-			
-			case "flipwwww":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-
-				var pTT=p[1].split('(');
-				if(pTT.length === 2){
-					var pT0 = pTT[0].trim();
-					var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-				}
-				var pTT=p[2].split('(');
-				if(pTT.length === 2){
-					var pT2 = pTT[0].trim();
-					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
-				}				
-				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
-
-				
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-
-				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
-				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+p[3];
-				isJAVA +='\n'+ '	});';
-				
-				break;
-
 
 			
-			case "flip":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-
-				var pTT=p[1].split('(');
-				if(pTT.length === 2){
-					var pT0 = pTT[0].trim();
-					var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-				}
-				var pTT=p[2].split('(');
-				if(pTT.length === 2){
-					var pT2 = pTT[0].trim();
-					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
-				}				
-				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
-
 				
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-
-				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
-				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+p[3];
-				isJAVA +='\n'+ '	});';
-				
-				break;			
-			
-			case "codemirror_text":
-			
-				isJAVA +='\n'+ 'editor.setValue(`'+isPAYLOAD+'`);';
-				isJAVA +='\n'+ 'editor.refresh();';	
-				break;					
 			
 			case "codemirror":
 				// lineNumbers: true
@@ -367,17 +302,22 @@ function GUI_Processor(isDATA){
 				// indentWithTabs:true
 				// mode: "simplemode"
 				
-				isHTML += '<div id="code"></div>';
+				isHTML += '<div id="'+isID+'"></div>';
 				
-				isJAVA +='\n'+ 'var sc = document.getElementById("modecode");';
-				isJAVA +='\n'+ 'var code = document.getElementById("code");';
-				isJAVA +='\n'+ 'var editor = CodeMirror(code, {';
+				//isJAVA +='\n'+ 'var sc = document.getElementById("modecode");';
+				isJAVA +='\n'+ 'var el_'+isID+' = document.getElementById("'+isID+'");';
+				isJAVA +='\n'+ 'var  '+isID+' = CodeMirror(el_'+isID+', {';
 				isJAVA +='\n'+ isPAYLOAD;
 				isJAVA +='\n'+ '});';
-				isJAVA +='\n'+ 'editor.setOption("theme", "duotone-light");';
+				isJAVA +='\n'+ ' '+isID+'.setOption("theme", "duotone-light");';
 
-				break;			
-						
+				break;		
+				
+			case "codemirror_text":
+			
+				isJAVA +='\n'+ ' '+isPARA[1]+'.setValue(`'+isPAYLOAD+'`);';
+				isJAVA +='\n'+ ' '+isPARA[1]+'.refresh();';	
+				break;							
 			
 			
 			
