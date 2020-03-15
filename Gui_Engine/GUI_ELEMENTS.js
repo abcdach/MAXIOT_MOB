@@ -118,12 +118,19 @@ function Create_Page(PageName){
 
 
 
+function do_Replace(isText,FromText, ToText){
+	for (i = 0; i < 1000; i++) {
+		if(isText.indexOf(FromText) === -1)break;
+		//console.log("gggggggggggggg "+doo);
+		isText = isText.replace(FromText,ToText);
+	}
+	return isText;
+}
 
 
 
 
 
-function HTML_Input_Password(is_ID,is_Value) {return('<input id="'+is_ID+'" type="password" value="'+is_Value+'"/>');}
 
 function JAVA_Button_Click(is_ID,is_Script){
 	var SCR = ''

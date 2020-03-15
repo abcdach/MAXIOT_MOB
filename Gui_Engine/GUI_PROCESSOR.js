@@ -99,7 +99,8 @@ function GUI_Processor(isDATA){
 	var i,b; 
 	var select = ""; var select_id = ""
 	var p=['','','','','','','','','','','','','','','','','','',''];
-
+	var isPARA=['','','','','','','','','','','','','','','','','','',''];
+	var isPAYLOAD = "";
 	var Conf  = isDATA;
 	for (i = 0; i < 1000; i++) {
 		var doo = Conf.indexOf("\\..");
@@ -110,24 +111,49 @@ function GUI_Processor(isDATA){
 
 	//console.log(Conf);
 	Conf = Conf.split('..');
+	console.log("x11:"+Conf);
+	
 	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
 		Conf[i] = Conf[i].trim();
-		//Conf[i] = Conf[i].replace(/(\r\n|\n|\r)/gm, "");
 		Conf[i] = Conf[i].replace(/(")/gm, "'");
-		//Conf[i] = Conf[i].trim();
-	}console.log(Conf);
+	}
+	
+	
+	console.log("x11:"+Conf);
+	
+	
 	for (i = 0; i < Conf_Len; i++) {
 		
 		
 		var Conf_Spl = Conf[i].split(',');
+		
+		
+		
+		
+		console.log(Conf_Spl);
+		
+	
+		
 		var Conf_Spl_Len = Conf_Spl.length;
+		
+		
 			
-		var isID  = "E"+isID_Counter; isID_Counter++;
-		var isCMD = Conf_Spl[0].trim();
+
+		
+		
+		
+		
 		
 		
 
+		
+		
+		
+		
+		// ID nomeris amogeba
+		var isID  = "E"+isID_Counter; isID_Counter++;
+		var isCMD = Conf_Spl[0].trim();
 		var isTemp2 = isCMD.split('(');
 		if(isTemp2.length > 1){
 			var isTemp4 = isTemp2[1].split(')');
@@ -139,9 +165,60 @@ function GUI_Processor(isDATA){
 		
 		
 		
+		var p_NUM = 0;  // parametebis raodenoba
+		
+		switch(isCMD) {
+			case "codemirror": 		p_NUM = 1; break;
+			case "codemirror_text": p_NUM = 2; break;
+			case "flip": 			p_NUM = 3; break;
+		}		
+		
+		isPAYLOAD = "";
+		isPARA=['','','','','','','','','','','','','','','','','','',''];
+		for (ix = 1; ix < Conf_Spl_Len; ix++) {
+			var id = Conf_Spl[ix]
+			if(ix < p_NUM){
+				//console.log(ix + " ###COMA: " + id);
+				isPARA[ix] = id;
+			}
+			else
+			{
+				//console.log(ix + " ###DATA: " + id);
+				if(isPAYLOAD.length === 0){
+					isPAYLOAD = isPAYLOAD + id;
+				}else{
+					isPAYLOAD = isPAYLOAD +","+ id;
+				}
+				
+			}	
+		}
+		console.log("#############################");
+		
+
+		if(p_NUM !== 0){	
+			for (ix = 1; ix < p_NUM; ix++){			
+				isPARA[ix] = do_Replace(isPARA[ix],"<ad1899345>","..")
+				console.log("isPARA   : " + isPARA[ix]);
+			}
+		}		
+		if(isPAYLOAD.length !== 0){
+			isPAYLOAD = do_Replace(isPAYLOAD,"<ad1899345>","..")
+			console.log("isPAYLOAD: " + isPAYLOAD);
+		}		
+		console.log("#############################");
 		
 		
-		console.log("CMD : "+isCMD+"("+isID+")");
+		
+		
+		
+		
+		//isPAYLOAD
+		
+		
+		
+		
+		
+		//console.log("CMD : "+isCMD+"("+isID+")");
 		
 		
 		if(isCMD === "{"){
@@ -152,6 +229,10 @@ function GUI_Processor(isDATA){
 			//console.log("********   Mark_Pointer : "+Mark_Pointer);
 			console.log("********   Mark_Steck : "+Mark_Steck);			
 		}
+
+
+
+
 
 		if(isCMD === "}"){
 			if(Mark_Pointer > 0){
@@ -185,6 +266,123 @@ function GUI_Processor(isDATA){
 		}
 
 		switch(isCMD) {
+			
+			case "flip":
+			
+				var pTT=isPARA[1].split('(');
+				if(pTT.length === 2){
+					var pT0 = pTT[0].trim();
+					var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+				}
+				var pTT=isPARA[2].split('(');
+				if(pTT.length === 2){
+					var pT2 = pTT[0].trim();
+					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
+				}				
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
+
+				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
+				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+isPAYLOAD;
+				isJAVA +='\n'+ '	});';
+				
+				break;			
+			
+			case "flipwwww":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+
+				var pTT=p[1].split('(');
+				if(pTT.length === 2){
+					var pT0 = pTT[0].trim();
+					var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+				}
+				var pTT=p[2].split('(');
+				if(pTT.length === 2){
+					var pT2 = pTT[0].trim();
+					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
+				}				
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
+
+				
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
+				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+p[3];
+				isJAVA +='\n'+ '	});';
+				
+				break;
+
+
+			
+			case "flip":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
+				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
+
+				var pTT=p[1].split('(');
+				if(pTT.length === 2){
+					var pT0 = pTT[0].trim();
+					var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+				}
+				var pTT=p[2].split('(');
+				if(pTT.length === 2){
+					var pT2 = pTT[0].trim();
+					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
+				}				
+				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
+
+				
+				var Lim = 4;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+
+				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
+				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
+				isJAVA +='\n'+ '		'+p[3];
+				isJAVA +='\n'+ '	});';
+				
+				break;			
+			
+			case "codemirror_text":
+			
+				isJAVA +='\n'+ 'editor.setValue(`'+isPAYLOAD+'`);';
+				isJAVA +='\n'+ 'editor.refresh();';	
+				break;					
+			
+			case "codemirror":
+				// lineNumbers: true
+				// tabSize:4
+				// indentUnit:4
+				// indentWithTabs:true
+				// mode: "simplemode"
+				
+				isHTML += '<div id="code"></div>';
+				
+				isJAVA +='\n'+ 'var sc = document.getElementById("modecode");';
+				isJAVA +='\n'+ 'var code = document.getElementById("code");';
+				isJAVA +='\n'+ 'var editor = CodeMirror(code, {';
+				isJAVA +='\n'+ isPAYLOAD;
+				isJAVA +='\n'+ '});';
+				isJAVA +='\n'+ 'editor.setOption("theme", "duotone-light");';
+
+				break;			
+						
+			
+			
+			
+			
+			
 			
 			case "[page]":
 			case "[w]":
@@ -250,9 +448,6 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;	
 
-
-
-
 			case "[c]":
 				Current_Mark = 'c';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
@@ -264,6 +459,37 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				collapsible_status = 0;
 				break;	
+
+//####################################################################################
+//##
+//##
+//##
+//####################################################################################
+
+			
+
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			case "label":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";				
@@ -466,100 +692,23 @@ function GUI_Processor(isDATA){
 			
 			
 			
-			case "codemirror":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";		
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-				if(Conf_Spl_Len >= 5)p[4]=Conf_Spl[4].trim(); else p[4]="";
-				
-				
-				isHTML += '<div id="code"></div>';
-				
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
 
-	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
-				isJAVA +='\n'+ 'var sc = document.getElementById("modecode");';
-				isJAVA +='\n'+ 'var code = document.getElementById("code");';
-				isJAVA +='\n'+ 'var editor = CodeMirror(code, {';
-				isJAVA +='\n'+ p[1];
-				//isJAVA +='\n'+ '	lineNumbers: true,';tabSize:4, indentUnit:4, indentWithTabs:true, mode: "simplemode"
-				//isJAVA +='\n'+ '	tabSize: 4,';
-				//isJAVA +='\n'+ '	indentUnit: 4,';
-				//isJAVA +='\n'+ '	indentWithTabs: true,';
-				//isJAVA +='\n'+ '	mode: "simplemode"';
-				isJAVA +='\n'+ '});';
-
-				isJAVA +='\n'+ 'editor.setOption("theme", "duotone-light");';
-
-
-				isJAVA +='\n'+ 'var txt= "..flip,on(1),off(0), alert(Value);"';
-				
-
-				isJAVA +='\n'+ 'editor.setValue(txt);';
-				isJAVA +='\n'+ 'editor.refresh();';
-
-
-
-
-				
-				break;			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			case "flip":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="on(1)";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="off(0)";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-
-				var pTT=p[1].split('(');
-				if(pTT.length === 2){
-					var pT0 = pTT[0].trim();
-					var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-				}
-				var pTT=p[2].split('(');
-				if(pTT.length === 2){
-					var pT2 = pTT[0].trim();
-					var pT3 = pTT[1].replace(/(\))/gm, "").trim();
-				}				
-				isHTML += '<select name="'+isID+'" id="'+isID+'" data-role="slider"><option value="'+pT3+'">'+pT2+'</option><option value="'+pT1+'">'+pT0+'</option></select>';
-
-				
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-
-				isJAVA +='\n'+ '	$("#'+isID+'").on( \'change\', function( event )';
-				isJAVA +='\n'+ '		{ var Value = $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+p[3];
-				isJAVA +='\n'+ '	});';
-				
-				break;
-				
-				
 	
 				
 				
@@ -609,9 +758,19 @@ function GUI_Processor(isDATA){
 				
 						
 			case "input_password":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";			
-				isHTML += HTML_Input_Password(isID,p[1]);
-				break;			
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";	
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}				
+				isHTML += '<input id="'+isID+'" type="password" value="'+p[1]+'"/>';
+				break;		
+
+
+
+				
 			
 			
 			case "select":

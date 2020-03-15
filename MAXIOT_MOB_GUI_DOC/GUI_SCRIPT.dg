@@ -46,7 +46,24 @@ const isMen1 =`
 	,console.log("Page_change:"+Value);Page_change(Value);
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
+const fffkk=`
+..[page],1
+..{
 
+	..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
+	..codemirror_text,CODE_ID,
+	\\..js_pbc, editor.refresh();
+	\\..js_pbc, editor.refresh();
+	
+..}
+ `;
+ 
+ 
+
+
+	//..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
+	//..codemirror_text,fffff,
+	//\\..js_pbc, editor.refresh();\\..js_pbc, editor.refresh();
 const fff=`
 ..[page],1
 ..{
@@ -54,7 +71,11 @@ const fff=`
 
 
 	..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
-	..js_pbc, editor.refresh();
+	..codemirror_text,CODE_ID,
+	\\..js_pbc, editor.refresh();
+	\\..js_pbc, editor.refresh();
+
+
 	..header_text,Home ..[p](m1)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
@@ -158,7 +179,7 @@ const fff=`
 ..}
 `;
 
-
+var START_SCRIPT = fff;
 
 
 
@@ -369,7 +390,7 @@ const fffhh =`
 
 
 
-var START_SCRIPT = fff;
+
 
 
 
