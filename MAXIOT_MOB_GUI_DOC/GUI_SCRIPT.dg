@@ -46,13 +46,22 @@ const isMen1 =`
 	,console.log("Page_change:"+Value);Page_change(Value);
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
-const fff=`
+const fffff=`
 ..[page],1
 ..{
-	..codemirror(Cmir_1), lineNumbers: true,  mode:'simplemode'
+	..codemirror(Cmir_1), autoRefresh:true, lineNumbers: true,  mode:'simplemode'
 	..codemirror_text,Cmir_1,
 	\\..js_pbc, editor.refresh();
 	\\..js_pbc, editor.refresh();
+	
+	
+	..button,refresh, Cmir_1.refresh();
+
+
+
+
+
+
 	
 ..}
  `;
@@ -63,15 +72,12 @@ const fff=`
 	//..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
 	//..codemirror_text,fffff,
 	//\\..js_pbc, editor.refresh();\\..js_pbc, editor.refresh();
-const fffe=`
+const fff=`
 ..[page],1
 ..{
 
 
-	..codemirror(Cmir_1), lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
-	..codemirror_text,Cmir_1,
-	\\..js_pbc, editor.refresh();
-	\\..js_pbc, editor.refresh();
+
 
 
 	..header_text,Home ..[p](m1)..{`+isMen1+`..}
@@ -97,9 +103,22 @@ const fffe=`
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_Button');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_Button');
 
-		..info,3,widget Button,\\..button(ID),name,*JavaScript*
-		..info,1,example,\\..button, isButton, alert("widget Button");
-		..button(ddd), isButton, alert("widget Button");
+	..label,Syntax
+	..codemirror(Cmir_Button_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_Button_1,
+	\\..button(ID), name, *JavaScript*
+	..label,Example
+	..codemirror(Cmir_Button_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_Button_2,
+	\\..input_text(it1)
+	\\..##,2
+	\\..button, Button 1, put_input_text('it1','Button 11111111');
+	\\..button, Button 2, put_input_text('it1','Button 22222222');
+			
+	..input_text(it1)
+	..##,2
+	..button, Button 1, put_input_text('it1','Button 11111111');
+	..button, Button 2, put_input_text('it1','Button 22222222');
 
 ..}
 ..[page],wi_checkbox
@@ -107,15 +126,29 @@ const fffe=`
 	..header_text,widget checkbox ..[p](i_checkbox)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_checkbox');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_checkbox');
-
-		..info,3,widget Button,
-		\\..checkbox(ID), v, --name1(val1)--name2(val2), alert(Value);
-		..info,1,example,
-		\\..checkbox, v, --name1(val1)--name2(val2), alert(Value);
-		..checkbox,v,--name1(val1)--name1(val1), alert(Value);
-		..info,1,example,
-		\\..checkbox, h, --name1(val1)--name2(val2), alert(Value);
-		..checkbox,h,--name1(val1)--name2(val2), alert(Value);
+	..label,Syntax
+	..codemirror(Cmir_checkbox_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_checkbox_1,
+	\\..checkbox(ID), v|h, --name1(val1)--name2(val2), *JavaScript*[Status,Value] 
+	..label,Example
+	..codemirror(Cmir_checkbox_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_checkbox_2,
+	\\..input_text(it2)
+	\\..##,2	
+	\\..checkbox, h, --name1(1111)--name2(2222),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+	\\..checkbox, v, --name1(2222)--name2(3333),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+		
+	..input_text(it2)
+	..##,2	
+	..checkbox, h, --name1(1111)--name2(2222),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+	..checkbox, v, --name1(3333)--name2(4444),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+			
+		
+		
 ..}
 ..[page],wi_radio
 ..{
@@ -123,15 +156,27 @@ const fffe=`
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_radio');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_radio');
 
-		..info,3,widget radio,
-		\\..radio(ID), v, --name1(val1)--name2(val2), alert(Value);
-		..info,1,example,
-		\\..radio, v, --name1(val1)--name2(val2), alert(Value);
-		..radio,v,--name1(val1)--name1(val1), alert(Value);
-		..radio,v,--name1(val1), alert(Value);
-		..info,1,example,
-		\\..radio, h, --name1(val1)--name2(val2), alert(Value);
-		..radio,h,--name1(val1)--name2(val2), alert(Value);
+	..label,Syntax
+	..codemirror(Cmir_radio_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_radio_1,
+	\\..radio(ID), v|h, --name1(val1)--name2(val2), *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_radio_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_radio_2,
+	\\..input_text(it3)
+	\\..##,2	
+	\\..radio, h, --name1(1111)--name2(2222),
+		put_input_text('it3','Value:'+Value);
+	\\..radio, v, --name1(3333)--name2(4444),
+		put_input_text('it3','Value:'+Value);
+		
+	..input_text(it3)
+	..##,2	
+	..radio, h, --name1(1111)--name2(2222),
+		put_input_text('it3','Value:'+Value);
+	..radio, v, --name1(3333)--name2(4444),
+		put_input_text('it3','Value:'+Value);
+
 ..}
 ..[page],wi_select
 ..{
@@ -139,12 +184,37 @@ const fffe=`
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_select');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_select');
 
-		..info,3,widget select,
-		\\..select(ID),--name1(val1)--name2(val2), alert(Value);
-		..info,1,example,
-		\\..select,--name1(val1)--name1(val2), alert(Value);
-		..select,--name1(val1)--name1(val2), alert(Value);
+	..label,Syntax
+	..codemirror(Cmir_select_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_select_1,
+	\\\\..select(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_select_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_select_2,
+	\\..##,2	
+	\\..select,
+	\\--Abarth      (1949–present)
+	\\--Alfa Romeo  (1910–present)
+	\\--Ferrari     (1947–present)
+	\\--Fiat        (1899–present)
+	\\--Lamborghini (1963–present)
+	\\--Lancia      (1906–present)
+	\\--Maserati    (1914–present)
+	\\--Pagani      (1992–present), put_input_text('it4',Value);
+	\\..input_text(it4)
 
+
+	..##,2	
+	..select,
+	--Abarth      (1949–present)
+	--Alfa Romeo  (1910–present)
+	--Ferrari     (1947–present)
+	--Fiat        (1899–present)
+	--Lamborghini (1963–present)
+	--Lancia      (1906–present)
+	--Maserati    (1914–present)
+	--Pagani      (1992–present), put_input_text('it4',Value);
+	..input_text(it4)
 ..}
 ..[page],wi_slider
 ..{

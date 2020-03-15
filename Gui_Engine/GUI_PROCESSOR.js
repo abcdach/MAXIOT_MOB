@@ -315,7 +315,7 @@ function GUI_Processor(isDATA){
 				
 			case "codemirror_text":
 			
-				isJAVA +='\n'+ ' '+isPARA[1]+'.setValue(`'+isPAYLOAD+'`);';
+				isJAVA +='\n'+ ' '+isPARA[1]+'.setValue(`'+isPAYLOAD+'\n`);';
 				isJAVA +='\n'+ ' '+isPARA[1]+'.refresh();';	
 				break;							
 			
