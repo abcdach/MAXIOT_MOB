@@ -43,7 +43,12 @@ const isMen1 =`
 	-- select(wi_select)
 	-- slider(wi_slider)
 	-- flip(wi_flip)
-	,console.log("Page_change:"+Value);Page_change(Value);
+	-- listview(wi_listview)
+	-- texts(wi_text)
+	-- inputs(wi_input)
+	-- collapsible(wi_collapsible)
+	
+	,Page_change(Value);
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
 const fffff=`
@@ -93,6 +98,10 @@ const fff=`
 	..create_page,wi_select
 	..create_page,wi_slider
 	..create_page,wi_flip
+	..create_page,wi_listview
+	..create_page,wi_text
+	..create_page,wi_input
+	..create_page,wi_collapsible
 	
 	
 
@@ -257,6 +266,129 @@ const fff=`
 
 
 ..}
+..[page],wi_listview
+..{
+	..header_text,widget listview ..[p](i_listview)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_listview');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_listview');
+
+	..label,Syntax
+	..codemirror(Cmir_listview_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_listview_1,
+	\\..listview(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_listview_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_listview_2,
+	\\..input_text(it7)
+	\\..##,2
+	\\..listview,
+	--Abarth      (1949–present)
+	--Alfa Romeo  (1910–present)
+	--Ferrari     (1947–present)
+	--Fiat        (1899–present), put_input_text('it7',Value);
+	\\..listview,
+	--Lamborghini (1963–present)
+	--Lancia      (1906–present)
+	--Maserati    (1914–present)
+	--Pagani      (1992–present), put_input_text('it7',Value);
+
+
+	..input_text(it7)
+	..##,2
+	..listview,
+	--Abarth      (1949–present)
+	--Alfa Romeo  (1910–present)
+	--Ferrari     (1947–present)
+	--Fiat        (1899–present), put_input_text('it7',Value);
+	..listview,
+	--Lamborghini (1963–present)
+	--Lancia      (1906–present)
+	--Maserati    (1914–present)
+	--Pagani      (1992–present), put_input_text('it7',Value);
+	
+..}
+
+
+
+..[page],wi_text
+..{
+	..header_text,widget text ..[p](i_text)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_text');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_text');
+	
+	..//html,<h3>label</h3>
+	..label,Syntax ( label )
+	..codemirror(Cmir_text_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_1,
+	\\..label(ID), text
+	..label,Example
+	..codemirror(Cmir_text_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_2,
+	\\..label,jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework), more specifically a 
+	JavaScript library, developed by the jQuery project team.
+	
+	..label,jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework), more specifically a 
+	JavaScript library, developed by the jQuery project team.
+	
+	..html,<br><hr><br>
+	..label,Syntax  ( info )
+	..codemirror(Cmir_text_3),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_3,
+	\\..info(ID), 1|2|3, name, text		
+	..label,Example
+	..codemirror(Cmir_text_4),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_4,
+	\\..##,3
+	\\..info, 1, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	
+	\\..info, 2, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	
+	\\..info, 3, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)	
+	
+	..##,3
+	..info, 1, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	..info, 2, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)	
+	..info, 3, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	
+	
+	
+..}
+
+..[page],wi_input
+..{
+	..header_text,widget input ..[p](i_input)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_input');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_input');
+
+..}
+
+..[page],wi_collapsible
+..{
+	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_collapsible');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_collapsible');
+..iframe,400,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
+..}
+
+	
+	
+	
+	
+
 `;
 
 var START_SCRIPT = fff;

@@ -141,36 +141,45 @@ function GUI_Processor(isDATA){
 //####################################################################################		
 		var p_NUM = 0;  // parametebis raodenoba
 		switch(isCMD) {
-			case "codemirror": 		p_NUM = 1; break;
-			case "codemirror_text": p_NUM = 2; break;
-			case "flip": 			p_NUM = 3; break;
+
 			case "[page]":			p_NUM = 1; break;
 			case "[w]":				p_NUM = 1; break;
 			case "##":				p_NUM = 1; break;
+			/////////////////////////////////////////
 			case "header_text":		p_NUM = 1; break;
-			case "create_page":		p_NUM = 1; break;
-			case "label":			p_NUM = 1; break;
-			case "button":			p_NUM = 2; break;
 			case "header_button":	p_NUM = 3; break;
-			case "slider":			p_NUM = 4; break;
-			case "input_password":	p_NUM = 1; break;
-			case "html":			p_NUM = 1; break;
-			case "textarea":		p_NUM = 1; break;
+			/////////////////////////////////////////
+			case "create_page":		p_NUM = 1; break;
+			/////////////////////////////////////////
+			case "flip": 			p_NUM = 3; break;//+
+			case "label":			p_NUM = 1; break;//+
+			case "info":			p_NUM = 3; break;//+
+			case "button":			p_NUM = 2; break;//+
+			case "slider":			p_NUM = 4; break;//+
 			case "input_text":		p_NUM = 1; break;
-			case "checkbox":		p_NUM = 3; break;
-			case "radio":			p_NUM = 3; break;
-			case "select":			p_NUM = 2; break;
+			case "input_password":	p_NUM = 1; break;
+			case "textarea":		p_NUM = 1; break;
+			case "checkbox":		p_NUM = 3; break;//+
+			case "radio":			p_NUM = 3; break;//+
+			case "select":			p_NUM = 2; break;//+
+			case "listview":		p_NUM = 2; break;//+
+			/////////////////////////////////////////
+			case "html":							p_NUM = 1; break;
 			case "js":								p_NUM = 1; break;
 			case "javascript":						p_NUM = 1; break;
 			case "js_pbc":							p_NUM = 1; break;
-			case "js_pagebeforecreate":				p_NUM = 1; break;	
-			case "javascript_pagebeforecreate":		p_NUM = 1; break;	
+			case "js_pagebeforecreate":				p_NUM = 1; break;
+			case "javascript_pagebeforecreate":		p_NUM = 1; break;
 			case "js_pc":							p_NUM = 1; break;	
 			case "js_pagecreate":					p_NUM = 1; break;	
 			case "javascript_pagecreate":			p_NUM = 1; break;		
 			case "js_pi":							p_NUM = 1; break;	
 			case "js_pageinit":						p_NUM = 1; break;	
-			case "javascript_pageinit":				p_NUM = 1; break;		
+			case "javascript_pageinit":				p_NUM = 1; break;
+			/////////////////////////////////////////
+			case "codemirror": 		p_NUM = 1; break;
+			case "codemirror_text": p_NUM = 2; break;
+			/////////////////////////////////////////			
 		}		
 		
 		isPAYLOAD = "";
@@ -309,10 +318,13 @@ function GUI_Processor(isDATA){
 				break;	
 
 			case "##":
-				if(isPAYLOAD==="2"){isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;}
-				if(isPAYLOAD==="3"){isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;}
-				if(isPAYLOAD==="4"){isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;}
-				if(isPAYLOAD==="5"){isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;}
+				switch(isPAYLOAD){
+					case "2":{isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;break;}
+					case "3":{isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;break;}
+					case "4":{isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;break;}
+					case "5":{isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;break;}
+					default: break;
+				}
 				grid_cou   = 1; grid_add   = 0;			
 				break;
 
@@ -501,16 +513,60 @@ function GUI_Processor(isDATA){
 				isJAVA +='\n'+ 'function '+isID+'(Status,Value){';
 				isJAVA +='\n'+ '	'+isPAYLOAD;
 				isJAVA +='\n'+ '}';
-				break;				
+				break;
+				
+			case "listview":
+				isHTML += '<ul id="'+isID+'" data-role="listview" data-inset="true" data-divider-theme="a">';
+				//List
+				var pT = isPARA[1].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<li id="'+pT1+'" ><a>'+pT0+'</a></li>';
+							//console.log("[" + pT0 + "]["+ pT1 + "]");
+						}else{
+							
+							isHTML += '<li data-role="list-divider">'+pT[b]+'</li>';
+						}
+					}
+				}isHTML += '</ul>';				
+				isJAVA +='\n'+ '$("#'+isID+'").delegate("li", "click", function () {';
+				isJAVA +='\n'+ '	var Value = $(this).attr("id")';// $("#'+isID+'").val();';
+				isJAVA +='\n'+ '	'+isPAYLOAD;
+				isJAVA +='\n'+ '});';				
+				break;
+				
+			case "info":
+				switch(isPARA[1]){
+					case "1":
+						isHTML += '<div id="'+isID+'" class="ui-body ui-body-a ui-corner-all">';
+						if(isPARA[2] !== "") isHTML += '<h3>'+isPARA[2]+'</h3>';					
+						if(isPAYLOAD !== "") isHTML += '<p>'+isPAYLOAD+'</p>';
+						isHTML += '</div>';
+						break;
+					case "2":
+						if(isPARA[2] !== "") isHTML += '<h3 class="ui-bar ui-bar-a ui-corner-all">'+isPARA[2]+'</h3>';
+						if(isPAYLOAD !== "") isHTML += '<div class="ui-body ui-body-a ui-corner-all"><p>'+isPAYLOAD+'</p></div>';
+						break;
+					case "3":
+						isHTML += '<div id="'+isID+'" class="ui-corner-all custom-corners">';
+						if(isPARA[2] !== "") isHTML += '<div class="ui-bar ui-bar-a"><h3>'+isPARA[2]+'</h3></div>';
+						if(isPAYLOAD !== "") isHTML += '<div class="ui-body ui-body-a"><p>'+isPAYLOAD+'</p></div>';
+						isHTML += '</div>';
+						break;
+					default:
+						break;
+				}					
+				break;		
 //####################################################################################
 //##	isPAYLOAD
 //##	isPARA
 //##
-//####################################################################################			
-
-
-			
-			
+//####################################################################################	
 
 
 
@@ -518,14 +574,20 @@ function GUI_Processor(isDATA){
 
 
 
-
-
-
-
-
-
-
-
+		
+			case "[ocllaps]":
+			case "[col]":
+			case "[c]":
+				Current_Mark = 'c';
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
+				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
+				isHTML += '<h4>'+p[1]+'</h4>';
+				collapsible_status = 1;
+				break;
+			case "<-[c]":				
+				isHTML += '</div>';
+				collapsible_status = 0;
+				break;
 
 
 
@@ -555,17 +617,7 @@ function GUI_Processor(isDATA){
 				break;	
 
 
-			case "[c]":
-				Current_Mark = 'c';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
-				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
-				isHTML += '<h4>'+p[1]+'</h4>';
-				collapsible_status = 1;
-				break;
-			case "<-[c]":				
-				isHTML += '</div>';
-				collapsible_status = 0;
-				break;	
+	
 
 				
 
@@ -577,7 +629,6 @@ function GUI_Processor(isDATA){
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
-
 
 				var Lim = 4;
 				if(Conf_Spl_Len > Lim){
@@ -598,95 +649,6 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 				break;				
 
-
-
-			
-
-				
-				
-				
-				
-				
-				
-				
-
-
-
-
-
-			
-	
-			
-			
-			
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-	
-				
-				
-			
-	
-
-
-
-				
-			
-			
-		
-
-
-
-			case "listview":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();
-				
-
-				isHTML += '<ul id="'+isID+'" data-role="listview" data-inset="true" data-divider-theme="a">';
-				//List
-				var pT = p[1].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<li id="'+pT1+'" ><a>'+pT0+'</a></li>';
-							//console.log("[" + pT0 + "]["+ pT1 + "]");
-						}else{
-							
-							isHTML += '<li data-role="list-divider">'+pT[b]+'</li>';
-						}
-					} //else isHTML += '<li data-role="list-divider"> </li>';
-				}isHTML += '</ul>';				
-
-				//java Script
-				var Lim = 3;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-				isJAVA +='\n'+ '	$("#'+isID+'").delegate("li", "click", function () {';
-				isJAVA +='\n'+ '		var Value = $(this).attr("id")';// $("#'+isID+'").val();';
-				isJAVA +='\n'+ '		'+p[2];
-				isJAVA +='\n'+ '	});';				
-				break;
 
 
 
@@ -712,18 +674,6 @@ function GUI_Processor(isDATA){
 				//$('[data-role="navbar_'+p[1]+'"]').append(isHTML_NAVBAR);
 				$('[data-role="navbar_'+isPage+'"]').append(isHTML_NAVBAR);
 				break;	
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 			case "[t]":
@@ -793,36 +743,7 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;
 
-			case "info":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
-				if(Conf_Spl_Len >= 4)p[3]=Conf_Spl[3].trim(); else p[3]="";
 
-				var Lim = 4;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
-				if(p[1]==="1"){
-					isHTML += '<div id="'+isID+'" class="ui-body ui-body-a ui-corner-all">';
-					if(p[2] !== "") isHTML += '<h3>'+p[2]+'</h3>';					
-					if(p[3] !== "") isHTML += '<p>'+p[3]+'</p>';
-					isHTML += '</div>';
-				}
-				if(p[1]==="2"){
-					if(p[2] !== "") isHTML += '<h3 class="ui-bar ui-bar-a ui-corner-all">'+p[2]+'</h3>';
-					if(p[3] !== "") isHTML += '<div class="ui-body ui-body-a ui-corner-all"><p>'+p[3]+'</p></div>';
-				}
-				if(p[1]==="3"){
-					
-					isHTML += '<div id="'+isID+'" class="ui-corner-all custom-corners">';
-					if(p[2] !== "") isHTML += '<div class="ui-bar ui-bar-a"><h3>'+p[2]+'</h3></div>';
-					if(p[3] !== "") isHTML += '<div class="ui-body ui-body-a"><p>'+p[3]+'</p></div>';
-
-					isHTML += '</div>';
-				}
-				break;
 
 
 			case "if_event":
