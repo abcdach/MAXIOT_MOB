@@ -111,7 +111,7 @@ function Create_Page(PageName){
 	SCR +='\n'+ '</div>';
 	SCR +='\n'+ '<!-- ####################################################################################### -->';
 
-	$('[data-role="IS_HTML_body"]').append(SCR);		
+	$('[data-role="IS_HTML_BODY"]').append(SCR);		
 }
 
 

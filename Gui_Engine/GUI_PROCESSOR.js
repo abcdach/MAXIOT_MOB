@@ -87,6 +87,7 @@ function GUI_Processor(isDATA){
 	var isHTML_PANEL   = '';
 	var isHTML_CONTENT = '';
 	var isHTML_NAVBAR  = '';
+	var isCSS  = '';
 	var isHTML = '';
 	var isJAVA = '';
 	var isPage = '';
@@ -164,8 +165,12 @@ function GUI_Processor(isDATA){
 			case "select":			p_NUM = 2; break;//+
 			case "listview":		p_NUM = 2; break;//+
 			/////////////////////////////////////////
+			case "html_body":						p_NUM = 1; break;
+			case "html_head":						p_NUM = 1; break;
 			case "html":							p_NUM = 1; break;
+			case "css":								p_NUM = 1; break;
 			case "js":								p_NUM = 1; break;
+			/////////////////////////////////////////
 			case "javascript":						p_NUM = 1; break;
 			case "js_pbc":							p_NUM = 1; break;
 			case "js_pagebeforecreate":				p_NUM = 1; break;
@@ -411,13 +416,13 @@ function GUI_Processor(isDATA){
 				isHTML += '<form>';
 				isHTML += '<textarea cols="40" rows="4" id="'+isID+'">'+isPAYLOAD+'</textarea>';
 				isHTML += '</form>';
-				break;				
-
+				break;					
+				
 			case "html":
 				isHTML += '<div id="'+isID+'">';
 				isHTML += isPAYLOAD;
 				isHTML += '</div>';					
-				break;		
+				break;	
 				
 			case "input_password":			
 				isHTML += '<input id="'+isID+'" type="password" value="'+isPAYLOAD+'"/>';
@@ -428,6 +433,19 @@ function GUI_Processor(isDATA){
 				var SCR = '<script>'+isPAYLOAD+'</script>';
 				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 				break;
+				
+			case "css":
+				var SCR= '<style type="text/css">'+isPAYLOAD+'</style>';
+				$('[data-role="IS_CSS"]').append(SCR);
+				break;				
+			case "html_head":
+				$('[data-role="IS_HEAD"]').append(isPAYLOAD);
+				break;
+			case "html_body":
+				$('[data-role="IS_HTML_BODY"]').append(isPAYLOAD);
+				break;
+
+
 
 			case "select":
 				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';

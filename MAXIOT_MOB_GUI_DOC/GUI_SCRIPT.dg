@@ -71,15 +71,36 @@ const fffff=`
 ..}
  `;
  
- 
 
 
-	//..codemirror, lineNumbers: true, tabSize:4, indentUnit:4, indentWithTabs:true, mode:'simplemode'
-	//..codemirror_text,fffff,
-	//\\..js_pbc, editor.refresh();\\..js_pbc, editor.refresh();
+
+
+
+
+
 const fff=`
+
+..css, .ui-content { max-width: 800px; margin: 0 auto;} 
+
+
+..html_head,
+	<script src="MOB/MyJS/justgage/raphael-2.1.4.min.js"></script>
+    <script src="MOB/MyJS/justgage/justgage.js"></script>
+	<script src="MOB/js/paho-mqtt-min.js"></script>
+	<style>
+	  .CodeMirror {border: 1px solid silver; margin-bottom: 1em; height: auto;}
+	  dt { text-indent: -2em; padding-left: 2em; margin-top: 1em; }
+	  dd { margin-left: 1.5em; margin-bottom: 1em; }
+	  dt {margin-top: 1em;}
+	</style>
+
+
+
+
 ..[page],1
 ..{
+
+
 
 
 
