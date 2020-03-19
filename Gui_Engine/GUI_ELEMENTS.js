@@ -117,6 +117,54 @@ function Create_Page(PageName){
 
 
 
+function Create_XXX(){
+	var SCR = '';
+	SCR +='\n'+ '<link rel="stylesheet" href="../codemirror/lib/codemirror.css">';
+	SCR +='\n'+ '<script src="../codemirror/lib/codemirror.js"></script>';
+	SCR +='\n'+ '<script src="../codemirror/addon/mode/simple.js"></script>';
+	SCR +='\n'+ '<script src="../codemirror/addon/display/autorefresh.js"></script>';
+	SCR +='\n'+ '<link rel="stylesheet" href="../codemirror/theme/001.css">';
+	
+	SCR +='\n'+ '<script id="modecode" src="../codemirror/theme/001.js"></script>';
+	
+	
+	//SCR +='\n'+ '<script id="modecode">';
+	//SCR +='\n'+ 'CodeMirror.defineSimpleMode("simplemode",{';
+	//SCR +='\n'+ '  start: [';
+	//SCR +='\n'+ '	{regex: /((--\s*\w+\s*(,|\((\s*\w+\s*)|\s*\(\s*)\)?)|(--\s*(.+)))/,token: "islist"},';
+	//SCR +='\n'+ '	{regex: /([.]{2}[a-z_]+\s*,)/,token: "keyword"},';
+	//SCR +='\n'+ '	{regex: /([.]{2}\[[a-z_].*?\])/,token: "conteiner"},//[w]';
+	//SCR +='\n'+ `	{regex: /(\.\.{|\.\.})/,token: "conteiner"},// {}`;
+	//SCR +='\n'+ '	{regex: /(<.*>)|\*JavaScript\*/,token: "ishtml"},//	';
+	//SCR +='\n'+ '	{regex: /(\(.*?\))/,token: "inn"},//';
+	//SCR +='\n'+ '	{regex: /alert|Panel_Open/, token: "java"},';
+		
+	//SCR +='\n'+ '	{regex: /(\.\.button|\.\.input_text|\.\.##|\.\.checkbox|\.\.radio)/,token: "keyword"},';
+	//SCR +='\n'+ '	{regex: /(\.\.select|\.\.slider)|\.\.flip|\.\.listview|\.\.label|\.\.info/,token: "keyword"},';
+		
+	
+	//SCR +='\n'+ '	{regex: /alert|Panel_Open|put_input_text/, token: "java"},';
+		
+	//SCR +='\n'+ '  ],';
+	//SCR +='\n'+ '});';
+	//SCR +='\n'+ '</script>';
+
+	
+	$('[data-role="IS_HEAD"]').append(SCR);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function do_Replace(isText,FromText, ToText){
 	for (i = 0; i < 1000; i++) {
