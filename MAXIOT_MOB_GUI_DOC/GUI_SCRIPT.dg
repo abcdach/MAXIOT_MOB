@@ -1,83 +1,28 @@
 
-/**
-..iframe ..button ..info ..input_password
-..##  ..label ..input_text  ..header ..navbar 
-..select ..info ..input_password ..slider ..flip 
-..radio ..checkbox ..header ..label ..JustGage ..Dygraph
-**/
-/**
-put_input_text('ID','text');
-get_input_text('ID');
-put_input_Password('ID','text');
-get_input_Password('ID');
-**/
-/** 
-Put_Header
-
-
-Panel_Open 
-Theme_Change 
-Dispatch_Event
-Element_Hide 
-Element_Show 
-Page_change 
-Popup_Open
-Loader_Show 
-Loader_Hide 
-Out_0 Out_1 Out_2 Out_3 Out_4 Out_5 Out_6 Out_7
-In_0 In_1 In_2 In_3 
-SYS_LOOP_START 
-console.log
-**/
-/** 
-..[w] ..[c] ..[p] ..[pop] ..[t] ..[d]
-**/
-//-- widget 
 const isMen1 =`
 ..listview,
 	-- Home(1
 	-- html(wi_html)
-	-- .
-	-- button(wi_Button)
-	-- checkbox(wi_checkbox)
-	-- radio(wi_radio)
-	-- select(wi_select)
-	-- slider(wi_slider)
-	-- flip(wi_flip)
-	-- listview(wi_listview)
-	-- texts(wi_text)
-	-- inputs(wi_input)
-	-- collapsible(wi_collapsible)
-	
-	
 	,Page_change(Value);
+..[c],Connection Config
+..{
+	..listview,
+		-- button(wi_Button)
+		-- checkbox(wi_checkbox)
+		-- radio(wi_radio)
+		-- select(wi_select)
+		-- slider(wi_slider)
+		-- flip(wi_flip)
+		-- listview(wi_listview)
+		-- texts(wi_text)
+		-- inputs(wi_input)
+		-- collapsible(wi_collapsible)
+		,Page_change(Value);
+..}
+
+
 `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
-const fffff=`
-..[page],1
-..{
-	..codemirror(Cmir_1), autoRefresh:true, lineNumbers: true,  mode:'simplemode'
-	..codemirror_text,Cmir_1,
-	\\..js_pbc, editor.refresh();
-	\\..js_pbc, editor.refresh();
-	
-	
-	..button,refresh, Cmir_1.refresh();
-
-
-
-
-
-
-	
-..}
- `;
- 
-
-
-
-
-
 
 
 const fff=`

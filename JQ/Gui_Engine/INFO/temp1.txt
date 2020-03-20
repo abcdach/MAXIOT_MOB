@@ -1,0 +1,147 @@
+
+
+
+//- Write_Memory(memory_name, data); 	// Write_Memory('myCat', 'Tom');
+//- Read_Memory(memory_name);			// Read_Memory('myCat');
+//- Delete_Memory(memory_name);			// Delete_Memory('myCat');
+//- Clear_All_Memory();					// Clear_All_Memory();
+
+
+
+ევენთები
+----------------------------------
+ევენთის მიმღების შექმნა:
+	..if_event, isABC, console.log("isABC:"+Value);
+ევენთის გადაცემა
+	Dispatch_Event('isABC','I am Buuton'); 
+
+	..button(b1_1), Button Text, console.log("1"); Dispatch_Event('isABC','I am Buuton'); 
+	..if_event, isABC, console.log("isABC:"+Value);
+
+
+
+	js
+	javascript
+	---------------------------
+	js_pbc
+	js_pagebeforecreate
+	javascript_pagebeforecreate
+	---------------------------
+	js_pc
+	js_pagecreate
+	javascript_pagecreate
+	---------------------------
+	js_pi
+	js_pageinit
+	javascript_pageinit
+	---------------------------
+	
+			
+	
+	<script src="MOB/MyJS/dygraphs/dygraph.min.js"></script>
+    <link rel="stylesheet" href="MOB/MyJS/dygraphs/dygraph.css">
+			
+	<!--..................-->	
+	
+<style>
+.ui-icon-myicon:after {
+    background-image: url("MyPIC/111.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
+</style>	
+	
+	
+			
+			
+$(document).on("pagecreate","#page_1", function(){
+	console.log("*** pagecreate:1:page_1");
+	//console.log("is_2");
+	console.log("*** pagecreate:0:page_1");
+});
+$( document ).on( "pagecreate", function() {
+	console.log("*** pagecreate:1");
+	//console.log("is_3");
+	console.log("*** pagecreate:0");
+});
+$(document).on("pageinit","#page_1",function(){
+	console.log("*** pageinit:1:page_1");
+	//console.log("is_4");
+	console.log("*** pageinit:0:page_1");
+});	
+$(document).on("pageshow", "#page_1", function(){
+	console.log("*** pageshow:1:page_1");
+	//console.log("is_5");
+	console.log("*** pageshow:0:page_1");
+}); 
+//#####################################################################
+$( document ).on( "pagecontainershow", function( event, ui ) {
+	console.log("*** pagecontainershow:1:");
+	//console.log("is_6");
+	console.log("*** pagecontainershow:0:");
+});
+
+//#####################################################################
+
+$( document ).on( "mobileinit", function() { 
+console.log("*** mobileinit:1");
+console.log("*** mobileinit:0");
+});
+
+$( window ).resize(function(){
+  //console.log("*** resize:1 ########################");
+	console.log("*** resize:1:");
+	console.log("*** resize:0:");
+});
+			
+			
+			
+			
+
+
+
+ var g1;
+$(document).on("pageshow", "#page_1", function(){
+
+    //if (!g1){
+        //g1 = new Dygraph(document.getElementById("graph"),         
+            //"Date,Temperature\n" +
+            //"2008-05-07,75\n" +
+            //"2008-05-08,70\n" +
+            //"2008-05-09,80\n");       
+   // }
+	/**
+       g1 = new Dygraph(
+            document.getElementById("graph"),
+            [
+              [1, null, 3],
+              [2, 2, null],
+              [3, null, 7],
+              [4, 5, null],
+              [5, null, 5],
+              [6, 3, null]
+            ],
+            {
+              labels: ['x', 'A', 'B' ],
+              connectSeparatedPoints: true,
+              drawPoints: true
+            }
+          ); 
+
+	**/
+
+}); 
+/**
+$(document).on("pagecreate","#page_1", function(){ 
+    $( "#graph1" ).on( "collapsibleexpand", function( event, ui ) {
+		console.log("*eeeeeeeeeeeeeeeeeeeee");
+        g1.resize();    
+    });
+});
+
+
+$( document ).on( "pagecontainershow", function( event, ui ) {
+console.log("*xxxxxxxxxxxxxxxxxxxxxxxxxx");
+    //DrawChart('graph');   
+});
+*/

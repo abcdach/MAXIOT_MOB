@@ -200,6 +200,11 @@ function JAVA_APPEND(is_Page,is_Script){
 	SCR +='\n'+ '</script>';
 	$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 }
+function HTML_APPEND(is_Page,is_Html){
+	$('[data-role="'+is_Page+'"]').append(is_Html);
+}
+
+
 //##################################
 
 

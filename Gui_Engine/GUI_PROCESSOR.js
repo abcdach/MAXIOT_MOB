@@ -102,8 +102,10 @@ function GUI_Processor(isDATA){
 	var p=['','','','','','','','','','','','','','','','','','',''];
 	var isPARA=['','','','','','','','','','','','','','','','','','',''];
 	var isPAYLOAD = "";
+	var Append_Status = 0;
+	var Append_Data = 0;
+	var Append_Plase = "";
 	
-
 	var Conf  = isDATA;
 //####################################################################################
 	//\\.. simbolos shenacvleba <ad1899345>
@@ -165,6 +167,7 @@ function GUI_Processor(isDATA){
 			case "select":			p_NUM = 2; break;//+
 			case "listview":		p_NUM = 2; break;//+
 			/////////////////////////////////////////
+			case "[Append]":						p_NUM = 1; break;
 			case "html_body":						p_NUM = 1; break;
 			case "html_head":						p_NUM = 1; break;
 			case "html":							p_NUM = 1; break;
@@ -221,8 +224,6 @@ function GUI_Processor(isDATA){
 			if(Current_Mark === 'w')Mark_Pointer = 0;
 			Mark_Steck[Mark_Pointer] = Current_Mark;
 			Mark_Pointer ++;
-			//console.log("********   Current_Mark : "+Current_Mark);
-			//console.log("********   Mark_Pointer : "+Mark_Pointer);
 			console.log("********   Mark_Steck : "+Mark_Steck);			
 		}
 		if(isCMD === "}"){
@@ -233,18 +234,17 @@ function GUI_Processor(isDATA){
 					case "w": isCMD = "<-[w]"; break;
 					case "c": isCMD = "<-[c]"; break;
 					case "p": isCMD = "<-[p]"; break;
-					//case "page": isCMD = "<-[p]"; break;
 					case "t": isCMD = "<-[t]"; break;
 					case "d": isCMD = "<-[d]"; break;
 					case "pop": isCMD = "<-[pop]"; break;
 					case "m": isCMD = "<-[m]"; break; // vebgverdistvis
 					case "s": isCMD = "<-[s]"; break;
-					//case "stile": isCMD = "<-[s]"; break;
+					case "a": isCMD = "<-[a]"; break; // append
 					default: break;
 				}
 			}			
 		}
-//####################################################################################		
+//####################################################################################
 
 
 
@@ -310,12 +310,13 @@ function GUI_Processor(isDATA){
 				Current_Mark = 'w';
 				if(isPAYLOAD === "")isPAYLOAD="1";
 				isPage = isPAYLOAD;
-				isHTML = '';isJAVA = ''; 
-				isHTML_PANEL   = '';  
+				isHTML = ''
+				;isJAVA = ''; 
+				isHTML_PANEL   = '';
 				isHTML_CONTENT = '';
 				break;
 			case "<-[w]":
-				if(isHTML_CONTENT.length>0)$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
+				if(isHTML_CONTENT.length>0)HTML_APPEND("content_"+isPage,isHTML_CONTENT)//$('[data-role="content_'+isPage+'"]').append(isHTML_CONTENT);
 				if(isJAVA.length>0)JAVA_APPEND("page_"+isPage,isJAVA);
 				isJAVA = ''; isHTML = ''; 
 				isHTML_PANEL   = '';  
@@ -587,6 +588,97 @@ function GUI_Processor(isDATA){
 //####################################################################################	
 
 
+		//if(Append_Status === 1){
+			
+			//Append_Data += isHTML;	
+			
+
+			case "[append]":
+				Current_Mark = 'a';
+				Append_Plase = isPAYLOAD;
+				console.log("Append_Plase : "+isPAYLOAD);
+				Append_Data ='';
+				Append_Status = 1;
+				break;
+			case "<-[a]":
+				//isHTML += '</div>';
+				console.log("Append_Data : "+Append_Data);
+				$('[data-role="'+Append_Plase+'"]').append(Append_Data);
+				Append_Status = 0;
+				break;
+
+
+
+
+			case "[panel]":
+			case "[p]":
+				Current_Mark = 'p';
+				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
+				isHTML_PANEL ='';
+				panel_status = 1;
+				break;
+			case "<-[p]":
+				isHTML += '</div>';
+				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
+				panel_status = 0;
+				break;
+
+			case "[pop]":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
+				Current_Mark = 'pop';
+				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
+				isHTML += '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>';
+
+				isHTML += '<div style="padding:'+p[1]+';">';
+				break;
+			case "<-[pop]":
+				isHTML += '</div>';
+				isHTML += '</div>';
+				break;
+
+
+
+
+
+
+
+
+
+
+
+			case "[t]":
+				Current_Mark = 't';
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
+
+				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
+				isHTML += '<div data-role="navbar">';
+				isHTML += '<ul>';
+
+				//List
+				var pT = p[2].split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<li><a href="#'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
+						}
+					}
+				}isHTML += '</ul></div>';	
+				break;
+
+			case "[d]":
+				Current_Mark = 'd';
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				isHTML += '<div id="'+isID+'" '+p[1]+'>';
+				break;
+			case "<-[d]":
+				isHTML += '</div>';
+				break;
+
 
 
 
@@ -606,15 +698,6 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				collapsible_status = 0;
 				break;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -671,6 +754,7 @@ function GUI_Processor(isDATA){
 
 
 
+
 			case "navbar":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
 				
@@ -694,63 +778,9 @@ function GUI_Processor(isDATA){
 				break;	
 
 
-			case "[t]":
-				Current_Mark = 't';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
+		
 
-				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
-				isHTML += '<div data-role="navbar">';
-				isHTML += '<ul>';
 
-				//List
-				var pT = p[2].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<li><a href="#'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
-						}
-					}
-				}isHTML += '</ul></div>';	
-				break;
-
-			case "[d]":
-				Current_Mark = 'd';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				isHTML += '<div id="'+isID+'" '+p[1]+'>';
-				break;
-			case "<-[d]":
-				isHTML += '</div>';
-				break;
-
-			case "[p]":
-				Current_Mark = 'p';
-				isHTML += '<div data-role="panel" id="'+isID+'" data-position="left" data-display="reveal">';
-				isHTML_PANEL ='';
-				panel_status = 1;
-				break;
-			case "<-[p]":
-				isHTML += '</div>';
-				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
-				panel_status = 0;
-				break;
-
-			case "[pop]":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
-				Current_Mark = 'pop';
-				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
-				isHTML += '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>';
-
-				isHTML += '<div style="padding:'+p[1]+';">';
-				break;
-			case "<-[pop]":
-				isHTML += '</div>';
-				isHTML += '</div>';
-				break;
 
 						
 			case "+>":
@@ -978,13 +1008,31 @@ function GUI_Processor(isDATA){
 				grid_start = 0;
 				isHTML += '</fieldset>';
 			}
-		}		
-		if( panel_status === 1){ 
-			isHTML_PANEL += isHTML;
 		}
-		else{
-			isHTML_CONTENT += isHTML;
+		
+		
+		if(Append_Status === 1){
+			
+			Append_Data += isHTML;	
+			
+		}else{
+			if( panel_status === 1){ 
+				isHTML_PANEL += isHTML;
+			}
+			else{
+				isHTML_CONTENT += isHTML;
+			}
 		}
+		
+		
+		
 	}
 
 }
+
+
+
+
+
+
+
