@@ -35,7 +35,8 @@ console.log
 //-- widget 
 const isMen1 =`
 ..listview,
-	-- Home(1)
+	-- Home(1
+	-- html(wi_html)
 	-- .
 	-- button(wi_Button)
 	-- checkbox(wi_checkbox)
@@ -47,6 +48,7 @@ const isMen1 =`
 	-- texts(wi_text)
 	-- inputs(wi_input)
 	-- collapsible(wi_collapsible)
+	
 	
 	,Page_change(Value);
 `;
@@ -80,6 +82,7 @@ const fffff=`
 
 const fff=`
 
+..css, table, th, td { border: 1px solid black;}
 
 ..html_head,
 	<script src="MOB/MyJS/justgage/raphael-2.1.4.min.js"></script>
@@ -99,7 +102,353 @@ const fff=`
 ..[page],1
 ..{
 
- 
+..css,
+#rrr12
+{
+   width:150px; /* or whatever width you want. */
+   max-width:150px; /* or whatever width you want. */
+   display: inline-block;
+}
+#rrr14
+{
+   width:250px; /* or whatever width you want. */
+   max-width:550px; /* or whatever width you want. */
+   display: inline-block;
+}
+..html,
+<table>
+  <tr>
+    <th>February</th>
+    <th>March</th>
+  </tr>
+..html,<tr>
+..html,<td><div id="rrr12">	
+..button,1223
+..html,</div></td>
+..html,<td><div id="rrr14">	
+..slider,0,150,1,
+..html,</div></td>
+..html,</tr>
+
+..html,<tr>
+..html,<td><div id="rrr12">	
+..button,1223
+..html,</div></td>
+..html,<td><div id="rrr14">	
+..//slider,0,150,1,
+..html,</div></td>
+..html,</tr>
+
+</table>
+
+
+
+	..header_text,Home ..[p](m1)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
+	
+
+	
+	`+isMen1+`
+	..create_page,wi_Button
+	..create_page,wi_checkbox
+	..create_page,wi_radio
+	..create_page,wi_select
+	..create_page,wi_slider
+	..create_page,wi_flip
+	..create_page,wi_listview
+	..create_page,wi_text
+	..create_page,wi_input
+	..create_page,wi_collapsible
+	..create_page,wi_html
+	
+	
+
+..}
+..[page],wi_Button
+..{
+	..header_text,widget Button ..[p](i_Button)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_Button');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_Button');
+
+	..label,Syntax
+	..codemirror(Cmir_Button_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_Button_1,
+	\\..button(ID), name, *JavaScript*
+	..label,Example
+	..codemirror(Cmir_Button_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_Button_2,
+	\\..input_text(it1)
+	\\..##,2
+	\\..button, Button 1, put_input_text('it1','Button 11111111');
+	\\..button, Button 2, put_input_text('it1','Button 22222222');
+			
+	..input_text(it1)
+	..##,2
+	..button, Button 1, put_input_text('it1','Button 11111111');
+	..button, Button 2, put_input_text('it1','Button 22222222');
+
+..}
+..[page],wi_checkbox
+..{
+	..header_text,widget checkbox ..[p](i_checkbox)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_checkbox');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_checkbox');
+	..label,Syntax
+	..codemirror(Cmir_checkbox_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_checkbox_1,
+	\\..checkbox(ID), v|h, --name1(val1)--name2(val2), *JavaScript*[Status,Value] 
+	..label,Example
+	..codemirror(Cmir_checkbox_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_checkbox_2,
+	\\..input_text(it2)
+	\\..##,2	
+	\\..checkbox, h, --name1(1111)--name2(2222),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+	\\..checkbox, v, --name1(2222)--name2(3333),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+		
+	..input_text(it2)
+	..##,2	
+	..checkbox, h, --name1(1111)--name2(2222),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+	..checkbox, v, --name1(3333)--name2(4444),
+		put_input_text('it2','Status:'+Status+' Value:'+Value);
+			
+		
+		
+..}
+..[page],wi_radio
+..{
+	..header_text,widget radio ..[p](i_radio)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_radio');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_radio');
+
+	..label,Syntax
+	..codemirror(Cmir_radio_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_radio_1,
+	\\..radio(ID), v|h, --name1(val1)--name2(val2), *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_radio_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_radio_2,
+	\\..input_text(it3)
+	\\..##,2	
+	\\..radio, h, --name1(1111)--name2(2222),
+		put_input_text('it3','Value:'+Value);
+	\\..radio, v, --name1(3333)--name2(4444),
+		put_input_text('it3','Value:'+Value);
+		
+	..input_text(it3)
+	..##,2	
+	..radio, h, --name1(1111)--name2(2222),
+		put_input_text('it3','Value:'+Value);
+	..radio, v, --name1(3333)--name2(4444),
+		put_input_text('it3','Value:'+Value);
+
+..}
+..[page],wi_select
+..{
+	..header_text,widget select ..[p](i_select)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_select');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_select');
+
+	..label,Syntax
+	..codemirror(Cmir_select_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_select_1,
+	\\..select(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_select_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_select_2,
+	\\..##,2	
+	\\..select,
+	\\--Abarth      (1949–present)
+	\\--Alfa Romeo  (1910–present)
+	\\--Ferrari     (1947–present)
+	\\--Fiat        (1899–present)
+	\\--Lamborghini (1963–present)
+	\\--Lancia      (1906–present)
+	\\--Maserati    (1914–present)
+	\\--Pagani      (1992–present), put_input_text('it4',Value);
+	\\..input_text(it4)
+
+	..##,2	
+	..select,
+	--Abarth      (1949–present)
+	--Alfa Romeo  (1910–present)
+	--Ferrari     (1947–present)
+	--Fiat        (1899–present)
+	--Lamborghini (1963–present)
+	--Lancia      (1906–present)
+	--Maserati    (1914–present)
+	--Pagani      (1992–present), put_input_text('it4',Value);
+	..input_text(it4)
+..}
+..[page],wi_slider
+..{
+	..header_text,widget slider ..[p](i_slider)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_slider');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_slider');
+
+	..label,Syntax
+	..codemirror(Cmir_slider_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_slider_1,
+	\\..slider(ID), min, max, step, *JavaScript*(Value); *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_slider_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_slider_2,
+	\\..##,2	
+	\\..slider,0,150,1,put_input_text('it5',Value);
+	\\..input_text(it5)	
+	..##,2	
+	..slider,0,150,1,put_input_text('it5',Value);
+	..input_text(it5)
+..}
+..[page],wi_flip
+..{
+	..header_text,widget flip ..[p](i_flip)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_flip');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_flip');
+
+	..label,Syntax
+	..codemirror(Cmir_flip_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_flip_1,
+	\\..flip(ID), on(1), off(0), *JavaScript*(Value);[Value] 
+	..label,Example
+	..codemirror(Cmir_flip_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_flip_2,
+	\\..##,2
+	\\..flip,on(1),off(0), put_input_text('it6',Value);
+	\\..input_text(it6)
+	..##,2
+	..flip,on(1),off(0), put_input_text('it6',Value);
+	..input_text(it6)
+
+
+..}
+..[page],wi_listview
+..{
+	..header_text,widget listview ..[p](i_listview)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_listview');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_listview');
+
+	..label,Syntax
+	..codemirror(Cmir_listview_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_listview_1,
+	\\..listview(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
+	..label,Example
+	..codemirror(Cmir_listview_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_listview_2,
+	\\..input_text(it7)
+	\\..##,2
+	\\..listview,
+	--Abarth      (1949–present)
+	--Alfa Romeo  (1910–present)
+	--Ferrari     (1947–present)
+	--Fiat        (1899–present), put_input_text('it7',Value);
+	\\..listview,
+	--Lamborghini (1963–present)
+	--Lancia      (1906–present)
+	--Maserati    (1914–present)
+	--Pagani      (1992–present), put_input_text('it7',Value);
+
+
+	..input_text(it7)
+	..##,2
+	..listview,
+	--Abarth      (1949–present)
+	--Alfa Romeo  (1910–present)
+	--Ferrari     (1947–present)
+	--Fiat        (1899–present), put_input_text('it7',Value);
+	..listview,
+	--Lamborghini (1963–present)
+	--Lancia      (1906–present)
+	--Maserati    (1914–present)
+	--Pagani      (1992–present), put_input_text('it7',Value);
+	
+..}
+
+
+
+..[page],wi_text
+..{
+	..header_text,widget text ..[p](i_text)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_text');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_text');
+	
+	..//html,<h3>label</h3>
+	..label,Syntax ( label )
+	..codemirror(Cmir_text_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_1,
+	\\..label(ID), text
+	..label,Example
+	..codemirror(Cmir_text_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_2,
+	\\..label,jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework), more specifically a 
+	JavaScript library, developed by the jQuery project team.
+	
+	..label,jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework), more specifically a 
+	JavaScript library, developed by the jQuery project team.
+	
+	..html,<br><hr><br>
+	..label,Syntax  ( info )
+	..codemirror(Cmir_text_3),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_3,
+	\\..info(ID), 1|2|3, name, text		
+	..label,Example
+	..codemirror(Cmir_text_4),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_text_4,
+	\\..##,3
+	\\..info, 1, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	
+	\\..info, 2, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	
+	\\..info, 3, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)	
+	
+	..##,3
+	..info, 1, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	..info, 2, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)	
+	..info, 3, jQuery Mobile,
+	jQuery Mobile is a touch-optimized web framework 
+	(also known as a mobile framework)
+	
+	
+	
+..}
+
+..[page],wi_input
+..{
+	..header_text,widget input ..[p](i_input)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_input');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_input');
+
+..}
+
+..[page],wi_collapsible
+..{
+	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_collapsible');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_collapsible');
+..iframe,400,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
+..}
+
+
+..[page],wi_html
+..{
+	..header_text,widget input ..[p](i_html)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_html');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_html');	
 ..html,
 <h2>The a element</h2>
 <a href="https://www.google.com">Visit google</a>
@@ -206,11 +555,6 @@ ctx.fillRect(0, 0, 80, 100);
 <hr>
 
 ..html,
- <style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
 <h2>The colgroup, col element</h2>
 <table>
   <colgroup>
@@ -653,7 +997,7 @@ We offer free tutorials in all web development technologies.
 <hr>
 
 ..html,
-<h2>The thead, tbody, and tfoot elements</h2>
+<h2>The thead, tbody,  tfoot elements</h2>
 <table>
   <thead>
     <tr>
@@ -722,359 +1066,29 @@ you can use CSS to style these elements.</p>
   <source src="movie.ogg" type="video/ogg">
   Your browser does not support the video tag.
 </video>
-<hr>
-
-
-
-
-
-..css,
-#rrr12
-{
-   width:150px; /* or whatever width you want. */
-   max-width:150px; /* or whatever width you want. */
-   display: inline-block;
-}
-#rrr14
-{
-   width:250px; /* or whatever width you want. */
-   max-width:550px; /* or whatever width you want. */
-   display: inline-block;
-}
-..html,
-<table>
-  <tr>
-    <th>February</th>
-    <th>March</th>
-  </tr>
-..html,<tr>
-..html,<td><div id="rrr12">	
-..button,1223
-..html,</div></td>
-..html,<td><div id="rrr14">	
-..slider,0,150,1,
-..html,</div></td>
-..html,</tr>
-
-..html,<tr>
-..html,<td><div id="rrr12">	
-..button,1223
-..html,</div></td>
-..html,<td><div id="rrr14">	
-..//slider,0,150,1,
-..html,</div></td>
-..html,</tr>
-
-</table>
-
-
-
-	..header_text,Home ..[p](m1)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
-	
-
-	
-	`+isMen1+`
-	..create_page,wi_Button
-	..create_page,wi_checkbox
-	..create_page,wi_radio
-	..create_page,wi_select
-	..create_page,wi_slider
-	..create_page,wi_flip
-	..create_page,wi_listview
-	..create_page,wi_text
-	..create_page,wi_input
-	..create_page,wi_collapsible
-	
-	
-
-..}
-..[page],wi_Button
-..{
-	..header_text,widget Button ..[p](i_Button)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_Button');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_Button');
-
-	..label,Syntax
-	..codemirror(Cmir_Button_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_Button_1,
-	\\..button(ID), name, *JavaScript*
-	..label,Example
-	..codemirror(Cmir_Button_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_Button_2,
-	\\..input_text(it1)
-	\\..##,2
-	\\..button, Button 1, put_input_text('it1','Button 11111111');
-	\\..button, Button 2, put_input_text('it1','Button 22222222');
-			
-	..input_text(it1)
-	..##,2
-	..button, Button 1, put_input_text('it1','Button 11111111');
-	..button, Button 2, put_input_text('it1','Button 22222222');
-
-..}
-..[page],wi_checkbox
-..{
-	..header_text,widget checkbox ..[p](i_checkbox)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_checkbox');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_checkbox');
-	..label,Syntax
-	..codemirror(Cmir_checkbox_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_checkbox_1,
-	\\..checkbox(ID), v|h, --name1(val1)--name2(val2), *JavaScript*[Status,Value] 
-	..label,Example
-	..codemirror(Cmir_checkbox_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_checkbox_2,
-	\\..input_text(it2)
-	\\..##,2	
-	\\..checkbox, h, --name1(1111)--name2(2222),
-		put_input_text('it2','Status:'+Status+' Value:'+Value);
-	\\..checkbox, v, --name1(2222)--name2(3333),
-		put_input_text('it2','Status:'+Status+' Value:'+Value);
-		
-	..input_text(it2)
-	..##,2	
-	..checkbox, h, --name1(1111)--name2(2222),
-		put_input_text('it2','Status:'+Status+' Value:'+Value);
-	..checkbox, v, --name1(3333)--name2(4444),
-		put_input_text('it2','Status:'+Status+' Value:'+Value);
-			
-		
-		
-..}
-..[page],wi_radio
-..{
-	..header_text,widget radio ..[p](i_radio)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_radio');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_radio');
-
-	..label,Syntax
-	..codemirror(Cmir_radio_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_radio_1,
-	\\..radio(ID), v|h, --name1(val1)--name2(val2), *JavaScript*[Value] 
-	..label,Example
-	..codemirror(Cmir_radio_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_radio_2,
-	\\..input_text(it3)
-	\\..##,2	
-	\\..radio, h, --name1(1111)--name2(2222),
-		put_input_text('it3','Value:'+Value);
-	\\..radio, v, --name1(3333)--name2(4444),
-		put_input_text('it3','Value:'+Value);
-		
-	..input_text(it3)
-	..##,2	
-	..radio, h, --name1(1111)--name2(2222),
-		put_input_text('it3','Value:'+Value);
-	..radio, v, --name1(3333)--name2(4444),
-		put_input_text('it3','Value:'+Value);
-
-..}
-..[page],wi_select
-..{
-	..header_text,widget select ..[p](i_select)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_select');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_select');
-
-	..label,Syntax
-	..codemirror(Cmir_select_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_select_1,
-	\\..select(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
-	..label,Example
-	..codemirror(Cmir_select_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_select_2,
-	\\..##,2	
-	\\..select,
-	\\--Abarth      (1949–present)
-	\\--Alfa Romeo  (1910–present)
-	\\--Ferrari     (1947–present)
-	\\--Fiat        (1899–present)
-	\\--Lamborghini (1963–present)
-	\\--Lancia      (1906–present)
-	\\--Maserati    (1914–present)
-	\\--Pagani      (1992–present), put_input_text('it4',Value);
-	\\..input_text(it4)
-
-	..##,2	
-	..select,
-	--Abarth      (1949–present)
-	--Alfa Romeo  (1910–present)
-	--Ferrari     (1947–present)
-	--Fiat        (1899–present)
-	--Lamborghini (1963–present)
-	--Lancia      (1906–present)
-	--Maserati    (1914–present)
-	--Pagani      (1992–present), put_input_text('it4',Value);
-	..input_text(it4)
-..}
-..[page],wi_slider
-..{
-	..header_text,widget slider ..[p](i_slider)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_slider');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_slider');
-
-	..label,Syntax
-	..codemirror(Cmir_slider_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_slider_1,
-	\\..slider(ID), min, max, step, *JavaScript*(Value); *JavaScript*[Value] 
-	..label,Example
-	..codemirror(Cmir_slider_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_slider_2,
-	\\..##,2	
-	\\..slider,0,150,1,put_input_text('it5',Value);
-	\\..input_text(it5)	
-	..##,2	
-	..slider,0,150,1,put_input_text('it5',Value);
-	..input_text(it5)
-..}
-..[page],wi_flip
-..{
-	..header_text,widget flip ..[p](i_flip)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_flip');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_flip');
-
-	..label,Syntax
-	..codemirror(Cmir_flip_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_flip_1,
-	\\..flip(ID), on(1), off(0), *JavaScript*(Value);[Value] 
-	..label,Example
-	..codemirror(Cmir_flip_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_flip_2,
-	\\..##,2
-	\\..flip,on(1),off(0), put_input_text('it6',Value);
-	\\..input_text(it6)
-	..##,2
-	..flip,on(1),off(0), put_input_text('it6',Value);
-	..input_text(it6)
-
-
-..}
-..[page],wi_listview
-..{
-	..header_text,widget listview ..[p](i_listview)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_listview');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_listview');
-
-	..label,Syntax
-	..codemirror(Cmir_listview_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_listview_1,
-	\\..listview(ID), --name1(val1)--name2(val2), *JavaScript*[Value] 
-	..label,Example
-	..codemirror(Cmir_listview_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_listview_2,
-	\\..input_text(it7)
-	\\..##,2
-	\\..listview,
-	--Abarth      (1949–present)
-	--Alfa Romeo  (1910–present)
-	--Ferrari     (1947–present)
-	--Fiat        (1899–present), put_input_text('it7',Value);
-	\\..listview,
-	--Lamborghini (1963–present)
-	--Lancia      (1906–present)
-	--Maserati    (1914–present)
-	--Pagani      (1992–present), put_input_text('it7',Value);
-
-
-	..input_text(it7)
-	..##,2
-	..listview,
-	--Abarth      (1949–present)
-	--Alfa Romeo  (1910–present)
-	--Ferrari     (1947–present)
-	--Fiat        (1899–present), put_input_text('it7',Value);
-	..listview,
-	--Lamborghini (1963–present)
-	--Lancia      (1906–present)
-	--Maserati    (1914–present)
-	--Pagani      (1992–present), put_input_text('it7',Value);
-	
-..}
-
-
-
-..[page],wi_text
-..{
-	..header_text,widget text ..[p](i_text)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_text');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_text');
-	
-	..//html,<h3>label</h3>
-	..label,Syntax ( label )
-	..codemirror(Cmir_text_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_text_1,
-	\\..label(ID), text
-	..label,Example
-	..codemirror(Cmir_text_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_text_2,
-	\\..label,jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework), more specifically a 
-	JavaScript library, developed by the jQuery project team.
-	
-	..label,jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework), more specifically a 
-	JavaScript library, developed by the jQuery project team.
-	
-	..html,<br><hr><br>
-	..label,Syntax  ( info )
-	..codemirror(Cmir_text_3),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_text_3,
-	\\..info(ID), 1|2|3, name, text		
-	..label,Example
-	..codemirror(Cmir_text_4),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_text_4,
-	\\..##,3
-	\\..info, 1, jQuery Mobile,
-	jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework)
-	
-	\\..info, 2, jQuery Mobile,
-	jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework)
-	
-	\\..info, 3, jQuery Mobile,
-	jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework)	
-	
-	..##,3
-	..info, 1, jQuery Mobile,
-	jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework)
-	..info, 2, jQuery Mobile,
-	jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework)	
-	..info, 3, jQuery Mobile,
-	jQuery Mobile is a touch-optimized web framework 
-	(also known as a mobile framework)
-	
-	
-	
-..}
-
-..[page],wi_input
-..{
-	..header_text,widget input ..[p](i_input)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_input');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_input');
-
-..}
-
-..[page],wi_collapsible
-..{
-	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_collapsible');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_collapsible');
-..iframe,400,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
-..}
-
-	
-	
-	
+<hr>	
+..}	
 	
 
 `;
 
+
+
+
+
+
+
+
+
+
+
+
+ const isHTML=`
+
+
+
+
+ `;
 var START_SCRIPT = fff;
 
 
