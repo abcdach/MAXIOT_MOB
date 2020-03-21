@@ -9,19 +9,54 @@ const fff=`
 	..html,<p>22222</p>
 	..[tab],--name1(#val1)--name2(#val2)--name3(#val3)
 	..{
-			..[t](val1)
-			..{
-				..html,<p>1111111111111111111111111111</p>
-			..}
-			..[t](val2)
-			..{
-				..html,<p>2222222222222222222222222222</p>
-			..}
-			..[t](val3)
-			..{
-				..html,<p>3333333333333333333333333333</p>
-			..}
+		..[t](val1)
+		..{
+			..html,<p>1111111111111111111111111111</p>
+		..}
+		..[t](val2)
+		..{
+			..html,<p>2222222222222222222222222222</p>
+		..}
+		..[t](val3)
+		..{
+			..html,<p>3333333333333333333333333333</p>
+		..}
 	..}
+	
+	
+	..[accordion](acord)
+	..{
+		..[ac](ac1),111
+		..{
+			..html,<p>1111111111111111111111111111</p>
+		..}
+		..[ac](ac2),222
+		..{
+			..html,<p>2222222222222222222222222222</p>
+		..}
+		..[ac](ac3),333
+		..{
+			..html,<p>3333333333333333333333333333</p>
+			..[tab],--name1(#xval1)--name2(#xval2)--name3(#xval3)
+			..{
+				..[t](xval1)
+				..{
+					..html,<p>1111111111111111111111111111</p>
+				..}
+				..[t](xval2)
+				..{
+					..html,<p>2222222222222222222222222222</p>
+				..}
+				..[t](xval3)
+				..{
+					..html,<p>3333333333333333333333333333</p>
+				..}
+			..}
+		..}
+	..}	
+
+	
+	
 ..}
 `;
 
@@ -54,23 +89,6 @@ const fffxx=`
 
 
 
-..html,
-    <div id="tabs">
-        <ul>
-            <li><a href="#tabs-a">First</a></li>
-            <li><a href="#tabs-b">Second</a></li>
-            <li><a href="#tabs-c">Third</a></li>
-        </ul>
-        <div id="tabs-a">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div id="tabs-b">
-            <p>Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</p>
-        </div>
-        <div id="tabs-c">
-            <p>Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</p>
-        </div>
-    </div>
 
 
 

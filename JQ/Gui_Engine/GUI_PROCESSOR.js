@@ -134,7 +134,6 @@ function GUI_Processor(isDATA){
 	}
 //####################################################################################
 	Conf = Conf.split('..');
-	//console.log("x11:"+Conf);
 //####################################################################################	
 	var Conf_Len = Conf.length;
 	for (i = 0; i < Conf_Len; i++) {
@@ -214,6 +213,7 @@ function GUI_Processor(isDATA){
 			case "html":				p_NUM = 1; break;
 			/////////////////////////////////////////
 			case "[tab]":				p_NUM = 1; break;
+			case "[ac]":				p_NUM = 1; break;
 			/////////////////////////////////////////
 		}		
 		
@@ -259,36 +259,29 @@ function GUI_Processor(isDATA){
 				Mark_Pointer --;
 				Current_Mark = Mark_Steck[Mark_Pointer];
 				switch(Current_Mark){
-					case "w": isCMD = "<-[w]"; break;
-					case "c": isCMD = "<-[c]"; break;
-					case "p": isCMD = "<-[p]"; break;
-					case "t": isCMD = "<-[t]"; break;
-					case "d": isCMD = "<-[d]"; break;
-					case "pop": isCMD = "<-[pop]"; break;
-					case "m": isCMD = "<-[m]"; break; // vebgverdistvis
-					case "s": isCMD = "<-[s]"; break;
+					//case "w": isCMD = "<-[w]"; break;
+					//case "c": isCMD = "<-[c]"; break;
+					//case "p": isCMD = "<-[p]"; break;
+					//case "t": isCMD = "<-[t]"; break;
+					//case "d": isCMD = "<-[d]"; break;
+					//case "pop": isCMD = "<-[pop]"; break;
+					//case "m": isCMD = "<-[m]"; break; // vebgverdistvis
+					//case "s": isCMD = "<-[s]"; break;
 					
-					case "append": isCMD = "<-[append]"; break; // append
-					case "tab": isCMD = "<-[tab]"; break;
-					case "t": isCMD = "<-[t]"; break;
+					case "append": 		isCMD = "<-[append]"; break; // append
+					case "tab":    		isCMD = "<-[tab]"; break;
+					case "t":      		isCMD = "<-[t]"; break;
+					case "accordion":   isCMD = "<-[accordion]"; break;
+					case "ac":      	isCMD = "<-[ac]"; break;
 					default: break;
 				}
 			}			
 		}
+		
 //####################################################################################
 
 
 
-
-		isHTML = '';
-
-		if(grid_start===1){		
-			if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
-			if(grid_cou === 2){isHTML += '<div class="ui-block-b">'; grid_add = 1;}
-			if(grid_cou === 3){isHTML += '<div class="ui-block-c">'; grid_add = 1;}
-			if(grid_cou === 4){isHTML += '<div class="ui-block-d">'; grid_add = 1;}
-			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
-		}
 
 //####################################################################################
 //##	isPAYLOAD
@@ -296,7 +289,7 @@ function GUI_Processor(isDATA){
 //####################################################################################
 
 		switch(isCMD) {
-			
+			//##################################################
 			case "css":
 				isCSS  ='\n'+ '<style>';
 				isCSS += isPAYLOAD;
@@ -304,10 +297,12 @@ function GUI_Processor(isDATA){
 				append ('[data-role="IS_CSS"]', isCSS);
 				break;	
 				
+			//##################################################
 			case "html":console.log("html");
 				Save_to_Buffer(isPAYLOAD);
 				break;
 				
+			//##################################################
 			case "click":
 				isJAVA  ='\n'+ '<script>';
 				isJAVA +='\n'+ '$(document).ready(function(){';
@@ -319,8 +314,7 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA"]').append(isJAVA);				
 				break;		
 
-
-
+			//##################################################
 			case "[append]":
 				Current_Mark = 'append';
 				Append_Plase = isPAYLOAD;
@@ -332,13 +326,11 @@ function GUI_Processor(isDATA){
 				append ('[data-role="'+Append_Plase+'"]', Mark_Data[Mark_Pointer+1]);
 				break;
 
-		
-
+			//##################################################
 			case "[tab]":console.log("[tab]");
 				Current_Mark = 'tab';
 				isHTML  = '<div id="tabs">';
 				isHTML += '\n<ul>';
-				
 				//List
 				var pT = isPAYLOAD.split('--');
 				for (b = 0; b < pT.length; b++){
@@ -357,10 +349,8 @@ function GUI_Processor(isDATA){
 				break;
 			case "<-[tab]": console.log("<-[tab]");
 				Save_to_Buffer_and_shift('</div>');
-				break;					
-				
-
-			case "[t]":console.log("[t]");
+				break;									
+			case "[t]": console.log("[t]");
 				Current_Mark = 't';
 				Save_to_Buffer('\n<div id="'+isID+'">');
 				break;
@@ -368,12 +358,31 @@ function GUI_Processor(isDATA){
 				Save_to_Buffer_and_shift('</div>');
 				break;			
 			
+			//##################################################
+			case "[accordion]":console.log("[accordion]");
+				Current_Mark = 'accordion';
+				Save_to_Buffer('<div id="menu-collapse">');
+				break;
+			case "<-[accordion]": console.log("<-[accordion]");
+				Save_to_Buffer_and_shift('</div>');
+				break;									
+			case "[ac]": console.log("[ac]");
+				Current_Mark = 'ac';
+				isHTML  = '\n<div>';
+				isHTML += '\n<h3>'+isPAYLOAD+'</h3>';
+				isHTML += '\n<div>';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[ac]":console.log("<-[ac]");
+				Save_to_Buffer_and_shift('</div></div>');
+				break;
 
 
 
-
-
-
+//####################################################################################
+//##	isPAYLOAD
+//##	isPARA
+//####################################################################################
 
 
 
@@ -707,16 +716,6 @@ function GUI_Processor(isDATA){
 //##	isPARA
 //##
 //####################################################################################	
-
-
-		//if(Append_Status === 1){
-			
-			//Append_Data += isHTML;	
-			
-
-
-
-
 
 
 			case "[panel]":
@@ -1075,36 +1074,7 @@ function GUI_Processor(isDATA){
 				break;
 		}
 		
-		
-
-		if( grid_add === 1){	
-			grid_cou ++;
-			grid_add = 0;
-			isHTML += '</div>';
-			if(grid_cou > grid_num){
-				grid_start = 0;
-				isHTML += '</fieldset>';
-			}
-		}
-		
-		
-		//if(Append_Status === 1){
-			
-			//Append_Data += isHTML;	
-			
-		//}else{
-			if( panel_status === 1){ 
-				isHTML_PANEL += isHTML;
-			}
-			else{
-				isHTML_CONTENT += isHTML;
-			}
-		//}
-		
-		
-		
 	}
-
 }
 
 
