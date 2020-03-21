@@ -78,11 +78,28 @@ p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
 
 var isID_Counter = 0;
 
+
+
+var Mark_Pointer   = 0 ;
+var Mark_Steck     = ['','','','','','','','','','','','','','','','','','',''];
+var Mark_Data      = ['','','','','','','','','','','','','','','','','','',''];
+function Save_to_Buffer (is_Value)
+{
+	Mark_Data[Mark_Pointer] += is_Value;
+	console.log("Mark_Data : "+Mark_Data);
+}
+function Save_to_Buffer_and_shift (is_Value)
+{
+	Mark_Data[Mark_Pointer+1] += is_Value;
+	Mark_Data[Mark_Pointer]   += Mark_Data[Mark_Pointer+1]; 
+	Mark_Data[Mark_Pointer+1]  = "";
+	console.log("Mark_Data : "+Mark_Data);
+}
+
 function GUI_Processor(isDATA){
 	
 	var Current_Mark   = '';
-	var Mark_Pointer   = 0 ;
-	var Mark_Steck     = ['','','','','','','','','','','','','','','','','','',''];
+
 	var Tmp_JAVA       = '';
 	var isHTML_PANEL   = '';
 	var isHTML_CONTENT = '';
@@ -102,8 +119,8 @@ function GUI_Processor(isDATA){
 	var p=['','','','','','','','','','','','','','','','','','',''];
 	var isPARA=['','','','','','','','','','','','','','','','','','',''];
 	var isPAYLOAD = "";
-	var Append_Status = 0;
-	var Append_Data = 0;
+	//var Append_Status = 0;
+	//var Append_Data = 0;
 	var Append_Plase = "";
 	
 	var Conf  = isDATA;
@@ -170,7 +187,7 @@ function GUI_Processor(isDATA){
 			case "[Append]":						p_NUM = 1; break;
 			case "html_body":						p_NUM = 1; break;
 			case "html_head":						p_NUM = 1; break;
-			case "html":							p_NUM = 1; break;
+			
 			case "css":								p_NUM = 1; break;
 			case "js":								p_NUM = 1; break;
 			/////////////////////////////////////////
@@ -194,8 +211,10 @@ function GUI_Processor(isDATA){
 
 			/////////////////////////////////////////
 			case "click":				p_NUM = 2; break;
+			case "html":				p_NUM = 1; break;
 			/////////////////////////////////////////
-			
+			case "[tab]":				p_NUM = 1; break;
+			/////////////////////////////////////////
 		}		
 		
 		isPAYLOAD = "";
@@ -232,6 +251,7 @@ function GUI_Processor(isDATA){
 			if(Current_Mark === 'w')Mark_Pointer = 0;
 			Mark_Steck[Mark_Pointer] = Current_Mark;
 			Mark_Pointer ++;
+			Mark_Data[Mark_Pointer] = "";
 			console.log("********   Mark_Steck : "+Mark_Steck);			
 		}
 		if(isCMD === "}"){
@@ -247,7 +267,10 @@ function GUI_Processor(isDATA){
 					case "pop": isCMD = "<-[pop]"; break;
 					case "m": isCMD = "<-[m]"; break; // vebgverdistvis
 					case "s": isCMD = "<-[s]"; break;
-					case "a": isCMD = "<-[a]"; break; // append
+					
+					case "append": isCMD = "<-[append]"; break; // append
+					case "tab": isCMD = "<-[tab]"; break;
+					case "t": isCMD = "<-[t]"; break;
 					default: break;
 				}
 			}			
@@ -274,26 +297,95 @@ function GUI_Processor(isDATA){
 
 		switch(isCMD) {
 			
-		
-			
+			case "css":
+				isCSS  ='\n'+ '<style>';
+				isCSS += isPAYLOAD;
+				isCSS +='\n'+ '</style>';
+				append ('[data-role="IS_CSS"]', isCSS);
+				break;	
+				
+			case "html":console.log("html");
+				Save_to_Buffer(isPAYLOAD);
+				break;
+				
 			case "click":
 				isJAVA  ='\n'+ '<script>';
 				isJAVA +='\n'+ '$(document).ready(function(){';
 				isJAVA +='\n'+ '	$("#'+isPARA[1]+'").click(function(){';
-				isJAVA +='\n'+ isPAYLOAD;
+				isJAVA += isPAYLOAD;
 				isJAVA +='\n'+ '	});';
 				isJAVA +='\n'+ '});';
 				isJAVA +='\n'+ '</script>';
 				$('[data-role="IS_JAVA"]').append(isJAVA);				
+				break;		
+
+
+
+			case "[append]":
+				Current_Mark = 'append';
+				Append_Plase = isPAYLOAD;
+				console.log("Append_Plase : "+isPAYLOAD);
+				break;
+			case "<-[append]":
+				console.log("<-[append]");
+				console.log("Append_Data : "+Mark_Data[Mark_Pointer+1]);
+				append ('[data-role="'+Append_Plase+'"]', Mark_Data[Mark_Pointer+1]);
+				break;
+
+		
+
+			case "[tab]":console.log("[tab]");
+				Current_Mark = 'tab';
+				isHTML  = '<div id="tabs">';
+				isHTML += '\n<ul>';
+				
+				//List
+				var pT = isPAYLOAD.split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '\n<li><a href="'+pT1+'">'+pT0+'</a></li>';
+						}
+					}
+				}
+				isHTML += '\n</ul>';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[tab]": console.log("<-[tab]");
+				Save_to_Buffer_and_shift('</div>');
+				break;					
+				
+
+			case "[t]":console.log("[t]");
+				Current_Mark = 't';
+				Save_to_Buffer('\n<div id="'+isID+'">');
+				break;
+			case "<-[t]":console.log("<-[t]");
+				Save_to_Buffer_and_shift('</div>');
 				break;			
 			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			
 			
 			
@@ -455,11 +547,7 @@ function GUI_Processor(isDATA){
 				isHTML += '</form>';
 				break;					
 				
-			case "html":
-				isHTML += '<div id="'+isID+'">';
-				isHTML += isPAYLOAD;
-				isHTML += '</div>';					
-				break;	
+	
 				
 			case "input_password":			
 				isHTML += '<input id="'+isID+'" type="password" value="'+isPAYLOAD+'"/>';
@@ -471,10 +559,7 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 				break;
 				
-			case "css":
-				var SCR= '<style type="text/css">'+isPAYLOAD+'</style>';
-				$('[data-role="IS_CSS"]').append(SCR);
-				break;				
+			
 			case "html_head":
 				$('[data-role="IS_HEAD"]').append(isPAYLOAD);
 				break;
@@ -629,19 +714,7 @@ function GUI_Processor(isDATA){
 			//Append_Data += isHTML;	
 			
 
-			case "[append]":
-				Current_Mark = 'a';
-				Append_Plase = isPAYLOAD;
-				console.log("Append_Plase : "+isPAYLOAD);
-				Append_Data ='';
-				Append_Status = 1;
-				break;
-			case "<-[a]":
-				//isHTML += '</div>';
-				console.log("Append_Data : "+Append_Data);
-				$('[data-role="'+Append_Plase+'"]').append(Append_Data);
-				Append_Status = 0;
-				break;
+
 
 
 
@@ -682,38 +755,6 @@ function GUI_Processor(isDATA){
 
 
 
-			case "[t]":
-				Current_Mark = 't';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
-
-				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
-				isHTML += '<div data-role="navbar">';
-				isHTML += '<ul>';
-
-				//List
-				var pT = p[2].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<li><a href="#'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
-						}
-					}
-				}isHTML += '</ul></div>';	
-				break;
-
-			case "[d]":
-				Current_Mark = 'd';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				isHTML += '<div id="'+isID+'" '+p[1]+'>';
-				break;
-			case "<-[d]":
-				isHTML += '</div>';
-				break;
 
 
 
@@ -1047,18 +1088,18 @@ function GUI_Processor(isDATA){
 		}
 		
 		
-		if(Append_Status === 1){
+		//if(Append_Status === 1){
 			
-			Append_Data += isHTML;	
+			//Append_Data += isHTML;	
 			
-		}else{
+		//}else{
 			if( panel_status === 1){ 
 				isHTML_PANEL += isHTML;
 			}
 			else{
 				isHTML_CONTENT += isHTML;
 			}
-		}
+		//}
 		
 		
 		

@@ -1,23 +1,124 @@
 
 
 
-
-
-
 const fff=`
 
 ..[append],IS_BODY
 ..{
+	..html,<p>11111</p>
+	..html,<p>22222</p>
+	..[tab],--name1(#val1)--name2(#val2)--name3(#val3)
+	..{
+			..[t](val1)
+			..{
+				..html,<p>1111111111111111111111111111</p>
+			..}
+			..[t](val2)
+			..{
+				..html,<p>2222222222222222222222222222</p>
+			..}
+			..[t](val3)
+			..{
+				..html,<p>3333333333333333333333333333</p>
+			..}
+	..}
+..}
+`;
+
+
+
+
+
+
+const fffxx=`
+
+..[append],IS_BODY
+..{
+
+		..[t](TAB_1),--name1(#tabs-a")--name2(#tabs-b")--name3(#tabs-c")
+		..{
+			..[d](val1)
+			..{
+				..html,<p>1111111111111111111111111111</p>
+			..}
+			..[d](val2)
+			..{
+				..html,<p>2222222222222222222222222222</p>
+			..}
+			..[d](val3)
+			..{
+				..html,<p>3333333333333333333333333333</p>
+			..}
+		..}
+
+
+
+
+..html,
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-a">First</a></li>
+            <li><a href="#tabs-b">Second</a></li>
+            <li><a href="#tabs-c">Third</a></li>
+        </ul>
+        <div id="tabs-a">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="tabs-b">
+            <p>Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</p>
+        </div>
+        <div id="tabs-c">
+            <p>Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</p>
+        </div>
+    </div>
+
+
+
+
+	..html,<div id = "mmx"></div>
+	..html(x1),<h3 mmm="ggggggg" id = "x5">The abbr element</h2>
 	..html(x1),<h2 id = "x4">The abbr element</h2>
-	..click,x1,alert(get_text('x1'));
-	..html(x1),
+	
+	..click,x1,alert(get_text('#x1'));
+	..html,
 	<input type="text" id="age1" >
 	<input type="text" id="age2" >
 	
-..html(b1),<button>Default</button>
-..click,b1,alert(get_text('age1'));	
+..html,<button id = "b1">Default</button>
+..html,<div id = "bb2"><button id = "b2">Default</button></div>
+..html,
+<script>
+$(document).ready(function(){
 	
-	
+	$("#b2").click(function(){
+	  alert(get_attr('#x5', 'mmm'));
+	  set_text('#x5','david');
+	  set_attr('#x5', 'mmm', 'AAAAAAAAA');
+	  append('#mmx', '<button>OK</button>');
+	});
+});
+</script>
+
+
+
+..click,b1, $("#age1").text("Hello world!");	
+..css,
+	#x4{
+		text-align: center;
+		color: red;
+		border-left: 6px solid red;
+		background-color: lightgrey;
+	}
+	#b1{
+		margin: 3px;
+		/*border: 1px solid #4CAF50;*/
+		padding: 70px;
+	}	
+	#b2{
+	  height: 20px;
+	  width: 150px;
+	  /*background-color: powderblue;*/
+	}	
 ..html(x1),	
     <!-- Buttons -->
     <h2>Button</h2>
@@ -38,7 +139,6 @@ const fff=`
 $('button').button();
 // Anchors, Submit
 $('.button').button();
- <h2>Button</h2>
 </pre>	
 	
 	

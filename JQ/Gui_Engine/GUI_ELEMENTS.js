@@ -2,10 +2,27 @@
 
 
 
-function get_text(is_ID){ return $('#'+is_ID).text();}
+function get_text(is_ID){ return $(is_ID).text();}
+function get_val (is_ID){ return $(is_ID).val(); }
+function get_html(is_ID){ return $(is_ID).html();}
+function get_attr(is_ID, is_Attr){return $(is_ID).attr(is_Attr);}
 
 
+function set_text(is_ID, is_Value){$(is_ID).text(is_Value);}
+function set_val (is_ID, is_Value){$(is_ID).val(is_Value); }
+function set_html(is_ID, is_Value){$(is_ID).html(is_Value);}
+function set_attr(is_ID, is_Attr, is_Value ){$(is_ID).attr(is_Attr,is_Value);}
 
+
+//append() 	- Inserts content at the end of the selected elements
+//prepend() - Inserts content at the beginning of the selected elements
+//after() 	- Inserts content after the selected elements
+//before() 	- Inserts content before the selected elements
+
+function append (is_ID, is_Value){ $(is_ID).append(is_Value);}
+function prepend(is_ID, is_Value){ $(is_ID).prepend(is_Value);}
+function after  (is_ID, is_Value){ $(is_ID).after(is_Value);}
+function before (is_ID, is_Value){ $(is_ID).before(is_Value);}
 
 
 
