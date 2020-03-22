@@ -64,6 +64,10 @@ const fff=`
 	..create_page,wi_tmp2
 	..create_page,wi_tmp3
 	
+..##,2	
+..button,Save
+..button,Connect
+
 		..[grid],3
 		..{
 			..[g]
@@ -175,11 +179,9 @@ const fff=`
 		\\..input_text, 1655
 		\\..label,Device Name:
 		\\..input_text,Mob_Test
-		\\..[grid],2
-		\\..{
-			\\..[g] \\..{ \\..button,Save    \\..}
-			\\..[g] \\..{ \\..button,Connect \\..}
-		\\..}
+		\\..##,2	
+		\\..button,Save
+		\\..button,Connect
 	\\..}
 	\\..button,OPEN PANEL, Panel_Open('PAN_1');
 	
@@ -193,11 +195,9 @@ const fff=`
 		..input_text, 1655
 		..label,Device Name:
 		..input_text,Mob_Test
-		..[grid],2
-		..{
-			..[g] ..{ ..button,Save    ..}
-			..[g] ..{ ..button,Connect ..}
-		..}
+		..##,2	
+		..button,Save
+		..button,Connect
 
 	..}
 	..button,OPEN PANEL, Panel_Open('PAN_1');

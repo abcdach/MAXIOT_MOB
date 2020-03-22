@@ -262,7 +262,7 @@ function GUI_Processor(isDATA){
 
 
 		isHTML = '';
-
+//####################################################################################
 		if(grid_start===1){		
 			if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
 			if(grid_cou === 2){isHTML += '<div class="ui-block-b">'; grid_add = 1;}
@@ -270,11 +270,7 @@ function GUI_Processor(isDATA){
 			if(grid_cou === 4){isHTML += '<div class="ui-block-d">'; grid_add = 1;}
 			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
 		}
-
 //####################################################################################
-
-
-
 		switch(isCMD) {
 			
 			case "flip":
@@ -655,8 +651,7 @@ function GUI_Processor(isDATA){
 					case "4":{isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;break;}
 					case "5":{isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;break;}
 					default: break;
-				}
-				grid_cou   = 1; grid_add   = 0;			
+				}grid_cou = 1; grid_add = 0;			
 				break;				
 			
 				
@@ -672,7 +667,7 @@ function GUI_Processor(isDATA){
 				}
 				break;
 			case "<-[grid]":
-				isHTML += '</div>';
+				isHTML += '</fieldset>';
 				break;
 			case "[g]":
 				Current_Mark = 'g';
