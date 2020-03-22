@@ -30,8 +30,73 @@ const isMen1 =`
 ..} `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
 
-
 const fff=`
+..css, table, th, td { border: 1px solid black;}
+..css, .ui-content { max-width: 800px; margin: 0 auto;} 
+
+
+
+..[page],1
+..{
+
+	..JustGage
+	
+		..[tab](TAB_1),--name1(val1)--name2(val2)--name3(val3)
+		..{
+			..[t](val1)
+			..{
+				..label, 111111111111111111111111111
+			..}
+			..[t](val2)
+			..{
+				..label, 222222222222222222222222222
+			..}
+			..[t](val3)
+			..{
+				..label, 333333333333333333333333333
+				..[tab](TAB_2),--name1(val12)--name2(val22)--name3(val32)
+				..{
+					..[t](val12)
+					..{
+						..label, 111111111111111111111111111
+					..}
+					..[t](val22)
+					..{
+						..label, 222222222222222222222222222
+					..}
+					..[t](val32)
+					..{
+						..label, 333333333333333333333333333
+						..[tab](TAB_3),--name1(val13)--name2(val23)--name3(val33)
+						..{
+							..[t](val13)
+							..{
+								..label, 111111111111111111111111111
+							..}
+							..[t](val23)
+							..{
+								..label, 222222222222222222222222222
+							..}
+							..[t](val33)
+							..{
+								..label, 333333333333333333333333333
+							..}
+						..}
+					..}
+				..}
+			..}
+		..}
+	..JustGage
+	..JustGage
+..} `;
+
+
+
+
+
+
+
+const fffkol=`
 
 ..css, table, th, td { border: 1px solid black;}
 ..css, .ui-content { max-width: 800px; margin: 0 auto;} 

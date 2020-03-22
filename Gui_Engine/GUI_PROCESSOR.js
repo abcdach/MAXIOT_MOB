@@ -77,7 +77,21 @@ p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
 //-------------------------------------------				//
 
 var isID_Counter = 0;
-
+var Mark_Pointer   = 0 ;
+var Mark_Steck     = ['','','','','','','','','','','','','','','','','','',''];
+var Mark_Data      = ['','','','','','','','','','','','','','','','','','',''];
+function Save_to_Buffer (is_Value)
+{
+	Mark_Data[Mark_Pointer] += is_Value;
+	console.log("Mark_Data : "+Mark_Data);
+}
+function Save_to_Buffer_and_shift (is_Value)
+{
+	Mark_Data[Mark_Pointer+1] += is_Value;
+	Mark_Data[Mark_Pointer]   += Mark_Data[Mark_Pointer+1]; 
+	Mark_Data[Mark_Pointer+1]  = "";
+	console.log("Mark_Data : "+Mark_Data);
+}
 function GUI_Processor(isDATA){
 	
 	var Current_Mark   = '';
@@ -635,6 +649,9 @@ function GUI_Processor(isDATA){
 					}
 				}isHTML += '</ul></div>';	
 				break;
+			case "<-[tab]":
+				isHTML += '</div>';
+				break;
 			case "[t]":
 				Current_Mark = 't';
 				isHTML += '<div id="'+isID+'" '+isPAYLOAD+'>';
@@ -682,15 +699,7 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;
 				
-		/**		
-		if(grid_start===1){		
-			if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
-			if(grid_cou === 2){isHTML += '<div class="ui-block-b">'; grid_add = 1;}
-			if(grid_cou === 3){isHTML += '<div class="ui-block-c">'; grid_add = 1;}
-			if(grid_cou === 4){isHTML += '<div class="ui-block-d">'; grid_add = 1;}
-			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
-		}
-		**/	
+
 //####################################################################################
 //##	isPAYLOAD  ALD
 //##	isPARA
@@ -698,9 +707,29 @@ function GUI_Processor(isDATA){
 //####################################################################################	
 
 				
+			case "JustGage":
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
+				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
+								
+								
+				//isID = 'gauge';
+								
+				isHTML += '<div id="'+isID+'"></div>';			
+
+				isJAVA +='\n'+ 'var '+isID+' = new JustGage({\n';
+				isJAVA +='\n'+ '	id: "'+isID+'",\n';
+				isJAVA +='\n'+ '	value: getRandomInt(0, 100),\n';
+				isJAVA +='\n'+ '	min: 0,\n';
+				isJAVA +='\n'+ '	max: 100,\n';
+				isJAVA +='\n'+ '	title: "Big Fella",\n';
+				isJAVA +='\n'+ '	label: "pounds"\n';
+				isJAVA +='\n'+ '});';
 				
+				var isSTYLE = '<style>#'+isID+' {width:200px; height:180px; display: inline-block;margin: 1em;}</style>';
+				$('[data-role="IS_CSS"]').append(isSTYLE);
 				
-				
+				//g1.refresh(55);
+				break;	
 				
 				
 				

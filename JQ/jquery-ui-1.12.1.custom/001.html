@@ -47,34 +47,34 @@
 		width: 200px;
 	}
 	</style>
+	<script src="external/jquery/jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+	<!--..................-->
+	<script src="../Gui_Engine/GUI_PROCESSOR.js"></script>
+	<script src="../Gui_Engine/GUI_ELEMENTS.js"></script>
+	<script src="../GUI_SCRIPT.dg"></script>
+	<!--..................-->	 
 </head>
+
+<div  data-role="IS_CSS"  ></div>
+<div  data-role="IS_JAVA" ></div>
+
 <body>
 
+<div data-role="IS_BODY" ></div>
 
-
-
-<!-- Highlight / Error -->
-<h2 class="demoHeaders">Highlight / Error</h2>
-<div class="ui-widget">
-	<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-		<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-		<strong>Hey!</strong> Sample ui-state-highlight style.</p>
-	</div>
-</div>
-<br>
-<div class="ui-widget">
-	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-		<strong>Alert:</strong> Sample ui-state-error style.</p>
-	</div>
-</div>
-
-<script src="external/jquery/jquery.js"></script>
-<script src="jquery-ui.js"></script>
-
-
-
-
-</script>
 </body>
+<script>
+	console.log("*** pagebeforecreate:1:page_1");	
+	GUI_Processor(START_SCRIPT);		
+	console.log("*** pagebeforecreate:0:page_1");
+</script>
 </html>
+
+
+
+
+
+
+
+
