@@ -237,15 +237,16 @@ function GUI_Processor(isDATA){
 				Mark_Pointer --;
 				Current_Mark = Mark_Steck[Mark_Pointer];
 				switch(Current_Mark){
-					case "w": isCMD = "<-[w]"; break;
-					case "c": isCMD = "<-[c]"; break;
-					case "p": isCMD = "<-[p]"; break;
-					case "t": isCMD = "<-[t]"; break;
-					case "d": isCMD = "<-[d]"; break;
+					case "w":   isCMD = "<-[w]";   break;
+					case "c":   isCMD = "<-[c]";   break;
+					case "p":   isCMD = "<-[p]";   break;
+					case "t":   isCMD = "<-[t]";   break;
+					case "tab": isCMD = "<-[tab]"; break;
+					case "d":   isCMD = "<-[d]";   break;
 					case "pop": isCMD = "<-[pop]"; break;
-					case "m": isCMD = "<-[m]"; break; // vebgverdistvis
-					case "s": isCMD = "<-[s]"; break;
-					case "a": isCMD = "<-[a]"; break; // append
+					case "m":   isCMD = "<-[m]";   break; // vebgverdistvis
+					case "s":   isCMD = "<-[s]";   break;
+					case "a":   isCMD = "<-[a]";   break; // append
 					default: break;
 				}
 			}			
@@ -418,6 +419,9 @@ function GUI_Processor(isDATA){
 			case "input_text":
 				isHTML += '<input id="'+isID+'" type="text" value="'+isPAYLOAD+'"/>'
 				break;
+			case "input_password":			
+				isHTML += '<input id="'+isID+'" type="password" value="'+isPAYLOAD+'"/>';
+				break;	
 				
 			case "textarea":
 				isHTML += '<form>';
@@ -426,14 +430,12 @@ function GUI_Processor(isDATA){
 				break;					
 				
 			case "html":
-				isHTML += '<div id="'+isID+'">';
+				//isHTML += '<div id="'+isID+'">';
 				isHTML += isPAYLOAD;
-				isHTML += '</div>';					
+				//isHTML += '</div>';					
 				break;	
 				
-			case "input_password":			
-				isHTML += '<input id="'+isID+'" type="password" value="'+isPAYLOAD+'"/>';
-				break;	
+
 
 			case "js":
 			case "javascript":
@@ -624,6 +626,32 @@ function GUI_Processor(isDATA){
 				panel_status = 0;
 				break;
 				
+			case "[tab]":
+				Current_Mark = 'tab';
+				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
+				isHTML += '<div data-role="navbar">';
+				isHTML += '<ul>';
+				//List
+				var pT = isPAYLOAD.split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '<li><a href="#'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
+						}
+					}
+				}isHTML += '</ul></div>';	
+				break;
+			case "[t]":
+				Current_Mark = 't';
+				isHTML += '<div id="'+isID+'" '+isPAYLOAD+'>';
+				break;
+			case "<-[t]":
+				isHTML += '</div>';
+				break;
 //####################################################################################
 //##	isPAYLOAD  ALD
 //##	isPARA
@@ -637,41 +665,15 @@ function GUI_Processor(isDATA){
 				
 				
 				
-				
-			case "[t]":
-				Current_Mark = 't';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
-				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="--name1(val1)--name2(val2)--name3(val3)";
 
-				isHTML += '<div data-role="tabs" id="'+isID+'" data-type="horizontal">';
-				isHTML += '<div data-role="navbar">';
-				isHTML += '<ul>';
 
-				//List
-				var pT = p[2].split('--');
-				for (b = 0; b < pT.length; b++){
-					pT[b] = pT[b].trim();
-					if(pT[b]!==""){
-						var pTT=pT[b].split('(');
-						if(pTT.length === 2){
-							var pT0 = pTT[0].trim();
-							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '<li><a href="#'+pT1+'" data-ajax="false">'+pT0+'</a></li>';
-						}
-					}
-				}isHTML += '</ul></div>';	
-				break;
 
-			case "[d]":
-				Current_Mark = 'd';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				isHTML += '<div id="'+isID+'" '+p[1]+'>';
-				break;
-			case "<-[d]":
-				isHTML += '</div>';
-				break;				
-				
-				
+
+
+
+
+
+
 
 
 			case "[append]":
@@ -687,11 +689,6 @@ function GUI_Processor(isDATA){
 				$('[data-role="'+Append_Plase+'"]').append(Append_Data);
 				Append_Status = 0;
 				break;
-
-
-
-
-
 
 
 			case "button_class":
@@ -717,9 +714,6 @@ function GUI_Processor(isDATA){
 				SCR = '<script>'+SCR+'</script>';
 				$('[data-role="IS_JAVA_SCRIPT"]').append(SCR);
 				break;				
-
-
-
 
 
 

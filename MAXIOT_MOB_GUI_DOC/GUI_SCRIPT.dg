@@ -28,6 +28,7 @@ const isMen1 =`
 		-- collapsible(wi_collapsible)
 		-- popup(wi_popup)
 		-- panel(wi_panel)
+		-- tab(wi_tab)
 		,Page_change(Value);
 ..}
 
@@ -74,17 +75,79 @@ const fff=`
 	..create_page,wi_collapsible
 	..create_page,wi_popup
 	..create_page,wi_panel
+	..create_page,wi_tab
 	
 	..create_page,wi_html
 	..create_page,wi_tmp1
 	..create_page,wi_tmp2
 	..create_page,wi_tmp3
 	
-	
+
+
+		
+		
+		
 
 ..}
 
+..[page],wi_tab
+..{
+	..header_text,widget tab ..[panel](i_tab)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tab');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tab');
+	
+	..label,Syntax
+	..codemirror(Cmir_tab_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_tab_1,
+	\\..[tab](ID),--name2(ID_1)--name3(ID_2)
+	\\..{
+		\\..[t](ID_1)
+		\\..{
+			*GUI Content*
+		\\..}
+		\\..[t](ID_2)
+		\\..{ 
+			*GUI Content* 
+		\\..}
+	\\..}
 
+	..label,Example
+	..codemirror(Cmir_tab_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_tab_2,
+		\\..[tab](TAB_1),--name1(val1)--name2(val2)--name3(val3)
+		\\..{
+			\\..[t](val1)
+			\\..{
+				\\..label, 111111111111111111111111111
+			\\..}
+			\\..[t](val2)
+			\\..{
+				\\..label, 222222222222222222222222222
+			\\..}
+			\\..[t](val3)
+			\\..{
+				\\..label, 333333333333333333333333333
+			\\..}
+		\\..}	
+		
+		..[tab](TAB_1),--name1(val1)--name2(val2)--name3(val3)
+		..{
+			..[t](val1)
+			..{
+				..label, 111111111111111111111111111
+			..}
+			..[t](val2)
+			..{
+				..label, 222222222222222222222222222
+			..}
+			..[t](val3)
+			..{
+				..label, 333333333333333333333333333
+			..}
+		..}	
+		
+		
+..}
 
 ..[page],wi_panel
 ..{
@@ -1895,33 +1958,7 @@ const IS_TEST_SCRIPT =`
 		..label,ეს არის დაგენირებული პანელი
 		..slider(SL1),0,150,10,Out_0(Value);
 	..}
-	..[c],tab
-	..{
-		..[t](TAB_1),v,--name1(val1)--name2(val2)--name3(val3)
-		..{
-			..[d](val1)
-			..{
-				..label,
-				..info,1,სათაური 1,
-				MAXIOT სისტემის ყველა ძირითადი პროგრამული
-				მოდულები დაწერილია ისე,
-				რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, როგორიც
-			..}
-			..[d](val2)
-			..{
-				..label, 
-				..info,2,სათაური 2, 
-				MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები დაწერილია ისე, 
-				რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, როგორიც
-			..}
-			..[d](val3)
-			..{
-				..label,
-				..info,3,სათაური 3, MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები 
-				დაწერილია ისე, რომ სრულფასოვნად გაეშვას ისეთი მიკროკომპიუტერებზე, როგორიც
-			..}
-		..}
-	..}
+
 ..}
 `;
 
