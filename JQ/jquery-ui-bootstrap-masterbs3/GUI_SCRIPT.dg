@@ -5,8 +5,7 @@ const fff=`
 
 ..[append],IS_BODY
 ..{
-	..html,<p>11111</p>
-	..html,<p>22222</p>
+	..html,<br>
 	..[tab],--name1(#val1)--name2(#val2)--name3(#val3)
 	..{
 		..[t](val1)
@@ -55,12 +54,637 @@ const fff=`
 		..}
 	..}	
 
+..html,
+<h2>The a element</h2>
+<a href="https://www.google.com">Visit google</a>
+<hr>
+
+..html,
+<h2>The abbr element</h2>
+<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+<hr>
 	
-	
+..html,
+<h2>The address element</h2>
+<address>
+Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br> 
+Visit us at:<br>
+Example.com<br>
+Box 564, Disneyland<br>
+USA
+</address>
+<hr>
+
+..html,
+<h2>The aside element</h2>
+<p>My family and I visited The Epcot center this summer. 
+The weather was nice, and Epcot was amazing! I had a
+ great summer together with my family!</p>
+<aside>
+  <h4>Epcot Center</h4>
+  <p>Epcot is a theme park at Walt Disney World Resort featuring 
+  exciting attractions, international pavilions, award-winning 
+  fireworks and seasonal special events.</p>
+</aside>
+<hr>
+
+..html,
+<h2>The b element</h2>
+<p>This is normal text - <b>and this is bold text</b>.</p>
+<hr>
+
+..html,
+<h2>The base element</h12>
+<p><img src="images/stickman.gif" width="24" height="39" alt="Stickman"> - Notice that we have only specified a relative address for the image. Since we have specified a base URL in the head section, the browser will look for the image at "https://www.w3schools.com/images/stickman.gif".</p>
+<p><a href="tags/tag_base.asp">HTML base tag</a> - Notice that the link opens in a new window, even if it has no target="_blank" attribute. This is because the target attribute of the base element is set to "_blank".</p>
+<hr>
+
+..html,
+<h2>The bdi element</h2>
+<p>In the example below, usernames are shown along with the number of points in a contest. If the bdi element is not supported in the browser, the username of the Arabic user would confuse the text (the bidirectional algorithm would put the colon and the number "90" next to the word "User" rather than next to the word "points").</p>
+<ul>
+ <li>User <bdi>hrefs</bdi>: 60 points</li>
+ <li>User <bdi>jdoe</bdi>: 80 points</li>
+ <li>User <bdi>إيان</bdi>: 90 points</li>
+</ul>
+<hr>
+
 ..}
 `;
 
 
+
+// 26,  41, 42, 43, 44, 45, 
+/**
+
+
+
+
+
+..html,
+<h2>The bdo element</h2>
+<p>This paragraph will go left-to-right.</p>  
+<p><bdo dir="rtl">This paragraph will go right-to-left.</bdo></p>  
+<hr>
+
+..html,
+<h2>The blockquote element</h2>
+<p>Here is a quote from WWF's website:</p>
+<blockquote cite="http://www.worldwildlife.org/who/index.html">
+For 50 years, WWF has been protecting the future of nature. The world's 
+leading conservation organization, WWF works in 100 countries and is 
+supported by 1.2 million members in the United States and close to 
+5 million globally.
+</blockquote>
+<hr>
+
+..html,
+<h2>The br element</h2>
+<p>To force<br> line breaks<br> in a text,<br> use the br<br> element.</p>
+<hr>
+
+..html,
+<h2>The button Element</h2>
+<button type="button" onclick="alert('Hello world!')">Click Me!</button>
+<hr>
+ 
+..html,
+<h2>The canvas element</h2>
+<canvas id="myCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(0, 0, 80, 100);
+</script>
+<hr>
+
+..html,
+<h2>The center element</h2>
+<center>This text will be center-aligned.</center>
+<p>The center element is not supported in HTML5. Use CSS instead.</p>
+<hr>
+
+..html,
+<h2>The cite element</h2>
+<img src="img_the_scream.jpg" width="220" height="277" alt="The Scream">
+<p><cite>The Scream</cite> by Edward Munch. Painted in 1893.</p>
+<hr>
+
+..html,
+<h2>The colgroup, col element</h2>
+<table>
+  <colgroup>
+    <col span="2" style="background-color:red">
+    <col style="background-color:yellow">
+  </colgroup>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>3476896</td>
+    <td>My first HTML</td>
+    <td>$53</td>
+  </tr>
+  <tr>
+    <td>5869207</td>
+    <td>My first CSS</td>
+    <td>$49</td>
+  </tr>
+</table>
+<hr>
+
+..html,
+<h2>The datalist element</h2>
+<form action="/action_page.php" method="get">
+  <input list="browsers" name="browser">
+  <datalist id="browsers">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+  </datalist>
+  <input type="submit">
+</form>
+<p><strong>Note:</strong> The datalist tag is not supported in Safari 12.0 (or earlier).</p>
+<hr>
+
+..html,
+<h2>The dl, dd, and dt elements</h2>
+<p>These three elements are used to create a description list:</p>
+<dl>
+  <dt>Coffee</dt>
+  <dd>Black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>White cold drink</dd>
+</dl>
+<hr>
+
+..html,
+<h2>The details element</h2>
+<details>
+  <summary>Copyright 1999-2018.</summary>
+  <p> - by Refsnes Data. All Rights Reserved.</p>
+  <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+</details>
+<p><b>Note:</b> The details tag is not supported in Internet Explorer.</p>
+<hr>
+
+..html,
+<h2>The dfn element</h2>
+<p><dfn>HTML</dfn> is the standard markup language for creating web pages.</p> 
+<hr>
+
+..html,
+<h2>The dialog element</h2>
+<table>
+  <tr>
+    <th>January <dialog open>This is an open dialog window</dialog></th>
+    <th>February</th>
+    <th>March</th>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>28</td>
+    <td>31</td>
+  </tr>
+</table>
+<p><b>Note:</b> The dialog tag is not supported in Safari and Edge (prior version 79).</p>
+<hr>
+
+..html,
+<h2>The div element</h2>
+<div style="background-color:lightblue">
+  <h3>This is a heading in a div element</h3>
+  <p>This is some text in a div element.</p>
+</div>
+<p>This is some text in a p element.</p>
+<hr>
+
+..html,
+<h2>The dl, dd, and dt elements</h2>
+<p>These three elements are used to create a description list:</p>
+<dl>
+  <dt>Coffee</dt>
+  <dd>Black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>White cold drink</dd>
+</dl>
+<hr>
+
+..html,
+<h2>The figure and figcaption element</h2>
+<figure>
+  <img src="pic_trulli.jpg" alt="Trulli" style="width:100%">
+  <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+</figure>
+<hr>
+
+..html,
+<h2>The font element</h2>
+<p><font size="4" color="red">This is some text!</font></p>
+<p><font size="1" color="blue">This is some text!</font></p>
+<p><font face="verdana" color="green">This is some text!</font></p>
+<p><strong>Note:</strong> The font element is not supported in HTML5. Use CSS instead.</p> 
+<hr>
+
+..html,
+<h2>The footer element</h2>
+<footer>
+  <p>Posted by: Hege Refsnes</p>
+  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+</footer> 
+<hr>
+
+..html,
+<frameset cols="25%,*,25%">
+  <frame src="new1.html">
+  <frame src="new1.html">
+  <frame src="new1.html">
+</frameset>
+<hr>
+
+..html,
+<h1>This is heading 1</h1>
+<h2>This is heading 2</h2>
+<h3>This is heading 3</h3>
+<h4>This is heading 4</h4>
+<h5>This is heading 5</h5>
+<h6>This is heading 6</h6>
+<p><b>Tip:</b> Use h1 to h6 elements only for headings. Do not use them just to make text bold or big. Use other tags for that.</p>
+<hr>
+
+..html,
+<h2>The iframe element</h2>
+<iframe src="https://www.w3schools.com">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+<hr>
+
+..html,
+<h2>The img element</h2>
+<img src="smiley.gif" alt="Smiley face" width="42" height="42">
+<hr>
+ 
+..html,
+<h2>The input element</h2>
+<form action="/action_page.php">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p>Click the "Submit" button and the form-data will be sent to a page on the 
+server called "action_page.php".</p>
+<hr>
+
+..html,
+<h2>The ins element</h2>
+<p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+<hr>
+
+..html,
+<h2>The ol and ul elements</h2>
+<p>The ol element defines an ordered list:</p>
+<ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+<p>The ul element defines an unordered list:</p>
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+<hr>
+
+..html,
+<h2>The main element</h2>
+<main>
+  <h2>Web Browsers</h2>
+  <p>Chrome, Firefox, and Edge are the most used browsers today.</p>
+
+  <article>
+    <h3>Google Chrome</h3>
+    <p>Chrome is a free, open-source web browser developed by Google, released in 2008.</p>
+  </article>
+
+  <article>
+    <h3>Microsoft Edge</h3>
+    <p>Edge is a free web browser from Microsoft, released in 1995.</p>
+  </article>
+
+  <article>
+    <h3>Mozilla Firefox</h3>
+    <p>Firefox is a free, open-source web browser from Mozilla, released in 2004.</p>
+  </article>
+</main>
+
+<p><strong>Note:</strong> The main tag is not supported in Internet Explorer 11 and earlier versions.</p>
+<hr>
+
+..html,
+<h2>The mark element</h2>
+<p>Do not forget to buy <mark>milk</mark> today.</p>
+<hr>
+
+..html,
+<h2>The meter element</h2>
+<p>The meter element is used to display a gauge:</p>
+<label for="disk_c">Disk usage C:</label>
+<meter id="disk_c" value="2" min="0" max="10">2 out of 10</meter><br>
+<label for="disk_d">Disk usage D:</label>
+<meter id="disk_d" value="0.6">60%</meter>
+<p><strong>Note:</strong> The meter tag is not supported in Edge 12 (or earlier).</p>
+<hr>
+
+..html,
+<h2>The nav element</h2>
+<p>The nav element defines a set of navigation links:</p>
+<nav>
+<a href="/html/">HTML</a> |
+<a href="/css/">CSS</a> |
+<a href="/js/">JavaScript</a> |
+<a href="/jquery/">jQuery</a>
+</nav>
+<hr>
+
+..html,
+ <frameset cols="25%,50%,25%">
+  <frame src="frame_a.htm">
+  <frame src="frame_b.htm">
+  <frame src="frame_c.htm">
+  <noframes>Sorry, your browser does not handle frames!</noframes>
+</frameset>
+<hr>
+
+..html,
+<h2>The option element</h2>
+<label for="cars">Choose a car:</label>
+<select id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+<hr>  
+
+..html,
+<h2>The p element</h2>
+<p>This is a paragraph.</p>
+<p>This is a paragraph.</p>
+<p>This is a paragraph.</p>
+<hr>
+
+..html,
+<h2>The param element</h2>
+<object data="horse.wav">
+<param name="autoplay" value="true">
+</object>
+<hr>
+
+..html,
+<h2>The picture element</h2>
+<picture>
+  <source media="(min-width: 650px)" srcset="img_pink_flowers.jpg">
+  <source media="(min-width: 465px)" srcset="img_orange_flowers.jpg">
+  <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
+</picture>
+
+<p>Resize the browser to see different versions of the picture 
+loading at different viewport sizes.
+The browser looks for the first source element where the media 
+query matches the user's current viewport width,
+and fetches the image specified in the srcset attribute.</p>
+
+<p>The img element is required as the last child tag of the picture 
+declaration block.
+The img element is used to provide backward compatibility for 
+browsers that do not support the picture element, or if none of 
+the source tags matched.
+</p>
+
+<p><strong>Note:</strong> The picture element is not supported in I
+E12 and earlier or Safari 9.0 and earlier.</p>
+<hr>
+
+..html,
+<h2>The pre element</h2>
+<pre>
+Text in a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks
+</pre>
+<hr>
+
+..html,
+<h2>The progress element</h2>
+<label for="file">Downloading progress:</label>
+<progress id="file" value="32" max="100"> 32% </progress>
+<hr>
+
+..html,
+<h2>The q element</h2>
+<p>WWF's goal is to: 
+<q>Build a future where people live in harmony with nature.</q>
+We hope they succeed.</p>
+<hr>
+
+..html,
+<h2>The rp element</h2>
+<ruby> 漢 <rt><rp>(</rp>ㄏㄢˋ<rp>)</rp></rt></ruby>
+<hr>
+
+..html,
+<h2>The ruby and rt elements</h2>
+<ruby> 漢 <rt> ㄏㄢˋ </rt></ruby>
+<hr>
+
+..html,
+<h2The s element</h2>
+<p><s>My car is blue.</s></p>
+<p>My new car is silver.</p>
+<hr>
+
+..html,
+<h2>The section element</h2>
+<section>
+  <h2>WWF</h2>
+  <p>The World Wide Fund for Nature (WWF) is an international 
+  organization working on issues regarding the conservation, 
+  research and restoration of the environment, formerly named 
+  the World Wildlife Fund. WWF was founded in 1961.</p>
+</section>
+<section>
+  <h2>WWF's Panda symbol</h2>
+  <p>The Panda has become the symbol of WWF. The well-known 
+  panda logo of WWF originated from a panda named Chi Chi 
+  that was transferred from the Beijing Zoo to the London 
+  Zoo in the same year of the establishment of WWF.</p>
+</section>
+<hr>
+
+..html,
+<h2>The small element</h2>
+<p>This is some normal text.</p>
+<p><small>This is some smaller text.</small></p>
+<hr>
+
+..html,
+<h2>The strike element</h2>
+<p>Version 2.0 is <strike>not yet available!</strike> now available!</p>
+<p>The strike element is not supported in HTML5. Use CSS instead.</p>
+<hr>
+ 
+..html,
+<h2>This is a heading</h2>
+<p>This is a paragraph.</p>
+<hr>
+
+..html,
+<h2>The sub and sup elements</h2>
+<p>This text contains <sub>subscript</sub> text.</p>
+<p>This text contains <sup>superscript</sup> text.</p>
+<hr>
+
+..html,
+<h2>The summary element</h2>
+<details>
+  <summary>Copyright 1999-2014.</summary>
+  <p> - by Refsnes Data. All Rights Reserved.</p>
+  <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+</details>
+<p><b>Note:</b> The summary element is not supported in Edge prior version 79.</p>
+<hr>
+
+..html,
+<h2>The td element</h2>
+<p>The td element defines a standard cell in a table:</p>
+<table>
+  <tr>
+    <td>Cell A</td>
+    <td>Cell B</td>
+  </tr>
+</table>
+<hr>
+
+..html,
+<h2>The template element</h2>
+<p>Content inside a template tag is hidden from the client.</p>
+<template>
+  <h2>Flower</h2>
+  <img src="img_white_flower.jpg" width="214" height="204">
+</template>
+<p>A later example will show you how to use JavaScript to display the template content.</p>
+<hr>
+
+..html,
+<h1>The textarea element</h1>
+<label for="w3mission">W3Schools' mission:</label>
+<textarea id="w3mission" rows="4" cols="50">
+At w3schools.com you will learn how to make a website. 
+We offer free tutorials in all web development technologies.
+</textarea>
+<hr>
+
+..html,
+<h1>The table element</h1>
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$80</td>
+  </tr>
+</table>
+<hr>
+
+..html,
+<h2>The thead, tbody,  tfoot elements</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Savings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>January</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>February</td>
+      <td>$80</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Sum</td>
+      <td>$180</td>
+    </tr>
+  </tfoot>
+</table>
+
+<p><b>Tip:</b> The thead, tbody, and tfoot elements will not 
+affect the layout of the table by default. However, 
+you can use CSS to style these elements.</p>
+<hr>
+
+..html,
+<h1>The tt element</h1>
+<p>This text is normal.</p>
+<p><tt>This text is teletype text.</tt></p>
+<p><strong>Note:</strong> The tt element is not supported in HTML5.</p>
+<hr>
+
+..html,
+<h1>The u element</h1>
+<p>This is a <u>parragraph</u>.</p>
+<hr>
+
+..html,
+<h1>The ul element</h1>
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+<hr>
+
+..html,
+<h2>Phrase elements</h2>
+<em>Emphasized text</em><br>
+<strong>Strong text</strong><br>
+<code>A piece of computer code</code><br>
+<samp>Sample output from a computer program</samp><br>
+<kbd>Keyboard input</kbd><br>
+<var>Variable</var>
+<hr>
+
+..html,
+<h2>The video element</h2>
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+<hr>	
+**/
 
 
 
@@ -724,624 +1348,7 @@ const fffd=`
 	..header_text,widget input ..[p](i_html)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_html');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_html');	
-..html,
-<h2>The a element</h2>
-<a href="https://www.google.com">Visit google</a>
-<hr>
 
-..html,
-<h2>The abbr element</h2>
-<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
-<hr>
-
-..html,
-<h2>The address element</h2>
-<address>
-Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br> 
-Visit us at:<br>
-Example.com<br>
-Box 564, Disneyland<br>
-USA
-</address>
-<hr>
-
-..html,
-<h2>The aside element</h2>
-<p>My family and I visited The Epcot center this summer. 
-The weather was nice, and Epcot was amazing! I had a
- great summer together with my family!</p>
-<aside>
-  <h4>Epcot Center</h4>
-  <p>Epcot is a theme park at Walt Disney World Resort featuring 
-  exciting attractions, international pavilions, award-winning 
-  fireworks and seasonal special events.</p>
-</aside>
-<hr>
-
-..html,
-<h2>The b element</h2>
-<p>This is normal text - <b>and this is bold text</b>.</p>
-<hr>
-
-..html,
-<h2>The base element</h12>
-<p><img src="images/stickman.gif" width="24" height="39" alt="Stickman"> - Notice that we have only specified a relative address for the image. Since we have specified a base URL in the head section, the browser will look for the image at "https://www.w3schools.com/images/stickman.gif".</p>
-<p><a href="tags/tag_base.asp">HTML base tag</a> - Notice that the link opens in a new window, even if it has no target="_blank" attribute. This is because the target attribute of the base element is set to "_blank".</p>
-<hr>
-
-..html,
-<h2>The bdi element</h2>
-<p>In the example below, usernames are shown along with the number of points in a contest. If the bdi element is not supported in the browser, the username of the Arabic user would confuse the text (the bidirectional algorithm would put the colon and the number "90" next to the word "User" rather than next to the word "points").</p>
-<ul>
- <li>User <bdi>hrefs</bdi>: 60 points</li>
- <li>User <bdi>jdoe</bdi>: 80 points</li>
- <li>User <bdi>إيان</bdi>: 90 points</li>
-</ul>
-<hr>
-
-..html,
-<h2>The bdo element</h2>
-<p>This paragraph will go left-to-right.</p>  
-<p><bdo dir="rtl">This paragraph will go right-to-left.</bdo></p>  
-<hr>
-
-..html,
-<h2>The blockquote element</h2>
-<p>Here is a quote from WWF's website:</p>
-<blockquote cite="http://www.worldwildlife.org/who/index.html">
-For 50 years, WWF has been protecting the future of nature. The world's 
-leading conservation organization, WWF works in 100 countries and is 
-supported by 1.2 million members in the United States and close to 
-5 million globally.
-</blockquote>
-<hr>
-
-..html,
-<h2>The br element</h2>
-<p>To force<br> line breaks<br> in a text,<br> use the br<br> element.</p>
-<hr>
-
-..html,
-<h2>The button Element</h2>
-<button type="button" onclick="alert('Hello world!')">Click Me!</button>
-<hr>
- 
-..html,
-<h2>The canvas element</h2>
-<canvas id="myCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
-<script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.fillStyle = "#FF0000";
-ctx.fillRect(0, 0, 80, 100);
-</script>
-<hr>
-
-..html,
-<h2>The center element</h2>
-<center>This text will be center-aligned.</center>
-<p>The center element is not supported in HTML5. Use CSS instead.</p>
-<hr>
-
-..html,
-<h2>The cite element</h2>
-<img src="img_the_scream.jpg" width="220" height="277" alt="The Scream">
-<p><cite>The Scream</cite> by Edward Munch. Painted in 1893.</p>
-<hr>
-
-..html,
-<h2>The colgroup, col element</h2>
-<table>
-  <colgroup>
-    <col span="2" style="background-color:red">
-    <col style="background-color:yellow">
-  </colgroup>
-  <tr>
-    <th>ISBN</th>
-    <th>Title</th>
-    <th>Price</th>
-  </tr>
-  <tr>
-    <td>3476896</td>
-    <td>My first HTML</td>
-    <td>$53</td>
-  </tr>
-  <tr>
-    <td>5869207</td>
-    <td>My first CSS</td>
-    <td>$49</td>
-  </tr>
-</table>
-<hr>
-
-..html,
-<h2>The datalist element</h2>
-<form action="/action_page.php" method="get">
-  <input list="browsers" name="browser">
-  <datalist id="browsers">
-    <option value="Internet Explorer">
-    <option value="Firefox">
-    <option value="Chrome">
-    <option value="Opera">
-    <option value="Safari">
-  </datalist>
-  <input type="submit">
-</form>
-<p><strong>Note:</strong> The datalist tag is not supported in Safari 12.0 (or earlier).</p>
-<hr>
-
-..html,
-<h2>The dl, dd, and dt elements</h2>
-<p>These three elements are used to create a description list:</p>
-<dl>
-  <dt>Coffee</dt>
-  <dd>Black hot drink</dd>
-  <dt>Milk</dt>
-  <dd>White cold drink</dd>
-</dl>
-<hr>
-
-..html,
-<h2>The details element</h2>
-<details>
-  <summary>Copyright 1999-2018.</summary>
-  <p> - by Refsnes Data. All Rights Reserved.</p>
-  <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
-</details>
-<p><b>Note:</b> The details tag is not supported in Internet Explorer.</p>
-<hr>
-
-..html,
-<h2>The dfn element</h2>
-<p><dfn>HTML</dfn> is the standard markup language for creating web pages.</p> 
-<hr>
-
-..html,
-<h2>The dialog element</h2>
-<table>
-  <tr>
-    <th>January <dialog open>This is an open dialog window</dialog></th>
-    <th>February</th>
-    <th>March</th>
-  </tr>
-  <tr>
-    <td>31</td>
-    <td>28</td>
-    <td>31</td>
-  </tr>
-</table>
-<p><b>Note:</b> The dialog tag is not supported in Safari and Edge (prior version 79).</p>
-<hr>
-
-..html,
-<h2>The div element</h2>
-<div style="background-color:lightblue">
-  <h3>This is a heading in a div element</h3>
-  <p>This is some text in a div element.</p>
-</div>
-<p>This is some text in a p element.</p>
-<hr>
-
-..html,
-<h2>The dl, dd, and dt elements</h2>
-<p>These three elements are used to create a description list:</p>
-<dl>
-  <dt>Coffee</dt>
-  <dd>Black hot drink</dd>
-  <dt>Milk</dt>
-  <dd>White cold drink</dd>
-</dl>
-<hr>
-
-..html,
-<h2>The figure and figcaption element</h2>
-<figure>
-  <img src="pic_trulli.jpg" alt="Trulli" style="width:100%">
-  <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
-</figure>
-<hr>
-
-..html,
-<h2>The font element</h2>
-<p><font size="4" color="red">This is some text!</font></p>
-<p><font size="1" color="blue">This is some text!</font></p>
-<p><font face="verdana" color="green">This is some text!</font></p>
-<p><strong>Note:</strong> The font element is not supported in HTML5. Use CSS instead.</p> 
-<hr>
-
-..html,
-<h2>The footer element</h2>
-<footer>
-  <p>Posted by: Hege Refsnes</p>
-  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
-</footer> 
-<hr>
-
-..html,
-<frameset cols="25%,*,25%">
-  <frame src="new1.html">
-  <frame src="new1.html">
-  <frame src="new1.html">
-</frameset>
-<hr>
-
-..html,
-<h1>This is heading 1</h1>
-<h2>This is heading 2</h2>
-<h3>This is heading 3</h3>
-<h4>This is heading 4</h4>
-<h5>This is heading 5</h5>
-<h6>This is heading 6</h6>
-<p><b>Tip:</b> Use h1 to h6 elements only for headings. Do not use them just to make text bold or big. Use other tags for that.</p>
-<hr>
-
-..html,
-<h2>The iframe element</h2>
-<iframe src="https://www.w3schools.com">
-  <p>Your browser does not support iframes.</p>
-</iframe>
-<hr>
-
-..html,
-<h2>The img element</h2>
-<img src="smiley.gif" alt="Smiley face" width="42" height="42">
-<hr>
- 
-..html,
-<h2>The input element</h2>
-<form action="/action_page.php">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input type="submit" value="Submit">
-</form>
-
-<p>Click the "Submit" button and the form-data will be sent to a page on the 
-server called "action_page.php".</p>
-<hr>
-
-..html,
-<h2>The ins element</h2>
-<p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
-<hr>
-
-..html,
-<h2>The ol and ul elements</h2>
-<p>The ol element defines an ordered list:</p>
-<ol>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ol>
-<p>The ul element defines an unordered list:</p>
-<ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ul>
-<hr>
-
-..html,
-<h2>The main element</h2>
-<main>
-  <h2>Web Browsers</h2>
-  <p>Chrome, Firefox, and Edge are the most used browsers today.</p>
-
-  <article>
-    <h3>Google Chrome</h3>
-    <p>Chrome is a free, open-source web browser developed by Google, released in 2008.</p>
-  </article>
-
-  <article>
-    <h3>Microsoft Edge</h3>
-    <p>Edge is a free web browser from Microsoft, released in 1995.</p>
-  </article>
-
-  <article>
-    <h3>Mozilla Firefox</h3>
-    <p>Firefox is a free, open-source web browser from Mozilla, released in 2004.</p>
-  </article>
-</main>
-
-<p><strong>Note:</strong> The main tag is not supported in Internet Explorer 11 and earlier versions.</p>
-<hr>
-
-..html,
-<h2>The mark element</h2>
-<p>Do not forget to buy <mark>milk</mark> today.</p>
-<hr>
-
-..html,
-<h2>The meter element</h2>
-<p>The meter element is used to display a gauge:</p>
-<label for="disk_c">Disk usage C:</label>
-<meter id="disk_c" value="2" min="0" max="10">2 out of 10</meter><br>
-<label for="disk_d">Disk usage D:</label>
-<meter id="disk_d" value="0.6">60%</meter>
-<p><strong>Note:</strong> The meter tag is not supported in Edge 12 (or earlier).</p>
-<hr>
-
-..html,
-<h2>The nav element</h2>
-<p>The nav element defines a set of navigation links:</p>
-<nav>
-<a href="/html/">HTML</a> |
-<a href="/css/">CSS</a> |
-<a href="/js/">JavaScript</a> |
-<a href="/jquery/">jQuery</a>
-</nav>
-<hr>
-
-..html,
- <frameset cols="25%,50%,25%">
-  <frame src="frame_a.htm">
-  <frame src="frame_b.htm">
-  <frame src="frame_c.htm">
-  <noframes>Sorry, your browser does not handle frames!</noframes>
-</frameset>
-<hr>
-
-..html,
-<h2>The option element</h2>
-<label for="cars">Choose a car:</label>
-<select id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
-</select>
-<hr>  
-
-..html,
-<h2>The p element</h2>
-<p>This is a paragraph.</p>
-<p>This is a paragraph.</p>
-<p>This is a paragraph.</p>
-<hr>
-
-..html,
-<h2>The param element</h2>
-<object data="horse.wav">
-<param name="autoplay" value="true">
-</object>
-<hr>
-
-..html,
-<h2>The picture element</h2>
-<picture>
-  <source media="(min-width: 650px)" srcset="img_pink_flowers.jpg">
-  <source media="(min-width: 465px)" srcset="img_orange_flowers.jpg">
-  <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
-</picture>
-
-<p>Resize the browser to see different versions of the picture 
-loading at different viewport sizes.
-The browser looks for the first source element where the media 
-query matches the user's current viewport width,
-and fetches the image specified in the srcset attribute.</p>
-
-<p>The img element is required as the last child tag of the picture 
-declaration block.
-The img element is used to provide backward compatibility for 
-browsers that do not support the picture element, or if none of 
-the source tags matched.
-</p>
-
-<p><strong>Note:</strong> The picture element is not supported in I
-E12 and earlier or Safari 9.0 and earlier.</p>
-<hr>
-
-..html,
-<h2>The pre element</h2>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<hr>
-
-..html,
-<h2>The progress element</h2>
-<label for="file">Downloading progress:</label>
-<progress id="file" value="32" max="100"> 32% </progress>
-<hr>
-
-..html,
-<h2>The q element</h2>
-<p>WWF's goal is to: 
-<q>Build a future where people live in harmony with nature.</q>
-We hope they succeed.</p>
-<hr>
-
-..html,
-<h2>The rp element</h2>
-<ruby> 漢 <rt><rp>(</rp>ㄏㄢˋ<rp>)</rp></rt></ruby>
-<hr>
-
-..html,
-<h2>The ruby and rt elements</h2>
-<ruby> 漢 <rt> ㄏㄢˋ </rt></ruby>
-<hr>
-
-..html,
-<h2The s element</h2>
-<p><s>My car is blue.</s></p>
-<p>My new car is silver.</p>
-<hr>
-
-..html,
-<h2>The section element</h2>
-<section>
-  <h2>WWF</h2>
-  <p>The World Wide Fund for Nature (WWF) is an international 
-  organization working on issues regarding the conservation, 
-  research and restoration of the environment, formerly named 
-  the World Wildlife Fund. WWF was founded in 1961.</p>
-</section>
-<section>
-  <h2>WWF's Panda symbol</h2>
-  <p>The Panda has become the symbol of WWF. The well-known 
-  panda logo of WWF originated from a panda named Chi Chi 
-  that was transferred from the Beijing Zoo to the London 
-  Zoo in the same year of the establishment of WWF.</p>
-</section>
-<hr>
-
-..html,
-<h2>The small element</h2>
-<p>This is some normal text.</p>
-<p><small>This is some smaller text.</small></p>
-<hr>
-
-..html,
-<h2>The strike element</h2>
-<p>Version 2.0 is <strike>not yet available!</strike> now available!</p>
-<p>The strike element is not supported in HTML5. Use CSS instead.</p>
-<hr>
- 
-..html,
-<h2>This is a heading</h2>
-<p>This is a paragraph.</p>
-<hr>
-
-..html,
-<h2>The sub and sup elements</h2>
-<p>This text contains <sub>subscript</sub> text.</p>
-<p>This text contains <sup>superscript</sup> text.</p>
-<hr>
-
-..html,
-<h2>The summary element</h2>
-<details>
-  <summary>Copyright 1999-2014.</summary>
-  <p> - by Refsnes Data. All Rights Reserved.</p>
-  <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
-</details>
-<p><b>Note:</b> The summary element is not supported in Edge prior version 79.</p>
-<hr>
-
-..html,
-<h2>The td element</h2>
-<p>The td element defines a standard cell in a table:</p>
-<table>
-  <tr>
-    <td>Cell A</td>
-    <td>Cell B</td>
-  </tr>
-</table>
-<hr>
-
-..html,
-<h2>The template element</h2>
-<p>Content inside a template tag is hidden from the client.</p>
-<template>
-  <h2>Flower</h2>
-  <img src="img_white_flower.jpg" width="214" height="204">
-</template>
-<p>A later example will show you how to use JavaScript to display the template content.</p>
-<hr>
-
-..html,
-<h1>The textarea element</h1>
-<label for="w3mission">W3Schools' mission:</label>
-<textarea id="w3mission" rows="4" cols="50">
-At w3schools.com you will learn how to make a website. 
-We offer free tutorials in all web development technologies.
-</textarea>
-<hr>
-
-..html,
-<h1>The table element</h1>
-<table>
-  <tr>
-    <th>Month</th>
-    <th>Savings</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$80</td>
-  </tr>
-</table>
-<hr>
-
-..html,
-<h2>The thead, tbody,  tfoot elements</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Month</th>
-      <th>Savings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>January</td>
-      <td>$100</td>
-    </tr>
-    <tr>
-      <td>February</td>
-      <td>$80</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Sum</td>
-      <td>$180</td>
-    </tr>
-  </tfoot>
-</table>
-
-<p><b>Tip:</b> The thead, tbody, and tfoot elements will not 
-affect the layout of the table by default. However, 
-you can use CSS to style these elements.</p>
-<hr>
-
-..html,
-<h1>The tt element</h1>
-<p>This text is normal.</p>
-<p><tt>This text is teletype text.</tt></p>
-<p><strong>Note:</strong> The tt element is not supported in HTML5.</p>
-<hr>
-
-..html,
-<h1>The u element</h1>
-<p>This is a <u>parragraph</u>.</p>
-<hr>
-
-..html,
-<h1>The ul element</h1>
-<ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ul>
-<hr>
-
-..html,
-<h2>Phrase elements</h2>
-<em>Emphasized text</em><br>
-<strong>Strong text</strong><br>
-<code>A piece of computer code</code><br>
-<samp>Sample output from a computer program</samp><br>
-<kbd>Keyboard input</kbd><br>
-<var>Variable</var>
-<hr>
-
-..html,
-<h2>The video element</h2>
-<video width="320" height="240" controls>
-  <source src="movie.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
-<hr>	
 ..}	
 	
 

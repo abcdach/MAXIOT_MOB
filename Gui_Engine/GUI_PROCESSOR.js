@@ -48,7 +48,7 @@ p[Lim-1] = p[Lim-1].replace("<ad1899345>","..");
 //..[w],1     ..{ GUI Content ..}							//
 //..[page],1  ..{ GUI Content ..}							//
 
-//..[c],name  ..{ GUI Content ..}							// collapsible
+//..[c],name  ..{ *GUI Content* ..}							// collapsible
 //..[p](PAN1) ..{ GUI Content ..}							//
 //..[pop](POP1_2),10px 20px ..{ GUI Content ..}				//
 //-------------------------------------------				//panel start java[ Panel_Open("ID"); ]											//panel stop
@@ -95,7 +95,7 @@ function GUI_Processor(isDATA){
 	var grid_num   = 0;
 	var grid_cou   = 0;
 	var grid_add   = 0;
-	var collapsible_status = 0;
+
 	var panel_status = 0;
 	var i,b; 
 	var select = ""; var select_id = ""
@@ -166,6 +166,10 @@ function GUI_Processor(isDATA){
 			case "radio":			p_NUM = 3; break;//+
 			case "select":			p_NUM = 2; break;//+
 			case "listview":		p_NUM = 2; break;//+
+			/////////////////////////////////////////
+			case "[collaps]":		p_NUM = 1; break;
+			case "[col]":			p_NUM = 1; break;
+			case "[c]":				p_NUM = 1; break;
 			/////////////////////////////////////////
 			case "[Append]":						p_NUM = 1; break;
 			case "html_body":						p_NUM = 1; break;
@@ -580,18 +584,29 @@ function GUI_Processor(isDATA){
 					default:
 						break;
 				}					
-				break;		
+				break;
+
+			case "[collaps]":
+			case "[col]":
+			case "[c]":
+				Current_Mark = 'c';
+				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
+				isHTML += '<h4>'+isPAYLOAD+'</h4>';
+				break;
+			case "<-[c]":				
+				isHTML += '</div>';
+				break;				
 //####################################################################################
-//##	isPAYLOAD
+//##	isPAYLOAD  ALD
 //##	isPARA
 //##
 //####################################################################################	
 
+				
+				
+				
+				
 
-		//if(Append_Status === 1){
-			
-			//Append_Data += isHTML;	
-			
 
 			case "[append]":
 				Current_Mark = 'a';
@@ -685,19 +700,7 @@ function GUI_Processor(isDATA){
 
 
 		
-			case "[ocllaps]":
-			case "[col]":
-			case "[c]":
-				Current_Mark = 'c';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="collapsible";	//on
-				isHTML += '<div data-role="collapsible" class="ui-nodisc-icon ui-alt-icon">';
-				isHTML += '<h4>'+p[1]+'</h4>';
-				collapsible_status = 1;
-				break;
-			case "<-[c]":				
-				isHTML += '</div>';
-				collapsible_status = 0;
-				break;
+
 
 
 
@@ -859,6 +862,10 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_JAVA_SCRIPT"]').append(Tmp_JAVA);
 				break;				
 				
+				
+//####################################################################################
+//##	
+//####################################################################################
 			case "JustGage":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
@@ -883,7 +890,22 @@ function GUI_Processor(isDATA){
 				//g1.refresh(55);
 				break;				
 
-			//#######################################################################################	
+
+
+
+
+
+
+
+
+
+
+
+
+
+//####################################################################################
+//##	
+//####################################################################################	
 			case "html_element":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
@@ -896,9 +918,6 @@ function GUI_Processor(isDATA){
 				}					
 				isHTML += p[1]+p[3]+p[2];		
 				break;
-			
-			
-			
 			case "block":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
@@ -924,9 +943,6 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				isHTML += '</div>';
 				break;		
-			
-			
-			
 			case "[m]":
 				Current_Mark = 'm';
 				isHTML = '<h1>  </h1>';
@@ -939,13 +955,6 @@ function GUI_Processor(isDATA){
 				$('[data-role="panel_1"]').append(isHTML_PANEL);
 				panel_status = 0;
 				break;
-				
-				
-				
-				
-				
-			
-			
 			case "m_objects":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim();else p[1] = '';
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim();else p[2] = '';
@@ -979,14 +988,11 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				isHTML += '</li>';
 				break;				
-
 			case "m_object":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
 				isHTML += '<li><a href="'+p[2]+'" data-ajax="false">'+p[1]+'</a></li>';
 				break;
-				
-				
 			case "bar":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="3";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";					

@@ -1,9 +1,18 @@
 
 const isMen1 =`
 ..listview,
-	-- Home(1
-	-- html(wi_html)
+	-- Home(1)
 	,Page_change(Value);
+	
+..[c],temp
+..{
+	..listview,
+		-- html(wi_html)
+		-- tmp1(wi_tmp1)
+		-- tmp2(wi_tmp2)
+		-- tmp3(wi_tmp3)
+		,Page_change(Value);
+..}
 ..[c],Connection Config
 ..{
 	..listview,
@@ -46,7 +55,73 @@ const fff=`
 
 ..[page],1
 ..{
+	..header_text,Home ..[p](m1)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
+	
+	`+isMen1+`
+	..create_page,wi_Button
+	..create_page,wi_checkbox
+	..create_page,wi_radio
+	..create_page,wi_select
+	..create_page,wi_slider
+	..create_page,wi_flip
+	..create_page,wi_listview
+	..create_page,wi_text
+	..create_page,wi_input
+	..create_page,wi_collapsible
+	
+	..create_page,wi_html
+	..create_page,wi_tmp1
+	..create_page,wi_tmp2
+	..create_page,wi_tmp3
+	
 
+
+..}
+..[page],wi_collapsible
+..{
+	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_collapsible');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_collapsible');
+
+	..label,Syntax
+	..codemirror(Cmir_collapsible_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_collapsible_1,
+	\\..[collaps],text
+	\\..{
+			*GUI Content*
+	\\..}
+
+	..label,Example
+	..codemirror(Cmir_collapsible_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_collapsible_2,
+	\\..[collaps],collaps text
+	\\..{
+		\\..input_text(COL_1)
+		\\..##,2
+		\\..button, Button 1, put_input_text('COL_1','Button 11111111');
+		\\..button, Button 2, put_input_text('COL_1','Button 22222222');
+	\\..}
+			
+	..[collaps],collaps text
+	..{
+		..input_text(COL_1)
+		..##,2
+		..button, Button 1, put_input_text('COL_1','Button 11111111');
+		..button, Button 2, put_input_text('COL_1','Button 22222222');
+	..}
+..}
+
+
+
+..[page],wi_tmp1
+..{
+	..header_text,widget tmp1 ..[p](i_tmp1)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tmp1');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tmp1');
+	
+	
 ..css,
 #rrr12
 {
@@ -59,7 +134,7 @@ const fff=`
    width:250px; /* or whatever width you want. */
    max-width:550px; /* or whatever width you want. */
    display: inline-block;
-}
+}	
 ..html,
 <table>
   <tr>
@@ -84,31 +159,21 @@ const fff=`
 ..html,</div></td>
 ..html,</tr>
 
-</table>
-
-
-
-	..header_text,Home ..[p](m1)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
-	
-
-	
-	`+isMen1+`
-	..create_page,wi_Button
-	..create_page,wi_checkbox
-	..create_page,wi_radio
-	..create_page,wi_select
-	..create_page,wi_slider
-	..create_page,wi_flip
-	..create_page,wi_listview
-	..create_page,wi_text
-	..create_page,wi_input
-	..create_page,wi_collapsible
-	..create_page,wi_html
+</table>	
 	
 	
-
+..}
+..[page],wi_tmp2
+..{
+	..header_text,widget tmp2 ..[p](i_tmp2)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tmp2');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tmp2');
+..}
+..[page],wi_tmp3
+..{
+	..header_text,widget Button ..[p](i_tmp3)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tmp3');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tmp3');
 ..}
 ..[page],wi_Button
 ..{
@@ -380,13 +445,26 @@ const fff=`
 
 ..}
 
-..[page],wi_collapsible
-..{
-	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_collapsible');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_collapsible');
-..iframe,400,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com
-..}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ..[page],wi_html
