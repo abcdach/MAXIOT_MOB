@@ -1,9 +1,6 @@
 
 const isMen1 =`
-..listview,
-	-- Home(1)
-	,Page_change(Value);
-	
+..listview,-- Home(1),Page_change(Value);
 ..[c],temp
 ..{
 	..listview,
@@ -30,28 +27,13 @@ const isMen1 =`
 		-- panel(wi_panel)
 		-- tab(wi_tab)
 		,Page_change(Value);
-..}
-
-
-`;
+..} `;
 const uiBtn =`ui-btn ui-btn-icon-notext ui-corner-all `;
 
 
 const fff=`
 
 ..css, table, th, td { border: 1px solid black;}
-
-..html_head,
-	<script src="MOB/MyJS/justgage/raphael-2.1.4.min.js"></script>
-    <script src="MOB/MyJS/justgage/justgage.js"></script>
-	
-	<script src="MOB/js/paho-mqtt-min.js"></script>
-	<style>
-	  .CodeMirror {border: 1px solid silver; margin-bottom: 1em; height: auto;}
-	  dt { text-indent: -2em; padding-left: 2em; margin-top: 1em; }
-	  dd { margin-left: 1.5em; margin-bottom: 1em; }
-	  dt {margin-top: 1em;}
-	</style>
 ..css, .ui-content { max-width: 800px; margin: 0 auto;} 
 
 
