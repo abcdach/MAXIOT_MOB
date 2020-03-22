@@ -27,6 +27,7 @@ const isMen1 =`
 		-- inputs(wi_input)
 		-- collapsible(wi_collapsible)
 		-- popup(wi_popup)
+		-- panel(wi_panel)
 		,Page_change(Value);
 ..}
 
@@ -56,7 +57,7 @@ const fff=`
 
 ..[page],1
 ..{
-	..header_text,Home ..[p](m1)..{`+isMen1+`..}
+	..header_text,Home ..[panel](m1)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('m1');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('m1');
 	
@@ -72,36 +73,37 @@ const fff=`
 	..create_page,wi_input
 	..create_page,wi_collapsible
 	..create_page,wi_popup
+	..create_page,wi_panel
 	
 	..create_page,wi_html
 	..create_page,wi_tmp1
 	..create_page,wi_tmp2
 	..create_page,wi_tmp3
+	
+	
 
 ..}
 
 
 
-
-
-..[page],wi_popup
+..[page],wi_panel
 ..{
-	..header_text,widget popup ..[p](i_popup)..{`+isMen1+`..}
-	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_popup');
-	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_popup');
+	..header_text,widget panel ..[panel](i_panel)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_panel');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_panel');
 	
 	..label,Syntax
-	..codemirror(Cmir_popup_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_popup_1,
-	\\..[pop],10px 20px
+	..codemirror(Cmir_panel_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_panel_1,
+	\\..[panel]
 	\\..{
 			*GUI Content*
 	\\..}
 
 	..label,Example
-	..codemirror(Cmir_popup_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
-	..codemirror_text,Cmir_popup_2,
-	\\..[pop](POP_1),10px 20px
+	..codemirror(Cmir_panel_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_panel_2,
+	\\..[panel](PAN_1),10px 20px
 	\\..{
 		\\..label, Host Name:
 		\\..input_text, http://maxh6/
@@ -114,10 +116,10 @@ const fff=`
 		\\..##,2 
 		\\..button,Save
 		\\..button,Connect
-	\\..}
-	\\..button,OPEN POP_1, Popup_Open('POP_1');
+	.\\.}
+	\\..button,OPEN PANEL, Panel_Open('PAN_1');
 	
-	..[pop](POP_1),10px 20px
+	..[panel](PAN_1),10px 20px
 	..{
 		..label, Host Name:
 		..input_text, http://maxh6/
@@ -131,12 +133,62 @@ const fff=`
 		..button,Save
 		..button,Connect
 	..}
-	..button,OPEN POP_1, Popup_Open('POP_1');
+	..button,OPEN PANEL, Panel_Open('PAN_1');
+..}
+
+..[page],wi_popup
+..{
+	..header_text,widget popup ..[panel](i_popup)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_popup');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_popup');
+	
+	..label,Syntax
+	..codemirror(Cmir_popup_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_popup_1,
+	\\..[popup],10px 20px
+	\\..{
+			*GUI Content*
+	\\..}
+
+	..label,Example
+	..codemirror(Cmir_popup_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_popup_2,
+	\\..[popup](POP_1),10px 20px
+	\\..{
+		\\..label, Host Name:
+		\\..input_text, http://maxh6/
+		\\..label,Port:
+		\\..input_text, 3004
+		\\..label,Device ID:
+		\\..input_text, 1655
+		\\..label,Device Name:
+		\\..input_text,Mob_Test
+		\\..##,2 
+		\\..button,Save
+		\\..button,Connect
+	\\..}
+	\\..button,OPEN POPUP, Popup_Open('POP_1');
+	
+	..[popup](POP_1),10px 20px
+	..{
+		..label, Host Name:
+		..input_text, http://maxh6/
+		..label,Port:
+		..input_text, 3004
+		..label,Device ID:
+		..input_text, 1655
+		..label,Device Name:
+		..input_text,Mob_Test
+		..##,2 
+		..button,Save
+		..button,Connect
+	..}
+	..button,OPEN POPUP, Popup_Open('POP_1');
 ..}
 
 ..[page],wi_collapsible
 ..{
-	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}
+	..header_text,widget collapsible ..[panel](i_collapsible)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_collapsible');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_collapsible');
 
@@ -172,7 +224,7 @@ const fff=`
 
 ..[page],wi_tmp1
 ..{
-	..header_text,widget tmp1 ..[p](i_tmp1)..{`+isMen1+`..}
+	..header_text,widget tmp1 ..[panel](i_tmp1)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tmp1');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tmp1');
 	
@@ -220,19 +272,19 @@ const fff=`
 ..}
 ..[page],wi_tmp2
 ..{
-	..header_text,widget tmp2 ..[p](i_tmp2)..{`+isMen1+`..}
+	..header_text,widget tmp2 ..[panel](i_tmp2)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tmp2');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tmp2');
 ..}
 ..[page],wi_tmp3
 ..{
-	..header_text,widget Button ..[p](i_tmp3)..{`+isMen1+`..}
+	..header_text,widget Button ..[panel](i_tmp3)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_tmp3');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_tmp3');
 ..}
 ..[page],wi_Button
 ..{
-	..header_text,widget Button ..[p](i_Button)..{`+isMen1+`..}
+	..header_text,widget Button ..[panel](i_Button)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_Button');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_Button');
 
@@ -256,7 +308,7 @@ const fff=`
 ..}
 ..[page],wi_checkbox
 ..{
-	..header_text,widget checkbox ..[p](i_checkbox)..{`+isMen1+`..}
+	..header_text,widget checkbox ..[panel](i_checkbox)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_checkbox');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_checkbox');
 	..label,Syntax
@@ -285,7 +337,7 @@ const fff=`
 ..}
 ..[page],wi_radio
 ..{
-	..header_text,widget radio ..[p](i_radio)..{`+isMen1+`..}
+	..header_text,widget radio ..[panel](i_radio)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_radio');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_radio');
 
@@ -313,7 +365,7 @@ const fff=`
 ..}
 ..[page],wi_select
 ..{
-	..header_text,widget select ..[p](i_select)..{`+isMen1+`..}
+	..header_text,widget select ..[panel](i_select)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_select');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_select');
 
@@ -350,7 +402,7 @@ const fff=`
 ..}
 ..[page],wi_slider
 ..{
-	..header_text,widget slider ..[p](i_slider)..{`+isMen1+`..}
+	..header_text,widget slider ..[panel](i_slider)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_slider');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_slider');
 
@@ -370,7 +422,7 @@ const fff=`
 ..}
 ..[page],wi_flip
 ..{
-	..header_text,widget flip ..[p](i_flip)..{`+isMen1+`..}
+	..header_text,widget flip ..[panel](i_flip)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_flip');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_flip');
 
@@ -392,7 +444,7 @@ const fff=`
 ..}
 ..[page],wi_listview
 ..{
-	..header_text,widget listview ..[p](i_listview)..{`+isMen1+`..}
+	..header_text,widget listview ..[panel](i_listview)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_listview');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_listview');
 
@@ -436,7 +488,7 @@ const fff=`
 
 ..[page],wi_text
 ..{
-	..header_text,widget text ..[p](i_text)..{`+isMen1+`..}
+	..header_text,widget text ..[panel](i_text)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_text');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_text');
 	
@@ -494,7 +546,7 @@ const fff=`
 
 ..[page],wi_input
 ..{
-	..header_text,widget input ..[p](i_input)..{`+isMen1+`..}
+	..header_text,widget input ..[panel](i_input)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_input');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_input');
 
@@ -524,7 +576,7 @@ const fff=`
 
 ..[page],wi_html
 ..{
-	..header_text,widget input ..[p](i_html)..{`+isMen1+`..}
+	..header_text,widget input ..[panel](i_html)..{`+isMen1+`..}
 	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_html');
 	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_html');	
 ..html,
@@ -1253,7 +1305,7 @@ const fffhh =`
 
 
 
-	..[p](PAN1) 
+	..[panel](PAN1) 
 	..{ 
 
 
@@ -1447,7 +1499,7 @@ var Part_1 =`
 			
 	..js_pc, Refresh_isConfig();
 		
-	..[pop](isConfig_pop),10px 20px 
+	..[popup](isConfig_pop),10px 20px 
 	..{
 		..label,Host: ..input_text(it_pop1_Host),
 		..label,Port: ..input_text(it_pop1_Port),
@@ -1705,7 +1757,7 @@ const START_SCRIPT3x =`
 	..button,Panel Open,
 		Panel_Open('PA1_1');
 	
-	..[p](PA1_1)
+	..[panel](PA1_1)
 	..{
 		..info,3,MAXIOT სისტემა, 
 		MAXIOT სისტემის ყველა ძირითადი პროგრამული მოდულები დაწერილია 
@@ -1717,12 +1769,12 @@ const START_SCRIPT3x =`
 	
 	
 	
-	..[pop](POP1_1)
+	..[popup](POP1_1)
 	..{
 		..iframe,250,http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&origin=http://example.com 
 	..}
 	..button,iframe, Popup_Open('POP1_1');
-	..[pop](isConfig_pop),10px 20px
+	..[popup](isConfig_pop),10px 20px
 	..{
 		..label, Host Name:
 		..input_text, http://maxh6/
@@ -1800,7 +1852,7 @@ const IS_TEST_SCRIPT =`
 			..radio,v,
 			--A(a)--B(b)--C(c)--D(d)--E(e),Theme_Change(Value);
 		..}
-		..[p](PAN0_1)
+		..[panel](PAN0_1)
 		..{
 			..[c],Connection Config
 			..{
@@ -1838,7 +1890,7 @@ const IS_TEST_SCRIPT =`
 		..}
 	..}
 	..button,panel open, Panel_Open("PAN1");
-	..[p](PAN1)
+	..[panel](PAN1)
 	..{
 		..label,ეს არის დაგენირებული პანელი
 		..slider(SL1),0,150,10,Out_0(Value);

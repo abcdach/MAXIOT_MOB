@@ -171,6 +171,7 @@ function GUI_Processor(isDATA){
 			case "[col]":			p_NUM = 1; break;
 			case "[c]":				p_NUM = 1; break;
 			case "[pop]":			p_NUM = 1; break;
+			case "[popup]":			p_NUM = 1; break;
 			/////////////////////////////////////////
 			case "[Append]":						p_NUM = 1; break;
 			case "html_body":						p_NUM = 1; break;
@@ -592,17 +593,11 @@ function GUI_Processor(isDATA){
 				break;
 			case "<-[c]":				
 				isHTML += '</div>';
-				break;				
-//####################################################################################
-//##	isPAYLOAD  ALD
-//##	isPARA
-//##
-//####################################################################################	
+				break;		
+
 			case "[pop]":
-				//if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
-				
+			case "[popup]":
 				if(isPAYLOAD === "")isPAYLOAD="0px 0px";
-					
 				Current_Mark = 'pop';
 				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
 				isHTML += '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>';
@@ -613,35 +608,9 @@ function GUI_Processor(isDATA){
 				isHTML += '</div>';
 				break;
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-
-
-			case "[append]":
-				Current_Mark = 'a';
-				Append_Plase = isPAYLOAD;
-				console.log("Append_Plase : "+isPAYLOAD);
-				Append_Data ='';
-				Append_Status = 1;
-				break;
-			case "<-[a]":
-				//isHTML += '</div>';
-				console.log("Append_Data : "+Append_Data);
-				$('[data-role="'+Append_Plase+'"]').append(Append_Data);
-				Append_Status = 0;
-				break;
-
-
-
-
+//####################################################################################
+//##	PANEL
+//####################################################################################					
 			case "[panel]":
 			case "[p]":
 				Current_Mark = 'p';
@@ -654,19 +623,21 @@ function GUI_Processor(isDATA){
 				$('[data-role="panel_'+isPage+'"]').append(isHTML_PANEL);
 				panel_status = 0;
 				break;
+				
+//####################################################################################
+//##	isPAYLOAD  ALD
+//##	isPARA
+//##
+//####################################################################################	
 
-
-
-
-
-
-
-
-
-
-
-
-
+				
+				
+				
+				
+				
+				
+				
+				
 			case "[t]":
 				Current_Mark = 't';
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="v";
@@ -698,6 +669,23 @@ function GUI_Processor(isDATA){
 				break;
 			case "<-[d]":
 				isHTML += '</div>';
+				break;				
+				
+				
+
+
+			case "[append]":
+				Current_Mark = 'a';
+				Append_Plase = isPAYLOAD;
+				console.log("Append_Plase : "+isPAYLOAD);
+				Append_Data ='';
+				Append_Status = 1;
+				break;
+			case "<-[a]":
+				//isHTML += '</div>';
+				console.log("Append_Data : "+Append_Data);
+				$('[data-role="'+Append_Plase+'"]').append(Append_Data);
+				Append_Status = 0;
 				break;
 
 
@@ -705,36 +693,7 @@ function GUI_Processor(isDATA){
 
 
 
-		
 
-
-
-
-			case "[style]":
-			case "[s]":
-				Current_Mark = 's';
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
-				var Lim = 2;
-				if(Conf_Spl_Len > Lim){
-					for (b = Lim; b < Conf_Spl_Len; b++){
-						p[Lim-1]+=','+Conf_Spl[b];
-					}
-				}
-				isHTML += '<div style="'+p[1]+'">';
-				break;
-			case "<-[s]":				
-				isHTML += '</div>';
-				break;	
-
-
-	
-
-				
-
-				
-				
-				
-				
 			case "button_class":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="button";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
@@ -792,13 +751,7 @@ function GUI_Processor(isDATA){
 
 
 						
-			case "+>":
-				isHTML += '<div class="ui-corner-all custom-corners">';
-				break;
 
-			case "<+":
-				isHTML += '</div>';
-				break;
 
 
 
@@ -872,6 +825,34 @@ function GUI_Processor(isDATA){
 //####################################################################################
 //##	
 //####################################################################################
+
+
+
+			case "+>":
+				isHTML += '<div class="ui-corner-all custom-corners">';
+				break;
+
+			case "<+":
+				isHTML += '</div>';
+				break;
+
+
+			case "[style]":
+			case "[s]":
+				Current_Mark = 's';
+				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="";
+				var Lim = 2;
+				if(Conf_Spl_Len > Lim){
+					for (b = Lim; b < Conf_Spl_Len; b++){
+						p[Lim-1]+=','+Conf_Spl[b];
+					}
+				}
+				isHTML += '<div style="'+p[1]+'">';
+				break;
+			case "<-[s]":				
+				isHTML += '</div>';
+				break;	
+
 			case "JustGage":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
 				if(Conf_Spl_Len >= 3)p[2]=Conf_Spl[2].trim(); else p[2]="";
