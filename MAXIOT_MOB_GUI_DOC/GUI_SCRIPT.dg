@@ -64,9 +64,26 @@ const fff=`
 	..create_page,wi_tmp2
 	..create_page,wi_tmp3
 	
+		..[grid],3
+		..{
+			..[g]
+			..{
+				..button, 1111111
+				..button, 1111111
+				..button, 1111111
+			..}
+			..[g]
+			..{
+				
+			..}
+			..[g]
+			..{
+				
+			..}
+		..}	
+		..button, ggggggg
 
-
-		
+	
 		
 		
 
@@ -158,10 +175,12 @@ const fff=`
 		\\..input_text, 1655
 		\\..label,Device Name:
 		\\..input_text,Mob_Test
-		\\..##,2 
-		\\..button,Save
-		\\..button,Connect
-	.\\.}
+		\\..[grid],2
+		\\..{
+			\\..[g] \\..{ \\..button,Save    \\..}
+			\\..[g] \\..{ \\..button,Connect \\..}
+		\\..}
+	\\..}
 	\\..button,OPEN PANEL, Panel_Open('PAN_1');
 	
 	..[panel](PAN_1),10px 20px
@@ -174,9 +193,12 @@ const fff=`
 		..input_text, 1655
 		..label,Device Name:
 		..input_text,Mob_Test
-		..##,2 
-		..button,Save
-		..button,Connect
+		..[grid],2
+		..{
+			..[g] ..{ ..button,Save    ..}
+			..[g] ..{ ..button,Connect ..}
+		..}
+
 	..}
 	..button,OPEN PANEL, Panel_Open('PAN_1');
 ..}

@@ -95,6 +95,8 @@ function GUI_Processor(isDATA){
 	var grid_num   = 0;
 	var grid_cou   = 0;
 	var grid_add   = 0;
+	
+	var grid_count = 0;
 
 	var panel_status = 0;
 	var i,b; 
@@ -172,6 +174,7 @@ function GUI_Processor(isDATA){
 			case "[c]":				p_NUM = 1; break;
 			case "[pop]":			p_NUM = 1; break;
 			case "[popup]":			p_NUM = 1; break;
+			case "[grid]":			p_NUM = 1; break;
 			/////////////////////////////////////////
 			case "[Append]":						p_NUM = 1; break;
 			case "html_body":						p_NUM = 1; break;
@@ -247,6 +250,8 @@ function GUI_Processor(isDATA){
 					case "m":   isCMD = "<-[m]";   break; // vebgverdistvis
 					case "s":   isCMD = "<-[s]";   break;
 					case "a":   isCMD = "<-[a]";   break; // append
+					case "grid":isCMD = "<-[grid]";break;
+					case "g":   isCMD = "<-[g]";   break;
 					default: break;
 				}
 			}			
@@ -329,17 +334,6 @@ function GUI_Processor(isDATA){
 				isHTML_PANEL   = '';  
 				isHTML_CONTENT = '';
 				break;	
-
-			case "##":
-				switch(isPAYLOAD){
-					case "2":{isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;break;}
-					case "3":{isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;break;}
-					case "4":{isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;break;}
-					case "5":{isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;break;}
-					default: break;
-				}
-				grid_cou   = 1; grid_add   = 0;			
-				break;
 
 			case "header_text":
 				$("#page_"+isPage+" h1 #MyHeader_Text_"+isPage).text(isPAYLOAD);
@@ -652,6 +646,56 @@ function GUI_Processor(isDATA){
 			case "<-[t]":
 				isHTML += '</div>';
 				break;
+				
+				
+			case "##":
+				switch(isPAYLOAD){
+					case "2":{isHTML += '<fieldset class="ui-grid-a">';grid_num=2; grid_start=1;break;}
+					case "3":{isHTML += '<fieldset class="ui-grid-b">';grid_num=3; grid_start=1;break;}
+					case "4":{isHTML += '<fieldset class="ui-grid-c">';grid_num=4; grid_start=1;break;}
+					case "5":{isHTML += '<fieldset class="ui-grid-d">';grid_num=5; grid_start=1;break;}
+					default: break;
+				}
+				grid_cou   = 1; grid_add   = 0;			
+				break;				
+			
+				
+			case "[grid]":
+				Current_Mark = 'grid';
+				grid_count = 0;
+				switch(isPAYLOAD){
+					case "2":{isHTML += '<fieldset class="ui-grid-a">';break;}
+					case "3":{isHTML += '<fieldset class="ui-grid-b">';break;}
+					case "4":{isHTML += '<fieldset class="ui-grid-c">';break;}
+					case "5":{isHTML += '<fieldset class="ui-grid-d">';break;}
+					default: break;
+				}
+				break;
+			case "<-[grid]":
+				isHTML += '</div>';
+				break;
+			case "[g]":
+				Current_Mark = 'g';
+				grid_count++;
+				if(grid_count === 1){isHTML += '<div class="ui-block-a">';}
+				if(grid_count === 2){isHTML += '<div class="ui-block-b">';}
+				if(grid_count === 3){isHTML += '<div class="ui-block-c">';}
+				if(grid_count === 4){isHTML += '<div class="ui-block-d">';}
+				if(grid_count === 5){isHTML += '<div class="ui-block-e">';}
+				break;
+			case "<-[g]":
+				isHTML += '</div>';
+				break;
+				
+		/**		
+		if(grid_start===1){		
+			if(grid_cou === 1){isHTML += '<div class="ui-block-a">'; grid_add = 1;}
+			if(grid_cou === 2){isHTML += '<div class="ui-block-b">'; grid_add = 1;}
+			if(grid_cou === 3){isHTML += '<div class="ui-block-c">'; grid_add = 1;}
+			if(grid_cou === 4){isHTML += '<div class="ui-block-d">'; grid_add = 1;}
+			if(grid_cou === 5){isHTML += '<div class="ui-block-e">'; grid_add = 1;}
+		}
+		**/	
 //####################################################################################
 //##	isPAYLOAD  ALD
 //##	isPARA
