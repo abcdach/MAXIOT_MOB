@@ -26,6 +26,7 @@ const isMen1 =`
 		-- texts(wi_text)
 		-- inputs(wi_input)
 		-- collapsible(wi_collapsible)
+		-- popup(wi_popup)
 		,Page_change(Value);
 ..}
 
@@ -70,15 +71,69 @@ const fff=`
 	..create_page,wi_text
 	..create_page,wi_input
 	..create_page,wi_collapsible
+	..create_page,wi_popup
 	
 	..create_page,wi_html
 	..create_page,wi_tmp1
 	..create_page,wi_tmp2
 	..create_page,wi_tmp3
-	
-
 
 ..}
+
+
+
+
+
+..[page],wi_popup
+..{
+	..header_text,widget popup ..[p](i_popup)..{`+isMen1+`..}
+	..header_button,,`+uiBtn+` ui-icon-delete ,Panel_Open('i_popup');
+	..header_button,,`+uiBtn+` ui-icon-carat-l,Panel_Open('i_popup');
+	
+	..label,Syntax
+	..codemirror(Cmir_popup_1),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_popup_1,
+	\\..[pop],10px 20px
+	\\..{
+			*GUI Content*
+	\\..}
+
+	..label,Example
+	..codemirror(Cmir_popup_2),autoRefresh:true, lineNumbers: true, mode:'simplemode'
+	..codemirror_text,Cmir_popup_2,
+	\\..[pop](POP_1),10px 20px
+	\\..{
+		\\..label, Host Name:
+		\\..input_text, http://maxh6/
+		\\..label,Port:
+		\\..input_text, 3004
+		\\..label,Device ID:
+		\\..input_text, 1655
+		\\..label,Device Name:
+		\\..input_text,Mob_Test
+		\\..##,2 
+		\\..button,Save
+		\\..button,Connect
+	\\..}
+	\\..button,OPEN POP_1, Popup_Open('POP_1');
+	
+	..[pop](POP_1),10px 20px
+	..{
+		..label, Host Name:
+		..input_text, http://maxh6/
+		..label,Port:
+		..input_text, 3004
+		..label,Device ID:
+		..input_text, 1655
+		..label,Device Name:
+		..input_text,Mob_Test
+		..##,2 
+		..button,Save
+		..button,Connect
+	..}
+	..button,OPEN POP_1, Popup_Open('POP_1');
+..}
+
 ..[page],wi_collapsible
 ..{
 	..header_text,widget collapsible ..[p](i_collapsible)..{`+isMen1+`..}

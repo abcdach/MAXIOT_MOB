@@ -170,6 +170,7 @@ function GUI_Processor(isDATA){
 			case "[collaps]":		p_NUM = 1; break;
 			case "[col]":			p_NUM = 1; break;
 			case "[c]":				p_NUM = 1; break;
+			case "[pop]":			p_NUM = 1; break;
 			/////////////////////////////////////////
 			case "[Append]":						p_NUM = 1; break;
 			case "html_body":						p_NUM = 1; break;
@@ -450,8 +451,6 @@ function GUI_Processor(isDATA){
 				$('[data-role="IS_HTML_BODY"]').append(isPAYLOAD);
 				break;
 
-
-
 			case "select":
 				isHTML += '<select name="'+isID+'" id="'+isID+'" data-native-menu="false">';
 				//List
@@ -473,8 +472,6 @@ function GUI_Processor(isDATA){
 				isJAVA +='\n'+ '	'+isPAYLOAD;
 				isJAVA +='\n'+ '});';
 				break;	
-
-
 
 			case "radio":
 				var isName = "";
@@ -601,7 +598,27 @@ function GUI_Processor(isDATA){
 //##	isPARA
 //##
 //####################################################################################	
-
+			case "[pop]":
+				//if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
+				
+				if(isPAYLOAD === "")isPAYLOAD="0px 0px";
+					
+				Current_Mark = 'pop';
+				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
+				isHTML += '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>';
+				isHTML += '<div style="padding:'+isPAYLOAD+';">';
+				break;
+			case "<-[pop]":
+				isHTML += '</div>';
+				isHTML += '</div>';
+				break;
+				
+				
+				
+				
+				
+				
+				
 				
 				
 				
@@ -638,18 +655,7 @@ function GUI_Processor(isDATA){
 				panel_status = 0;
 				break;
 
-			case "[pop]":
-				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="0px 0px";
-				Current_Mark = 'pop';
-				isHTML += '<div data-role="popup" id="'+isID+'" data-theme="a" class="ui-corner-all  data-transition="flip"">';
-				isHTML += '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>';
 
-				isHTML += '<div style="padding:'+p[1]+';">';
-				break;
-			case "<-[pop]":
-				isHTML += '</div>';
-				isHTML += '</div>';
-				break;
 
 
 
