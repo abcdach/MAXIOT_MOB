@@ -18,7 +18,7 @@ const fff=`
 	<div id="tabs-2a">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
 	<div id="tabs-3a">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
 </div>
-
+<script>$("#tabss").tabs();</script>
 
 
 
@@ -41,26 +41,44 @@ const fff=`
 	..}
 	
 	
-	..[accordion](acord)
+	..[accordion](acord1)
 	..{
-		..[ac](ac1),111
+		..[ac](ac11),111
+		..{
+			..html,<p>1111111111111111111111111111</p><br>
+			..html,<br>
+		..}
+		..[ac](ac21),222
+		..{
+			..html,<p>2222222222222222222222222222</p><br>
+		..}
+		..[ac](ac31),333
+		..{
+			..html,<p>3333333333333333333333333333</p><br>
+		..}
+	..}	
+
+	..[accordion](acord2)
+	..{
+		..[ac](ac22),111
 		..{
 			..html,<p>1111111111111111111111111111</p>
 		..}
-		..[ac](ac2),222
+		..[ac](ac22),222
 		..{
 			..html,<p>2222222222222222222222222222</p>
 		..}
-		..[ac](ac3),333
+		..[ac](ac32),333
 		..{
 			..html,<p>3333333333333333333333333333</p>
 		..}
 	..}	
 
-
-
 ..}
 `;
+
+
+
 
 
 /**

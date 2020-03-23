@@ -329,7 +329,8 @@ function GUI_Processor(isDATA){
 			//##################################################
 			case "[tab]":console.log("[tab]");
 				Current_Mark = 'tab';
-				isHTML  = '<div id="tabs">';
+				isHTML  = '<script>$("#'+isID+'").tabs();</script>';
+				isHTML += '<div id="'+isID+'">';
 				isHTML += '\n<ul>';
 				//List
 				var pT = isPAYLOAD.split('--');
@@ -345,11 +346,14 @@ function GUI_Processor(isDATA){
 					}
 				}
 				isHTML += '\n</ul>';
+				//isHTML += '<script>$("#'+isID+'").tabs();</script>';
 				Save_to_Buffer(isHTML);
+				//isJAVA = '<script>$("#'+isID+'").tabs();</script>';
+				//$('[data-role="IS_JAVA2"]').append('<script>'+isJAVA+'</script>');	
 				break;
 			case "<-[tab]": console.log("<-[tab]");
 				Save_to_Buffer_and_shift('</div>');
-				break;									
+				break;
 			case "[t]": console.log("[t]");
 				Current_Mark = 't';
 				Save_to_Buffer('\n<div id="'+isID+'">');
@@ -361,7 +365,14 @@ function GUI_Processor(isDATA){
 			//##################################################
 			case "[accordion]":console.log("[accordion]");
 				Current_Mark = 'accordion';
-				Save_to_Buffer('<div id="menu-collapse">');
+				//isHTML  = '<script>$( function(){$( "#'+isID+'" ).accordion();});</script>';
+				//isHTML  = '<script>$( "#'+isID+'" ).accordion();</script>';
+				//isHTML  = '<script>$( "#menu-collapse" ).accordion();</script>';
+				//isHTML = '<div id="menu-collapse">';
+				//$("#menu-collapse").accordion({header: "h3"});
+				isHTML  = '<script>$( "#'+isID+'" ).accordion({header:"h3"});</script>';
+				isHTML += '<div id="'+isID+'">';				
+				Save_to_Buffer(isHTML);
 				break;
 			case "<-[accordion]": console.log("<-[accordion]");
 				Save_to_Buffer_and_shift('</div>');
