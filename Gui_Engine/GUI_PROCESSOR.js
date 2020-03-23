@@ -208,6 +208,8 @@ function GUI_Processor(isDATA){
 			case "js_pageinit":						p_NUM = 1; break;	
 			case "javascript_pageinit":				p_NUM = 1; break;
 			/////////////////////////////////////////
+			case "timer":							p_NUM = 2; break;
+			/////////////////////////////////////////
 			case "codemirror": 		p_NUM = 1; break;
 			case "codemirror_text": p_NUM = 2; break;
 			/////////////////////////////////////////			
@@ -706,6 +708,24 @@ function GUI_Processor(isDATA){
 //##
 //####################################################################################	
 
+			case "timer":
+				isJAVA +='\n'+ 'var interval = setInterval(function(){';
+				isJAVA += isPAYLOAD
+				isJAVA +='\n'+ '},'+isPARA[1]+');'; 
+				break;	
+			//case "timer":
+				//SCR  ='\n'+ 'var interval = setInterval(function(){';
+				//SCR += isPAYLOAD
+				//SCR +='\n'+ '},'+isPARA[1]+');';
+				//$('[data-role="IS_JAVA_SCRIPT"]').append('<script>'+SCR+'</script>');				
+				//break;					
+				
+				
+				
+				
+				
+				
+				
 				
 			case "JustGage":
 				if(Conf_Spl_Len >= 2)p[1]=Conf_Spl[1].trim(); else p[1]="200";
@@ -725,7 +745,7 @@ function GUI_Processor(isDATA){
 				isJAVA +='\n'+ '	label: "pounds"\n';
 				isJAVA +='\n'+ '});';
 				
-				var isSTYLE = '<style>#'+isID+' {width:200px; height:180px; display: inline-block;margin: 1em;}</style>';
+				var isSTYLE = '<style>#'+isID+' {width:100px; height:100px; display: inline-block;margin: 1em;}</style>';
 				$('[data-role="IS_CSS"]').append(isSTYLE);
 				
 				//g1.refresh(55);

@@ -40,7 +40,65 @@ const fff=`
 ..{
 
 	..JustGage
+	..html,
+	<label for="file">Downloading progress:</label>
+	<progress id="file" value="32" max="100"> 32% </progress>
+..css,	
+#it232{
+  color: white;
+  background-color:Gray;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  /*font-style: italic;*/
+}	
+..//css,
+#rrr12{
+    width: 100px;
+    display: inline-block;
+}
+#it434{
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+}
+
+..css,#rrr12{width: 200px;}
+..css,#rrr14{width: 50%;}
+
+..html,
+<table>
+..html,<tr>
+..html,<td><div id="rrr12">	
+..input_text(it232)
+..html,</div></td>
+..html,<td><div id="rrr14">	
+..input_text(it434)
+..html,</div></td>
+..html,</tr>
+</table>
+
+	..//css,#it232{width: 50%;display: inline-block;}
+	..//css,#rrv1{width: 200px;}
 	
+	
+	..//html,<div id="rrv1">
+	..//##,2
+	
+	
+	..//html,</div>
+	
+	..//html,<div id="rrv2">
+	
+	..//html,</div>	
+	
+	..js,var hhh = 5000;
+	..timer,100,put_input_text('it232',hhh); hhh++;
+	..button,resset timer,hhh=0;
+
+	
+	
+
 		..[tab](TAB_1),--name1(val1)--name2(val2)--name3(val3)
 		..{
 			..[t](val1)
