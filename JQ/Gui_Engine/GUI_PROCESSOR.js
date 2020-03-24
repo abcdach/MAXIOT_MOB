@@ -204,7 +204,7 @@ function GUI_Processor(isDATA){
 			case "codemirror": 		p_NUM = 1; break;
 			case "codemirror_text": p_NUM = 2; break;
 			/////////////////////////////////////////
-
+			case "sidebar": 		p_NUM = 1; break;
 
 
 
@@ -323,7 +323,8 @@ function GUI_Processor(isDATA){
 			case "<-[append]":
 				console.log("<-[append]");
 				console.log("Append_Data : "+Mark_Data[Mark_Pointer+1]);
-				append ('[data-role="'+Append_Plase+'"]', Mark_Data[Mark_Pointer+1]);
+				append (Append_Plase, Mark_Data[Mark_Pointer+1]);
+				//append ('[data-role="'+Append_Plase+'"]', Mark_Data[Mark_Pointer+1]);
 				break;
 
 			//##################################################
@@ -399,8 +400,25 @@ function GUI_Processor(isDATA){
 
 
 
-
-
+			case "sidebar":console.log("[tab]");
+				isHTML  = '\n<div class="bs-sidebar hidden-print" role="complementary">';
+				isHTML += '\n<ul class="nav bs-sidenav">';
+				//List
+				var pT = isPAYLOAD.split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '\n<li><a href="'+pT1+'"><i class="icon-chevron-right"></i>'+pT0+'</a></li>';
+						}
+					}
+				}
+				isHTML += '\n</ul>\n</div>';
+				Save_to_Buffer(isHTML);	
+				break;
 
 
 

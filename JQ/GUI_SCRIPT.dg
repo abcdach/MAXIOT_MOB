@@ -3,77 +3,81 @@
 
 const fff=`
 
-..[append],IS_BODY
+..[append],#layout
 ..{
-..html,
-<!-- Tabs -->
-<h2 class="demoHeaders">Tabs</h2>
-<div id="tabss">
-	<ul>
-		<li><a href="#tabs-1a">First</a></li>
-		<li><a href="#tabs-2a">Second</a></li>
-		<li><a href="#tabs-3a">Third</a></li>
-	</ul>
-	<div id="tabs-1a">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-	<div id="tabs-2a">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
-	<div id="tabs-3a">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
-</div>
-<script>$("#tabss").tabs();</script>
+
+..html,<div class="row">
+	
+	..html,<div class="col-lg-3 col-sm-3" id="sidebar">
+	..sidebar,--Tabs(#tabs)--Accordion(#accordion)
+	..html,</div>
 
 
+	..html,<div class="col-lg-9 col-sm-9" id="article">
 
 
-	..html,<br>
-	..[tab],--name1(#val1)--name2(#val2)--name3(#val3)
-	..{
-		..[t](val1)
+		..html,<br>
+		
+		..html,<section id="tabs">
+				<div class="page-header">
+				<h1>tabs</h1>
+				</div>
+		..[tab],--name1(#val1)--name2(#val2)--name3(#val3)
 		..{
-			..html,<p>1111111111111111111111111111</p>
+			..[t](val1)
+			..{
+				..html,<p>1111111111111111111111111111</p>
+			..}
+			..[t](val2)
+			..{
+				..html,<p>2222222222222222222222222222</p>
+			..}
+			..[t](val3)
+			..{
+				..html,<p>3333333333333333333333333333</p>
+			..}
 		..}
-		..[t](val2)
+		..html,<p>2222222222222222222222222222</p>
+		..html,<br><br><br><br><br><br><br><br><br><br>
+
+		..html,</section>	
+		
+		
+		..html,<section id="accordion">
+				<div class="page-header">
+				<h1>accordion</h1>
+				</div>
+		..[accordion](acord1)
 		..{
-			..html,<p>2222222222222222222222222222</p>
-		..}
-		..[t](val3)
-		..{
-			..html,<p>3333333333333333333333333333</p>
-		..}
-	..}
+			..[ac](ac11),111
+			..{
+				..html,<p>1111111111111111111111111111</p><br>
+				..html,<br>
+			..}
+			..[ac](ac21),222
+			..{
+				..html,<p>2222222222222222222222222222</p><br>
+			..}
+			..[ac](ac31),333
+			..{
+				..html,<p>jjj_3333333333333333333333333333</p><br>
+			..}
+		..}	
+		..html,</section>	
+
+
+	..html,</div>
+..html,</div>
 	
 	
-	..[accordion](acord1)
-	..{
-		..[ac](ac11),111
-		..{
-			..html,<p>1111111111111111111111111111</p><br>
-			..html,<br>
-		..}
-		..[ac](ac21),222
-		..{
-			..html,<p>2222222222222222222222222222</p><br>
-		..}
-		..[ac](ac31),333
-		..{
-			..html,<p>3333333333333333333333333333</p><br>
-		..}
-	..}	
-
-	..[accordion](acord2)
-	..{
-		..[ac](ac22),111
-		..{
-			..html,<p>1111111111111111111111111111</p>
-		..}
-		..[ac](ac22),222
-		..{
-			..html,<p>2222222222222222222222222222</p>
-		..}
-		..[ac](ac32),333
-		..{
-			..html,<p>3333333333333333333333333333</p>
-		..}
-	..}	
-
+	
+	
+	
+	
+	
+	
+	
+	
 ..}
 `;
 
