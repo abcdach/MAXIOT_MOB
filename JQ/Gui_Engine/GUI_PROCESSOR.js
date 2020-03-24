@@ -209,6 +209,7 @@ function GUI_Processor(isDATA){
 			case "[section]": 		p_NUM = 0; break;
 			case "nav_obj": 		p_NUM = 2; break;
 			case "[nav_objs]": 		p_NUM = 1; break;
+			case "[navbar]": 		p_NUM = 2; break;
 			/////////////////////////////////////////
 			case "click":				p_NUM = 2; break;
 			case "html":				p_NUM = 1; break;
@@ -264,11 +265,11 @@ function GUI_Processor(isDATA){
 					//case "c": isCMD = "<-[c]"; break;
 					//case "p": isCMD = "<-[p]"; break;
 					//case "t": isCMD = "<-[t]"; break;
-					//case "d": isCMD = "<-[d]"; break;
 					
 					
-					case "nav_objs": isCMD = "<-[nav_objs]"; break;
-					case "section": isCMD = "<-[section]"; break; // vebgverdistvis
+					case "navbar": 		isCMD = "<-[navbar]"; break;
+					case "nav_objs": 	isCMD = "<-[nav_objs]"; break;
+					case "section": 	isCMD = "<-[section]"; break; // vebgverdistvis
 					case "div": 		isCMD = "<-[div]"; break;
 					case "append": 		isCMD = "<-[append]"; break; // append
 					case "tab":    		isCMD = "<-[tab]"; break;
@@ -452,8 +453,29 @@ function GUI_Processor(isDATA){
 				Save_to_Buffer_and_shift('\n</ul>\n</li>');
 				break;
 
-
-
+			case "[navbar]":
+				Current_Mark = 'nav_objs';
+				isHTML  = '<header class="navbar navbar-inverse navbar-fixed-top">';
+				isHTML += '	<div class="container">';		
+				isHTML += '		<div class="navbar-header">';
+				isHTML += '			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">';
+				isHTML += '				<span class="icon-bar"></span>';
+				isHTML += '				<span class="icon-bar"></span>';
+				isHTML += '				<span class="icon-bar"></span>';
+				isHTML += '			</button>';
+				isHTML += '			<a class="navbar-brand" href="'+isPAYLOAD+'">'+isPARA[1]+'</a>';
+				isHTML += '		</div>';
+				isHTML += '		<nav class="navbar-collapse collapse">';
+				isHTML += '			<ul class="nav navbar-nav">';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[navbar]":	
+				isHTML  = '			</ul>';
+				isHTML += '		</nav>';
+				isHTML += '	</div>';
+				isHTML += '</header>';			
+				Save_to_Buffer_and_shift(isHTML);
+				break;
 
 
 
