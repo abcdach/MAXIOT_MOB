@@ -3,6 +3,64 @@
 
 const fff=`
 
+
+..[append],#body
+..{
+
+..html,
+<!-- Navbar
+    ================================================== -->
+    <header class="navbar navbar-inverse navbar-fixed-top">
+	
+	
+        <div class="container">
+		
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="http://max-iot.com">MAXIOT IOT SYSTEM</a>
+            </div>
+			
+            <nav class="navbar-collapse collapse">
+			
+                <ul class="nav navbar-nav">
+				
+			
+					..nav_obj,accordion,       #accordion
+					..nav_obj,Extra,           ./extra.html
+					..nav_obj,Map,             ./map.html
+					..nav_obj,Feedback/Issues, http://github.com/addyosmani/jquery-ui-bootstrap/issues
+					..nav_obj,Contact,         http://twitter.com/addyosmani
+					..[nav_objs],Switch Theme
+					..{
+						..nav_obj,Default Bootstrap Theme (Non LESS'd),   ./index.html
+						..nav_obj,United Theme via Bootswatch (LESS'd),   theme/united/index.html"
+						..nav_obj,Default Bootstrap Theme (LESS'd),       theme/base/index.html
+					..}
+				..html,	
+					
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+..}
+
+
+
+
+
+
+
+
+
+
+
+
 ..[append],#layout
 ..{
 	..[div],class="row"

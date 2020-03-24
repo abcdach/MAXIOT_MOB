@@ -207,7 +207,8 @@ function GUI_Processor(isDATA){
 			case "sidebar": 		p_NUM = 1; break;
 			case "[div]": 			p_NUM = 1; break;
 			case "[section]": 		p_NUM = 0; break;
-
+			case "nav_obj": 		p_NUM = 2; break;
+			case "[nav_objs]": 		p_NUM = 1; break;
 			/////////////////////////////////////////
 			case "click":				p_NUM = 2; break;
 			case "html":				p_NUM = 1; break;
@@ -264,8 +265,9 @@ function GUI_Processor(isDATA){
 					//case "p": isCMD = "<-[p]"; break;
 					//case "t": isCMD = "<-[t]"; break;
 					//case "d": isCMD = "<-[d]"; break;
-					//case "pop": isCMD = "<-[pop]"; break;
 					
+					
+					case "nav_objs": isCMD = "<-[nav_objs]"; break;
 					case "section": isCMD = "<-[section]"; break; // vebgverdistvis
 					case "div": 		isCMD = "<-[div]"; break;
 					case "append": 		isCMD = "<-[append]"; break; // append
@@ -388,13 +390,81 @@ function GUI_Processor(isDATA){
 			case "<-[ac]":console.log("<-[ac]");
 				Save_to_Buffer_and_shift('</div></div>');
 				break;
+				
+			//##################################################
+			case "sidebar":
+				isHTML  = '\n<div class="bs-sidebar hidden-print" role="complementary">';
+				isHTML += '\n<ul class="nav bs-sidenav">';
+				//List
+				var pT = isPAYLOAD.split('--');
+				for (b = 0; b < pT.length; b++){
+					pT[b] = pT[b].trim();
+					if(pT[b]!==""){
+						var pTT=pT[b].split('(');
+						if(pTT.length === 2){
+							var pT0 = pTT[0].trim();
+							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
+							isHTML += '\n<li><a href="'+pT1+'"><i class="icon-chevron-right"></i>'+pT0+'</a></li>';
+						}
+					}
+				}
+				isHTML += '\n</ul>\n</div>';
+				Save_to_Buffer(isHTML);	
+				break;
 
-
+			//##################################################
+			case "[div]":
+				Current_Mark = 'div';
+				isHTML  = '\n<div id="'+isID+'" '+isPAYLOAD+'>';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[div]":
+				Save_to_Buffer_and_shift('</div>');
+				break;
+				
+			//##################################################
+			case "[section]":
+				Current_Mark = 'section';
+				isHTML  = '\n<section id="'+isID+'">';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[section]":
+				Save_to_Buffer_and_shift('</section>');
+				break;
 
 //####################################################################################
 //##	isPAYLOAD
 //##	isPARA
 //####################################################################################
+			case "nav_obj":
+				isHTML  = '\n<li><a href="'+isPAYLOAD+'">'+isPARA[1]+'</a></li>';
+				Save_to_Buffer(isHTML);
+				break;
+
+			case "[nav_objs]":
+				Current_Mark = 'nav_objs';
+	            isHTML  = '\n<li class="dropdown">';
+				isHTML += '\n<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+isPAYLOAD+'<b class="caret"></b></a>';
+                isHTML += '\n<ul class="dropdown-menu">';			
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[nav_objs]":	
+				Save_to_Buffer_and_shift('\n</ul>\n</li>');
+				break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
