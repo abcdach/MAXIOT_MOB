@@ -31,10 +31,9 @@ const fff=`
 						..html,<p>3333333333333333333333333333</p>
 					..}
 				..}
-				..html,<p>2222222222222222222222222222</p>
-				..html,<br><br><br><br><br><br><br><br><br><br>
+				..html,<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			..}
-			..[section](tabs)
+			..[section](accordion)
 			..{
 				..html,<div class="page-header"><h1>accordion</h1></div>
 				..[accordion](acord1)
