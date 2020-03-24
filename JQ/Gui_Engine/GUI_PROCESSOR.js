@@ -205,8 +205,8 @@ function GUI_Processor(isDATA){
 			case "codemirror_text": p_NUM = 2; break;
 			/////////////////////////////////////////
 			case "sidebar": 		p_NUM = 1; break;
-
-
+			case "[div]": 			p_NUM = 1; break;
+			case "[section]": 		p_NUM = 0; break;
 
 			/////////////////////////////////////////
 			case "click":				p_NUM = 2; break;
@@ -265,9 +265,9 @@ function GUI_Processor(isDATA){
 					//case "t": isCMD = "<-[t]"; break;
 					//case "d": isCMD = "<-[d]"; break;
 					//case "pop": isCMD = "<-[pop]"; break;
-					//case "m": isCMD = "<-[m]"; break; // vebgverdistvis
-					//case "s": isCMD = "<-[s]"; break;
 					
+					case "section": isCMD = "<-[section]"; break; // vebgverdistvis
+					case "div": 		isCMD = "<-[div]"; break;
 					case "append": 		isCMD = "<-[append]"; break; // append
 					case "tab":    		isCMD = "<-[tab]"; break;
 					case "t":      		isCMD = "<-[t]"; break;
@@ -400,7 +400,7 @@ function GUI_Processor(isDATA){
 
 
 
-			case "sidebar":console.log("[tab]");
+			case "sidebar":
 				isHTML  = '\n<div class="bs-sidebar hidden-print" role="complementary">';
 				isHTML += '\n<ul class="nav bs-sidenav">';
 				//List
@@ -421,11 +421,24 @@ function GUI_Processor(isDATA){
 				break;
 
 
+			case "[div]":
+				Current_Mark = 'div';
+				isHTML  = '\n<div id="'+isID+'" '+isPAYLOAD+'>';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[div]":
+				Save_to_Buffer_and_shift('</div>');
+				break;
 
-
-
-			
-			
+			case "[section]":
+				Current_Mark = 'section';
+				isHTML  = '\n<section id="'+isID+'">';
+				Save_to_Buffer(isHTML);
+				break;
+			case "<-[section]":
+				Save_to_Buffer_and_shift('</section>');
+				break;
+	
 			
 			
 			
