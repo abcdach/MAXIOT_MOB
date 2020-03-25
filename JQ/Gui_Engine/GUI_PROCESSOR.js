@@ -86,14 +86,14 @@ var Mark_Data      = ['','','','','','','','','','','','','','','','','','',''];
 function Save_to_Buffer (is_Value)
 {
 	Mark_Data[Mark_Pointer] += is_Value;
-	console.log("Mark_Data : "+Mark_Data);
+	//console.log("Mark_Data : "+Mark_Data);
 }
 function Save_to_Buffer_and_shift (is_Value)
 {
 	Mark_Data[Mark_Pointer+1] += is_Value;
 	Mark_Data[Mark_Pointer]   += Mark_Data[Mark_Pointer+1]; 
 	Mark_Data[Mark_Pointer+1]  = "";
-	console.log("Mark_Data : "+Mark_Data);
+	//console.log("Mark_Data : "+Mark_Data);
 }
 
 function GUI_Processor(isDATA){
@@ -320,7 +320,7 @@ function GUI_Processor(isDATA){
 			//##################################################
 			case "[append]":
 				Current_Mark = 'append';
-				Append_Plase = isPAYLOAD;
+				Append_Plase = isPAYLOAD; Mark_Pointer   = 0 ;
 				console.log("Append_Plase : "+isPAYLOAD);
 				break;
 			case "<-[append]":
@@ -432,11 +432,8 @@ function GUI_Processor(isDATA){
 			case "<-[section]":
 				Save_to_Buffer_and_shift('</section>');
 				break;
-
-//####################################################################################
-//##	isPAYLOAD
-//##	isPARA
-//####################################################################################
+				
+			//##################################################
 			case "nav_obj":
 				isHTML  = '\n<li><a href="'+isPAYLOAD+'">'+isPARA[1]+'</a></li>';
 				Save_to_Buffer(isHTML);
@@ -476,6 +473,15 @@ function GUI_Processor(isDATA){
 				isHTML += '</header>';			
 				Save_to_Buffer_and_shift(isHTML);
 				break;
+
+
+
+
+//####################################################################################
+//##	isPAYLOAD
+//##	isPARA
+//####################################################################################
+
 
 
 

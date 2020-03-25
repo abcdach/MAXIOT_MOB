@@ -1,0 +1,81 @@
+/**
+მინდა დიდი მადლობა გადაგიხადოთ მოწოდებული ინფორმაციისთვის.
+მიღებული მეილებიდან გამომდინარე, გამოვლინდა რომ სტუდენტების უმრავლესობა იყენებს
+პროგრამა zoom-ს. გთხოვთ დანარჩენ სტუდენტებს დაანისტალიროთ ეს პროგრამა
+https://zoom.us/ 
+zoom-ს ვიდეოჩათში მოწვევას მალე გამოგიგავნით
+
+ასევე facebook-ში ლექციების დასახელების მიხედვით შეიქნა შემდეგი ჯგუფები:
+მოითხოვეთ გაწევრიანება იმ ჯგუფებში, რომელ ლექციებსაც გადიხართ ამ სემესტრში
+
+2020 გამზომი ხელსაწყოები და სისტემები
+2020 კომპიუტერის ორგანიზაცია
+2020 დაბალბიტიანი მიკროპროცესორების არქიტექტურა და პროგრამირება
+
+zoom & facebook
+
+2-საათისთვის გამოგიგზავნით  zoom ვიდეო ჩათის ლინკს
+zoom-ის ვიდეო სესიის ლინკი
+
+მოგესალმებით, გიგზავნით zoom-ის ლინკს, ის ავტომატურად გახსნის zoom-ის ახალ სესიას
+**/
+
+
+
+
+/**		
+..m_object ,Home,index.html?page=is00
+..m_object ,1111,index.html?page=is01
+**/
+
+var isNavbar =`
+
+..[append],#xx1
+..{
+	..[navbar],MAXIOT IOT SYSTEM,http://max-iot.com
+	..{
+		..[nav_objs],დოკუმენტაცია
+		..{
+			..nav_obj,შესავალი, 001.html?page=page_components
+			..nav_obj,სისტემის პლატფორმა, 001.html?page=page_სისტემის_პლატფორმა
+
+		..}
+
+		..[nav_objs],components
+		..{
+			..nav_obj,components, 		001.html?page=page_components
+			..nav_obj,html, 			001.html?page=page_html
+		..}
+		
+		
+		..nav_obj,Map,             ./map.html
+		..nav_obj,Feedback/Issues, http://github.com/addyosmani/jquery-ui-bootstrap/issues
+		..nav_obj,Contact,         http://twitter.com/addyosmani
+		..[nav_objs],Switch Theme
+		..{
+			..nav_obj,Default Bootstrap Theme (Non LESS'd),   ./index.html
+			..nav_obj,United Theme via Bootswatch (LESS'd),   theme/united/index.html"
+			..nav_obj,Default Bootstrap Theme (LESS'd),       theme/base/index.html
+		..}
+	..}
+	
+
+..}
+
+
+..[append],#xx2
+..{
+	..html,
+    <header class="bs-header" id="overview">
+        <div class="container">
+            <h1>Maxiot IOT System</h1>
+            <p class="lead">მრავალფუნქციური ავტომატიზაციის, მონაცემთა მოპოვების, დაგროვების, დამუშავების და მართვის სისტემა</p>
+        </div>
+    </header>
+..}
+
+`;
+
+
+
+

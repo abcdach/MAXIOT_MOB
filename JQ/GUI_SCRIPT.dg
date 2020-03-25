@@ -3,24 +3,6 @@
 
 const fff=`
 
-..[append],#body
-..{
-	..[navbar],MAXIOT IOT SYSTEM,http://max-iot.com
-	..{
-		..nav_obj,accordion,       #accordion
-		..nav_obj,Extra,           ./extra.html
-		..nav_obj,Map,             ./map.html
-		..nav_obj,Feedback/Issues, http://github.com/addyosmani/jquery-ui-bootstrap/issues
-		..nav_obj,Contact,         http://twitter.com/addyosmani
-		..[nav_objs],Switch Theme
-		..{
-			..nav_obj,Default Bootstrap Theme (Non LESS'd),   ./index.html
-			..nav_obj,United Theme via Bootswatch (LESS'd),   theme/united/index.html"
-			..nav_obj,Default Bootstrap Theme (LESS'd),       theme/base/index.html
-		..}
-	..}	
-..}
-
 
 
 ..[append],#layout
@@ -29,14 +11,28 @@ const fff=`
 	..{
 		..[div],class="col-lg-3 col-sm-3"
 		..{
-			..sidebar,--Tabs(#tabs)--Accordion(#accordion)
+			..sidebar,--სისტემის დოკუმენტაცია(#tabs)--Accordion(#accordion)
 		..}
 		..[div],class="col-lg-9 col-sm-9"
 		..{
 			..[section](tabs)
 			..{
-				..html,<div class="page-header"><h1>tabs</h1></div>
-				..[tab],--name1(#val1)--name2(#val2)--name3(#val3)
+				..css,#ish3{font-size: 20px; font-weight: bold; color: #4CAF50}
+				..html,<div class="page-header"><h3 id="ish3">MAXIOT სისტემის დოკუმენტაცია</h3></div>
+				..css,#isP{font-size: 17px;}
+				..html,<p id="isP">MAXIOT - არის მრავალფუნქციური საგნების ინტერნეტის სისტემა, რომელიც შედგება 
+				სხვადასხვა სერვერებისა და სერვერების მართვასთან დაკავშირებული ვებ აპლიკაციებისგან. მოცემულ 
+				დოკუმენტაციის მიზანია MAXIOT სისტემის მუშაობის სხვადასხვა ასპექტების შესწავლა. დოკუმენტაციაში 
+				განხილული საკითხები, გვაძლევს საშუალებას გავეცნოთ MAXIOT სისტემის მუშაობის პრინციპებს, 
+				განვსაზღვროთ სისტემის ასაშენებლად საჭირო ნაბიჯები, გავეცნოთ MAXIOT სისტემის ბაზაზე განხორციელებულ 
+				სხვადასხვა პროექტებს და ამ პროექტების ბაზაზე შევისწავლოთ MAXIOT სისტემის დაკომფიგურირების 
+				ტექნოლოგიებს. ამავე დოკუმენტაციაში თავმოყრილია სხვადასხვა ამოცანებისთვის განკუთვნილი 
+				დაკომპილირებული და ღია პროგრამული კოდები.</p>
+				
+			
+			
+				..html,<div class="page-header"><h2>tabs</h2></div>
+				..[tab],--სქემა(#val1)--აღწერა(#val2)--კოდი(#val3)
 				..{
 					..[t](val1)
 					..{
@@ -55,7 +51,7 @@ const fff=`
 			..}
 			..[section](accordion)
 			..{
-				..html,<div class="page-header"><h1>accordion</h1></div>
+				..html,<div class="page-header"><h2>accordion</h2></div>
 				..[accordion](acord1)
 				..{
 					..[ac](ac11),111

@@ -1,0 +1,110 @@
+
+
+
+..css, .ui-content { max-width: 800px; margin: 0 auto;}
+..html_head
+..//html_body
+
+
+
+<body data-role="IS_HTML_BODY">
+	<div  data-role="IS_HTML_HEAD">
+	<div  data-role="IS_CSS">
+
+
+	<style type='text/css'>
+	.ui-content {
+	  max-width: 800px;
+	  margin: 0 auto;
+	}
+    </style>
+
+
+
+	$(document).on('pageshow',"#page_1", function(){
+
+		console.log("*** pageshow:1:page_1");	
+//Cmir_1.refresh();		
+		console.log("*** pageshow:0:page_1");
+	});
+	
+$(document).on('pagebeforeshow', '#page_1', function(){
+		console.log("*** pagebeforeshow:1:page_1");	
+//Cmir_1.refresh();		
+		console.log("*** pagebeforeshow:0:page_1");
+});	
+	
+	
+	
+	
+
+<!--..................-->
+	<link rel="stylesheet" href="../codemirror/lib/codemirror.css">
+	<script src="../codemirror/lib/codemirror.js"></script>
+	<script src="../codemirror/addon/mode/simple.js"></script>
+	<script src="../codemirror/addon/display/autorefresh.js"></script>
+	<link rel="stylesheet" href="../codemirror/theme/001.css">
+	<script id="modecode">
+	CodeMirror.defineSimpleMode("simplemode", {
+	  start: [
+		{regex: /((--\s*\w+\s*(,|\((\s*\w+\s*)|\s*\(\s*)\)?)|(--\s*(.+)))/,token: "islist"},
+		{regex: /([.]{2}[a-z_]+\s*,)/,token: "keyword"},
+		{regex: /([.]{2}\[[a-z_].*?\])/,token: "conteiner"},// ..[w]
+		{regex: /(\.\.{|\.\.})/,token: "conteiner"},// ..{}
+		{regex: /(<.*>)|\*JavaScript\*/,token: "ishtml"},//	
+		{regex: /(\(.*?\))/,token: "inn"},//
+		{regex: /alert|Panel_Open/, token: "java"},
+		
+		{regex: /(\.\.button|\.\.input_text|\.\.##|\.\.checkbox|\.\.radio)/,token: "keyword"},
+		{regex: /(\.\.select|\.\.slider)|\.\.flip|\.\.listview|\.\.label|\.\.info/,token: "keyword"},
+		
+	
+		{regex: /alert|Panel_Open|put_input_text/, token: "java"},
+		
+	  ],
+	});
+	</script>
+	<style>
+	  .CodeMirror {border: 1px solid silver; margin-bottom: 1em; height: auto;}
+	  dt { text-indent: -2em; padding-left: 2em; margin-top: 1em; }
+	  dd { margin-left: 1.5em; margin-bottom: 1em; }
+	  dt {margin-top: 1em;}
+	</style>	
+	<!--..................-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- ############################### -->
+	<div data-role="page" id="page_1">
+		<div data-role="header" id="header_1">
+			<h1><span id="MyHeader_Text_1"></span></h1>
+			<div data-role="navbar">
+				<div data-role="navbar_1" ></div>
+			</div>
+		</div><!-- /header -->
+		<div data-role="content_1" class="ui-content" role="main"></div>	
+		<div data-role="panel_1" ></div>
+		<div data-role="footer" data-position="fixed" data-theme="a">
+			<h1> </h1>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	<!-- ############################### -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
