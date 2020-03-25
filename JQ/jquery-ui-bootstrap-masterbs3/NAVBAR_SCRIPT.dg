@@ -71,7 +71,7 @@ var isNavbar =`
     <header class="bs-header" id="overview">
         <div class="container">
             <h1>Maxiot IOT System</h1>
-            <p class="lead">მრავალფუნქციური ავტომატიზაციის, მონაცემთა მოპოვების, დაგროვების, დამუშავების და მართვის სისტემა</p>
+            <p class="lead">მრავალფუნქციური ავტომატიზაციის, მონაცემთა მოპოვების, დაგროვების, დამუშავების და მართვის სისტემა.</p>
         </div>
     </header>
 ..}
