@@ -405,7 +405,7 @@ function GUI_Processor(isDATA){
 						if(pTT.length === 2){
 							var pT0 = pTT[0].trim();
 							var pT1 = pTT[1].replace(/(\))/gm, "").trim();
-							isHTML += '\n<li><a href="'+pT1+'"><i class="icon-chevron-right"></i>'+pT0+'</a></li>';
+							isHTML += '\n<li><a href="'+pT1+'"><i class="icon-chevron-right"></i> '+pT0+'</a></li>';
 						}
 					}
 				}

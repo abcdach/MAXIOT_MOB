@@ -142,7 +142,7 @@ var is03 =`
 
 
 
-var page_sistemis_platforma =`
+var page_სისტემის_პლატფორმა =`
 ..[append],#layout
 ..{
 	..[div],class="row"
@@ -237,78 +237,7 @@ Orange pi zero.</p>
 
 
 
-var page_sistemis_momzadeba =`
-..[append],#layout
-..{
-	..css,#ish2{font-size: 20px; font-weight: bold; color: #4CAF50}
-	..css,#isP{font-size: 17px;}
-	..css,#ish3{font-size: 20px; font-weight: bold; color: #4CAF50}
-	..[div],class="row"
-	..{
-		..[div],class="col-lg-3 col-sm-3"
-		..{
-			..sidebar,
-				--სისტემის მომზადება(#sec1)
-				--სისტემური დისკის ფაილი(#sec2)
-				--SD ბარათის მომზადებაა(#sec3)
-				--სისტემის კომპიუტერულ ქსელში ჩართვა(#sec4)
-		..}
-		..[div],class="col-lg-9 col-sm-9"
-		..{
 
-			..[section](sec1)
-			..{		
-..html,<div class="page-header"><h3 id="ish2">MAXIOT სისტემის მომზადება</h2></div>
-<p id="isP">MAXIOT სისტემია შედგება ძირითადი და ბევრი სხვადასხვა დამხმარე პროგრამებბისგან.
-იმის და მიხედვით თუ რა ამოცანა აქვს შესასრულებელი სისტემას, ძირითად პროგრამებთან 
-ერთად სისემის მუშაობის პროცეში ერთვება ბევრი სხვადასხვა დამხმარე პროგრამა. 
-თუმცა შესასრულებელი ამოცანები 
-იმდენად მრავალფეროვანი შეიძლება იყოს, რომ უბრალოდ შეუძლებელია წინასწარ განისაზღვროს
-ყველა დამხმარე პროგრამების ვინაობა.</p>
-<br>
-<p id="isP">იმისთვის რომ მომხმარებელს გავუმარტივოთ MAXIOT სისტემის გამართვა, ჩვენ წინასწარ შევქმენით
-SD ბარათის გამოსახულება. ამ გამოსახულების გადატანით SD ბარათში, ჩვენ მივიღებთ ბარათს
-მასზე განთავსებული ოპერაციული სისტემით, დაკომფიგურირებული MAXIOT სისტემით და
-დამაებითი დამხმარე პროგრამებით(დამხმარე პროგრამების სია ცალკე იქნება მოცემული). ბარათის 
-დამაზადების შემდეგ ჩვენ შეგვილია ის განვათავსოთ იმ მიკროკომპიუტერზე, რომლისთვისაც იყო შექმნილი
-SD ბარათის გამოსახულება, იქნწბა ეს <a href="https://www.raspberrypi.org/">Raspberry pi</a>
-, <a href="http://www.orangepi.org/">Orange pi</a> და თუ სხვა.</p>
-<br>
-<center><img src="DOC/page_doc/images/1_01.jpg" width="430" align:"center"></center>
-<br> 
-<p id="isP">ასევე მომხმარებლისთვის წინასწარ არის შექმნილი <a href="https://www.virtualbox.org/">VirtualBox</a>
-ვირტუალური კომპიუტერების პლატფორმისთვის შექმნილი MAXIOT სისტემის გამოსახულება.</p>
-<br>
-<center><img src="DOC/page_doc/images/1_02.png" width="430" align:"center"></center>
-<br>
-			..}
-			..[section](sec2)
-			..{
-..html,<div class="page-header"><h3 id="ish2">სისტემური დისკის ფაილი</h2></div>
-<p id="isP">ინფორმაცია მალე დაემატება</p>
-			..}
-			..[section](sec3)
-			..{
-..html,<div class="page-header"><h3 id="ish2">SD ბარათის მომზადებაა</h2></div>
-<p id="isP">იმიათვის რომ SD ბარათის გამოსახულება გადავიტანოთ უშუალოდ SD ბარათზე, ჩვენ დაგვჭირდება
-SD ბარათების წამკითხველი მოწყობილობა ( <a href="https://en.wikipedia.org/wiki/Memory_card_reader">Memory card reader</a>) : 
-</p>
-<br>
-<center><img src="DOC/page_doc/images/1_03.png" width="390" align:"center"></center>
-<br>  
-<p id="isP">ასეთი წამკითხველები მრავლად არის წარმოდგენილი კომპიუტერული ტექნიკის ბაარზე. ასევე ზოგიერთ ლეპტოპს მოყვება 
-ჩამონტაჯებული დისკების წამკითხველი.</p>
-			..}
-			..[section](sec4)
-			..{
-..html,<div class="page-header"><h3 id="ish2">MAXIOT სისტემის კომპიუტერულ ქსელში ჩართვა</h2></div>
-<p id="isP">ინფორმაცია მალე დაემატება</p>		
-		
-			..}				
-		..}
-	..}
-..}
-`;
 
 
 

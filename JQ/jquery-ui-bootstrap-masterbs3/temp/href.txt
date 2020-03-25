@@ -1,0 +1,22 @@
+<a href="https://en.wikipedia.org/wiki/Linux">ლინუქსი</a>
+<a href="https://www.virtualbox.org/">VirtualBox</a>
+<a href="https://www.vmware.com/">VmWare</a>
+<a href="https://en.wikipedia.org/wiki/ARM_architecture">ARM</a>
+<a href="https://en.wikipedia.org/wiki/X86">x86</a>
+<a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>
+<a href="https://en.wikipedia.org/wiki/Internet_of_things">IOT</a>
+<a href="https://en.wikipedia.org/wiki/Ethernet">Ethernet</a>
+<a href="https://en.wikipedia.org/wiki/Wi-Fi">Wi-Fi</a>
+<a href="https://www.google.com/chrome/">Goolge Chrome</a>
+<a href="https://en.wikipedia.org/wiki/Memory_card_reader">Memory card reader</a>
+<a href="https://en.wikipedia.org/wiki/IP_address">IP</a>
+<a href="https://en.wikipedia.org/wiki/Information_technology">IT</a>
+<a href="https://www.raspberrypi.org/">Raspberry pi</a>
+<a href="http://www.orangepi.org/">Orange pi</a>
+<a href="https://en.wikipedia.org/wiki/Memory_card_reader">Memory card reader</a>
+
+<a href="xxxxx">yyyyy</a>
+
+
+
+`Memory card reader <https://en.wikipedia.org/wiki/Memory_card_reader>`__ 
