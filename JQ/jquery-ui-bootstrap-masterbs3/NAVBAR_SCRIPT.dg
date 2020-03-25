@@ -36,9 +36,10 @@ var isNavbar =`
 	..{
 		..[nav_objs],დოკუმენტაცია
 		..{
-			..nav_obj,შესავალი, 001.html?page=page_components
-			..nav_obj,სისტემის პლატფორმა, 001.html?page=page_sistemis_platforma
-			..nav_obj,სისტემის მომზადება,  001.html?page=page_sistemis_momzadeba
+			..nav_obj,შესავალი,			001.html?page=page_components
+			..nav_obj,სისტემის პლატფორმა,	001.html?page=page_sistemis_platforma
+			..nav_obj,სისტემის მომზადება,	001.html?page=page_sistemis_momzadeba
+			..nav_obj,MAXIOT სერვერი,		001.html?page=page_MAXIOT_SERVER
 
 		..}
 
